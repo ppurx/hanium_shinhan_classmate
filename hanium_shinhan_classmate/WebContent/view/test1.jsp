@@ -12,7 +12,33 @@
 
 <body >
 <div style="background-color:#fafbd3">
-	<img src="/WebContent/res/logo.png" height="50px" width="50xp"/>
+	<img src="/hanium_shinhan_classmate/res/logo.png" height="50px" width="50xp"/>
+	<table border=1 width=70% height=200>
+<tr>
+<th>ΐΜΈ§</th>
+<th>°³Ό³ΐΪ</th>
+<th>°‘ΐΤ ³―Β₯</th>
+<th>Ε»ΕπΗΟ±β</th>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><input type="button" value="Ε»Επ"></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><input type="button" value="Ε»Επ"></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td><input type="button" value="Ε»Επ"></td>
+</tr>
+</table>
 </div>
 
 </body>
