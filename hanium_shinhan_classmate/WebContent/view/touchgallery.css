@@ -1,0 +1,49 @@
+.touchgallery{
+position: relative;
+overflow: hidden;
+width: 350px; /* default gallery width */
+height: 270px; /* default gallery height */
+}
+
+.touchgallery ul{
+list-style: none;
+margin: 0;
+padding: 0;
+left: 0;
+position: absolute;
+-webkit-transform: translateX(0);
+-moz-transform: translateX(0);
+transform: translateX(0);
+-moz-transition: all 150ms ease-in-out; /* image transition. Change 100ms to desired transition duration */
+-webkit-transition: all 150ms ease-in-out;
+transition: all 150ms ease-in-out;
+}
+
+.touchgallery ul li{
+float: left;
+display: block;
+text-align: center;
+}
+
+.touchgallery ul li img{ /* CSS for images within gallery */
+max-width: 100%; /* make each image responsive, so its native width can occupy up to 100% of gallery's width, but not beyond */
+height: auto;
+}
+
+.touchgallery .jumptodiv{ /* CSS for DIV that houses bullets that navigate to a specific image when clicked on */
+text-align: center;
+width: 100%;
+background: white;
+font-size: 1.5em;
+font-weight: bold;
+color: black;
+letter-spacing: 7px;
+position:absolute;
+bottom: 0;
+margin-top: 0;
+text-shadow: 0 1px 2px #8a8a8a;
+}
+
+.touchgallery .jumptodiv span.selected{ /* CSS for selected bullet inside jumptodiv */
+color: darkred;
+}
