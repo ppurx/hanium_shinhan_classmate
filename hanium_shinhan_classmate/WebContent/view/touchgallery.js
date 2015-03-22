@@ -11,7 +11,7 @@
 
 	var gallerydefaults = {
 		width: 300,
-		height: 250,
+		height: 250, 
 		navarea: '20%',
 		curslide: 0,
 		threshold: 75,

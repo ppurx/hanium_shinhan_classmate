@@ -18,7 +18,7 @@
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
 ***********************************************/
 
-</script>
+</script> 
 
 <script>
 
