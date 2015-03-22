@@ -26,15 +26,26 @@ html, body {height:100%; margin:0; padding:0;}
 <title>Question</title>
 </head>
 <body>
-	<div id="myCenterDiv">
-	<div style="margin-left:30px; margin-right:30px; margin-top:50px; margin-bottom:20px; background:white;">
-	<div style="margin-left:20px; margin-right:20px; margin-bottom:20px">
-	<br><font style="float:left">날짜 :</font><input type="text" date-mini="true"><br><br>
-	<br><br><font style="float:left">과목 :</font><br><br>
-	<font style="float:left">제목 :</font><br><br>
-	<font style="float:left">내용 :</font><br><br><br><br><br><br>
-	</div>
-	</div>
-	</div>
+	
+	<div data-role="main" class="ui-content">
+    <form method="post" action="demoform.asp">
+      <div class="ui-field-contain">
+      	<font>날짜 : 2015-03-22</font>
+      	</div>
+      	<div class="ui-field-contain">
+        <label for="subject">과목</label>
+        <input type="text" name="subject" id="subject">       
+        <label for="title">제목</label>
+        <input type="text" name="title" id="title">
+        <label for="content">내용</label>
+        <textarea name="content" id="content"></textarea>
+      </div>
+      <div style="float:right">
+      <input type="button" data-inline="true" data-mini="true" value="취소">
+      <input type="submit" data-inline="true" data-mini="true" value="전송">
+      </div>
+    </form>
+  </div>
+
 </body>
 </html>
