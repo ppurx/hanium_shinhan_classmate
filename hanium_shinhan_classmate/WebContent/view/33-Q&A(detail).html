@@ -6,15 +6,6 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<script type="text/javascript" src="/javascripts/lib/soundmanager2.min.js,/javascripts/tooltip.js" async="async"></script>
-<link type="text/css" href="/stylesheets/tooltip.css" rel="stylesheet" media="screen">
-<script type="text/javascript" src="/javascripts/smails.io.min.js" async="async"></script>
-<script type="text/javascript" src="/javascripts/minimaps.min.js" async="async"></script>
-<script type="text/javascript" src="http://www.google-analytics.com/ga.js" async="async"></script>
-<script type="text/javascript" src="/javascripts/firejune.min.js" async="async"></script>
-<script type="text/javascript" src="http://countly.firejune.io/javascripts/api.js?ver=1" async="async"></script>
-<script type="text/javascript" src="http://analytics.firejune.com/piwik.js" async="async"></script>
-<script type="text/javascript" src="/load/platform.twitter.com/anywhere.js" async="async"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 
@@ -27,7 +18,25 @@ html, body {height:100%; margin:0; padding:0;}
     background-color:#fafbd3;
 
 }
-#article-1577 > div > p.triangle-right.top
+.bubble{
+	position:relative;
+}
+.bubble .label{
+	color:#ffffff;
+	background-color:#66aa11;
+	border-radius:5px;
+	padding:10px;
+}
+.bubble .tail{
+	left:50%;
+	margin-left:-150px;
+	border-right :18px solid transparent;
+	border-top:18px solid #66aa11;
+	border-left : 18px solid transparent;
+	position:absolute;
+	bottom:-18px;
+	width:0; height:0;
+}
 
 </style>
 <title>p33</title>
@@ -42,9 +51,18 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="header" data-theme="b" >
     <h1>QnA(질문내용)</h1>
 	</div>
-	<div>
-	<p class="triangle-right top">This could be any element you want</p>
-	</div>
+	<div class="bubble">
+ <p class="label">
+ <input type="text" style="background-color:transparent; color:#66aa11; 
+text-align:center" disabled="disabled" value="질문내용"/>
+ </p>
+ <div class="tail"></div>
+ 
+ 
+</div>
+<div style="margin-left:-150px">
+ <img src="/hanium_shinhan_classmate/WebContent/res/Student.png"/>
+ </div>
 </div>
 </body>
 </html>
