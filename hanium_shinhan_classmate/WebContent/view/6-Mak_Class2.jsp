@@ -1,25 +1,20 @@
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
+
 
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
 <meta charset="utf-8">
-<link rel="stylesheet" TYPE="text/css" href="../view/touchgallery.css">
-<script type="text/javascript" src="../view/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" src="<c:url value='../view/jquery.touchSwipe.min.js'/>"></script>
+<script type="text/javascript" src="<c:url value='../view/touchgallery.js'/>"></script>
+<link rel="stylesheet" href="<c:url value='../view/touchgallery.css'/>" type="text/css" media="screen" />
 
-<script type="text/javascript" src="../view/touchgallery.js">
-/***********************************************
-* Touch Image Gallery- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-* This notice MUST stay intact for legal use
-* Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
-***********************************************/
-</script>
-<script type="text/javascript" src="<c:url value='../view/touchgallery.js' />"></script>
-<script type="text/javascript" src="<c:url value='../view/jquery.touchSwipe.min.js' />"></script>
-<link rel="stylesheet" TYPE="text/css" href="<c:url ../view/touchgallery.css' />">
+
 <script>
 
 jQuery(function(){ // on DOM load
@@ -42,8 +37,8 @@ jQuery(function(){ // on DOM load
     
     <div style="margin-left:10%; margin-right:10%; margin-top:25%">
     
-    		<input type="text" placeholder="학교이름">
-    		<input type="text" placeholder="반 이름">
+    		<input type="text" placeholder="íêµì´ë¦">
+    		<input type="text" placeholder="ë° ì´ë¦">
 		
 	</div>
 	
@@ -62,20 +57,20 @@ jQuery(function(){ // on DOM load
 	<div style="margin-top:5%">
 	<table align="center" >
 		<tr>
-			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">중복확인</a></td>
-			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">&nbsp&nbsp개&nbsp&nbsp설&nbsp&nbsp</a></td>
+			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">ì¤ë³µíì¸</a></td>
+			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">&nbsp&nbspê°&nbsp&nbspì¤&nbsp&nbsp</a></td>
 		</tr>
 		
 	</table>
 		
 		
-	 
+	Â 
 	</div>
 </div>
 <br /><br />
 
    	
-     
+Â Â Â Â Â 
 
 
 
