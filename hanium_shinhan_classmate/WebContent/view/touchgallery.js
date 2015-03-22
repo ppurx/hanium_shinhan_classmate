@@ -15,7 +15,7 @@
 		navarea: '20%',
 		curslide: 0,
 		threshold: 75,
-		navbuttons : ['/hanium_shinhan_classmate/view/left.png', '/hanium_shinhan_classmate/view/right.png', -10]
+		navbuttons : ['/hanium_shinhan_classmate/view/left.png', '/hanium_shinhan_classmate/view/right.png', +110]
 	}
 
 	var swipeOptions={

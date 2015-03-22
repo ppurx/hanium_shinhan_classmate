@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/j6-Mak_Class.htmlstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -56,12 +55,12 @@ jQuery(function(){ // on DOM load
 	
 <div id="touchgallery1" class="touchgallery" style="margin:auto">
 	<ul>
-		<li><img src="/hanium_shinhan_classmate/res/chok1.png" /></li>
+		<li><img src="/hanium_shinhan_classmate/res/chok6.png" /></li>
 		<li><img src="/hanium_shinhan_classmate/res/chok2.png" /></li>
 		<li><img src="/hanium_shinhan_classmate/res/chok3.png" /></li>
 		<li><img src="/hanium_shinhan_classmate/res/chok4.png" /></li>
 		<li><img src="/hanium_shinhan_classmate/res/chok5.png" /></li>
-		<li><img src="/hanium_shinhan_classmate/res/chok6.png" /></li>
+		<li><img src="/hanium_shinhan_classmate/res/chok1.png" /></li>
 	</ul>
 </div>
 
