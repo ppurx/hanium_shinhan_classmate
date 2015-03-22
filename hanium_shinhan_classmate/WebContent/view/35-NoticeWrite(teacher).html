@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+ 
 <style type="text/css">
-
 html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
@@ -16,53 +15,50 @@ html, body {height:100%; margin:0; padding:0;}
     text-align: center;
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
+}
 
-}
-.bubble{
-	position:relative;
-}
-.bubble .label{
-	color:#ffffff;
-	background-color:#66aa11;
-	border-radius:5px;
-	padding:10px;
-}
-.bubble .tail{
-	left:50%;
-	margin-left:-150px;
-	border-right :18px solid transparent;
-	border-top:18px solid #66aa11;
-	border-left : 18px solid transparent;
-	position:absolute;
-	bottom:-18px;
-	width:0; height:0;
-}
+
+
+
 
 </style>
-<title>p33</title>
+<script type="text/javascript">
+	window.onload = function(){
+		​$("textarea").​​​​​​height(400);
+		
+	};
+</script>
+<title>p35</title>
 </head>
 <body>
-<div id="myCenterDiv">
+	<div id="myCenterDiv">
 	<div data-role="header" style="background-color:#04B486">
     <a class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-left" href="index.html">Back</a>
 	<h1>CLASSMATE</h1>
      <a class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-Grid" href="index.html">Menu</a>
 	</div>
 	<div data-role="header" data-theme="b" >
-    <h1>QnA(��������)</h1>
+    <h1>공지쓰기</h1>
+</div>
+	
+
+
+	<table style="width:80%">
+	<tr>
+		<td><img  width="70%" height="50%" src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input type="text" size="25" placeholder="제목을 입력하세요"></td>
+	</tr>
+    
+	<tr>
+		<td><img style="margin-top:30px; margin-left:20px" width="50%" height="50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
+	</tr>	
+	<tr>
+	
+	<td  colspan="2" ><textarea style="height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea"placeholder="내용을 입력하세요"></textarea></td>
+	</tr>
+	</table>
+	<input type="button"data-inline="true" value="목록 " style="float:left">
+			<input type="button" data-inline="true"  value="등록 " style="float:left">
+
 	</div>
-	<div class="bubble">
- <p class="label">
- <input type="text" style="background-color:transparent; color:#66aa11; 
-text-align:center" disabled="disabled" value="��������"/>
- </p>
- <div class="tail"></div>
- 
- 
-</div>
-<div style="margin-left:-150px">
- <img src="/hanium_shinhan_classmate/WebContent/res/Student.png"/>
- </div>
-</div>
 </body>
 </html>
