@@ -1,31 +1,24 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
-<meta charset="utf-8">
 <link rel="stylesheet" TYPE="text/css" href="../view/touchgallery.css">
 <script type="text/javascript" src="../view/jquery.touchSwipe.min.js"></script>
 
 <script type="text/javascript" src="../view/touchgallery.js">
+
 /***********************************************
 * Touch Image Gallery- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * This notice MUST stay intact for legal use
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for this script and 100s more
 ***********************************************/
+
 </script>
-
-
-
-<script type="text/javascript" src="<c:url value='../view/touchgallery.js' />"></script>
-<script type="text/javascript" src="<c:url value='../view/jquery.touchSwipe.min.js' />"></script>
-<link rel="stylesheet" TYPE="text/css" href="<c:url ../view/touchgallery.css' />">
-
-
-
 
 <script>
 
@@ -38,7 +31,9 @@ jQuery(function(){ // on DOM load
 	})
 
 </script>
-<title>Make_Class</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
 <div style="position:absolute; 
@@ -79,14 +74,7 @@ jQuery(function(){ // on DOM load
 	 
 	</div>
 </div>
-<br /><br />
-
-   	
-     
 
 
-
-	
-	
 </body>
 </html>
