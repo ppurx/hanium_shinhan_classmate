@@ -11,9 +11,8 @@
         <meta name="keywords" content="jquery, plugin, pagination, fancy" />
         
         <link rel="stylesheet" type="text/css" href="/hanium_shinhan_classmate/view/test/style.css" media="screen"/>
- 
+ <link rel="stylesheet" href="../view/swiper.min.css">
 <style type="text/css">
-html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
     left:0%;   
@@ -21,86 +20,37 @@ html, body {height:100%; margin:0; padding:0;}
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-body{
-                background: #fafbd3;
-                font-family: verdana;
-                padding:0px;
-                margin:0px;
-                letter-spacing:0px;
-            }
-            .header{
-                position:absolute;
-                top:0px;
-                left:0px;
-                width:100%;
-                height:80px;            
-            }
-            .header h1{
-                color:#fff;
-                font-size: 38px;
-                margin:0px 0px 0px 30px;
-                font-weight:100;
-                line-height:80px;
-                padding:0px;
-            }
-            .footer{
-                width:100%;
-                margin:10px 0px 5px 0px;
-            }
-            a img{
-                border:none;
-                outline:none;
-            }
-            .content{
-                margin-top:100px;
-                padding:0px;
-                bottom:0px;
-            }
-            .about{
-                width:100%;
-                height:400px;
-                background:transparent url(about.png) repeat-x top left;
-                border-top:2px solid #ccc;
-                border-bottom:2px solid #000;
-            }
-            .about .text{
-                width:16%;
-                margin:5px 2% 10px 2%;
-                height:380px;
-                float:left;
-                color:#FCFEF3;
-                font-size: 16px;
-                text-align:justify;
-                letter-spacing:0px;
-            }
-            .about .text h1{
-                border-bottom: 1px dashed #ccc;
-                color:#fff;
-            }
-            .demo{
-                width:580px;
-                padding:10px;
-                margin:10px auto;
-                border: 1px solid #fff;
-                background-color:#f7f7f7;
-            }
-            h1{
-                
-                margin:5px 30px 20px 0px;
-                
-            }
-			.pagedemo{
-				border: 1px solid #CCC;
-				width:310px;
-				margin:2px;
-                padding:50px 10px;
-                text-align:center;
-				background-color:white;	
-			}
 
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    
+    .swiper-container {
+        width: 100%;
+        height: 45%;
+    }
+    .swiper-slide {
+        text-align: center;
+      
+        background: #fafbd3;
 
-
-
+        /* Center slide text vertically */
+         display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        
+    }
 </style>
 
 <title>notice</title>
@@ -113,6 +63,8 @@ body{
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
 		
 	</div><!-- /header -->
+	
+	
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
@@ -126,6 +78,7 @@ body{
         </ul>
 
 </div>
+
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
         <form class="userform">
             <table align="center" width="90%" style="margin-top:7%">
@@ -144,10 +97,17 @@ body{
 		
         </form>
 </div>
-	<div data-role="header" data-theme="b" >
+
+<div data-role="header" data-theme="b" >
     <h1>공지사항</h1>
 </div>
-	<div style="margin-top:40px">
+	
+	<div class="swiper-container" style="margin-top:20%">
+        <div class="swiper-wrapper">
+        
+        
+            <div class="swiper-slide">            
+            
 <table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
 			<tr>
@@ -184,36 +144,26 @@ body{
 		</tr>
 		</tbody>
 	</table>
+	
+	</div>
+	<div class="swiper-slide">    
 	</div>
 	
-                <div id="demo2" style="margin-top:45px; margin-left:50px">                   
-                
-			
-            <div class="about">
-               
-               
-                
-            </div>
-        </div>
-        
-		<script type="text/javascript" src="/hanium_shinhan_classmate/view/test/jquery-1.3.2.js"></script>
-		<script src="/hanium_shinhan_classmate/view/test/jquery.paginate.js" type="text/javascript"></script>
-		<script type="text/javascript">
-		$(function() {
-		
-			$("#demo2").paginate({
-				count 		: 50,
-				start 		: 3,
-				display     : 5,
-				border					: false,
-				text_color  			: '#888',
-				background_color    	: '#EEE',	
-				text_hover_color  		: 'black',
-				background_hover_color	: '#CFCFCF'
-			});
-			
-		});
-		</script>
 	</div>
+	<div class="swiper-pagination"></div>
+	
+	</div>
+	
+        
+	</div>
+	<script src="../view/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
 </body>
 </html>

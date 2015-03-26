@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
     <meta charset="utf-8">
     <title>Swiper demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -11,32 +14,34 @@
 
     <!-- Demo styles -->
     <style>
+    #myCenterDiv {
+    position:absolute; 
+    left:0%;   
+    text-align: center;
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background-color:#fafbd3;
+}
+
     html, body {
         position: relative;
         height: 100%;
     }
-    body {
-        background: #eee;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        color:#000;
-        margin: 0;
-        padding: 0;
-    }
+    
     .swiper-container {
         width: 100%;
-        height: 100%;
+        height: 45%;
     }
     .swiper-slide {
         text-align: center;
-        font-size: 18px;
-        background: #fff;
+      
+        background: #fafbd3;
 
         /* Center slide text vertically */
-        display: -webkit-box;
+         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
+        
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         -webkit-justify-content: center;
@@ -45,28 +50,70 @@
         -ms-flex-align: center;
         -webkit-align-items: center;
         align-items: center;
+        
     }
     </style>
 </head>
 <body>
     <!-- Swiper -->
+    <div id="myCenterDiv">
+    
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
-            <div class="swiper-slide">Slide 4</div>
-            <div class="swiper-slide">Slide 5</div>
-            <div class="swiper-slide">Slide 6</div>
-            <div class="swiper-slide">Slide 7</div>
-            <div class="swiper-slide">Slide 8</div>
-            <div class="swiper-slide">Slide 9</div>
-            <div class="swiper-slide">Slide 10</div>
+            <div class="swiper-slide">
+            
+            <table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+		<thead>
+			<tr>
+				<th >반 이름</th>
+				<th >선생님</th>
+				<th>가입 인원</th>
+				<th>등록 일자</th>
+			</tr>
+</thead>
+	<tbody>
+		<tr>
+			<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+			<td align="center">김상현</td>
+			<td align="center">41</td>
+			<td>2014-2-1</td>
+		</tr>
+		<tr>
+			<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+			<td>김상현</td>
+			<td>41</td>
+			<td>2014-2-1</td>
+		</tr>
+		<tr>
+			<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+			<td>김상현</td>
+			<td>41</td>
+			<td>2014-2-1</td>
+		</tr>
+		<tr>
+			<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+			<td>김상현</td>
+			<td>41</td>
+			<td>2014-2-1</td>
+		</tr>
+		</tbody>
+	</table>
+            </div>
+            
+            <div class="swiper-slide">
+            
+            </div>
+            <div class="swiper-slide">
+            
+            </div>
+            <div class="swiper-slide">
+            
+            </div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
-
+ </div>
     <!-- Swiper JS -->
     <script src="../view/swiper.min.js"></script>
 
@@ -77,5 +124,6 @@
         paginationClickable: true
     });
     </script>
+   
 </body>
 </html>

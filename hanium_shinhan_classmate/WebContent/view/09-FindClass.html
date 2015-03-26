@@ -6,6 +6,8 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <meta charset="utf-8">
+
+ <link rel="stylesheet" href="../view/swiper.min.css">
  
 <style type="text/css">
 html, body {height:100%; margin:0; padding:0;}
@@ -16,6 +18,36 @@ html, body {height:100%; margin:0; padding:0;}
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
+
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    
+    .swiper-container {
+        width: 100%;
+        height: 45%;
+    }
+    .swiper-slide {
+        text-align: center;
+      
+        background: #fafbd3;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
 
 
 
@@ -67,10 +99,17 @@ html, body {height:100%; margin:0; padding:0;}
     <h1>반 검색</h1>
 </div>
 
-	<div style="width:85%;margin:35% 7% 0 7%">
+	<div style="width:85%;margin:20% 7% 0 7%">
 		<input  type="search" name="search-5" id="search-5" value="" placeholder="반 이름">
 	</div>
-	<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+	
+	<!-- 게시판 내부 -->
+	<div class="swiper-container">
+        <div class="swiper-wrapper">
+            
+            <!-- 페이지 슬라이더 한 디비전 -->
+	<div class="swiper-slide">
+		<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
 			<tr>
 				<th >반 이름</th>
@@ -78,34 +117,91 @@ html, body {height:100%; margin:0; padding:0;}
 				<th>가입 인원</th>
 				<th>등록 일자</th>
 			</tr>
-</thead>
-	<tbody>
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-			<td align="center">김상현</td>
-			<td align="center">41</td>
-			<td>2014-2-1</td>
-		</tr>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-			<td>김상현</td>
-			<td>41</td>
-			<td>2014-2-1</td>
-		</tr>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-			<td>김상현</td>
-			<td>41</td>
-			<td>2014-2-1</td>
-		</tr>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-			<td>김상현</td>
-			<td>41</td>
-			<td>2014-2-1</td>
-		</tr>
-		</tbody>
-	</table>
-	</div>
+		</thead>
+			<tbody>
+				<tr>
+					<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td align="center">김상현</td>
+					<td align="center">41</td>
+					<td>2014-2-1</td>
+				</tr>
+				<tr>
+					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td>김상현</td>
+					<td>41</td>
+					<td>2014-2-1</td>
+				</tr>
+				<tr>
+					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td>김상현</td>
+					<td>41</td>
+					<td>2014-2-1</td>
+				</tr>
+				<tr>
+					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td>김상현</td>
+					<td>41</td>
+					<td>2014-2-1</td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+			
+			<div class="swiper-slide">
+		<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+		<thead>
+			<tr>
+				<th >반 이름</th>
+				<th >선생님</th>
+				<th>가입 인원</th>
+				<th>등록 일자</th>
+			</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td align="center">김상현</td>
+					<td align="center">41</td>
+					<td>2014-2-1</td>
+				</tr>
+				<tr>
+					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td>김상현</td>
+					<td>41</td>
+					<td>2014-2-1</td>
+				</tr>
+				<tr>
+					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td>김상현</td>
+					<td>41</td>
+					<td>2014-2-1</td>
+				</tr>
+				<tr>
+					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
+					<td>김상현</td>
+					<td>41</td>
+					<td>2014-2-1</td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+			
+			
+			</div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    
+ </div>
+			
+	<script src="../view/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
 </body>
 </html>

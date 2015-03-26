@@ -6,10 +6,9 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-
+<link rel="stylesheet" href="../view/swiper.min.css">
 <style type="text/css">
-html, body {height:100%; margin:0; padding:0;}
-#myCenterDiv {
+ #myCenterDiv {
     position:absolute; 
     left:0%;   
     text-align: center;
@@ -17,6 +16,36 @@ html, body {height:100%; margin:0; padding:0;}
     background-color:#fafbd3;
 }
 
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    
+    .swiper-container {
+        width: 100%;
+        height: 50%;
+    }
+    .swiper-slide {
+        text-align: center;
+      
+        background: #fafbd3;
+
+        /* Center slide text vertically */
+         display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        
+    }
 
 
 
@@ -67,6 +96,10 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="header" data-theme="b" >
     <h1>QnA</h1>
 	</div>
+	
+	<div class="swiper-container" style="margin-top:10%">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
 	<table style="width:95%; margin-top:50px; "  data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
 			<tr>
@@ -103,12 +136,26 @@ html, body {height:100%; margin:0; padding:0;}
 		</tr>
 		</tbody>
 	</table>
-		<table style="float:right">
-		<tr>
-			<td></td><td></td><td></td><td><input type="button" value="답변하기" onclick="location.href='/hanium_shinhan_classmate/view/33-Q&A(details).html'"></td>
-			</tr>
-			</table>
+	</div>
+	  <div class="swiper-slide"></div>
+	</div>
+	<div class="swiper-pagination"></div>
+	</div>
+	
+		
+		<div style="margin-top:20%; float:right; margin-right:5%">
+			<input type="button" data-inline="true" value="답변하기" onclick="location.href='/hanium_shinhan_classmate/view/33-Q&A(details).html'">
+		</div>
 		
 	</div>
+	<script src="../view/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
 </body>
 </html>

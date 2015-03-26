@@ -7,9 +7,8 @@
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 
 <meta charset="utf-8">
-
+<link rel="stylesheet" href="../view/swiper.min.css">
 <style type="text/css">
-html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
     left:0%;   
@@ -18,6 +17,36 @@ html, body {height:100%; margin:0; padding:0;}
     background-color:#fafbd3;
 }
 
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    
+    .swiper-container {
+        width: 100%;
+        height: 45%;
+    }
+    .swiper-slide {
+        text-align: center;
+      
+        background: #fafbd3;
+
+        /* Center slide text vertically */
+         display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        
+    }
 </style>
 
 <title>29page</title>
@@ -72,7 +101,10 @@ html, body {height:100%; margin:0; padding:0;}
 <div style="margin-top:70px">
 <h1>가입 신청 현황</h1>
 </div>
-<div style="margin-top:50px">
+
+<div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
 
  <TABLE style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a" > 
  <THEAD> <TR> <TH style=" background-color:lightgrey; "><center>신청자</center></TH>
@@ -101,10 +133,26 @@ html, body {height:100%; margin:0; padding:0;}
 </TD></TR></TBODY></TABLE> 
 
 </div>
-
+<div class="swiper-slide"></div>
+</div>
+<div class="swiper-pagination"></div>
 </div>
 
 
 
+</div>
+
+
+<!-- Swiper JS -->
+    <script src="../view/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
+   
 </body>
 </html>
