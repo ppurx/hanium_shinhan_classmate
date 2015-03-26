@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<meta charset="utf-8">
 
 <style type="text/css">
 html, body {height:100%; margin:0; padding:0;}
@@ -23,9 +24,16 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 
-<title>Main2</title>
+<title>FIND</title>
 </head>
 <body>
+<div>
+
+</div>
+
+
+
+
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -33,10 +41,64 @@ html, body {height:100%; margin:0; padding:0;}
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
 		
 	</div><!-- /header -->
-	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
+		
+		<table style="margin-top:0%" align="center" >
+		<colgroup width="80">
+		<colgroup width="200">
+		<tr>
+			<td align="left" colspan="2"><H2>아이디 찾기</H2></td>
+		</tr>
+			<tr>
+				<td align="left" >이름 : </td><td><input  data-mini="true" type="text"/>
+			</tr>
+			<tr>
+				<td align="left">연락처 : </td><td><input data-mini="true" type="text"/>
+			</tr>
+			<tr>
+				<td align="left">생년월일 : </td><td><input data-mini="true" type="text"/>
+			</tr>
+			<tr>
+				<td></td><td align="right"><a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop" data-mini="true">찾기</a>
+			<div data-role="popup" id="popupBasic">
+			<p>E-mail을 전송하였습니다.</p>
+			</div></td>
+			</tr>
+		
+		</table>
+	
+	
+		
+		<table align="center" >
+		<colgroup width="80">
+		<colgroup width="200">
+		<tr>
+			<td align="left" colspan="2"><h2>비밀번호 찾기</h2></td>
+		</tr>
+		
+			<tr>
+				<td align="left">ID : </td><td><input  data-mini="true" type="text"/>
+			</tr>
+			<tr>
+				<td align="left">연락처 : </td><td><input data-mini="true" type="text"/>
+			</tr>
+			<tr>
+				<td align="left">생년월일 : </td><td><input data-mini="true" type="text"/>
+			</tr>
+			<tr>
+				<td></td><td align="right"><a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop" data-mini="true">찾기</a>
+			<div data-role="popup" id="popupBasic">
+			<p>E-mail을 전송하였습니다.</p>
+			</div></td>
+			</tr>
+		
+		</table>
+	
+	</div>
+	
+		<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a href="/hanium_shinhan_classmate/view/27-question.html">학습부여</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/27test.html">학습부여</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">Q&A</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/29-Classmanagement.html">반 관리</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html">공지사항</a></li>
@@ -63,37 +125,5 @@ html, body {height:100%; margin:0; padding:0;}
 		</table>
 		
         </form>
-</div>
-	<div style="margin-top:60px; margin-left:50px; margin-right:30px">
-	
-	<table id=movie-table class=ui-responsive data-role="table" data-mode="toggle">
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/27-question.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Study.png" width=60px; height=60px;></a></td>
-			<td ><a href="/hanium_shinhan_classmate/view/27-question.html"><font color="skyblue"><H2>학습부여</H2></font></a></td>
-		</tr>
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Notice.png" width=60px; height=60px;></a></td>
-			<td><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html"><font color="skyblue"><H2>Q & A</H2></font></a></td>
-		</tr>
-		
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/28-twobutton.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Class.png" width=60px; height=60px;></a></td>
-			<td><a href="/hanium_shinhan_classmate/view/28-twobutton.html"><font color="skyblue"><H2>반 관리</H2></font></a></td>
-		</tr>
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/31-MyInformation(teacher).html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_MyPage.png" width=60px; height=60px;></a></td>
-			<td><a href="/hanium_shinhan_classmate/view/31-MyInformation(teacher).html"><font color="skyblue"><H2>내 정보</H2></font></a></td>
-		</tr>
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Teacher.png" width=60px; height=60px;></a></td>
-			<td><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html"><font color="skyblue"><H2>공지사항</H2></font></a></td>
-		</tr>
-		<tr>
-			<td><a href="/hanium_shinhan_classmate/view/24-board2.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Board.png" width=60px; height=60px;></a></td>
-			<td><a href="/hanium_shinhan_classmate/view/24-board2.html"><font color="skyblue"><H2>자유게시판</H2></font></a></td>
-		</tr>
-	</table>
-	</div>
-	</div>
 </body>
 </html>
