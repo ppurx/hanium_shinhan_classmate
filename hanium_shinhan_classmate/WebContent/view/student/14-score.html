@@ -36,13 +36,12 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a href="/hanium_shinhan_classmate/view/12-study.html">학습하기</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/15-QandA(student).html">Q&A</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/18-mypage(student).html">My Page</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/22-notice1.html">공지사항</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/24-board2.html">자유게시판</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/36-Chat.html">반 채팅</a></li>
-				
+                <li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
+                <li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
+                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
+                <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
+                <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
+				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
         </ul>
 
 </div>
@@ -50,7 +49,7 @@ html, body {height:100%; margin:0; padding:0;}
         <form class="userform">
             <table align="center" width="90%" style="margin-top:7%">
 			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;선생님</strong></font></td>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;학생</strong></font></td>
 				
 			</tr>
 			<tr>
@@ -73,6 +72,10 @@ html, body {height:100%; margin:0; padding:0;}
 	<font size=3>선생님이 가슴이 아프다...</font> <br><br>
 	<div>
 		<img src="/hanium_shinhan_classmate/res/30.jpg" height=200>
+	</div>
+	
+	<div style="margin-left:20%; margin-right:20%; margin-top:5%">
+		<a data-ajax="false"  href="../student/12-study.html"><input type="button" value="돌아가기"/></a>
 	</div>
 	</div>
 	</div>

@@ -36,13 +36,12 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a href="/hanium_shinhan_classmate/view/27-Question.html">학습부여</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">Q&A</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/29-Classmanagement.html">반 관리</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html">공지사항</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/24-board2.html">자유게시판</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/31-MyInformation(teacher).html">내 정보</a></li>
-				<li><a style="margin-top:20px" href="/hanium_shinhan_classmate/view/36-Chat.html">반 채팅</a></li>
+                <li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
+                <li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
+                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
+                <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
+                <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
+				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
         </ul>
 
 </div>
@@ -50,7 +49,7 @@ html, body {height:100%; margin:0; padding:0;}
         <form class="userform">
             <table align="center" width="90%" style="margin-top:7%">
 			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;선생님</strong></font></td>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;학생</strong></font></td>
 				
 			</tr>
 			<tr>
@@ -69,30 +68,30 @@ html, body {height:100%; margin:0; padding:0;}
 </div>
 	<div id="context" class="content"  data-role="none">
     
-	<table style="width:95%">
+	<table style="width:95%" align="center">
 	<tr>
 		<td>
-	<img style="float:left" width="20%" height="100%" src="/hanium_shinhan_classmate/res/27-1.PNG"/></td>
+	<img style="float:left" width="15%" src="/hanium_shinhan_classmate/res/27-1.PNG"/></td>
 	</tr>
 	<tr>
 		
-		<td colspan="2"><input type="text" size="20" placeholder="제목을 입력하세요"></td>
+		<td colspan="2"><div style="margin-right:2%;"><input type="text" placeholder="제목을 입력하세요"></div></td>
 	</tr>
     <tr>
 		<td>
-	<img style="float:left" width="30%" height="100%" src="/hanium_shinhan_classmate/res/27-2.PNG"/></td>
+	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-2.PNG"/></td>
 	</tr>
     
 	<tr>
 
-		<td ><textarea style="height:400px; margin-left:0px; margin-top:5px" name="textarea" id="textarea" >1. </textarea></td><td>
+		<td ><textarea style=" margin-top:5px" name="textarea" id="textarea" >1. </textarea></td><td>
 		</td>
 	
 	</tr>
 	
 	<tr>
 		<td>
-	<img style="float:left" width="30%" height="100%" src="/hanium_shinhan_classmate/res/27-3.PNG"/></td>
+	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-3.PNG"/></td>
 	</tr>
 	<tr><td colspan="2">
 	 <SELECT> <OPTION selected value=1>문제수</OPTION> 
@@ -155,7 +154,7 @@ html, body {height:100%; margin:0; padding:0;}
 			</tr>
 			
 	</table>
-	<tr><td colspan="4" ><a href="/hanium_shinhan_classmate/view/12-study.html" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a></td></tr>
+	<tr><td colspan="4" ><a href="../student/12-study.html" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a></td></tr>
 	     </table>
   
 

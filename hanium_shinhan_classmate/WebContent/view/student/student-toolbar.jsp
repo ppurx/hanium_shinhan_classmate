@@ -1,28 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<meta charset="utf-8">
-
-<style type="text/css">
-html, body {height:100%; margin:0; padding:0;}
-#myCenterDiv {
-    position:absolute; 
-    left:0%;   
-    text-align: left;
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background-color:#fafbd3;
-}
-</style>
-
-<title>31page</title>
 </head>
-<body>
-   <div id="myCenterDiv">
-   <div data-role="header"style="background-color:#04B486;">
+<body>	
+<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
@@ -36,7 +24,7 @@ html, body {height:100%; margin:0; padding:0;}
                 <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
                 <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
                 <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student)).html">반 채팅</a></li>
+				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
         </ul>
 
 </div>
@@ -58,45 +46,5 @@ html, body {height:100%; margin:0; padding:0;}
 		
         </form>
 </div>
-  	 <div data-role="header" data-theme="b" >
-  	  <h1>내 정보</h1>
-		</div>
-		
-		<table align="center" width="90%" style="margin-top:5%">
-			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개</font></td>
-				
-			</tr>
-			<tr>
-				<td><font style="margin-left:5%">ID : dddddd</font></td>
-			</tr>
-			<tr>
-				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp&nbsp&nbsp사진 등록&nbsp&nbsp&nbsp</a></td><td> <font style="margin-left:5%">생년월일 : 910806</font></td>
-			</tr>	
-		</table>
-		
-		<table align="center" width="90%" style="margin-top:1%">
-			<tr>
-				<td>password</td><td colspan="3"><input type="password"/></td>
-			</tr>
-			<tr>
-				<td>주소</td><td colspan="3"><textarea></textarea></td>
-			</tr>
-			
-			<tr>
-				<td>소속</td><td colspan="3"><input type="text"/></td>
-			</tr>
-			<tr>
-				<td>연락처</td><td><input type="text" width="1%"/></td><td><input type="text"/></td><td><input type="text"/></td>
-			</tr>
-		</table>
-		
-		<div align="center" style="margin-top:1%">
-			<a href="#" data-role="button" data-inline="true" style="margin-right:8%">내 정보 수정</a>
-		</div>
-</div>
-   
-
-
 </body>
 </html>
