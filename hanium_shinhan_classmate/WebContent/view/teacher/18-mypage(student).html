@@ -6,7 +6,7 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <meta charset="utf-8">
-  
+
 <style type="text/css">
 html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
@@ -22,16 +22,10 @@ html, body {height:100%; margin:0; padding:0;}
 
 
 </style>
-<script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
-		
-	};
-</script>
-<title>first page</title>
+
+<title>My Page</title>
 </head>
 <body>
-
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -42,12 +36,12 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a href="/hanium_shinhan_classmate/view/27-question.html">학습부여</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">Q&A</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/29-Classmanagement.html">반 관리</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html">공지사항</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/24-board1.html">자유게시판</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/31-MyInformation(teacher).html">내 정보</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/12-study.html">학습하기</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/15-QandA(student).html">Q&A</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/18-mypage(student).html">My Page</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/22-notice1.html">공지사항</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/24-board2.html">자유게시판</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/36-Chat.html">반 채팅</a></li>
 				
         </ul>
 
@@ -71,43 +65,30 @@ html, body {height:100%; margin:0; padding:0;}
         </form>
 </div>
 	<div data-role="header" data-theme="b" >
-    <h1>반 정보</h1>
-</div>
-
-
-	<div style="margin-top:20%">
-	
-		<table style="width:90%"   align="center">
-	
-		<tr>
-			<td align="left" width="30%"><img src="/hanium_shinhan_classmate/res/Class_Name.PNG"/></td><td><font size="6">신한대학교</font></td>
-		</tr>
-		</table>
-		
-		<table style="width:90%"   align="center">
-		<tr >
-			<td align="left" width="25%"><img src="/hanium_shinhan_classmate/res/Class_Teacher.PNG"/></td>
-			<td align="left"><font>정동수</font></td>
-		</tr>
-		</table>
-		
-	<table style="width:90%"   align="center">
-		<tr>
-			<td align="left"><img src="/hanium_shinhan_classmate/res/Class_Subject.PNG"/></td>
-			
-		</tr>
-		<tr>
-			<td colspan="2" align="left">풀이 돋고 이상의 꽃이 피고 희망의 놀이 뜨고 열락의 새가 운다사랑의 풀이 없으면 인간은 사막이다 오아이스도 없는 사막이다 보이는 끝까지 찾아다녀도 목숨이 있는 때까지 방황하여도 보이는 것은 거친 모래뿐일 것이다 이상의 꽃이</td>
-		</tr>
-	
-	<tr>
-		<td colspan="2" align="right"><a href="#" data-role="button" data-inline="true" style="margin-top:15%">가입 신청</a></td>
-	</tr>
-	</table>
-	
+    <h1>My Page</h1>
+	</div>
+	<table>
+   <tr><img style="margin-top:5%;" width="26%" height="14%" src="/hanium_shinhan_classmate/res/mf.PNG"/>
+   </tr>
+     <div style="margin:-5% 25% 0% 25%">
+	 <a href="/hanium_shinhan_classmate/view/19-Stu_MyPage.html"><input type="button" value="내 정보" style=" font-weight:bold; background-color:darkgray" data-mini="true"></a>
+	</div>
+    </table>
+     <table>
+   <tr><img style="margin-top:20px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/achievement.PNG"/>
+   </tr>
+     <div style="margin:-5% 25% 0% 25%">
+	 <input type="button" value="학업성취도" style="font-weight:bold; background-color:darkgray" data-mini="true" onclick="window.location.href='../view/20-study.html';">
 	
 	</div>
-
+    </table>
+    <table>
+   <tr><img style="margin-top:20px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/join.PNG"/>
+   </tr>
+     <div style="margin:-5% 25% 0% 25%">
+	 <a href="/hanium_shinhan_classmate/view/21-joinsituation.html"><input type="button" value="가입 현황" style="font-weight:bold; background-color:darkgray " data-mini="true"></a>
+	</div>
+    </table>
 	</div>
 </body>
 </html>
