@@ -40,16 +40,19 @@ html, body {height:100%; margin:0; padding:0;}
 	</div><!-- /header -->
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
+	
+       
             <ul data-role="listview">
-                <li><a href="/hanium_shinhan_classmate/view/27-Question.html">학습부여</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">Q&A</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/29-Classmanagement.html">반 관리</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html">공지사항</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/24-board(teacher).html">자유게시판</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/31-MyInformation(teacher).html">내 정보</a></li>
-				<li style="margin-top:20px" ><a href="/hanium_shinhan_classmate/view/36-Chat.html">반 채팅</a></li>
+			<li style="margin-top:8%"><a  data-ajax="false" href="../teacher/27-Question.html">학습부여</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/32-Q&A(teacher).html">Q&A</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/28-twobutton.html">반 관리</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/34-Notice(teacher).html">공지사항</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/24-board2.html">자유게시판</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/31-MyInformation(teacher).html">내 정보</a></li>
+			<li style="margin-top:8%"><a  data-ajax="false" href="../teacher/37-Chat(teacher).html">반 채팅</a></li>
+				
+				
         </ul>
-
 </div>
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
         <form class="userform">
@@ -75,21 +78,25 @@ html, body {height:100%; margin:0; padding:0;}
 	
 
 
-	<table style="width:80%">
+	<table style="width:90%; margin:auto" >
 	<tr>
-		<td><img  width="70%" height="50%" src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input type="text" size="25" placeholder="제목을 입력하세요"></td>
+		<td align="left"><img  width="70%"  src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input type="text" size="25" placeholder="제목을 입력하세요"></td>
 	</tr>
     
 	<tr>
-		<td><img style="margin-top:30px; margin-left:20px" width="50%" height="50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
+		<td align="left"><img style="height:50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
 	</tr>	
 	<tr>
 	
-	<td  colspan="2" ><textarea style="height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea"placeholder="내용을 입력하세요"></textarea></td>
+	<td  colspan="2" ><textarea style="height:500px; margin-top:5px" name="textarea" id="textarea"placeholder="내용을 입력하세요"></textarea></td>
 	</tr>
+	<tr >
+		<td colspan="2">
+		<a  data-ajax="false"style="margin-right:15%" href="../teacher/34-Notice(teacher).html" data-role="button" data-inline="true" >목록</a>
+		<a data-ajax="false" style="margin-left:15%" href="../teacher/34-Notice(teacher).html" data-role="button" data-inline="true"  >등록</a></td>
+		</tr>
 	</table>
-	<input type="button"data-inline="true" value="목록 "  onclick="location.href = '/hanium_shinhan_classmate/view/34-Notice(teacher).html'" style="float:left">
-			<input type="button" data-inline="true"  value="등록 " onclick="location.href = '/hanium_shinhan_classmate/view/34-Notice(teacher).html'" style="float:left">
+	
 
 	</div>
 </body>
