@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-
 <meta charset="utf-8">
-<link rel="stylesheet" href="../view/swiper.min.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="jPaginate - jQuery Pagination Plugin" />
+        <meta name="keywords" content="jquery, plugin, pagination, fancy" />
+        <link rel="stylesheet" href="../view/swiper.min.css">
+       
 <style type="text/css">
 #myCenterDiv {
     position:absolute; 
@@ -49,14 +52,10 @@
     }
 </style>
 
-<title>29page</title>
-
+<title>board</title>
 </head>
-
-
 <body>
-
-	<div id="myCenterDiv">
+	<div id="myCenterDiv" >
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
@@ -66,14 +65,13 @@
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a href="/hanium_shinhan_classmate/view/27-Question.html">학습부여</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/27-question.html">학습부여</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">Q&A</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/29-Classmanagement.html">반 관리</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/34-Notice(teacher).html">공지사항</a></li>
-                <li><a href="/hanium_shinhan_classmate/view/24-board(teacher).html">자유게시판</a></li>
+                <li><a href="/hanium_shinhan_classmate/view/24-board1.html">자유게시판</a></li>
                 <li><a href="/hanium_shinhan_classmate/view/31-MyInformation(teacher).html">내 정보</a></li>
-				<li style="margin-top:20px" ><a href="/hanium_shinhan_classmate/view/36-Chat.html">반 채팅</a></li>
-				
+				<li><a style="margin-top:20px" href="/hanium_shinhan_classmate/view/36-Chat.html">반 채팅</a></li>
         </ul>
 
 </div>
@@ -95,57 +93,59 @@
 		
         </form>
 </div>
-	
-<div data-role="header" data-theme="b" >
-    <h1>가입승인</h1>
+	<div data-role="header" data-theme="b" >
+    <h1>자유게시판</h1>
 </div>
-<div style="margin-top:70px">
-<h1>가입 신청 현황</h1>
-</div>
-
-<div class="swiper-container">
+  <div class="swiper-container" style="margin-top:20%">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-
- <TABLE style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a" > 
- <THEAD> <TR> <TH style=" background-color:lightgrey; "><center>신청자</center></TH>
- <TH style=" background-color:lightgrey; "><center>연락처</center></TH> 
- <TH style=" background-color:lightgrey; "><center>신청날짜</center></TH>  
- <TH style=" background-color:lightgrey; "><center>가입승인여부</center>
- </TR></THEAD> 
- <TBODY> 
- <TR> 
- <TH></TH> 
- <TD></TD> 
- <TD></TD><TD >
- <center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">승인</BUTTON>
-  <BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">거절</BUTTON></center>
-</TD></TR> <TR> 
-<TH></TH> 
-<TD></TD> <TD></TD> 
-  <TD>
-  <center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">승인</BUTTON>
-  <BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">거절</BUTTON></center>
-</TD></TR> <TR> <TH></TH> 
- <TD></TD> 
- <TD></TD><TD>
- <center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">승인</BUTTON>
-  <BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">거절</BUTTON></center>
-</TD></TR></TBODY></TABLE> 
-
-</div>
-<div class="swiper-slide"></div>
-</div>
-<div class="swiper-pagination"></div>
-</div>
-
-
-
-</div>
-
-
-<!-- Swiper JS -->
-    <script src="../view/swiper.min.js"></script>
+<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+		<thead>
+			<tr>
+				<th >제목</th>
+				<th >등록자</th>
+				<th>등록일</th>
+				<th>조회수</th>
+			</tr>
+</thead>
+	<tbody>
+		<tr>
+			<td><a href="/hanium_shinhan_classmate/view/26-board-detail1.html">신한대학교</a></td>
+			<td align="center">황승현</td>
+			<td align="center">2014-03-11</td>
+			<td>20</td>
+		</tr>
+		<tr>
+			<td><a href="/hanium_shinhan_classmate/view/26-board-detail1.html">신한대학교</a></td>
+			<td align="center">황승현</td>
+			<td align="center">2014-03-11</td>
+			<td>20</td>
+		</tr>
+		<tr>
+			<td><a href="/hanium_shinhan_classmate/view/26-board-detail1.html">신한대학교</a></td>
+			<td align="center">황승현</td>
+			<td align="center">2014-03-11</td>
+			<td>20</td>
+		</tr>
+		<tr>
+		<td><a href="/hanium_shinhan_classmate/view/26-board-detail1.html">신한대학교</a></td>
+			<td align="center">황승현</td>
+			<td align="center">2014-03-11</td>
+			<td>20</td>
+		</tr>
+		</tbody>
+	</table>	
+	</div>
+	<div class="swiper-slide"></div>
+	
+	</div>
+	<div class="swiper-pagination"></div>
+	</div>
+	
+           
+		<a href="/hanium_shinhan_classmate/view/25-board-write.html" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
+	</div>
+	<script src="../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -154,6 +154,5 @@
         paginationClickable: true
     });
     </script>
-   
 </body>
 </html>
