@@ -16,7 +16,7 @@ public class MemberDAO {
 	
 	try {
 //mySQL		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/MySQL","root","sds000");
-		conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/MySQL","root","sds000");
+		conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/board","root","7648");
 	}catch(SQLException ex) {
 		System.out.println("SQL¿À·ù : " + ex.getLocalizedMessage());
 	}
@@ -24,7 +24,7 @@ public class MemberDAO {
 	}
 	
 	public boolean insertMember(MemberDTO dto){
-		String query = "Insert INTO Member values (?,?,?,?)";
+		String query = "Insert INTO test values (?,?,?,?)";
 		boolean check = false;
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(query);
