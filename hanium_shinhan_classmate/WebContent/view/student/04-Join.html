@@ -17,15 +17,22 @@ html, body {height:100%; margin:0; padding:0;}
     background-color:#fafbd3;
 }
 
-
-
-
-
 </style>
+
+<script type="text/javascript">
+	$(function(){
+			$('#Join_Button').click(function(){
+				join.submit();
+			});
+			  
+		});
+</script>
+
 
 <title>first page</title>
 </head>
 <body>
+<form name="join" action="StuJoin.kim" method="post">
 	<div id="myCenterDiv">
 	
 	<div style="margin-left:7%; margin-top:6%">
@@ -35,7 +42,7 @@ html, body {height:100%; margin:0; padding:0;}
 	</tr>
 		<tr>
 			<td align="left">이름</td>
-			<td rowspan="5"><input  data-mini="true" type="text"/><input  data-mini="true" type="text"/><input  data-mini="true" type="text"/><input  data-mini="true" type="text"/><input  data-mini="true" type="text"/></td>
+			<td rowspan="5"><input  data-mini="true" type="text" name="name"/><input  data-mini="true" type="text"name="birth"/><input  data-mini="true" type="text" name="email"/><input  data-mini="true" type="text" name="school"/><input  data-mini="true" type="text" name="address"/></td>
 		</tr>
 		<tr>
 			<td align="left">생년월일
@@ -54,23 +61,24 @@ html, body {height:100%; margin:0; padding:0;}
 	
 	<table width="80%">
 	<tr>
-		<td align="left" width="13%">연락처</td><td width="15%"><input  data-mini="true" type="text"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text"/></td>
+		<td align="left" width="13%">연락처</td><td width="15%"><input  data-mini="true" type="text" name="tel1"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel2"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel3"/></td>
 	</tr>
 	</table>
 	
 	<table style="margin-top:5%">
 		<tr>
 			<td align="left">ID</td>
-			<td><input  data-mini="true" type="text"/></td><td><input type="button" data-mini="true"value="중복확인"/></td>
+			<td><input  data-mini="true" type="text" name="id"/></td><td><input type="button" data-mini="true"value="중복확인"/></td>
 		</tr>
 		<tr>
-			<td align="left">비밀번호</td><td><input  data-mini="true" type="text"/></td>
+			<td align="left">비밀번호</td><td><input  data-mini="true" type="password" name="password"/></td>
 		</tr>
 		
 						
 	</table>
 	</div>
-	<input style="margin-right:5%"type="button" data-inline="true" value="가입"><a href="../student/1-FirstPage.html" data-role="button" data-inline="true" style="margin-left:5%">취소</a>
+	<input style="margin-right:5%"type="button" data-inline="true" value="가입" id="Join_Button"><a href="../student/1-FirstPage.html" data-role="button" data-inline="true" style="margin-left:5%">취소</a>
 	</div>
+	</form>
 </body>
 </html>

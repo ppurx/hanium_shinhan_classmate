@@ -5,7 +5,10 @@ import java.sql.*;
 public class MemberDAO {
 	private static Connection conn;
 	
+
 	public MemberDAO() {
+				
+		
 		try {
 //mySQL			Class.forName("org.git.mm.mysql.Driver");
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -16,7 +19,7 @@ public class MemberDAO {
 	
 	try {
 //mySQL		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/MySQL","root","sds000");
-		conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/board","root","7648");
+		conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
 	}catch(SQLException ex) {
 		System.out.println("SQL¿À·ù : " + ex.getLocalizedMessage());
 	}
@@ -24,15 +27,25 @@ public class MemberDAO {
 	}
 	
 	public boolean insertMember(MemberDTO dto){
-		String query = "Insert INTO test values (?,?,?,?)";
+		String query = "Insert INTO USER values (?,?,?,?,?,?,?,?,?)";
+		String phone = Integer.toString(dto.getTel1()+dto.getTel2()+dto.getTel3());
 		boolean check = false;
 		try {
-		PreparedStatement pstmt = conn.prepareStatement(query);
+		PreparedStatement pstmt = conn.prepareStatement(query);	
 		
-		pstmt.setInt(1, dto.getNum());
-		pstmt.setString(2, dto.getName());
-		pstmt.setString(3, dto.getTel());
-		pstmt.setString(4, dto.getAddr());
+		
+		pstmt.setString(1,dto.getId());
+		
+		pstmt.setString(2,dto.getPassword());
+		
+		pstmt.setString(3, dto.getName());
+		pstmt.setString(4, phone);
+		pstmt.setString(5, dto.getBirth());
+		pstmt.setString(6, dto.getSchool());
+		pstmt.setString(7, dto.getEmail());
+		pstmt.setInt(8, 1);
+		pstmt.setString(9, dto.getAddr());
+		
 		
 		int x = pstmt.executeUpdate();
 		if(x<1) {
