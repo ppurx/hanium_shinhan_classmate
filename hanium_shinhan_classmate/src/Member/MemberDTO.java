@@ -1,9 +1,8 @@
-package com;
+package Member;
 
 import java.io.Serializable;
 
 public class MemberDTO implements Serializable {
-	
 	
 	private String name;
 	private String birth;
@@ -13,7 +12,6 @@ public class MemberDTO implements Serializable {
 	private int tel1,tel2,tel3;
 	private String id;
 	private String password;
-	
 	
 	public String getName() {
 		return name;
@@ -75,6 +73,8 @@ public class MemberDTO implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
 	
 	
 	

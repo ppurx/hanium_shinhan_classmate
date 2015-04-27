@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +33,7 @@ html, body {height:100%; margin:0; padding:0;}
 <title>first page</title>
 </head>
 <body>
-<form name="join" action="StuJoin.member" method="post">
+<form name="join" action="StuJoin.com" method="post">
 	<div id="myCenterDiv">
 	
 	<div style="margin-left:7%; margin-top:6%">
@@ -40,7 +42,7 @@ html, body {height:100%; margin:0; padding:0;}
 		<td align="left" colspan="2"><h2>회원 가입</h2></td>
 	</tr>
 		<tr>
-			<td align="left" name=name>이름</td>
+			<td align="left">이름</td>
 			<td rowspan="5"><input  data-mini="true" type="text" name="name"/><input  data-mini="true" type="text"name="birth"/><input  data-mini="true" type="text" name="email"/><input  data-mini="true" type="text" name="school"/><input  data-mini="true" type="text" name="address"/></td>
 		</tr>
 		<tr>

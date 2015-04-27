@@ -1,4 +1,4 @@
-package com;
+package Member;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class MemberProcess extends HttpServlet {
 		String uri = request.getRequestURI();
 		System.out.println("uri : " + uri);
 		
-		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".kim"));
+		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".member"));
 		/*
 		if(command != null && command.trim().equals("register")){
 			
@@ -53,16 +53,13 @@ public class MemberProcess extends HttpServlet {
 		*/
 		
 		if(command !=null &&command.trim().equals("StuJoin")){
-			
-			
-			
-			
+			request.setCharacterEncoding("euc-kr");
 			
 			int tel1 = Integer.parseInt(request.getParameter("tel1"));
 			int tel2 = Integer.parseInt(request.getParameter("tel2"));
 			int tel3 = Integer.parseInt(request.getParameter("tel3"));
-			
-			String name = request.getParameter("name");			
+			System.out.println("asdf");
+			String name = request.getParameter("name");	
 			String birth = request.getParameter("birth");
 			String email = request.getParameter("email");
 			String school = request.getParameter("school");
@@ -85,14 +82,14 @@ public class MemberProcess extends HttpServlet {
 			
 			MemberDAO dao = new MemberDAO();
 			boolean bool = dao.insertMember(dto);
-			/*
+			
 			if(bool){
 				response.sendRedirect("../../Success.html");
 			} else
 			{
 				response.sendRedirect("../../Fail.html");
 			}
-			*/
+			
 		}
 		
 		
@@ -100,3 +97,4 @@ public class MemberProcess extends HttpServlet {
 	}
 
 }
+

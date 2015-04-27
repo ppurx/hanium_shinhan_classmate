@@ -1,4 +1,4 @@
-package com;
+package Member;
 
 import java.sql.*;
 
