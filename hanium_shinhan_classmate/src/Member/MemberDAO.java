@@ -10,21 +10,20 @@ public class MemberDAO {
 				
 		
 		try {
-//mySQL			Class.forName("org.git.mm.mysql.Driver");
 			Class.forName("org.mariadb.jdbc.Driver");
 		}catch(ClassNotFoundException ex) {
 			System.out.println("드라이버를 찾을 수 없습니다.");
 		}
 
 	
-	try {
-//mySQL		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/MySQL","root","sds000");
-		conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
-	}catch(SQLException ex) {
-		System.out.println("SQL오류 : " + ex.getLocalizedMessage());
-	}
+		try {	
+			conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
+		}catch(SQLException ex) {
+			System.out.println("SQL오류 : " + ex.getLocalizedMessage());
+		}
 	
 	}
+	
 	
 	public boolean insertMember(MemberDTO dto){
 		String query = "Insert INTO USER values (?,?,?,?,?,?,?,?,?)";
@@ -43,8 +42,8 @@ public class MemberDAO {
 		pstmt.setString(5, dto.getBirth());
 		pstmt.setString(6, dto.getSchool());
 		pstmt.setString(7, dto.getEmail());
-		pstmt.setInt(8, 1);
-		pstmt.setString(9, dto.getAddr());
+		pstmt.setInt(8,1);
+		pstmt.setInt(9,1);
 		
 		
 		int x = pstmt.executeUpdate();
@@ -69,7 +68,36 @@ public class MemberDAO {
 		return true;
 	}
 
-	public MemberDTO[] selectMember(){
+	public MemberDTO[] selectMember(MemberDTO dto){
+		String name=dto.getName();
+		String birth=dto.getBirth();
+		String phone = Integer.toString(dto.getTel1()+dto.getTel2()+dto.getTel3());
+		
+		
+		String sql = "select * from USER where user_name=? and user_birth=? and user_phone=?";
+		
+		
+		try {
+			Statement stmt = conn.createStatement();
+			
+			((PreparedStatement) stmt).setString(1,name);
+			((PreparedStatement) stmt).setString(2,birth);
+			((PreparedStatement) stmt).setString(3,phone);
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			
+			if(rs.next()){
+				
+			}
+			else
+			{				
+				
+			}
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
 		return null;
 	}
 

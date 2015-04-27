@@ -8,9 +8,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class MemberProcess extends HttpServlet {
 	
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+		HttpSession session = request.getSession(); 
+       
+ 
+    }
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -91,6 +98,31 @@ public class MemberProcess extends HttpServlet {
 			}
 			
 		}
+		
+		else if(command !=null &&command.trim().equals("findId")){
+			request.setCharacterEncoding("euc-kr");
+			String name = request.getParameter("name");
+			String birth = request.getParameter("birth");
+			int tel1 = Integer.parseInt(request.getParameter("tel1"));
+			int tel2 = Integer.parseInt(request.getParameter("tel2"));
+			int tel3 = Integer.parseInt(request.getParameter("tel3"));
+			
+			MemberDTO dto = new MemberDTO();			
+			
+			dto.setBirth(birth);			
+			dto.setName(name);		
+			dto.setTel1(tel1);
+			dto.setTel2(tel2);
+			dto.setTel3(tel3);
+			
+			MemberDAO dao = new MemberDAO();
+			//MemberDTO[] bool = dao.insertMember(dto);
+			
+		}
+		else if(command !=null &&command.trim().equals("findPass")){
+	
+	
+		}		
 		
 		
 		

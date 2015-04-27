@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<script type="text/javascript">
+	$(function(){
+		$('#Join_Button').click(function(){
+			
+			if($('#name').val()=='')$("#popName").popup("open");
+			
+			else join.submit();
+				
+		
+		})
+		});
+</script>
+	
+	
+</head>
+<body>
+<div data-role="popup" data-transition="pop"id="popName" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>이름을 입력하시오.</p></div>
+	
+</div>
+</html>

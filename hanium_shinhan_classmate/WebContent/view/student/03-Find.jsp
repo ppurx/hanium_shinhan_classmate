@@ -17,79 +17,102 @@ html, body {height:100%; margin:0; padding:0;}
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-
-
-
-
-
 </style>
+
+<script type="text/javascript">
+	$(function(){
+		$('#findId').click(function(){
+						
+			
+				
+		
+		});
+		$('#findPass').click(function(){
+			
+				
+		
+		});
+		
+		});
+</script>
 
 <title>FIND</title>
 </head>
 <body>
-<div>
-
-</div>
-
+<form name="findId" action="findId.member" method="post">
 
 
 
 	<div id="myCenterDiv">
 	
 		
-		<table style="margin-top:5%" align="center" >
+		<table align="center" width="80%" >
 		<colgroup width="80">
 		<colgroup width="200">
 		<tr>
-			<td align="left" colspan="2"><H2>아이디 찾기</H2></td>
+			<td align="left" colspan="4"><h2>ID 찾기</h2></td>
 		</tr>
+		
 			<tr>
-				<td align="left" >이름 : </td><td><input  data-mini="true" type="text"/>
+				<td align="left" >이름 : </td><td><input name="name" data-mini="true" type="text"/>
 			</tr>
+			
 			<tr>
-				<td align="left">연락처 : </td><td><input data-mini="true" type="text"/>
+				<td align="left" >생년월일 : </td><td><input name="birth" data-mini="true" type="text"/>
 			</tr>
+			</table>
+			
+			<table align="center"  width="80%">
 			<tr>
-				<td align="left">생년월일 : </td><td><input data-mini="true" type="text"/>
+				<td align="left" width="20%" >연락처 : </td><td width="15%"><input  data-mini="true" type="text" name="tel1"id="tel1"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel2"id="tel2"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel3"id="tel3"/></td>
 			</tr>
+			</table>
+			
+			<table>
 			<tr>
-				<td></td><td align="right"><a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop" data-mini="true">찾기</a>
-			<div data-role="popup" id="popupBasic">
-			<p>E-mail을 전송하였습니다.</p>
-			</div></td>
+				<td width="78%"></td><td style="margin-right:20%" ><a href="#" id="findPass" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-mini="true" >찾기</a>
+			</td>
+			</tr>
+		
+		</table>
+	
+	</form>
+	
+	<form name="findPass" action="findPass.member" method="post">
+		<table align="center" width="80%" >
+		<colgroup width="80">
+		<colgroup width="200">
+		<tr>
+			<td align="left" colspan="4"><h2>비밀번호 찾기</h2></td>
+		</tr>
+		
+			<tr>
+				<td align="left" >ID : </td><td><input name="id" data-mini="true" type="text"/>
+			</tr>
+			
+			<tr>
+				<td align="left" >생년월일 : </td><td><input name="birth" data-mini="true" type="text"/>
+			</tr>
+			</table>
+			
+			<table align="center"  width="80%">
+			<tr>
+				<td align="left" width="20%">연락처 : </td><td width="15%"><input  data-mini="true" type="text" name="tel1"id="tel1"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel2"id="tel2"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel3"id="tel3"/></td>
+			</tr>
+			</table>
+			
+			<table>
+			<tr>
+				<td width="78%"></td><td style="margin-right:20%" ><a href="#" id="findPass" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-mini="true" >찾기</a>
+			</td>
 			</tr>
 		
 		</table>
 	
 	
-		
-		<table align="center" >
-		<colgroup width="80">
-		<colgroup width="200">
-		<tr>
-			<td align="left" colspan="2"><h2>비밀번호 찾기</h2></td>
-		</tr>
-		
-			<tr>
-				<td align="left">ID : </td><td><input  data-mini="true" type="text"/>
-			</tr>
-			<tr>
-				<td align="left">연락처 : </td><td><input data-mini="true" type="text"/>
-			</tr>
-			<tr>
-				<td align="left">생년월일 : </td><td><input data-mini="true" type="text"/>
-			</tr>
-			<tr>
-				<td></td><td align="right"><a href="#popupBasic" data-rel="popup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-transition="pop" data-mini="true">찾기</a>
-			<div data-role="popup" id="popupBasic">
-			<p>E-mail을 전송하였습니다.</p>
-			</div></td>
-			</tr>
-		
-		</table>
 	
-	</div>
-	
-		
+	</form>
+	<div data-role="popup" data-transition="pop"id="err" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>일치하는 회원정보가 없습니다.</p></div>
+		</div>
 </body>
 </html>
