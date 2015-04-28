@@ -22,9 +22,19 @@
     <servlet-name>StudyController</servlet-name>
     <servlet-class>Study.StudyProcess</servlet-class>
   </servlet>
+  
   <servlet>
-    <servlet-name>ComController</servlet-name>
-    <servlet-class>COM.ComProcess</servlet-class>
+    <servlet-name>ComController1</servlet-name>
+    <servlet-class>COM.ComProcess1</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>ComController2</servlet-name>
+    <servlet-class>COM.ComProcess2</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>ComController3</servlet-name>
+    <servlet-class>COM.ComProcess3</servlet-class>
   </servlet>
   
   
@@ -36,9 +46,17 @@
     <servlet-name>ClassController</servlet-name>
     <url-pattern>*.class</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
-    <servlet-name>ComController</servlet-name>
-    <url-pattern>*.com</url-pattern>
+   <servlet-mapping>
+    <servlet-name>ComController1</servlet-name>
+    <url-pattern>*.com1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ComController2</servlet-name>
+    <url-pattern>*.com2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ComController3</servlet-name>
+    <url-pattern>*.com3</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
     <servlet-name>StudyController</servlet-name>

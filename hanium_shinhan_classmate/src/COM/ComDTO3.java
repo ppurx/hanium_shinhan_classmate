@@ -1,6 +1,6 @@
 package COM;
 
-public class ComDTO {
+public class ComDTO3 {
 
 	String subject;
 	public String getSubject() {

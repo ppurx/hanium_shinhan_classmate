@@ -5,11 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import COM.ComDTO;
+import COM.ComDTO1;
 
-public class ComDAO {
+public class ComDAO1 {
 	private static Connection conn;
-	public ComDAO() {
+	public ComDAO1() {
 				
 		
 		try {
@@ -28,7 +28,7 @@ public class ComDAO {
 	}
 	
 	
-	public boolean insertBoard(ComDTO dto){
+	public boolean insertBoard(ComDTO1 dto){
 		String query = "Insert INTO USER(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
 		
 		

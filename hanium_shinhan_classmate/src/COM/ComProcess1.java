@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ComProcess extends HttpServlet{
+public class ComProcess1 extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -18,7 +18,7 @@ public class ComProcess extends HttpServlet{
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com"));
 		
 		if(command !=null &&command.trim().equals("boardWrite")){
-			ComDTO dto = new ComDTO();
+			ComDTO1 dto = new ComDTO1();
 			String subject = request.getParameter("subject");
 			String content = request.getParameter("content");
 			
