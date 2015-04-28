@@ -17,9 +17,19 @@ public class ComProcess extends HttpServlet{
 		
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com"));
 		
-		if(command !=null &&command.trim().equals("StuJoin")){
+		if(command !=null &&command.trim().equals("boardWrite")){
+			ComDTO dto = new ComDTO();
+			String subject = request.getParameter("subject");
+			String content = request.getParameter("content");
+			
+			dto.setContent(content);
+			dto.setSubject(subject);
+			
+			
+			
 			response.sendRedirect("../../Success.html");
 		}
+		
 		
 	}
 	

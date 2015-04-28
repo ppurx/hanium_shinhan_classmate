@@ -29,6 +29,7 @@ public class MemberDAO {
 		String query = "Insert INTO USER values (?,?,?,?,?,?,?,?,?)";
 		String phone = Integer.toString(dto.getTel1()+dto.getTel2()+dto.getTel3());
 		boolean check = false;
+		
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(query);	
 		
@@ -47,6 +48,7 @@ public class MemberDAO {
 		
 		
 		int x = pstmt.executeUpdate();
+		
 		if(x<1) {
 			System.out.println("정상적으로 저장되지 않았습니다.");
 		} else {
@@ -56,7 +58,7 @@ public class MemberDAO {
 		pstmt.close();
 		
 		
-				check = true;
+			check = true;
 		}catch(SQLException ex) {
 			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
 			check = false;

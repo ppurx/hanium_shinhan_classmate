@@ -23,14 +23,19 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
+$(function(){
+	$('#write').click(function(){		
 		
-	};
+		board.submit();
+			
+	
+	})
+	});
 </script>
 <title>board write</title>
 </head>
 <body>
+<form name="board" action="boardWrite.com" method="post"> 
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -89,11 +94,12 @@ html, body {height:100%; margin:0; padding:0;}
 	<tr >
 		<td colspan="2">
 		<a  data-ajax="false"style="margin-right:15%" href="../student/24-board2.html" data-role="button" data-inline="true" >목록</a>
-		<a data-ajax="false" style="margin-left:15%" href="../student/24-board2.html" data-role="button" data-inline="true"  >등록</a></td>
+		<a id="write" data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true"  >등록</a></td>
 		</tr>
 	</table>
 	
 
 	</div>
+	</form>
 </body>
 </html>

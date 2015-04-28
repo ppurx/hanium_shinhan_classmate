@@ -65,7 +65,8 @@ public class MemberProcess extends HttpServlet {
 			int tel1 = Integer.parseInt(request.getParameter("tel1"));
 			int tel2 = Integer.parseInt(request.getParameter("tel2"));
 			int tel3 = Integer.parseInt(request.getParameter("tel3"));
-			System.out.println("asdf");
+			
+		
 			String name = request.getParameter("name");	
 			String birth = request.getParameter("birth");
 			String email = request.getParameter("email");
@@ -88,6 +89,7 @@ public class MemberProcess extends HttpServlet {
 			dto.setTel3(tel3);
 			
 			MemberDAO dao = new MemberDAO();
+			
 			boolean bool = dao.insertMember(dto);
 			
 			if(bool){
