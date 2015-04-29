@@ -26,14 +26,14 @@ public class ComProcess2 extends HttpServlet{
 			dto.setSubject(subject);
 			
 			ComDAO2 dao = new ComDAO2();
-			
+			/*
 			boolean bool = dao.insertBoard(dto);
 			
 			if(bool){
 				response.sendRedirect("../../Success.html");
 			}else{
 				response.sendRedirect("../../Fail.html");
-			}
+			}*/
 			
 		}
 		

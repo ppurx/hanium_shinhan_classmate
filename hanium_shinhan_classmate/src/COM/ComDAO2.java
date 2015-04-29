@@ -27,7 +27,7 @@ public class ComDAO2 {
 	
 	}
 	
-	
+	/*
 	public boolean insertBoard(ComDTO2 dto){
 		String query = "Insert INTO USER(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
 		
@@ -42,5 +42,5 @@ public class ComDAO2 {
 				
 		return false;
 		
-	}
+	}*/
 }
