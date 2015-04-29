@@ -25,7 +25,12 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
-	$(function(){
+
+$( document ).ready(function() {
+	$('#popFail').popup("open");
+
+
+	
 		$('#log_button').click(function(){			
 			
 			 login.submit();
@@ -71,6 +76,7 @@ html, body {height:100%; margin:0; padding:0;}
 			<tr>
 				<td><input type="password" data-clear-btn="true" name="pw"placeholder="&nbsp;PASSWORD"></td>
 			</tr>
+			
 			<tr>
 				<td><input type="button" data-mini="true" id="log_button" value="로 그 인"></td>
 			</tr>
@@ -91,5 +97,6 @@ html, body {height:100%; margin:0; padding:0;}
 	
 	</div>
 	</form>
+	<div data-role="popup" data-transition="pop"id="popFail" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>ID/비밀번호를 확인하시오.</p></div>
 </body>
 </html>

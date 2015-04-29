@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +19,6 @@
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-
     html, body {
         position: relative;
         height: 100%;
@@ -31,7 +32,6 @@
         text-align: center;
       
         background: #fafbd3;
-
         /* Center slide text vertically */
          display: -webkit-box;
         display: -ms-flexbox;
@@ -48,8 +48,6 @@
         align-items: center;
         
     }
-
-
 </style>
 
 <title>Find Class</title>
@@ -58,7 +56,7 @@
 
 <div id="myCenterDiv">
 <div data-role="header"style="background-color:#04B486;">
-	<h1 style= "color : #ffffff">CLASSMATE</h1>
+	<h1>CLASSMATE</h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
 		
@@ -79,7 +77,7 @@
         <form class="userform">
             <table align="center" width="90%" style="margin-top:7%">
 			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;학생</strong></font></td>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 :<%=(String)session.getAttribute("name") %><br><strong>&nbsp;<%=(String)session.getAttribute("job") %></strong></font></td>
 				
 			</tr>
 			<tr>

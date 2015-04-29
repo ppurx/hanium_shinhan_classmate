@@ -69,6 +69,48 @@ public class MemberDAO {
 	public boolean updateMember(MemberDTO dto){
 		return true;
 	}
+	
+	public MemberDTO login(MemberDTO dto){
+		
+		String id = dto.getId();
+		String pw = dto.getPassword();
+		MemberDTO re_dto=new MemberDTO();
+		
+		String sql = "select * from USER where user_id="+id+" and user_password="+pw;
+		
+		try{
+			Statement stmt = conn.createStatement();
+						
+			ResultSet rs = stmt.executeQuery(sql);
+			
+				if(rs.next()){
+					String name = rs.getString("USER_NAME");
+					String job;
+					int x = rs.getInt("USER_TOKEN");
+						if(x==1){
+							job="¼±»ý´Ô";
+						}
+						else
+						{
+							job="ÇÐ»ý";
+						}
+						
+						re_dto.setId(id);
+						re_dto.setPassword(pw);
+						re_dto.setJob(job);
+						re_dto.setName(name);
+					}
+				else
+					{				
+						re_dto=null;
+					}
+		}
+		catch(SQLException e){
+			
+		}
+		
+		return re_dto;
+	}
 
 	public MemberDTO[] selectMember(MemberDTO dto){
 		String name=dto.getName();

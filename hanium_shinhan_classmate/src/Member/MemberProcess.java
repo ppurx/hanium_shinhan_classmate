@@ -14,14 +14,32 @@ public class MemberProcess extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
-       
+		
+		String uri = request.getRequestURI();
+		System.out.println("uri : " + uri);
+		
+		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".member"));
+		
+		
+		if(command !=null &&command.trim().equals("toolbarGet")){
+			
+			
+		}
+		
+		// TODO Auto-generated method stub
+		
+				
  
     }
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		/*
+		HttpSession session = request.getSession();
+		//String name = (String)session.getAttribute("name");
+		response.setContentType("text/html; charset=UTF-8");
+		*/
 			
 		String uri = request.getRequestURI();
 		System.out.println("uri : " + uri);
@@ -121,8 +139,35 @@ public class MemberProcess extends HttpServlet {
 			//MemberDTO[] bool = dao.insertMember(dto);
 			
 		}
-		else if(command !=null &&command.trim().equals("findPass")){
-	
+		else if(command !=null &&command.trim().equals("login")){
+			request.setCharacterEncoding("euc-kr");
+			
+			String id=request.getParameter("id");
+			String pw=request.getParameter("pw");
+			
+			MemberDTO dto = new MemberDTO();
+			dto.setId(id);
+			dto.setPassword(pw);
+			
+			MemberDAO dao = new MemberDAO();
+			
+			MemberDTO re_dto = dao.login(dto);
+			
+			
+			
+			HttpSession session = request.getSession();
+			// setAttribute(String attr_name, Object attr_name) ¸Þ¼Òµå
+			session.setAttribute("id", re_dto.getId());
+			session.setAttribute("pw", re_dto.getPassword());
+			session.setAttribute("name", re_dto.getName());
+			session.setAttribute("job", re_dto.getJob());
+			
+			response.setContentType("text/html; charset=euc-kr");
+			
+			if(re_dto.getName()==null)response.sendRedirect("../student/02-Login_fail.html");
+			else response.sendRedirect("../student/08-Stu_main(1).jsp");
+			
+				
 	
 		}		
 		

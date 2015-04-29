@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <meta charset="utf-8">
 
 <style type="text/css">
@@ -49,7 +51,7 @@ html, body {height:100%; margin:0; padding:0;}
         <form class="userform">
             <table align="center" width="90%" style="margin-top:7%">
 			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;학생</strong></font></td>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 :<%=(String)session.getAttribute("name") %><br><strong>&nbsp;<%=(String)session.getAttribute("job") %></strong></font></td>
 				
 			</tr>
 			<tr>
@@ -64,7 +66,7 @@ html, body {height:100%; margin:0; padding:0;}
         </form>
 </div>
 	<div style="margin:15% 7% 0 7%">
-	 <a data-ajax="false" href="../student/09-FindClass.html"><input type="button" value="반 검색" ></a>
+	 <a data-ajax="false" href="../student/09-FindClass.jsp"><input type="button" value="반 검색" ></a>
 	</div>
 	<table align="center" style="margin-top:10%">
 		<tr>

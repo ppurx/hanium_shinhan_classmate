@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 public class MemberDTO implements Serializable {
 	
+	private String job;
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
 	private String name;
 	private String birth;
 	private String email;

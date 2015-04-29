@@ -17,22 +17,21 @@
 		
 	</div><!-- /header -->
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
-       
-            <ul data-role="listview">
-                <li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
-                <li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
-                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
-                <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
-                <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
-        </ul>
+        <ul data-role="listview">
+<li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
+<li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
+<li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
+<li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
+<li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
+<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
+</ul>
 
 </div>
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
-        <form class="userform">
+        <form class="userform" method="get">
             <table align="center" width="90%" style="margin-top:7%">
 			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;학생</strong></font></td>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 :<%=(String)session.getAttribute("name") %><br><strong>&nbsp;<%=(String)session.getAttribute("job") %></strong></font></td>
 				
 			</tr>
 			<tr>
