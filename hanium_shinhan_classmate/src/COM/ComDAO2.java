@@ -28,10 +28,19 @@ public class ComDAO2 {
 	}
 	
 	
-	public boolean insertBoard(ComDTO1 dto){
+	public boolean insertBoard(ComDTO2 dto){
 		String query = "Insert INTO USER(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
 		
-		
+		PreparedStatement pstmt = conn.prepareStatement(query);	
+				
+				
+				pstmt.setString(1, );
+				pstmt.setString(2, dto.getSubject());
+				pstmt.setString(3, dto.getContent());
+				pstmt.setString(4, );
+				pstmt.setString(5, );
+				
 		return false;
+		
 	}
 }
