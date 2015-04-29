@@ -2,6 +2,7 @@ package Member;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -119,26 +120,7 @@ public class MemberProcess extends HttpServlet {
 			
 		}
 		
-		else if(command !=null &&command.trim().equals("findId")){
-			request.setCharacterEncoding("euc-kr");
-			String name = request.getParameter("name");
-			String birth = request.getParameter("birth");
-			int tel1 = Integer.parseInt(request.getParameter("tel1"));
-			int tel2 = Integer.parseInt(request.getParameter("tel2"));
-			int tel3 = Integer.parseInt(request.getParameter("tel3"));
-			
-			MemberDTO dto = new MemberDTO();			
-			
-			dto.setBirth(birth);			
-			dto.setName(name);		
-			dto.setTel1(tel1);
-			dto.setTel2(tel2);
-			dto.setTel3(tel3);
-			
-			MemberDAO dao = new MemberDAO();
-			//MemberDTO[] bool = dao.insertMember(dto);
-			
-		}
+		
 		else if(command !=null &&command.trim().equals("login")){
 			request.setCharacterEncoding("euc-kr");
 			
@@ -168,6 +150,38 @@ public class MemberProcess extends HttpServlet {
 			else response.sendRedirect("../student/08-Stu_main(1).jsp");
 			
 				
+	
+		}		
+		else if(command !=null &&command.trim().equals("findId")){
+			request.setCharacterEncoding("euc-kr");
+			String name = request.getParameter("name");
+			String birth = request.getParameter("birth");
+			int tel1 = Integer.parseInt(request.getParameter("tel1"));
+			int tel2 = Integer.parseInt(request.getParameter("tel2"));
+			int tel3 = Integer.parseInt(request.getParameter("tel3"));
+			
+			MemberDTO dto = new MemberDTO();			
+			
+			dto.setBirth(birth);			
+			dto.setName(name);		
+			dto.setTel1(tel1);
+			dto.setTel2(tel2);
+			dto.setTel3(tel3);
+			
+			MemberDAO dao = new MemberDAO();			
+			dto.setId(dao.selectMember(dto).getId());
+			if(dto.getId()==null)response.sendRedirect("../student/03-Find_Fail.jsp");
+			else{
+				request.setAttribute("id", dto.getId());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("../student/03-FindSuccess.jsp");
+				dispatcher.forward(request, response);
+				
+			}
+			
+		}
+		else if(command !=null &&command.trim().equals("findPass")){
+			request.setCharacterEncoding("euc-kr");			
+			response.sendRedirect("../student/08-Stu_main(1).jsp");
 	
 		}		
 		

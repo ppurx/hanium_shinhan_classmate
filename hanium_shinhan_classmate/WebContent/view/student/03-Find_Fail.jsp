@@ -20,12 +20,18 @@ html, body {height:100%; margin:0; padding:0;}
 </style>
 
 <script type="text/javascript">
-	$(function(){
-		$('#findId').click(function(){			
-			findID.submit();
+$( document ).ready(function() {
+	$('#err').popup("open");
+
+
+	
+	$('#findId').click(function(){			
+		findID.submit();
+	});
+				
+		
 		});
-			
-		});
+
 </script>
 
 <title>FIND</title>
@@ -107,5 +113,6 @@ html, body {height:100%; margin:0; padding:0;}
 	</form>
 	<div data-role="popup" data-transition="pop"id="err" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>일치하는 회원정보가 없습니다.</p></div>
 		</div>
+		
 </body>
 </html>

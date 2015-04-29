@@ -3,6 +3,11 @@ package Member;
 import java.sql.*;
 
 public class MemberDAO {
+	 private static MemberDAO instance = new MemberDAO();
+	    public static MemberDAO getInstance(){
+	        return instance;
+	    }
+	
 	private static Connection conn;
 	
 
@@ -112,37 +117,39 @@ public class MemberDAO {
 		return re_dto;
 	}
 
-	public MemberDTO[] selectMember(MemberDTO dto){
+	public MemberDTO selectMember(MemberDTO dto){
 		String name=dto.getName();
 		String birth=dto.getBirth();
 		String phone = Integer.toString(dto.getTel1()+dto.getTel2()+dto.getTel3());
 		
 		
-		String sql = "select * from USER where user_name=? and user_birth=? and user_phone=?";
+		String sql = "select * from USER where user_name="+name+" and user_birth="+birth+" and user_phone="+phone;
 		
 		
 		try {
 			Statement stmt = conn.createStatement();
 			
-			((PreparedStatement) stmt).setString(1,name);
-			((PreparedStatement) stmt).setString(2,birth);
-			((PreparedStatement) stmt).setString(3,phone);
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			
 			if(rs.next()){
 				
+				dto.setId(rs.getString("user_id"));			
 			}
 			else
 			{				
-				
+				dto.setId(null);
 			}
 		}
 		catch(SQLException e){
 			System.out.println(e);
 		}
 		
-		return null;
+		return dto;
 	}
+	
+	
+	
+	
 
 }
