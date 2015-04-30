@@ -24,6 +24,9 @@ html, body {height:100%; margin:0; padding:0;}
 		$('#findId').click(function(){			
 			findID.submit();
 		});
+		$('#findPass').click(function(){			
+			findPW.submit();
+		});
 			
 		});
 </script>
@@ -71,7 +74,7 @@ html, body {height:100%; margin:0; padding:0;}
 	
 	</form>
 	
-	<form name="findPass" action="findPass.member" method="post">
+	<form name="findPW" action="findPass.member" method="post">
 		<table align="center" width="80%" >
 		<colgroup width="80">
 		<colgroup width="200">

@@ -32,7 +32,7 @@ public class MemberDAO {
 	
 	public boolean insertMember(MemberDTO dto){
 		String query = "Insert INTO USER values (?,?,?,?,?,?,?,?,?)";
-		String phone = Integer.toString(dto.getTel1()+dto.getTel2()+dto.getTel3());
+		String phone =dto.getTel1()+dto.getTel2()+dto.getTel3();
 		boolean check = false;
 		
 		try {
@@ -81,7 +81,7 @@ public class MemberDAO {
 		String pw = dto.getPassword();
 		MemberDTO re_dto=new MemberDTO();
 		
-		String sql = "select * from USER where user_id="+id+" and user_password="+pw;
+		String sql = "select * from USER where user_id='"+id+"' and user_password='"+pw+"'";
 		
 		try{
 			Statement stmt = conn.createStatement();
@@ -117,29 +117,70 @@ public class MemberDAO {
 		return re_dto;
 	}
 
-	public MemberDTO selectMember(MemberDTO dto){
+	public MemberDTO selectID(MemberDTO dto){
 		String name=dto.getName();
 		String birth=dto.getBirth();
-		String phone = Integer.toString(dto.getTel1()+dto.getTel2()+dto.getTel3());
+		String phone =dto.getTel1()+dto.getTel2()+dto.getTel3();
+		String id = dto.getId();
 		
 		
-		String sql = "select * from USER where user_name="+name+" and user_birth="+birth+" and user_phone="+phone;
+		String sql = "select * from USER where user_name='"+name+"' and user_birth='"+birth+"' and user_phone='"+phone+"'";
+		
+		
+		System.out.println(name);
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				
+				dto.setId(rs.getString("user_id"));	
+				dto.setPassword(rs.getString("USER_PASSWORD"));
+			}
+			else
+			{				
+				dto.setId(null);
+				dto.setPassword(null);
+			}
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return dto;
+	}
+	
+	public MemberDTO selectPW(MemberDTO dto){
+		String name=dto.getName();
+		String birth=dto.getBirth();
+		String phone =dto.getTel1()+dto.getTel2()+dto.getTel3();
+		String id = dto.getId();
+		
+		
+		String sql = "select * from USER where user_id='"+id+"' and user_birth='"+birth+"' and user_phone='"+phone+"'";
+		
 		
 		
 		try {
 			Statement stmt = conn.createStatement();
 			
-			ResultSet rs = stmt.executeQuery(sql);
-			
+			ResultSet rs = stmt.executeQuery(sql);			
 			
 			if(rs.next()){
 				
-				dto.setId(rs.getString("user_id"));			
+				dto.setId(rs.getString("user_id"));	
+				dto.setPassword(rs.getString("USER_PASSWORD"));
 			}
 			else
 			{				
 				dto.setId(null);
+				dto.setPassword(null);
 			}
+			
+			
 		}
 		catch(SQLException e){
 			System.out.println(e);

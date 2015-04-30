@@ -81,9 +81,9 @@ public class MemberProcess extends HttpServlet {
 		if(command !=null &&command.trim().equals("StuJoin")){
 			request.setCharacterEncoding("euc-kr");
 			
-			int tel1 = Integer.parseInt(request.getParameter("tel1"));
-			int tel2 = Integer.parseInt(request.getParameter("tel2"));
-			int tel3 = Integer.parseInt(request.getParameter("tel3"));
+			String tel1 = request.getParameter("tel1");
+			String tel2 = request.getParameter("tel2");
+			String tel3 = request.getParameter("tel3");
 			
 		
 			String name = request.getParameter("name");	
@@ -153,12 +153,18 @@ public class MemberProcess extends HttpServlet {
 	
 		}		
 		else if(command !=null &&command.trim().equals("findId")){
-			request.setCharacterEncoding("euc-kr");
+			try{
+				
+				
+				
+			request.setCharacterEncoding("utf-8");
 			String name = request.getParameter("name");
 			String birth = request.getParameter("birth");
-			int tel1 = Integer.parseInt(request.getParameter("tel1"));
-			int tel2 = Integer.parseInt(request.getParameter("tel2"));
-			int tel3 = Integer.parseInt(request.getParameter("tel3"));
+			String tel1 = request.getParameter("tel1");
+			String tel2 = request.getParameter("tel2");
+			String tel3 = request.getParameter("tel3");
+			
+			System.out.println(name);
 			
 			MemberDTO dto = new MemberDTO();			
 			
@@ -169,25 +175,58 @@ public class MemberProcess extends HttpServlet {
 			dto.setTel3(tel3);
 			
 			MemberDAO dao = new MemberDAO();			
-			dto.setId(dao.selectMember(dto).getId());
+			dto.setId(dao.selectID(dto).getId());
 			if(dto.getId()==null)response.sendRedirect("../student/03-Find_Fail.jsp");
 			else{
 				request.setAttribute("id", dto.getId());
-				RequestDispatcher dispatcher = request.getRequestDispatcher("../student/03-FindSuccess.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("../student/03-FindSuccess_ID.jsp");
 				dispatcher.forward(request, response);
 				
 			}
+			}
+			catch(Exception e){
+				response.sendRedirect("../student/03-Find_Fail.jsp");
+			}
 			
 		}
+		
+		
 		else if(command !=null &&command.trim().equals("findPass")){
-			request.setCharacterEncoding("euc-kr");			
-			response.sendRedirect("../student/08-Stu_main(1).jsp");
-	
+			
+			
+			request.setCharacterEncoding("euc-kr");
+			String id = request.getParameter("id");
+			String birth = request.getParameter("birth");
+			String tel1 = request.getParameter("tel1");
+			String tel2 = request.getParameter("tel2");
+			String tel3 = request.getParameter("tel3");
+			
+			
+			
+			MemberDTO dto = new MemberDTO();			
+			
+			dto.setBirth(birth);			
+			dto.setId(id);		
+			dto.setTel1(tel1);
+			dto.setTel2(tel2);
+			dto.setTel3(tel3);
+			
+			MemberDAO dao = new MemberDAO();			
+			dto.setPassword(dao.selectPW(dto).getPassword());
+			if(dto.getPassword()==null)response.sendRedirect("../student/03-Find_Fail.jsp");
+			else{
+				request.setAttribute("PW", dto.getPassword());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("../student/03-FindSuccess_PW.jsp");
+				dispatcher.forward(request, response);	
 		}		
+			}
+			
+			
+		}
 		
 		
 		
 	}
 
-}
+
 
