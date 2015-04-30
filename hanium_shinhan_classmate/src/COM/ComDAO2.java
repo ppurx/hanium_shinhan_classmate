@@ -27,20 +27,37 @@ public class ComDAO2 {
 	
 	}
 	
-	/*
+	
 	public boolean insertBoard(ComDTO2 dto){
-		String query = "Insert INTO USER(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
+		String query = "Insert INTO BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
+		boolean check = false;
 		
-		PreparedStatement pstmt = conn.prepareStatement(query);	
-				
-				
-				pstmt.setString(1, );
-				pstmt.setString(2, dto.getSubject());
-				pstmt.setString(3, dto.getContent());
-				pstmt.setString(4, );
-				pstmt.setString(5, );
-				
-		return false;
-		
-	}*/
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			
+			pstmt.setString(1, "1");
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getTextarea());
+			pstmt.setString(4, "1");
+			pstmt.setString(5, "1");
+			
+			int x = pstmt.executeUpdate();
+			
+			if(x<1) {
+				System.out.println("정상적으로 저장되지 않았습니다.");
+			} else {
+				check = true;
+			}
+			
+			pstmt.close();
+			
+			
+				check = true;
+			}catch(SQLException ex) {
+				System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+				check = false;
+			}
+			return check;
+		}
 }

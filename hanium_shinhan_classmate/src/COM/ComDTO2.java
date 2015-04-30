@@ -9,11 +9,11 @@ public class ComDTO2 {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getContent() {
-		return content;
+	public String getTextarea() {
+		return textarea;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setTextarea(String textarea) {
+		this.textarea = textarea;
 	}
-	String content;
+	String textarea;
 }
