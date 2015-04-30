@@ -152,6 +152,17 @@ public class MemberProcess extends HttpServlet {
 				
 	
 		}		
+		
+		else if(command !=null &&command.trim().equals("logout")){
+			request.setCharacterEncoding("euc-kr");
+			
+			HttpSession session = request.getSession();
+			
+			session.invalidate();
+			response.sendRedirect("../student/08-Stu_main(1).jsp");
+	
+		}		
+		
 		else if(command !=null &&command.trim().equals("findId")){
 			try{
 				
@@ -164,7 +175,6 @@ public class MemberProcess extends HttpServlet {
 			String tel2 = request.getParameter("tel2");
 			String tel3 = request.getParameter("tel3");
 			
-			System.out.println(name);
 			
 			MemberDTO dto = new MemberDTO();			
 			
@@ -220,6 +230,9 @@ public class MemberProcess extends HttpServlet {
 				dispatcher.forward(request, response);	
 		}		
 			}
+		
+		
+		
 			
 			
 		}

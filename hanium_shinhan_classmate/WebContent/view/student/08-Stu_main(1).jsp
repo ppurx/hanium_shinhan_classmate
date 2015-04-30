@@ -18,12 +18,17 @@ html, body {height:100%; margin:0; padding:0;}
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-
-
-
-
-
 </style>
+
+<script type="text/javascript">
+$(function(){
+	$('#logoutBtn').click(function(){			
+		logout.submit();
+	});
+	
+		
+	});
+</script>
 
 <title>student main</title>
 </head>
@@ -48,8 +53,8 @@ html, body {height:100%; margin:0; padding:0;}
 
 </div>
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
-        <form class="userform">
-            <table align="center" width="90%" style="margin-top:7%">
+        <form class="userform" method="post" action="logout.member" name="logout">
+            <table align="center" width="95%" style="margin-top:7%">
 			<tr>
 				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 :<%=(String)session.getAttribute("name") %><br><strong>&nbsp;<%=(String)session.getAttribute("job") %></strong></font></td>
 				
@@ -57,10 +62,10 @@ html, body {height:100%; margin:0; padding:0;}
 			<tr>
 			</tr>
 			<tr>
-				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
+				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="../student/11-main(student).html" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
 			</tr>	
 			<tr>
-				<td align="center" colspan="2"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data_inline="true">LOGOUT</a></td></tr>
+				<td align="center" colspan="2"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data_inline="true" id="logoutBtn">LOGOUT</a></td></tr>
 		</table>
 		
         </form>

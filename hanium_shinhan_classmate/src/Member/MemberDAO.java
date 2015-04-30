@@ -127,7 +127,6 @@ public class MemberDAO {
 		String sql = "select * from USER where user_name='"+name+"' and user_birth='"+birth+"' and user_phone='"+phone+"'";
 		
 		
-		System.out.println(name);
 		try {
 			Statement stmt = conn.createStatement();
 			
