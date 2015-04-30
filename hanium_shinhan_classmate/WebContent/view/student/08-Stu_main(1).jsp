@@ -22,7 +22,10 @@ html, body {height:100%; margin:0; padding:0;}
 
 <script type="text/javascript">
 $(function(){
-	$('#logoutBtn').click(function(){			
+	
+	
+	
+	$('#logoutOK').click(function(){			
 		logout.submit();
 	});
 	
@@ -34,7 +37,22 @@ $(function(){
 </head>
 <body>
 	<div id="myCenterDiv">
+	
+	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
+	
+	<!-- 로그아웃 확인-->
+	<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" >
+	
+	    <div role="main" class="ui-content" style=" text-align: center;">		
+			<h3 style="margin:auto">로그아웃 하시겠습니까?</h3>
+			<p> </p>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="logoutOK">&nbspYES&nbsp</a>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-left:8%" data-rel="back">&nbsp&nbspNO&nbsp&nbsp</a>
+							        
+	    </div>
+	</div>
+	<!-- //로그아웃 확인 -->
 	<h1>CLASSMATE</h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
@@ -65,11 +83,13 @@ $(function(){
 				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="../student/11-main(student).html" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
 			</tr>	
 			<tr>
-				<td align="center" colspan="2"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data_inline="true" id="logoutBtn">LOGOUT</a></td></tr>
+				<td align="center" colspan="2"><a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">Logout</a></td></tr>
 		</table>
 		
         </form>
 </div>
+
+<!-- //툴바 -->
 	<div style="margin:15% 7% 0 7%">
 	 <a data-ajax="false" href="../student/09-FindClass.jsp"><input type="button" value="반 검색" ></a>
 	</div>

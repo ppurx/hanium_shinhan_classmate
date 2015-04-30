@@ -122,14 +122,18 @@ public class MemberProcess extends HttpServlet {
 		
 		
 		else if(command !=null &&command.trim().equals("login")){
+			try{
 			request.setCharacterEncoding("euc-kr");
 			
 			String id=request.getParameter("id");
 			String pw=request.getParameter("pw");
+			int token = Integer.parseInt(request.getParameter("job"));
+			
 			
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
 			dto.setPassword(pw);
+			dto.setToken(token);
 			
 			MemberDAO dao = new MemberDAO();
 			
@@ -148,7 +152,10 @@ public class MemberProcess extends HttpServlet {
 			
 			if(re_dto.getName()==null)response.sendRedirect("../student/02-Login_fail.html");
 			else response.sendRedirect("../student/08-Stu_main(1).jsp");
-			
+			}
+			catch(Exception e){
+				response.sendRedirect("../student/02-Login_fail.html");
+			}
 				
 	
 		}		
@@ -159,7 +166,7 @@ public class MemberProcess extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			session.invalidate();
-			response.sendRedirect("../student/08-Stu_main(1).jsp");
+			response.sendRedirect("../student/02-Login.html");
 	
 		}		
 		

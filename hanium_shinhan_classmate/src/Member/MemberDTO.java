@@ -3,7 +3,14 @@ package Member;
 import java.io.Serializable;
 
 public class MemberDTO implements Serializable {
+	private int token;
 	
+	public int getToken() {
+		return token;
+	}
+	public void setToken(int token) {
+		this.token = token;
+	}
 	private String job;
 	public String getJob() {
 		return job;

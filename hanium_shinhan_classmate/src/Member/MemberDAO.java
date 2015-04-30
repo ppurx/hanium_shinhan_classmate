@@ -1,7 +1,7 @@
 package Member;
 
 import java.sql.*;
-
+import javax.servlet.ServletResponse;
 public class MemberDAO {
 	 private static MemberDAO instance = new MemberDAO();
 	    public static MemberDAO getInstance(){
@@ -79,9 +79,10 @@ public class MemberDAO {
 		
 		String id = dto.getId();
 		String pw = dto.getPassword();
+		int job = dto.getToken();
 		MemberDTO re_dto=new MemberDTO();
 		
-		String sql = "select * from USER where user_id='"+id+"' and user_password='"+pw+"'";
+		String sql = "select * from USER where user_id='"+id+"' and user_password='"+pw+"'"+" and user_token='"+job+"'";
 		
 		try{
 			Statement stmt = conn.createStatement();
@@ -90,28 +91,28 @@ public class MemberDAO {
 			
 				if(rs.next()){
 					String name = rs.getString("USER_NAME");
-					String job;
-					int x = rs.getInt("USER_TOKEN");
-						if(x==1){
-							job="急积丛";
+					
+						if(rs.getInt("USER_TOKEN")==1)
+						{
+							re_dto.setJob("急积丛");
 						}
 						else
 						{
-							job="切积";
+							re_dto.setJob("切积");
 						}
 						
 						re_dto.setId(id);
-						re_dto.setPassword(pw);
-						re_dto.setJob(job);
+						re_dto.setPassword(pw);						
 						re_dto.setName(name);
 					}
 				else
 					{				
+					
 						re_dto=null;
 					}
 		}
 		catch(SQLException e){
-			
+			System.out.println(e);
 		}
 		
 		return re_dto;
