@@ -2,18 +2,26 @@ package COM;
 
 public class ComDTO3 {
 
-	String subject;
+	String Subject;
 	public String getSubject() {
-		return subject;
+		return Subject;
 	}
 	public void setSubject(String subject) {
-		this.subject = subject;
+		Subject = subject;
+	}
+	public String getTitle() {
+		return Title;
+	}
+	public void setTitle(String title) {
+		Title = title;
 	}
 	public String getContent() {
-		return content;
+		return Content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		Content = content;
 	}
-	String content;
+	String Title;
+	String Content;
+	
 }

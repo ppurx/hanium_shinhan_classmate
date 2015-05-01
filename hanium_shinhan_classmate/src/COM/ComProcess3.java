@@ -17,17 +17,31 @@ public class ComProcess3 extends HttpServlet{
 		
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com"));
 		
-		if(command !=null &&command.trim().equals("boardWrite")){
-			ComDTO1 dto = new ComDTO1();
+		if(command !=null &&command.trim().equals("quest")){
+			request.setCharacterEncoding("euc-kr");
+			
 			String subject = request.getParameter("subject");
+			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			
+			ComDTO3 dto = new ComDTO3();
 			
 			dto.setContent(content);
 			dto.setSubject(subject);
+			dto.setTitle(title);
 			
 			
+			ComDAO3 dao = new ComDAO3();
 			
-			response.sendRedirect("../../Success.html");
+			boolean bool = dao.insertMEMO(dto);
+			
+			if(bool){
+				response.sendRedirect("../../Success.html");
+			} else
+			{
+				response.sendRedirect("../../Fail.html");
+			}
+			
 		}
 		
 		
