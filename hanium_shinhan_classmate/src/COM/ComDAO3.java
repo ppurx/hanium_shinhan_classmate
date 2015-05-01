@@ -6,32 +6,65 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import COM.ComDTO1;
+import Member.MemberDAO;
+import Member.MemberDTO;
 
 public class ComDAO3 {
+	private static ComDAO3 instance = new ComDAO3();
+    public static ComDAO3 getInstance(){
+        return instance;
+    }
 	private static Connection conn;
+	
 	public ComDAO3() {
 				
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		}catch(ClassNotFoundException ex) {
-			System.out.println("µå¶óÀÌ¹ö¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		}
 
 	
 		try {	
 			conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
 		}catch(SQLException ex) {
-			System.out.println("SQL¿À·ù : " + ex.getLocalizedMessage());
+			System.out.println("SQLï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
 		}
 	
 	}
 	
 	
-	public boolean insertBoard(ComDTO1 dto){
-		String query = "Insert INTO USER(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
+	public boolean insertMEMO(ComDTO3 dto){
+		String query = "Insert INTO MEMO(MEMO_TITLE,MOMO_SUBJECT,MEMO_CONTENT,SEND_USER_ID,BRING_USER_ID) values (?,?,?,1,1)";
+		boolean check = false;
+		
+		try {
+		PreparedStatement pstmt = conn.prepareStatement(query);	
+		
+		pstmt.setString(1,dto.getSubject());
+		pstmt.setString(2,dto.getTitle());
+		pstmt.setString(3,dto.getContent());
+		
+		int x = pstmt.executeUpdate();
+		
+		if(x<1) {
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
+		} else {
+			check = true;
+		}
+		
+		pstmt.close();
 		
 		
-		return false;
+			check = true;
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
+			check = false;
+		}
+		return check;
+	}
+	public boolean updateCom(ComDTO3 dto){
+		return true;
 	}
 }
