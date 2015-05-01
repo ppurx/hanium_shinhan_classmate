@@ -20,13 +20,13 @@ public class ComProcess1 extends HttpServlet{
 		if(command !=null &&command.trim().equals("Tnotice")){
 			request.setCharacterEncoding("utf-8");
 			
-			String subject = request.getParameter("subject");
+			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
 			ComDTO1 dto = new ComDTO1();
 			
 			dto.setContent(content);
-			dto.setSubject(subject);
+			dto.setTitle(title);
 			
 			ComDAO1 dao = new ComDAO1();  
 			
