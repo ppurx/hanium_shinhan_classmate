@@ -28,7 +28,7 @@ public class ComDAO1 {
 	}
 	
 	
-	public boolean insertBoard(ComDTO1 dto){
+	public boolean insertNOTICE(ComDTO1 dto){
 		String query = "Insert INTO NOTICE(NOTICE_TITLE,NOTICE_CONTENT) values (?,?)";
 	    boolean check = false;
 		
