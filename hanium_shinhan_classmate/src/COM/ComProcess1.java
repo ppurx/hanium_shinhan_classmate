@@ -17,17 +17,30 @@ public class ComProcess1 extends HttpServlet{
 		
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com"));
 		
-		if(command !=null &&command.trim().equals("boardWrite")){
-			ComDTO1 dto = new ComDTO1();
+		if(command !=null &&command.trim().equals("Tnotice")){
+			request.setCharacterEncoding("utf-8");
+			
 			String subject = request.getParameter("subject");
 			String content = request.getParameter("content");
+			
+			ComDTO1 dto = new ComDTO1();
 			
 			dto.setContent(content);
 			dto.setSubject(subject);
 			
+			ComDAO1 dao = new ComDAO1();  
+			
+			boolean bool = dao.insertNOTICE(dto);
+			
+			if(bool){
+				response.sendRedirect("../../Success.html");
+			}
+			else
+			{
+				response.sendRedirect("../../Fail.html");
+			}
 			
 			
-			response.sendRedirect("../../Success.html");
 		}
 		
 		

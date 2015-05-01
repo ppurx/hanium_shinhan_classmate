@@ -15,23 +15,46 @@ public class ComDAO1 {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		}catch(ClassNotFoundException ex) {
-			System.out.println("µå¶óÀÌ¹ö¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 		}
 
 	
 		try {	
 			conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
 		}catch(SQLException ex) {
-			System.out.println("SQL¿À·ù : " + ex.getLocalizedMessage());
+			System.out.println("SQLï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
 		}
 	
 	}
 	
 	
 	public boolean insertBoard(ComDTO1 dto){
-		String query = "Insert INTO USER(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
+		String query = "Insert INTO NOTICE(NOTICE_TITLE,NOTICE_CONTENT) values (?,?)";
+	    boolean check = false;
+		
+		try {
+		PreparedStatement pstmt = conn.prepareStatement(query);	
+		
+		pstmt.setString(1,dto.getTitle());
+		pstmt.setString(2,dto.getContent());
+		
+		int x = pstmt.executeUpdate();
+		
+		if(x<1) {
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
+		} else {
+			check = true;
+		}
+		
+		pstmt.close();
 		
 		
-		return false;
+			check = true;
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
+			check = false;
+		}
+		return check;
 	}
-}
+	}
+
