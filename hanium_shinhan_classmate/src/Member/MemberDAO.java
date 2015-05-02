@@ -1,6 +1,8 @@
 package Member;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import javax.servlet.ServletResponse;
 public class MemberDAO {
 	 private static MemberDAO instance = new MemberDAO();
@@ -187,6 +189,31 @@ public class MemberDAO {
 		}
 		
 		return dto;
+	}
+	
+	public ArrayList<MemberDTO> selectTest(){
+		ArrayList<MemberDTO> selectList = new ArrayList<MemberDTO>();
+		
+		String sql = "select * from USER";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				MemberDTO dto = new MemberDTO();
+				dto.setName(rs.getString("user_name"));
+				selectList.add(dto);
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList;
 	}
 	
 	
