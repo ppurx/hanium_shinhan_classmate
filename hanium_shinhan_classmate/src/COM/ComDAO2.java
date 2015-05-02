@@ -69,7 +69,7 @@ public class ComDAO2 {
 	public ComDTO2 selectTest(){
 		ComDTO2 dto = new ComDTO2();
 		
-		String sql = "select * from BOARD where board_id = 27";
+		String sql = "select * from BOARD where board_id = 30";
 		try {
 			Statement stmt = conn.createStatement();
 			

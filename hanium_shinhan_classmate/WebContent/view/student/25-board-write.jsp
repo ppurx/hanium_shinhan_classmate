@@ -98,7 +98,7 @@ $(function(){
 	</tr>
 	<tr >
 		<td colspan="2">
-		<a  data-ajax="false"style="margin-right:15%" href="../student/24-board2.html" data-role="button" data-inline="true" >목록</a>
+		<a  data-ajax="false"style="margin-right:15%" href="../student/24-board2.jsp" data-role="button" data-inline="true" >목록</a>
 		<a id="write" data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true"  >등록</a></td>
 		</tr>
 	</table>

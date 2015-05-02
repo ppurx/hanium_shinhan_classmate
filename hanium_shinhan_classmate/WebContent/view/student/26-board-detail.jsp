@@ -111,7 +111,7 @@ html, body {height:100%; margin:0; padding:0;}
 	
 	<a data-ajax="false"href="/hanium_shinhan_classmate/view/student/26-board-alter.html" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
     <a data-ajax="false"href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">삭제</a>
-    <a data-ajax="false"href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
+    <a data-ajax="false"href="../student/24-board2.jsp" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
 	
 
 	</div>
