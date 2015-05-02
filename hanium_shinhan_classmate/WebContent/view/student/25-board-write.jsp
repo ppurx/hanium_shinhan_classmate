@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +25,23 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
+$(function(){
+	$('#write').click(function(){		
 		
-	};
+		if($('#subject').val()=='')$("#popTitle").popup("open");
+		
+		else if($('#textarea').val()=='')$("#popContent").popup("open");
+		
+		else board.submit();
+			
+	
+	})
+	});
 </script>
-<title>board detail</title>
+<title>board write</title>
 </head>
 <body>
-    
+<form name="board" action="boardWrite.com2" method="post"> 
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -70,38 +80,33 @@ html, body {height:100%; margin:0; padding:0;}
         </form>
 </div>
 	<div data-role="header" data-theme="b" >
-    <h1>자유게시판</h1>
+    <h1>글등록</h1>
 </div>
+	
 
 
-
-	<table style="width:90%">
+	<table style="width:90%; margin:auto" >
 	<tr>
-		<td><img style="margin-left:3px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-1.PNG"/></td><td><input type="text" size="20" placeholder="제목을 입력하세요"></td>
+		<td align="left"><img  width="70%"  src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input type="text" id="subject" size="25" placeholder="제목을 입력하세요"></td>
 	</tr>
 	<tr>
-		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><input type="text" size="20" placeholder="작성자를 입력하세요"></td>
-	</tr>
-	<tr>
-		<td><img style="margin-left:5px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-3.PNG"/></td><td><input type="text" size="20" placeholder="작성일을 입력하세요"></td>
-	</tr>
-	<tr>
-		<td><img style="margin-top:30px; margin-left:20px" width="50%" height="50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
+		<td align="left"><img style="height:50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
 	</tr>	
 	<tr>
 	
-	<td  colspan="2" ><textarea style="height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea"placeholder="내용을 입력하세요"></textarea></td>
+	<td  colspan="2" ><textarea style="height:500px; margin-top:5px" name="textarea" id="textarea" placeholder="내용을 입력하세요"></textarea></td>
 	</tr>
-	
+	<tr >
+		<td colspan="2">
+		<a  data-ajax="false"style="margin-right:15%" href="../student/24-board2.html" data-role="button" data-inline="true" >목록</a>
+		<a id="write" data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true"  >등록</a></td>
+		</tr>
 	</table>
-	
-	
-	<a data-ajax="false"href="" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
-    <a data-ajax="false"href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">삭제</a>
-    <a data-ajax="false"href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
 	
 
 	</div>
-	
+	</form>
+	<div data-role="popup" data-transition="pop"id="popTitle" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>제목을 입력하시오.</p></div>
+	<div data-role="popup" data-transition="pop"id="popContent" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>내용을 입력하시오.</p></div>
 </body>
 </html>

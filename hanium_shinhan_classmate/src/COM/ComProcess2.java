@@ -44,7 +44,11 @@ public class ComProcess2 extends HttpServlet{
 			
 		}
 		
-		
+		else if(command !=null &&command.trim().equals("boardDelete")){
+			request.setCharacterEncoding("utf-8");
+			
+			String id = request.getParameter("id");
+		}
 	}
 	
 }
