@@ -1,0 +1,281 @@
+JSTL Core Tags
+
+
+
+JSP의 시작 부분에 taglib 정의를 추가한다.
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<c:set> Tag
+
+JSP의 setAttribute()와 같은 역할
+
+<c:set var="변수명" 
+
+          value="변수에 넣을 값" 
+
+          property="자바빈 객체나 Map 객체 값을 설정할 프로퍼티 명" 
+
+          scope="변수 공유 범위"/>
+
+		<c:set var="data1" value="100" scope="request" />
+		<c:set var="data2" value="200" scope="session" />
+		<c:set var="data3" value="<%=new int[] {1, 2, 3} %>" scope="request" />
+		<c:set var="data4" value="<br/><br/>" scope="request" />
+    
+		data1 : ${requestScope.data1} <br/>
+		data2 : ${sessionScope.data2} <br/>
+		data1 + data2 = ${requestScope.data1 + sessionScope.data2} <br/>
+		data3 : ${requestScope.data3[0]}, ${ requestScope.data3[1]}, ${ requestScope.data3[2]}
+
+
+<c:remove> Tag
+
+JSP의 removeAttribute()와 같은 역할
+
+<c:remove var="변수명" 
+
+                scope="변수 공유 범위" />
+
+		<c:remove var="data1" scope="request" />
+		
+		data1 : ${requestScope.data1} <br/>
+		data2 : ${sessionScope.data2} <br/>
+		data1 + data2 = ${requestScope.data1 + sessionScope.data2}
+
+
+<c:out> Tag
+
+'<%= ... >' 와 같다. JSP의 표현식을 대체한다.
+
+<c:out var="변수명" 
+
+          default="기본값" 
+
+          escapeXML="true / false" />
+
+escapeXML 속성은 HTML 태그를 해석할지 결정한다.
+
+true일 경우, 변수 값에 포함된 < > Q ' " 문자를 실제 문자로 출력한다. 생략 시 default로 true. 
+
+		<c:out value="${sessionScope.data2}" /> <br/>
+		<c:out value="${requestScope.data4}" escapeXml="true" />
+
+
+
+<c:catch> Tag
+
+body에서 실행되는 코드의 예외를 처리
+
+<c:catch var="에러 메세지가 포함될 변수명" />
+
+		<c:catch var="ex">
+			<%= 1/0 %>
+		</c:catch> <br/>
+		Error Msg: ${ex} <br/>
+
+
+<c:if> Tag
+
+조건문에 대응
+
+<c:if test="조건 판별식" 
+
+       var="변수명" 
+
+       scope="변수 공유 범위" />
+
+		<c:if test="${requestScope.data1 == null}">
+			data1 was removed....
+		</c:if>
+
+
+<c:choose> Tag
+
+switch문과 동일
+
+여러 개의 when 태그와 하나의 otherwise 태그를 가진다.
+
+<c:chose>
+
+    <c:when> .... </c:when>
+
+    <c:when> .... </c:when>
+
+    <c:otherwise> .... </c:otherwise>
+
+</c:choose>
+
+
+<c:when> Tag
+
+choose 태그의 서브 태그
+
+choose 태그 내에서 여러 번 사용할 수 있다
+
+<c:when test="조건 판별식" />
+
+
+
+<c:otherwise> Tag
+
+choose 태그의 서브 태그
+
+choose 태그 내에서 한 번만 사용할 수 있다
+
+<c:otherwise> .... </c:otherwise>
+
+		<c:choose>
+			<c:when test="${data1 == 100}">
+				data1의 데이터는 100 입니다.
+			</c:when>
+			
+			<c:when test="${data1 == null}">
+				data1의 데이터는 null 입니다.
+			</c:when>
+			
+			<c:otherwise>
+				data1의 데이터는 어느 값도 아닙니다.			
+			</c:otherwise>
+		</c:choose>
+
+
+<c:forEach> Tag
+
+객체 전체에 걸쳐 반복 실행에 사용
+
+<c:forEach var="현재 아이템의 변수 명"
+
+             items="반복 데이터가 있는 아이템 Collection 명"
+
+                begin="시작 값. 기본 값은 0"
+
+                end="종료 값"
+
+                step="증가 값"
+
+                varStatus="반복 상태 값을 지닌 변수" />
+
+varStatus는 forEach의 상태를 알 수 있는 값이 들어 있다.
+
+${변수.current} 현재의 인덱스
+
+${변수.index} 0부터의 인덱스
+
+${변수.count} 1부터의 인덱스
+
+${변수.first} 현재 루프가 처음인지 확인 
+
+${변수.last} 현재 루프가 마지막인지 확인
+
+${변수.begin} forEach문의 시작 값
+
+${변수.end} forEach문의 끝 값
+
+${변수.step} forEach문의 증가 값
+
+		<c:forEach var="i" begin="0" end="9">
+			${i+1}  
+		</c:forEach> <br/>
+		
+		<c:forEach var="i" items="${requestScope.data3}" begin="0" end="2" >
+			${i}
+		</c:forEach> <br/>
+		
+		<c:forEach var="i" items="${requestScope.data3}" begin="0" end="2" step="1" varStatus="status">
+			--------------------------------- <br/>
+			${i} <br/>
+			--------------------------------- <br/>
+			현재 인덱스			${status.current} <br/>
+			0부터의 인덱스                   ${status.index} <br/>
+			1부터의 인덱스                   ${status.count} <br/>
+			현재 루프가 처음인지 확인    ${status.first} <br/>
+			현재 루프가 마지막인지 확인 ${status.last} <br/>
+			forEach문의 시작 값            ${status.begin} <br/>
+			forEach문의 끝 값               ${status.end} <br/>
+			forEach문의 증가 값            ${status.step} <br/>
+			<br/>
+		</c:forEach>
+
+
+<c:forTokens> Tag
+
+문자열을 구분자(delimiter)로 분할
+
+<c:forTokens var="현재 아이템의 변수 명"
+
+                items="반복 데이터가 있는 아이템 Collection 명"
+
+                    delims="구분자. 여러 개 지정 가능"
+
+                    begin="시작 값. 기본 값은 0"
+
+                    end="종료 값"
+
+                    step="증가 값"
+
+                    varStatus="반복 상태 값을 지닌 변수" />
+
+        <c:set var="data5" value="A, B. C, D. E, F" scope="request" />
+        <c:forTokens var="ddd" items="${requestScope.data5}" delims=",.">
+        	<c:out value="${ddd}" /><br>
+        </c:forTokens>
+
+
+<c:url> Tag
+
+url 생성
+
+<c:url var="생성한 URL이 저장될 변수 명"
+
+         value="생성할 URL"
+
+         scope="변수 공유 범위" />
+
+		<a href="<c:url value='/TEST_EL_1.jsp'/>">
+			View TEST_EL_1
+		</a>
+
+
+<c:param> Tag
+
+url 생성 시 파라미터 추가
+
+<c:param name="파라미터 명" 
+
+              value="값"/>
+
+		<c:url value="/TEST_EL_2.jsp" var="paramTest">
+			<c:param name="data1" value="1000"/>
+			<c:param name="data2" value="2000"/>
+		</c:url>
+		<a href="${paramTest}">
+			View TEST_EL_2 with data1(1000), data2(2000)
+		</a>
+
+
+<c:import> Tag
+
+페이지 첨부
+<c:import url="첨부할 URL" />
+
+import 태그 내에 param 태그도 사용할 수 있다.
+
+var과 scope 속성도 있는데 var은 불러들인 페이지를 바로 출력하지 않고 String 형 변수에 넣어두기 위해 사용한다.
+
+이때 이 변수의 scope를 지정할 수 있다.
+
+		<c:import url="/TEST_EL_1.jsp"/> 
+		
+		<c:import url="/TEST_EL_2.jsp">
+			<c:param name="data1" value="10000"/>
+			<c:param name="data2" value="20000"/>
+		</c:import> 
+
+
+<c:redirect> Tag
+
+respond.sendRedirect()와 동일
+
+<c:redirect url="이동할 URL" />
