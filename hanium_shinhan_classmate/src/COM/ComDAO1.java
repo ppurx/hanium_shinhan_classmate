@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import COM.ComDTO1;
 
 public class ComDAO1 {
+	private static ComDAO1 instance = new ComDAO1();
+    public static ComDAO1 getInstance(){
+        return instance;
+    }
 	private static Connection conn;
 	public ComDAO1() {
 				
@@ -29,14 +33,19 @@ public class ComDAO1 {
 	
 	
 	public boolean insertNOTICE(ComDTO1 dto){
-		String query = "Insert INTO NOTICE(NOTICE_TITLE,NOTICE_CONTENT) values (?,?)";
+		String query = "Insert INTO NOTICE(CLASS_ID,NOTICE_REGI_DATE,NOTICE_HIT,NOTICE_CONTENT,NOTICE_TITLE) values (?,?,?,?,?)";
 	    boolean check = false;
 		
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(query);	
 		
-		pstmt.setString(1,dto.getTitle());
-		pstmt.setString(2,dto.getContent());
+		pstmt.setString(1,"1");
+		pstmt.setString(2,"1");
+		pstmt.setString(3,"1");
+	
+		pstmt.setString(4,dto.getContent());
+		pstmt.setString(5,dto.getTitle());
+		
 		
 		int x = pstmt.executeUpdate();
 		
