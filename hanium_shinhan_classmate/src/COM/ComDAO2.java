@@ -3,9 +3,13 @@ package COM;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import COM.ComDTO1;
+import Class.ClassDTO;
 
 public class ComDAO2 {
 	private static Connection conn;
@@ -60,4 +64,33 @@ public class ComDAO2 {
 			}
 			return check;
 		}
+	
+	
+	public ComDTO2 selectTest(){
+		ComDTO2 dto = new ComDTO2();
+		
+		String sql = "select * from BOARD where board_id = 27";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				
+				dto.setSubject(rs.getString("BOARD_WRITER"));
+				dto.setTextarea(rs.getString("BOARD_CONTENT"));
+				
+				System.out.println(dto.getSubject());
+				System.out.println(dto.getTextarea());
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return dto;
+	}
 }
