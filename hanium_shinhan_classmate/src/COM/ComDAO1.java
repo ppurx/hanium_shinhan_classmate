@@ -3,9 +3,13 @@ package COM;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import COM.ComDTO1;
+import Member.MemberDTO;
 
 public class ComDAO1 {
 	private static ComDAO1 instance = new ComDAO1();
@@ -64,6 +68,33 @@ public class ComDAO1 {
 			check = false;
 		}
 		return check;
+	}
+	
+	public ArrayList<ComDTO1> selectTest(){
+		ArrayList<ComDTO1> selectList = new ArrayList<ComDTO1>();
+		
+		String sql = "select * from NOTICE";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ComDTO1 dto = new ComDTO1();
+				dto.setTitle(rs.getString("NOTICE_TITLE"));
+				selectList.add(dto);
+				
+				System.out.println(dto.getTitle());
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList;
 	}
 	}
 
