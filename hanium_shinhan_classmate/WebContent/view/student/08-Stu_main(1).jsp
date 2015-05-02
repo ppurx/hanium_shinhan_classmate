@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@page import="Class.ClassDAO"%>
+     <%@page import="Class.ClassDTO"%>
+    <%@ page import="java.util.ArrayList"%>  
+    <!-- jstl taglig 선언 -->
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,6 +41,14 @@ $(function(){
 <title>student main</title>
 </head>
 <body>
+	<%
+			ClassDAO dao = new ClassDAO();
+			ArrayList<ClassDTO> List = dao.selectClassList();
+			request.setAttribute("List",List);
+			
+	%>	
+		
+		
 	<div id="myCenterDiv">
 	
 	<!-- 툴바 -->
@@ -93,12 +106,17 @@ $(function(){
 	<div style="margin:15% 7% 0 7%">
 	 <a data-ajax="false" href="../student/09-FindClass.jsp"><input type="button" value="반 검색" ></a>
 	</div>
+	<!-- 클래스 리스트 출력 -->
+			 <c:forEach var="Lists"  items="${List}" >
+		 		<c:out value="${Lists.getCLASS_SCHOOL_NALE()}"/>
+			 </c:forEach>
+	
 	<table align="center" style="margin-top:10%">
-		<tr>
-			<td><img src="/hanium_shinhan_classmate/res/chok1.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok2.png" width="90%"/></td>
+		<tr>		
+		 <!-- <td><img src="/hanium_shinhan_classmate/res/chok1.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok2.png" width="90%"/></td> -->
 		</tr>
 		<tr>
-			<td><img src="/hanium_shinhan_classmate/res/chok3.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok4.png" width="90%"/></td>
+			<!-- <td><img src="/hanium_shinhan_classmate/res/chok3.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok4.png" width="90%"/></td> -->
 		</tr>
 	</table>
 	

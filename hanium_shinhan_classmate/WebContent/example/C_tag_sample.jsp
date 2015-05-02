@@ -23,7 +23,7 @@
 		%>		
 	
 	<!-- example.C_tag 파일 참조 -->
-	 <c:set var="i" value="1"/>
+	
 	 <c:forEach var="Lists"  items="${List}" >
 	 	<c:out value="${Lists.getName()}"/>
 	 </c:forEach>
