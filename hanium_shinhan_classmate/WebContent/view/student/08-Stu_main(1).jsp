@@ -20,8 +20,18 @@ html, body {height:100%; margin:0; padding:0;}
     position:absolute; 
     left:0%;   
     text-align: center;
-    position:fixed; top:0; left:0; width:100%; height:100%;
+    top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
+}
+@font-face {
+  font-family: 'Nanum Pen Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.ttf) format('truetype');
 }
 </style>
 
@@ -107,17 +117,28 @@ $(function(){
 	 <a data-ajax="false" href="../student/09-FindClass.jsp"><input type="button" value="반 검색" ></a>
 	</div>
 	<!-- 클래스 리스트 출력 -->
-			 <c:forEach var="Lists"  items="${List}" >
-		 		<c:out value="${Lists.getCLASS_SCHOOL_NALE()}"/>
-			 </c:forEach>
+			 
+		 		
+			 
 	
-	<table align="center" style="margin-top:10%">
-		<tr>		
-		 <!-- <td><img src="/hanium_shinhan_classmate/res/chok1.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok2.png" width="90%"/></td> -->
-		</tr>
-		<tr>
-			<!-- <td><img src="/hanium_shinhan_classmate/res/chok3.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok4.png" width="90%"/></td> -->
-		</tr>
+	<table align="center" style="margin-top:10%" >		
+		
+		
+			
+		<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+			<c:if test="${i.index%2 == 0}">		
+			<tr>		
+				<td width="220px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  "><div style="position:relative;"><p><font size="7"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font></p><p><font size="5"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></p></div></td>
+			
+			</c:if>
+			<c:if test="${i.index%2 != 0 }">
+				<td width="220px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  "><div style="position:relative;"><p><font size="7"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font></p><p><font size="5"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></p></div></td>
+			</tr>
+			</c:if>
+		
+		</c:forEach>
+		
 	</table>
 	
 	</div>

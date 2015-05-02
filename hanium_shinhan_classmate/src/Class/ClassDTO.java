@@ -7,12 +7,7 @@ public class ClassDTO {
 	public void setCLASS_ID(int cLASS_ID) {
 		CLASS_ID = cLASS_ID;
 	}
-	public String getCLASS_SCHOOL_NALE() {
-		return CLASS_SCHOOL_NALE;
-	}
-	public void setCLASS_SCHOOL_NALE(String cLASS_SCHOOL_NALE) {
-		CLASS_SCHOOL_NALE = cLASS_SCHOOL_NALE;
-	}
+	
 	public String getCLASS_NAME() {
 		return CLASS_NAME;
 	}
@@ -44,7 +39,13 @@ public class ClassDTO {
 		this.tacher_ID = tacher_ID;
 	}
 	private int CLASS_ID;
-	private String CLASS_SCHOOL_NALE;
+	private String CLASS_SCHOOL_NAME;
+	public String getCLASS_SCHOOL_NAME() {
+		return CLASS_SCHOOL_NAME;
+	}
+	public void setCLASS_SCHOOL_NAME(String cLASS_SCHOOL_NAME) {
+		CLASS_SCHOOL_NAME = cLASS_SCHOOL_NAME;
+	}
 	private String CLASS_NAME;
 	private String CLASS_ICON_TYPE;
 	private String CLASS_CONTENT;

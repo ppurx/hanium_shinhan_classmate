@@ -46,10 +46,10 @@ public ClassDAO() {
 			
 			while(rs.next()){
 				ClassDTO dto = new ClassDTO();
-				dto.setCLASS_SCHOOL_NALE(rs.getString("CLASS_SCHOOL_NALE"));
+				dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NALE"));
+				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
 				classList.add(dto);
 				
-				System.out.println(dto.getCLASS_SCHOOL_NALE());
 			}
 			
 			
