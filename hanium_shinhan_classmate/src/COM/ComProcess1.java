@@ -15,7 +15,7 @@ public class ComProcess1 extends HttpServlet{
 		String uri = request.getRequestURI();
 		System.out.println("uri : " + uri);
 		
-		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com"));
+		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com1"));
 		
 		if(command !=null &&command.trim().equals("Tnotice")){
 			request.setCharacterEncoding("utf-8");

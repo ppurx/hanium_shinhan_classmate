@@ -9,12 +9,7 @@ public class ComDTO1 {
 		this.title = title;
 	}
 	
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+
 	public String getContent() {
 		return content;
 	}
@@ -23,5 +18,5 @@ public class ComDTO1 {
 	}
 	String content;
 	private String title;
-    String subject;
+
 }

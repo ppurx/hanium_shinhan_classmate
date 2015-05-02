@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,25 +25,24 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
-  $(function(){
-			$('#Join_Button').click(function(){
+	$(function(){
+			$('#Enrollment').click(function(){
 				
 				if($('#title').val()=='')$("#popTitle").popup("open");
 				if($('#content').val()=='')$("#popContent").popup("open");
 				
-				else join.submit();
+				else notice.submit();
+					
 					
 			
 			})
 			});
-	};
+	
 </script>
 <title>p35</title>
 </head>
 <body>
-<form name="notice" action="Tnotice.com" method="post">
+<form name="notice" action="Tnotice.com1" method="post">
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -106,14 +105,14 @@ html, body {height:100%; margin:0; padding:0;}
 	<tr >
 		<td colspan="2">
 		<a  data-ajax="false"style="margin-right:15%" href="../teacher/34-Notice(teacher).html" data-role="button" data-inline="true" >목록</a>
-		<a data-ajax="false" style="margin-left:15%" href="../teacher/34-Notice(teacher).html" data-role="button" data-inline="true"  >등록</a></td>
+		<a data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true" id="Enrollment" >등록</a></td>
 		</tr>
 	</table>
 	
 
 	</div>
 	</form>
-		<div data-role="popup" data-transition="pop"id="poptitle" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>제목을 입력하시오.</p></div>
-	<div data-role="popup" data-transition="pop"id="popcontent" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>내용을 입력하시오.</p></div>
+		<div data-role="popup" data-transition="pop"id="popTitle" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>제목을 입력하시오.</p></div>
+	<div data-role="popup" data-transition="pop"id="popContent" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>내용을 입력하시오.</p></div>
 </body>
 </html>
