@@ -29,10 +29,10 @@ html, body {height:100%; margin:0; padding:0;}
 			$('#Enrollment').click(function(){
 				
 				if($('#title').val()=='')$("#popTitle").popup("open");
-				if($('#content').val()=='')$("#popContent").popup("open");
+				else if($('#content').val()=='')$("#popContent").popup("open");
 				
-				else notice.submit();
-					
+			    else notice.submit();
+				
 					
 			
 			})
