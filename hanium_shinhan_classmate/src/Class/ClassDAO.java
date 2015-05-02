@@ -8,8 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import javax.servlet.http.HttpSession;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import Member.MemberDTO;
 
@@ -35,11 +41,13 @@ public ClassDAO() {
 	}
 	
 
-	public ArrayList<ClassDTO> selectClassList(){
+	public ArrayList<ClassDTO> selectClassList(String id){
 		ArrayList<ClassDTO> classList = new ArrayList<ClassDTO>();
-		String sql ="select * from CLASS,LIST where CLASS.CLASS_ID=LIST.CLASS_ID and LIST.USER_ID='ppurx'";
+		
+		String sql ="select * from CLASS,LIST where CLASS.CLASS_ID=LIST.CLASS_ID and LIST.USER_ID='"+id+"'";
 		
 		try {
+			
 			Statement stmt = conn.createStatement();
 			
 			ResultSet rs = stmt.executeQuery(sql);			

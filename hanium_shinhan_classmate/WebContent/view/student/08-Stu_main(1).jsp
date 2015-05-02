@@ -24,7 +24,7 @@ html, body {height:100%; margin:0; padding:0;}
     background-color:#fafbd3;
 }
 @font-face {
-  font-family: 'Nanum Pen Script';
+  font-family: 'Nanum Brush Script';
   font-style: normal;
   font-weight: 400;
   src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot);
@@ -53,7 +53,7 @@ $(function(){
 <body>
 	<%
 			ClassDAO dao = new ClassDAO();
-			ArrayList<ClassDTO> List = dao.selectClassList();
+			ArrayList<ClassDTO> List = dao.selectClassList((String)session.getAttribute("id"));
 			request.setAttribute("List",List);
 			
 	%>	
@@ -84,12 +84,12 @@ $(function(){
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
-                <li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
-                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
-                <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
-                <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
+                <li><a data-ajax="false"  href="../student/12-study.jsp">학습하기</a></li>
+                <li><a data-ajax="false"  href="../student/15-QandA(student).jsp">Q&A</a></li>
+                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp">My Page</a></li>
+                <li><a data-ajax="false"  href="../student/22-notice1.jsp">공지사항</a></li>
+                <li><a data-ajax="false"  href="../student/24-board2.jsp">자유게시판</a></li>
+				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).jsp">반 채팅</a></li>
         </ul>
 
 </div>
@@ -129,11 +129,17 @@ $(function(){
 		
 			<c:if test="${i.index%2 == 0}">		
 			<tr>		
-				<td width="220px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  "><div style="position:relative;"><p><font size="7"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font></p><p><font size="5"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></p></div></td>
+				<td width="230px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  ">
+				<div style="position:relative;">
+				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font> <br>
+				<font size="4"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></div></td>
 			
 			</c:if>
 			<c:if test="${i.index%2 != 0 }">
-				<td width="220px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  "><div style="position:relative;"><p><font size="7"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font></p><p><font size="5"  style="color:white; font-family:Nanum Pen Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></p></div></td>
+				<td width="230px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  ">
+				<div style="position:relative;">
+				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font> <br>
+				<font size="4"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></div></td>
 			</tr>
 			</c:if>
 		
