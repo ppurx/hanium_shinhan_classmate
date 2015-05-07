@@ -34,6 +34,12 @@ html, body {height:100%; margin:0; padding:0;}
 		​$("textarea").​​​​​​height(400);
 		
 	};
+	
+	$('#delete').click(function(){
+		
+		board.submit();
+		
+	});
 </script>
 <title>board detail</title>
 </head>
@@ -44,6 +50,7 @@ html, body {height:100%; margin:0; padding:0;}
 		dto=dao.selectTest();
 	%>		
     
+    <form name="board" action="boardDelete.com2" method="post">
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -90,19 +97,19 @@ html, body {height:100%; margin:0; padding:0;}
 	
 	<tr>
 		<td><font style="float:middle" size="5" face="Impact"><b>제목 : </b></font></td>
-		<td><font style="float:left"><%=dto.getSubject() %></font></td>
+		<td><font id="subject2" style="float:left"><%=dto.getSubject() %></font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>작성자 : </b></font></td>
-		<td></td>
+		<td><font id="writer" style="float:left">돧두</font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>작성일 : </b></font></td>
-		<td></td>
+		<td><font id="date" style="float:left">2015</font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>내용 : </b></font></td>
-		<td><font style="float:left"><%=dto.getTextarea() %></font></td>
+		<td><font id="textarea2" style="float:left"><%=dto.getTextarea() %></font></td>
 	</tr>
 	
 	</table>
@@ -110,11 +117,11 @@ html, body {height:100%; margin:0; padding:0;}
 	
 	
 	<a data-ajax="false"href="/hanium_shinhan_classmate/view/student/26-board-alter.html" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
-    <a data-ajax="false"href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">삭제</a>
+    <a id="delete" data-ajax="false" href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">삭제</a>
     <a data-ajax="false"href="../student/24-board2.jsp" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
 	
 
 	</div>
-	
+	</form>
 </body>
 </html>

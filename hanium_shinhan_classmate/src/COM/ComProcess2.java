@@ -47,7 +47,17 @@ public class ComProcess2 extends HttpServlet{
 		else if(command !=null &&command.trim().equals("boardDelete")){
 			request.setCharacterEncoding("utf-8");
 			
-			String id = request.getParameter("id");
+			String subject2 = request.getParameter("subject2");
+			String writer = request.getParameter("writer");
+			String date = request.getParameter("date");
+			String textarea2 = request.getParameter("textarea2");
+			
+			ComDTO2 dto = new ComDTO2();
+			
+			dto.setSubject2(subject2);
+			dto.setTextarea2(textarea2);
+			dto.setWriter(writer);
+			dto.setDate(date);
 		}
 	}
 	
