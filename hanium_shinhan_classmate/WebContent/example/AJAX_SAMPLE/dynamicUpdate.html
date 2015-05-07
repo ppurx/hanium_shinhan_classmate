@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ 
+  <head>
+    <title>Ajax Dynamic Update</title>
+  
+   
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+ <meta charset="utf-8">
+    <script type="text/javascript">
+        var xmlHttp;
+        function createXMLHttpRequest() {
+            if (window.ActiveXObject) {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } 
+            else if (window.XMLHttpRequest) {
+                xmlHttp = new XMLHttpRequest();                
+            }
+        }
+        
+        function doStart() {
+            createXMLHttpRequest();
+            var url = "ClassProcess.class?task=reset";
+            xmlHttp.open("GET", url, true);
+            xmlHttp.onreadystatechange = startCallback;
+            xmlHttp.send(null);
+        }
+        function startCallback() {
+            if (xmlHttp.readyState == 4) {
+                if (xmlHttp.status == 200) {                    
+                    setTimeout("pollServer()", 5000);
+                    refreshTime();
+                }
+            }
+        }
+        
+        function pollServer() {
+            createXMLHttpRequest();
+            var url = "ClassProcess.class?task=foo";
+            xmlHttp.open("GET", url, true);
+            xmlHttp.onreadystatechange = pollCallback;
+            xmlHttp.send(null);
+        }
+        
+        function refreshTime(){
+            var time_span = document.getElementById("time");
+            var time_val = time_span.innerHTML;
+            var int_val = parseInt(time_val);
+            var new_int_val = int_val - 1;
+            
+            if (new_int_val > -1) {
+                setTimeout("refreshTime()", 1000);
+                time_span.innerHTML = new_int_val;                
+            } else {
+                time_span.innerHTML = 5;
+            }
+        }
+        
+        function pollCallback() {
+            if (xmlHttp.readyState == 4) {
+                if (xmlHttp.status == 200) {                
+                    var message = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data;                    
+                    
+                    if (message != "done") {
+                        var new_row = createRow(message);
+                        var table = document.getElementById("dynamicUpdateArea");
+                        var table_body = table.getElementsByTagName("tbody").item(0);
+                        var first_row = table_body.getElementsByTagName("tr").item(1);
+                        table_body.insertBefore(new_row, first_row);                        
+                        setTimeout("pollServer()", 5000);
+                        refreshTime();
+                    }
+                }
+            }
+        }
+        
+        function createRow(message) {
+            var row = document.createElement("tr");
+            var cell = document.createElement("td");
+            var cell_data = document.createTextNode(message);
+            cell.appendChild(cell_data);
+            row.appendChild(cell);
+            return row;
+        }
+    </script>
+  </head>
+  <body>
+    <h1>Ajax Dynamic Update Example</h1>
+  왜 한글이 안나오는가
+        <input type="button" value="Launch" id="go" onclick="doStart();"/>
+    <p>
+    Page will refresh in <span id="time">5</span> seconds.
+    <p>
+    <table id="dynamicUpdateArea" align="left">
+        <tbody>
+            <tr id="row0"><td></td></tr>
+        </tbody>
+    </table>
+  </body>
+</html>

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -68,5 +69,38 @@ public ClassDAO() {
 		}
 		
 		return classList;
+	}
+	
+	public ArrayList<ClassDTO> searchClass(String idx){
+		ArrayList<ClassDTO> searchClassList = new ArrayList<ClassDTO>();
+		
+		String sql ="select * from CLASS where class_name like '%"+idx+"%'";
+		
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ClassDTO dto = new ClassDTO();
+				dto.setCLASS_ID(rs.getInt("CLASS_ID"));
+				dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
+				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
+				
+				
+				System.out.println("학교명 : "+dto.getCLASS_SCHOOL_NAME()+" 반 이름 : "+dto.getCLASS_NAME());
+				searchClassList.add(dto);
+				
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return searchClassList;
 	}
 }

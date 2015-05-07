@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table border="1">
+    <tbody>
+        <tr>
+            <th>Activity Name</th>
+            <th>Location</th>
+            <th>Time</th>
+        </tr>
+        <tr>
+            <td>Waterskiing</td>
+            <td>Dock #1</td>
+            <td>9:00 AM</td>
+        </tr>    
+        <tr>
+            <td>Volleyball</td>
+            <td>East Court</td>
+            <td>2:00 PM</td>
+        </tr>    
+        <tr>
+            <td>Hiking</td>
+            <td>Trail 3</td>
+            <td>3:30 PM</td>
+        </tr>    
+    </tbody>
+</table>

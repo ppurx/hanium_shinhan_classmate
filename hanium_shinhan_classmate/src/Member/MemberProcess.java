@@ -209,7 +209,7 @@ public class MemberProcess extends HttpServlet {
 		}
 		
 		
-		else if(command !=null &&command.trim().equals("findPass")){
+else if(command !=null &&command.trim().equals("findPass")){
 			
 			
 			request.setCharacterEncoding("euc-kr");
@@ -238,6 +238,13 @@ public class MemberProcess extends HttpServlet {
 				dispatcher.forward(request, response);	
 		}		
 			}
+
+else if(command !=null &&command.trim().equals("chat")){
+	
+		
+	}
+
+	
 		
 		
 		

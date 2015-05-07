@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +9,7 @@
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <meta charset="euc-kr">
 <style type="text/css">
+
 html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
@@ -49,57 +50,57 @@ html, body {height:100%; margin:0; padding:0;}
 	<div style="margin-left:7%; margin-top:6%">
 	<table>
 	<tr>
-		<td align="left" colspan="2"><h2>х╦©Ь ╟║ют</h2></td>
+		<td align="left" colspan="2"><h2>М ▄Л⌡░ Й╟─Л·┘</h2></td>
 	</tr>
 		<tr>
-			<td align="left">юл╦╖</td>
+			<td align="left">Л²╢К╕└</td>
 			<td rowspan="5"><input  data-mini="true" type="text" id="name" name="name"/><input  data-mini="true" id="birth" type="text"name="birth"/><input  data-mini="true" type="text"id="email" name="email"/><input  data-mini="true" type="text"id="school" name="school"/><input  data-mini="true" type="text"id="address" name="address"/></td>
 		</tr>
 		<tr>
-			<td align="left">╩ЩЁБ©Ыюо
+			<td align="left">Л┐²К┘└Л⌡■Л²╪
 		</tr>
 		<tr>
 			<td align="left">E-mail
 		</tr>
 		<tr>
-			<td align="left">гп╠Ё
+			<td align="left">М∙≥Й╣░
 		</tr>
 		<tr>
-			<td align="left">аж╪р
+			<td align="left">Лё╪Л├▄
 		</tr>
 						
 	</table>
 	
 	<table width="80%">
 	<tr>
-		<td align="left" width="13%">©╛╤ТцЁ</td><td width="15%"><input  data-mini="true" type="text" name="tel1"id="tel1"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel2"id="tel2"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel3"id="tel3"/></td>
+		<td align="left" width="13%">Л≈╟К²╫Л╡≤</td><td width="15%"><input  data-mini="true" type="text" name="tel1"id="tel1"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel2"id="tel2"/></td><td width="1%">-</td><td width="15%"><input  data-mini="true" type="text" name="tel3"id="tel3"/></td>
 	</tr>
 	</table>
 	
 	<table style="margin-top:5%">
 		<tr>
 			<td align="left">ID</td>
-			<td><input id="id"  data-mini="true" type="text" name="id"/></td><td><input type="button" data-mini="true"value="аъ╨╧х╝юн"/></td>
+			<td><input id="id"  data-mini="true" type="text" name="id"/></td><td><input type="button" data-mini="true"value="Л╓▒КЁ╣М≥∙Л²╦"/></td>
 		</tr>
 		<tr>
-			<td align="left">╨Я╧п╧Ьхё</td><td><input id="password" data-mini="true" type="password" name="password"/></td>
+			<td align="left">К╧└К╟─К╡┬М≤╦</td><td><input id="password" data-mini="true" type="password" name="password"/></td>
 		</tr>
 		
 						
 	</table>
 	</div>
-	<input style="margin-right:5%"type="button" data-inline="true" value="╟║ют" id="Join_Button"><a href="../student/01-FirstPage.html" data-role="button" data-inline="true" style="margin-left:5%">цК╪р</a>
+	<input style="margin-right:5%"type="button" data-inline="true" value="Й╟─Л·┘" id="Join_Button"><a href="../student/01-FirstPage.html" data-role="button" data-inline="true" style="margin-left:5%">Л╥╗Л├▄</a>
 	</div>
 	</form>
 	
 	
-	<div data-role="popup" data-transition="pop"id="popName" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>юл╦╖ю╩ ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popBirth" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>╩ЩЁБ©Ыюою╩ ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popEmail" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>Emailю╩ ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popSchool" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>гп╠Ё╦╕ ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popAddress" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>аж╪р╦╕ ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popPhone" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>хч╢КфЫ╧Ьхё ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popId" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>ID╦╕ ют╥бго╫ц©ю.</p></div>
-	<div data-role="popup" data-transition="pop"id="popPassword" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>╨Я╧п╧Ьхё╦╕ ют╥бго╫ц©ю.</p></div>
+	<div data-role="popup" data-transition="pop"id="popName" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>Л²╢К╕└Л²└ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popBirth" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>Л┐²К┘└Л⌡■Л²╪Л²└ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popEmail" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>EmailЛ²└ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popSchool" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>М∙≥Й╣░К╔╪ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popAddress" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>Лё╪Л├▄К╔╪ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popPhone" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>М°╢К▄─М▐╟К╡┬М≤╦ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popId" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>IDК╔╪ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
+	<div data-role="popup" data-transition="pop"id="popPassword" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>К╧└К╟─К╡┬М≤╦К╔╪ Л·┘К═╔М∙≤Л▀°Л≤╓.</p></div>
 </body>
 </html>

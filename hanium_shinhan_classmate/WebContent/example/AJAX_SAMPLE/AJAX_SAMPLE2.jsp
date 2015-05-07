@@ -6,32 +6,36 @@
 <script src="/hanium_shinhan_classmate/res/js/prototype.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script>
-  function loading()
-  {
-   var url="/hanium_shinhan_classmate/example/AJAX_SAMPLE/ajax_Test";
-   new Ajax.Request(url,
-   {
-    onLoading  : function() {
-     document.getElementById("loadData").innerHTML += "<br> 로딩중입니다.";
-    },
-    onSuccess  : function(returnValue)
-    {
-     document.getElementById("loadData").innerHTML += "<br>"+returnValue.responseText;
-    },
-    onFailure: function() {
-     document.getElementById("loadData").innerHTML += "<br>불러오기 실패!!";
-    },
-    onComplete : function() {
-     document.getElementById("loadData").innerHTML += "<br>모든 것을 완료하였습니다!";
+<script type="text/javascript">
+var xmlHttp;
+function createXMLHttpRequest() {
+    if (window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } 
+    else if (window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
     }
-   });
-  }
- </script>
+}
+    
+function startRequest() {
+    createXMLHttpRequest();
+    xmlHttp.onreadystatechange = handleStateChange;
+    xmlHttp.open("GET", "../AJAX_SAMPLE/ajax_Test", true);
+    xmlHttp.send(null);
+}
+    
+function handleStateChange() {
+    if(xmlHttp.readyState == 4) {
+        if(xmlHttp.status == 200) {
+            alert("The server replied with: " + xmlHttp.responseText);
+        }
+    }
+}
+</script>
 </head>
 <body>
- <input type="button" value="로딩시작!!!" onClick="loading()">
-  <div id="loadData"></div>
- 
+    <form action="#">
+        <input type="button" value="Start Basic Asynchronous Request" onclick="startRequest();"/>
+    </form>
 </body>
 </html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <property>
+        <address>812 Gwyn Ave</address>
+        <price>$100,000</price>
+        <comments>Quiet, serene neighborhood</comments>
+    </property>    
+    <property>
+        <address>3308 James Ave S</address>
+        <price>$110,000</price>
+        <comments>Close to schools, shopping, entertainment</comments>
+    </property>    
+    <property>
+        <address>98320 County Rd 113</address>
+        <price>$115,000</price>
+        <comments>Small acreage outside of town</comments>
+    </property>    
+</properties>

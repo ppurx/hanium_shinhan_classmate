@@ -1,6 +1,37 @@
 package Class;
 
 public class ClassDTO {
+	
+	
+	public String CHAT_ID;
+	public String getCHAT_ID() {
+		return CHAT_ID;
+	}
+	public void setCHAT_ID(String cHAT_ID) {
+		CHAT_ID = cHAT_ID;
+	}
+	public String getUSER_ID() {
+		return USER_ID;
+	}
+	public void setUSER_ID(String uSER_ID) {
+		USER_ID = uSER_ID;
+	}
+	public String getCHAT_DATE() {
+		return CHAT_DATE;
+	}
+	public void setCHAT_DATE(String cHAT_DATE) {
+		CHAT_DATE = cHAT_DATE;
+	}
+	public String getCHAT_CONTENT() {
+		return CHAT_CONTENT;
+	}
+	public void setCHAT_CONTENT(String cHAT_CONTENT) {
+		CHAT_CONTENT = cHAT_CONTENT;
+	}
+	public String USER_ID;
+	public String CHAT_DATE;
+	public String CHAT_CONTENT;
+	
 	public int getCLASS_ID() {
 		return CLASS_ID;
 	}

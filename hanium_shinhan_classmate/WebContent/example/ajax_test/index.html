@@ -1,0 +1,179 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+<title>
+고객 관리 프로그램!!
+</title>
+</head>
+<body  onLoad="getData();">
+
+<script language="javascript" >
+	var httpReq = null;
+	
+	function getInstance(){
+		var httpReq = null;
+	
+		try{
+			httpReq = new ActiveXObject("Msxml2.XMLHTTP");	
+		} catch(Ex) {
+			try{
+				httpReq = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (Ex2) {
+				httpReq = null;
+			}
+		}
+		return httpReq;	
+	}
+	
+	function insertCustomer(){
+	
+		httpReq = getInstance();
+		
+		var name = document.getElementById("name").value;
+		var age = document.getElementById("age").value;
+		var tel = document.getElementById("tel").value;
+		var addr = document.getElementById("addr").value;
+				
+		var url = "insert_sql.jsp?name=" + name + "&age=" + age + "&tel=" + tel + "&addr=" + addr;
+						
+		httpReq.onreadystatechange = handleInsertCustomer;
+		httpReq.open("GET", url, true);
+		httpReq.send();						
+	}
+	
+	function handleInsertCustomer(){
+		if (httpReq.readyState==4) {		
+			
+			document.inForm.name.value = "";
+			document.inForm.age.value = "";
+			document.inForm.tel.value = "";					
+			document.inForm.addr.value = "";			
+								
+			alert("입력이 완료 되었습니다.!");			
+		}	
+	}
+	
+	
+	function getData(){
+	
+		httpReq = getInstance();			
+				
+		httpReq.open("POST", "../ajax_test/docu.jsp", true);
+		httpReq.onreadystatechange = handleStateChange;
+		httpReq.send();		
+	
+	}
+	
+	function handleStateChange(){
+		if (httpReq.readyState==4) {
+					
+			if(window.ActiveXObject){   //IE일 경우
+		      		xmlDocument = new ActiveXObject('Microsoft.XMLDOM');
+		      		xmlDocument.async = false;
+		      		xmlDocument.loadXML(httpReq.responseText);
+		   	} else if (window.XMLHttpRequest) {   //Firefox, Netscape일 경우
+		      		xmlParser = new DOMParser();
+		      		xmlDocument = xmlParser.parseFromString(httpReq.responseText, 'text/xml');
+		   	} else {
+		      		return null;
+		   	}	   	
+		   			   		   	
+		   		   	 	 						   			   				
+			var customerList = xmlDocument.getElementsByTagName("customer")[0];
+			var customer = customerList.childNodes[0]
+			var writeStr = "";
+			
+			// 기존 테이블 내용 삭제 
+			
+			var customerTBL = document.getElementById("listTable");
+			var tbody = customerTBL.getElementsByTagName("tbody")[0];
+											
+			var tbodyLength = tbody.childNodes.length;
+			
+			for(a = 1; a < tbodyLength; a++){
+				var tmpElement=tbody.lastChild;
+				tbody.removeChild(tmpElement);											
+			}																												
+																		
+						
+			for(i = 0; i < customerList.childNodes.length; i++){
+																	
+				customer  = customerList.childNodes[i];																	
+				
+				var trElement = document.createElement("tr");
+				
+				var tdElement1 = document.createElement("td");
+				var tdElement2 = document.createElement("td");
+				var tdElement3 = document.createElement("td");
+				var tdElement4 = document.createElement("td");
+				
+				var txtElement1 = document.createTextNode(customer.getElementsByTagName("name")[0].childNodes[0].nodeValue);
+				var txtElement2 = document.createTextNode(customer.getElementsByTagName("age")[0].childNodes[0].nodeValue);
+				var txtElement3 = document.createTextNode(customer.getElementsByTagName("tel")[0].childNodes[0].nodeValue);
+				var txtElement4 = document.createTextNode(customer.getElementsByTagName("addr")[0].childNodes[0].nodeValue);
+								
+				tdElement1.appendChild(txtElement1);				
+				tdElement2.appendChild(txtElement2);				
+				tdElement3.appendChild(txtElement3);				
+				tdElement4.appendChild(txtElement4);				
+				
+				trElement.appendChild(tdElement1);
+				trElement.appendChild(tdElement2);
+				trElement.appendChild(tdElement3);
+				trElement.appendChild(tdElement4);																						
+				
+				tbody.appendChild(trElement);
+				customerTBL.appendChild(tbody);												
+			}	
+			setTimeout("getData()", 5000);											
+		}
+	}				
+
+</script>
+
+<h2>사용자 입력 </h2>
+
+<form name="inForm" method="post">
+<table border = 1>
+	<tr>
+		<td width="80" align="center">이름</td>
+		<td width="50" align="center">나이</td>
+		<td width="100" align="center">전화번호</td>	
+		<td width="250" align="center">주소</td>
+	</tr>
+	<tr>
+		<td align="center"><input type="text" size="8" name="name" id="name"></td>
+		<td align="center"><input type="text" size="4" name="age" id="age"></td>
+		<td align="center"><input type="text" size="12" name="tel" id="tel"></td>
+		<td align="center"><input type="text" size="30" name="addr" id="addr"></td>
+	</tr>
+	<tr>
+		<td colspan="4" align="center"> 
+			<input type="button" value="입력" onClick="insertCustomer();">
+		</td>
+	</tr>
+</table>
+
+<br>
+<hr>
+
+<h2> 고객 리스트 !  </h2>
+<table border = 0 width="510"> 
+	<tr>
+		<td align="right"><input type="button" value="가져오기" onClick="getData();"></td>
+	</tr>
+</table>
+<table border = 1 id="listTable">
+	<tr>
+		<td width="80" align="center">이름</td>
+		<td width="50" align="center">나이</td>
+		<td width="100" align="center">전화번호</td>	
+		<td width="250" align="center">주소</td>
+	</tr>
+</table>
+<div id="myDiv"> </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Dynamically Editing Page Content</title>
+<script type="text/javascript">
+var xmlHttp;
+function createXMLHttpRequest() {
+    if (window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } 
+    else if (window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+    }
+}
+    
+function doSearch() {
+    createXMLHttpRequest();
+    xmlHttp.onreadystatechange = handleStateChange;
+    xmlHttp.open("GET", "../AJAX_SAMPLE/dynamicinContent.xml", true);
+    xmlHttp.send(null);
+}
+    
+function handleStateChange() {
+    if(xmlHttp.readyState == 4) {
+        if(xmlHttp.status == 200) {
+            clearPreviousResults();
+            parseResults();
+        }
+    }
+}
+function clearPreviousResults() {
+    var header = document.getElementById("header");
+    if(header.hasChildNodes()) {
+        header.removeChild(header.childNodes[0]);
+    }
+    var tableBody = document.getElementById("resultsBody");
+    while(tableBody.childNodes.length > 0) {
+        tableBody.removeChild(tableBody.childNodes[0]);
+    }
+}
+function parseResults() {
+    var results = xmlHttp.responseXML;
+    var property = null;
+    var address = "";
+    var price = "";
+    var comments = "";
+    var properties = results.getElementsByTagName("property");
+    for(var i = 0; i < properties.length; i++) {
+        property = properties[i];
+        address = property.getElementsByTagName("address")[0].firstChild.nodeValue;
+        price = property.getElementsByTagName("price")[0].firstChild.nodeValue;
+        comments = property.getElementsByTagName("comments")[0].firstChild.nodeValue;
+        
+        addTableRow(address, price, comments);
+    }
+    
+    var header = document.createElement("h2");
+   var headerText = document.createTextNode("Results:");
+   header.appendChild(headerText);
+   document.getElementById("header").appendChild(header);
+    
+   document.getElementById("resultsTable").setAttribute("border", "1");
+}
+
+function addTableRow(address, price, comments) {
+    var row = document.createElement("tr");
+   var cell = createCellWithText(address);
+   row.appendChild(cell);
+    
+    cell = createCellWithText(price);
+    row.appendChild(cell);
+    
+    cell = createCellWithText(comments);
+    row.appendChild(cell);
+    
+    document.getElementById("resultsBody").appendChild(row);
+}
+function createCellWithText(text) {
+    var cell = document.createElement("td");
+    var textNode = document.createTextNode(text);
+    cell.appendChild(textNode);
+    
+    return cell;
+}
+</script>
+</head>
+<body>
+  <h1>Search Real Estate Listings</h1>
+  
+  <form action="#">
+    Show listings from 
+        <select>
+            <option value="50000">$50,000</option>
+            <option value="100000">$100,000</option>
+            <option value="150000">$150,000</option>
+        </select> 
+        to 
+        <select>
+            <option value="100000">$100,000</option>
+            <option value="150000">$150,000</option>
+            <option value="200000">$200,000</option>
+        </select> 
+    <input type="button" value="Search" onclick="doSearch();"/>    
+  </form>
+
+  <span id="header">
+  
+  </span>
+  <table id="resultsTable" width="75%" border="0">
+    <tbody id="resultsBody">
+    </tbody>
+  </table>
+</body>
+</html>

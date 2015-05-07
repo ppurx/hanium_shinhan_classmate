@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="utf-8"%>
+    <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +8,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<meta charset="utf-8">
+<meta charset="euc-kr">
 
  <link rel="stylesheet" href="../../view/swiper.min.css">
  
@@ -49,7 +50,35 @@
         
     }
 </style>
+<script type="text/javascript">
+		var xmlHttp;
+		function createXMLHttpRequest() {
+		    if (window.ActiveXObject) {
+		        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		    } 
+		    else if (window.XMLHttpRequest) {
+		        xmlHttp = new XMLHttpRequest();
+		    }
+		}
+		    
+		function startRequest() {
+		    createXMLHttpRequest();
+		    xmlHttp.onreadystatechange = handleStateChange;
+		    xmlHttp.open("GET", "selectClass.class?idx="+$('#x').val(), true);
+		    xmlHttp.send(null);
+		}
+		    
+		function handleStateChange() {
+		    if(xmlHttp.readyState == 4) {
+		        if(xmlHttp.status == 200) {
+		        	var value=xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data
+		        	alert(value);
+		        }
+		    }
+		}
+	
 
+</script>
 <title>Find Class</title>
 </head>
 <body>
@@ -113,7 +142,7 @@
 
 	<div style="width:85%;margin:20% 7% 0 7%">
 	<table>
-		<tr><td><input  type="search" name="search-5" id="search-5" value="" placeholder="학교 이름"></td><td><input data-mini="true" type="button" value="검색"/></td></tr>
+		<tr><td><input id="x" type="search" name="search-5" id="search-5" placeholder="학교 이름"></td><td><input data-mini="true" onclick="startRequest();" type="button" value="검색" id="search_btn"/></td></tr>
 	</table>
 	</div>
 	

@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+<title>
+고객 관리 프로그램!!
+</title>
+</head>
+<body  onLoad="getData();">
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+
+<script language="javascript" >
+	var httpReq = null;
+	
+	function getInstance(){
+		var httpReq = null;
+	
+		try{
+			httpReq = new ActiveXObject("Msxml2.XMLHTTP");	
+		} catch(Ex) {
+			try{
+				httpReq = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (Ex2) {
+				httpReq = null;
+			}
+		}
+		return httpReq;	
+	}
+	
+	function getData(){
+	
+		httpReq = getInstance();			
+				
+		httpReq.open("POST", "../ajax_test/docu.jsp", true);
+		httpReq.onreadystatechange = handleStateChange;
+		httpReq.send();		
+	
+	}
+	
+	function handleStateChange(){
+		if (httpReq.readyState==4) {
+					
+			if(window.ActiveXObject){   //IE일 경우
+		      		xmlDocument = new ActiveXObject('Microsoft.XMLDOM');
+		      		xmlDocument.async = false;
+		      		xmlDocument.loadXML(httpReq.responseText);
+		   	} else if (window.XMLHttpRequest) {   //Firefox, Netscape일 경우
+		      		xmlParser = new DOMParser();
+		      		xmlDocument = xmlParser.parseFromString(httpReq.responseText, 'text/xml');
+		   	} else {
+		      		return null;
+		   	}	   	
+		   //$('#myDiv').append();
+			setTimeout("getData()", 5000);											
+		}
+	}				
+
+</script>
+
+<h2>사용자 입력 </h2>
+
+<form name="inForm" method="post">
+
+<h2> 고객 리스트 !  </h2>
+<table border = 0 width="510"> 
+	<tr>
+		<td align="right"><input type="button" value="가져오기" onClick="getData();"></td>
+	</tr>
+</table>
+<table border = 1 id="listTable">
+	<tr>
+		<td width="80" align="center">이름</td>
+		<td width="50" align="center">나이</td>
+		<td width="100" align="center">전화번호</td>	
+		<td width="250" align="center">주소</td>
+	</tr>
+</table>
+<div id="myDiv"> </div>
+
+</form>
+</body>
+</html>
