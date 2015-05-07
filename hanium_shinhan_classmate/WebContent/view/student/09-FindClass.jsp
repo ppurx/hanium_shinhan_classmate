@@ -51,33 +51,19 @@
     }
 </style>
 <script type="text/javascript">
-		var xmlHttp;
-		function createXMLHttpRequest() {
-		    if (window.ActiveXObject) {
-		        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-		    } 
-		    else if (window.XMLHttpRequest) {
-		        xmlHttp = new XMLHttpRequest();
-		    }
-		}
-		    
-		function startRequest() {
-		    createXMLHttpRequest();
-		    xmlHttp.onreadystatechange = handleStateChange;
-		    xmlHttp.open("GET", "selectClass.class?idx="+$('#x').val(), true);
-		    xmlHttp.send(null);
-		}
-		    
-		function handleStateChange() {
-		    if(xmlHttp.readyState == 4) {
-		        if(xmlHttp.status == 200) {
-		        	var value=xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data
-		        	alert(value);
-		        }
-		    }
-		}
+$(function(){
 	
-
+	
+	
+	$('#logoutOK').click(function(){			
+		logout.submit();
+	});
+	
+	$('#btn1').click(function(){
+		searchClass.submit()
+	});
+		
+	});
 </script>
 <title>Find Class</title>
 </head>
@@ -139,102 +125,20 @@
 <div data-role="header" data-theme="b" >
     <h1>반 검색</h1>
 </div>
-
+<form id="searchClass" action="searchClass.class" method="post">
 	<div style="width:85%;margin:20% 7% 0 7%">
 	<table>
-		<tr><td><input id="x" type="search" name="search-5" id="search-5" placeholder="학교 이름"></td><td><input data-mini="true" onclick="startRequest();" type="button" value="검색" id="search_btn"/></td></tr>
+		<tr><td><input id="x" type="search" name="x" id="search-5" placeholder="학교 이름"></td><td><input data-mini="true" id="btn1" type="button" value="검색" id="search_btn"/></td></tr>
 	</table>
 	</div>
-	
+	</form>
 	<!-- 게시판 내부 -->
 	<div class="swiper-container">
         <div class="swiper-wrapper">
-            
-            <!-- 페이지 슬라이더 한 디비전 -->
-	<div class="swiper-slide">
-		<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >반 이름</th>
-				<th >선생님</th>
-				<th>가입 인원</th>
-				<th>등록 일자</th>
-			</tr>
-		</thead>
-			<tbody>
-				<tr>
-					<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td align="center">김상현</td>
-					<td align="center">41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				</tbody>
-			</table>
-			</div>
-			
-			<div class="swiper-slide">
-		<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >반 이름</th>
-				<th >선생님</th>
-				<th>가입 인원</th>
-				<th>등록 일자</th>
-			</tr>
-		</thead>
-			<tbody>
-				<tr>
-					<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td align="center">김상현</td>
-					<td align="center">41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				</tbody>
-			</table>
-			</div>
-			
-			
-			</div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
+         
+			</div>       
     </div>
-    
+     
  </div>
 			
 	<script src="../../view/swiper.min.js"></script>
@@ -246,5 +150,6 @@
         paginationClickable: true
     });
     </script>
+   
 </body>
 </html>

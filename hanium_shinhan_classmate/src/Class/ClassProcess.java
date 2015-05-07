@@ -3,6 +3,8 @@ package Class;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -39,6 +41,20 @@ public class ClassProcess extends HttpServlet{
 			response.sendRedirect("../teacher/05-teacher_main.jsp");
 			
 		}
+		
+		else if(command !=null &&command.trim().equals("searchClass")){
+			request.setCharacterEncoding("EUC-KR");
+			 String idx = request.getParameter("x");	
+			 ClassDAO dao = new ClassDAO();
+			 ArrayList<ClassDTO> ClassList = new ArrayList<ClassDTO>();
+			 ClassList = dao.searchClass(idx);
+			 
+			 request.setAttribute("ClassList", ClassList);
+			 RequestDispatcher dispatcher = request.getRequestDispatcher("../student/09-FindClass_result.jsp");
+			dispatcher.forward(request, response);
+	        
+			
+		}
 	}
 			
 	
@@ -66,16 +82,6 @@ public class ClassProcess extends HttpServlet{
 	        message=idx;
 	        System.out.println(message);
 	        
-	        res = "<message>" + message + "</message>";
-	        response.setContentType("text/html; charset=utf-8"); 
-	        PrintWriter out = response.getWriter();
-	        response.setContentType("text/xml; charset=utf-8");
-	        response.setHeader("Cache-Control", "no-cache");
-	        response.setCharacterEncoding("utf-8");
-	        out.println("<response>");
-	        out.println(res);
-	        out.println("</response>");
-	        out.close();
 			
 		}
 		

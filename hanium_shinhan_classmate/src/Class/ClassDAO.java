@@ -104,7 +104,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 	public ArrayList<ClassDTO> searchClass(String idx){
 		ArrayList<ClassDTO> searchClassList = new ArrayList<ClassDTO>();
 		
-		String sql ="select * from CLASS where class_name like '%"+idx+"%'";
+		String sql ="select * from CLASS where class_school_name like '%"+idx+"%'";
 		
 		try {
 			
