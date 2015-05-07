@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+     <%@page import="Class.ClassDAO"%>
+     <%@page import="Class.ClassDTO"%>
+    <%@ page import="java.util.ArrayList"%>  
+    <!-- jstl taglig 선언 -->
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
@@ -18,11 +25,30 @@ html, body {height:100%; margin:0; padding:0;}
     top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-cout
+@font-face {
+  font-family: 'Nanum Brush Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/nanumpenscript/v4/NanumPenScript-Regular.ttf) format('truetype');
+}
 </style>
+
+<script type="text/javascript">
+
+</script>
 <title>teacher main</title>
 </head>
 <body>
+<%
+			ClassDAO dao = new ClassDAO();
+			ArrayList<ClassDTO> List = dao.selectClassList_Teacher((String)session.getAttribute("id"));
+			request.setAttribute("List",List);
+			
+	%>	
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -65,19 +91,32 @@ cout
         </form>
 </div>
 	<table align="center" style="margin-top:20%">
-		<tr>
-			<td><img src="/hanium_shinhan_classmate/res/chok1.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok2.png" width="90%"/></td>
-		</tr>
-		<tr>
-			<td><img src="/hanium_shinhan_classmate/res/chok3.png" width="90%"/></td><td><img src="/hanium_shinhan_classmate/res/chok4.png" width="90%"/></td>
-		</tr>
+		<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+			<c:if test="${i.index%2 == 0}">		
+			<tr>		
+				<td width="230px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  ">
+				<div style="position:relative;">
+				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font> <br>
+				<font size="4"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></div></td>
+			
+			</c:if>
+			<c:if test="${i.index%2 != 0 }">
+				<td width="230px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  ">
+				<div style="position:relative;">
+				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font> <br>
+				<font size="4"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></div></td>
+			</tr>
+			</c:if>
+		
+		</c:forEach>
 	</table>
 	
 	
 	 
 	
 	<div style="margin:15% 7% 0 7%">
-	<a data-role="button" data-ajax="false" href="../teacher/06-MakeClass.html">반 개설</a>
+	<a data-role="button" data-ajax="false" href="../teacher/06-MakeClass.jsp" id="btn1">반 개설</a>
 	
 	</div>
 	</div>

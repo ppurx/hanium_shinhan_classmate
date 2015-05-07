@@ -47,14 +47,34 @@ html, body {height:100%; margin:0; padding:0;}
 <form name="join" action="StuJoin.member" method="post">
 	<div id="myCenterDiv">
 	
-	<div style="margin-left:7%; margin-top:6%">
-	<table>
-	<tr>
-		<td align="left" colspan="2"><h2>회원 가입</h2></td>
-	</tr>
+	<div style="margin-left:7%; margin-top:0%">
+	
+	<table >
+		<tr>
+			<td align="left" ><h2>회원 가입</h2></td>
+		</tr>
+		<tr>
+		<td></td><td width="62%" align="right"><fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="job" name="job"> 
+			<legend></legend> 
+				<label for="am_h">학생</label> 
+				<input type="radio" name="job" id="am_h" value="0" checked="checked"/> 
+				<label for="pm_h">선생님</label> 
+				<input type="radio" name="job" id="pm_h" value=1 />
+			</fieldset></td>
+		</tr>
+	</table>
+	
+	
+	
+	
+	<table width="80%">
+	
+	
+		
 		<tr>
 			<td align="left">이름</td>
 			<td rowspan="5"><input  data-mini="true" type="text" id="name" name="name"/><input  data-mini="true" id="birth" type="text"name="birth"/><input  data-mini="true" type="text"id="email" name="email"/><input  data-mini="true" type="text"id="school" name="school"/><input  data-mini="true" type="text"id="address" name="address"/></td>
+		
 		</tr>
 		<tr>
 			<td align="left">생년월일

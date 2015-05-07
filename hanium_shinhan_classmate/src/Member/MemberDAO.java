@@ -51,7 +51,7 @@ public class MemberDAO {
 		pstmt.setString(6, dto.getSchool());
 		pstmt.setString(7, dto.getEmail());
 		pstmt.setInt(8,1);
-		pstmt.setInt(9,1);
+		pstmt.setInt(9,dto.getToken());
 		
 		
 		int x = pstmt.executeUpdate();

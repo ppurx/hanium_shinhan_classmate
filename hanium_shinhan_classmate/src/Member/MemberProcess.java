@@ -85,6 +85,7 @@ public class MemberProcess extends HttpServlet {
 			String tel1 = request.getParameter("tel1");
 			String tel2 = request.getParameter("tel2");
 			String tel3 = request.getParameter("tel3");
+			int token = Integer.parseInt(request.getParameter("job"));
 			
 		
 			String name = request.getParameter("name");	
@@ -107,6 +108,7 @@ public class MemberProcess extends HttpServlet {
 			dto.setTel1(tel1);
 			dto.setTel2(tel2);
 			dto.setTel3(tel3);
+			dto.setToken(token);
 			
 			MemberDAO dao = new MemberDAO();
 			
@@ -152,7 +154,14 @@ public class MemberProcess extends HttpServlet {
 			response.setContentType("text/html; charset=euc-kr");
 			
 			if(re_dto.getName()==null)response.sendRedirect("../student/02-Login_fail.html");
-			else response.sendRedirect("../student/08-Stu_main(1).jsp");
+			else 
+			{
+				if(re_dto.getJob()=="ÇÐ»ý")
+					response.sendRedirect("../student/08-Stu_main(1).jsp");
+				else if(re_dto.getJob()=="¼±»ý´Ô")
+					response.sendRedirect("../teacher/05-teacher_main.jsp");
+			}
+			
 			}
 			catch(Exception e){
 				response.sendRedirect("../student/02-Login_fail.html");

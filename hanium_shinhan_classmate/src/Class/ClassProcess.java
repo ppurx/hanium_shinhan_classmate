@@ -16,7 +16,29 @@ public class ClassProcess extends HttpServlet{
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		String uri = request.getRequestURI();
+		System.out.println("uri : " + uri);
+		
+		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".class"));
 		// TODO Auto-generated method stub
+		if(command !=null &&command.trim().equals("createClass")){
+			request.setCharacterEncoding("EUC-KR");
+			
+			//현재 존재하는 세션을 가져오거나 없다면 새로 생성
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			ClassDTO dto = new ClassDTO();
+			dto.setCLASS_SCHOOL_NAME(request.getParameter("schoolName"));
+			dto.setCLASS_NAME(request.getParameter("ClassName"));
+			dto.setUSER_ID(id);
+			
+			ClassDAO dao = new ClassDAO();
+			dao.createClass(dto);
+			
+			response.sendRedirect("../teacher/05-teacher_main.jsp");
+			
+		}
 	}
 			
 	
@@ -57,6 +79,7 @@ public class ClassProcess extends HttpServlet{
 			
 		}
 		
-    }
 		
+		
+    }		
 }

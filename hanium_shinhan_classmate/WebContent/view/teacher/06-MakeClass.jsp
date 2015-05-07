@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
@@ -25,7 +27,11 @@ jQuery(function(){ // on DOM load
 		$('div#touchgallery1').touchgallery({  // initialize first demo
 			width: 300,
 			height: 230
-		})
+		});
+		
+		$('#btn1').click(function(){			
+			createClass.submit();
+		});
 		
 	})
 </script>
@@ -75,11 +81,11 @@ jQuery(function(){ // on DOM load
 		
         </form>
 </div>
-
+<form id="createClass" action="createClass.class" method="post">
     <div style="margin-left:10%; margin-right:10%; margin-top:25%">
     
-    		<input type="text" placeholder="학교이름">
-    		<input type="text" placeholder="반 이름">
+    		<input type="text" placeholder="학교이름" name="schoolName">
+    		<input type="text" placeholder="반 이름" name="ClassName">
 		
 	</div>
 	
@@ -99,7 +105,7 @@ jQuery(function(){ // on DOM load
 	<table align="center" >
 		<tr>
 			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">중복확인</a></td>
-			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">&nbsp&nbsp개&nbsp&nbsp설&nbsp&nbsp</a></td>
+			<td width="30%" align="center"><a id="btn1"href="#" data-role="button" data-inline="true">&nbsp&nbsp개&nbsp&nbsp설&nbsp&nbsp</a></td>
 		</tr>
 		
 	</table>
@@ -116,6 +122,6 @@ jQuery(function(){ // on DOM load
 
 
 	
-	
+	</form>
 </body>
 </html>

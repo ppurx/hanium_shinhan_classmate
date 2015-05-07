@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,34 +43,63 @@ public ClassDAO() {
 	}
 	
 
-	public ArrayList<ClassDTO> selectClassList(String id){
-		ArrayList<ClassDTO> classList = new ArrayList<ClassDTO>();
+public ArrayList<ClassDTO> selectClassList(String id){
+	ArrayList<ClassDTO> classList = new ArrayList<ClassDTO>();
+	
+	String sql ="select * from CLASS,LIST where CLASS.CLASS_ID=LIST.CLASS_ID and LIST.USER_ID='"+id+"'";
+	
+	try {
 		
-		String sql ="select * from CLASS,LIST where CLASS.CLASS_ID=LIST.CLASS_ID and LIST.USER_ID='"+id+"'";
+		Statement stmt = conn.createStatement();
 		
-		try {
-			
-			Statement stmt = conn.createStatement();
-			
-			ResultSet rs = stmt.executeQuery(sql);			
-			
-			while(rs.next()){
-				ClassDTO dto = new ClassDTO();
-				dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NALE"));
-				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
-				classList.add(dto);
-				
-			}
-			
-			
+		ResultSet rs = stmt.executeQuery(sql);			
+		
+		while(rs.next()){
+			ClassDTO dto = new ClassDTO();
+			dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
+			dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
+			classList.add(dto);
 			
 		}
-		catch(SQLException e){
-			System.out.println(e);
-		}
 		
-		return classList;
+		
+		
 	}
+	catch(SQLException e){
+		System.out.println(e);
+	}
+	
+	return classList;
+}
+
+public ArrayList<ClassDTO> selectClassList_Teacher(String id){
+	ArrayList<ClassDTO> classList = new ArrayList<ClassDTO>();
+	
+	String sql ="select * from CLASS where CLASS.USER_ID='"+id+"'";
+	
+	try {
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(sql);			
+		
+		while(rs.next()){
+			ClassDTO dto = new ClassDTO();
+			dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
+			dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
+			classList.add(dto);
+			
+		}
+		
+		
+		
+	}
+	catch(SQLException e){
+		System.out.println(e);
+	}
+	
+	return classList;
+}
 	
 	public ArrayList<ClassDTO> searchClass(String idx){
 		ArrayList<ClassDTO> searchClassList = new ArrayList<ClassDTO>();
@@ -102,5 +132,41 @@ public ClassDAO() {
 		}
 		
 		return searchClassList;
+	}
+	
+	public boolean createClass(ClassDTO dto){
+		boolean check;
+		check=false;
+		String query = "Insert INTO CLASS(CLASS_SCHOOL_NAME,CLASS_NAME,CLASS_CONTENT,USER_ID) values (?,?,?,?)";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			
+			pstmt.setString(1,dto.getCLASS_SCHOOL_NAME());			
+			pstmt.setString(2,dto.getCLASS_NAME());			
+			pstmt.setString(3, "클래스컨텐트를넣어야한다");
+			pstmt.setString(4, dto.getUSER_ID());
+			
+			
+			int x = pstmt.executeUpdate();
+			
+			if(x<1) {
+				System.out.println("정상적으로 저장되지 않았습니다.");
+			} else {
+				check = true;
+			}
+			
+			pstmt.close();			
+			
+				check = true;
+			}catch(SQLException ex) {
+				System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+				check = false;
+			}
+		
+		
+		
+		return check;
 	}
 }
