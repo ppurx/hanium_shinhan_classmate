@@ -17,6 +17,7 @@ public class ComDAO1 {
         return instance;
     }
 	private static Connection conn;
+	private String CLASS_ID;
 	public ComDAO1() {
 				
 		
@@ -35,20 +36,43 @@ public class ComDAO1 {
 	
 	}
 	
+	public String selectClass_ID(ComDTO1 dto){
+		
+		
+		String sql = "select * from LIST where USER_ID ='"+dto.getUSER_ID()+"'";
+			try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			System.out.println(rs.getString("CLASS_ID"));
+			if(rs.next()){
+				CLASS_ID=rs.getString("CLASS_ID");
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return CLASS_ID;
+	}
 	
 	public boolean insertNOTICE(ComDTO1 dto){
-		String query = "Insert INTO NOTICE(CLASS_ID,NOTICE_REGI_DATE,NOTICE_HIT,NOTICE_CONTENT,NOTICE_TITLE) values (?,?,?,?,?)";
+		String query = "Insert INTO NOTICE(CLASS_ID,NOTICE_CONTENT,NOTICE_TITLE) values (?,?,?)";
 	    boolean check = false;
 		
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(query);	
-		
-		pstmt.setString(1,"1");
-		pstmt.setString(2,"1");
-		pstmt.setString(3,"1");
+		ComDAO1 dao = new ComDAO1();
+		System.out.println(dto.getUSER_ID());
+		String y = dao.selectClass_ID(dto);
+		System.out.println(y);
+		pstmt.setString(1,dto.getUSER_ID());
 	
-		pstmt.setString(4,dto.getContent());
-		pstmt.setString(5,dto.getTitle());
+		pstmt.setString(2,dto.getContent());
+		pstmt.setString(3,dto.getTitle());
 		
 		
 		int x = pstmt.executeUpdate();
@@ -82,10 +106,9 @@ public class ComDAO1 {
 			while(rs.next()){
 				ComDTO1 dto = new ComDTO1();
 				dto.setTitle(rs.getString("NOTICE_TITLE"));
+				dto.setClass_ID(rs.getString("CLASS_ID"));
 				selectList.add(dto);
-				
-				System.out.println(dto.getTitle());
-			}
+							}
 			
 			
 			

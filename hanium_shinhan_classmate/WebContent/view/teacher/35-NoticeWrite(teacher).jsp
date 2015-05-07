@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+      <%@page import="COM.ComDAO1"%>
+     <%@page import="COM.ComDTO1"%>
+    <%@ page import="java.util.ArrayList"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +45,7 @@ html, body {height:100%; margin:0; padding:0;}
 <title>p35</title>
 </head>
 <body>
+
 <form name="notice" action="Tnotice.com1" method="post">
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">

@@ -136,7 +136,7 @@
 		<tr>
 		
 			<th style=text-align:center;><a href="3"><c:out value="${Lists.getTitle()}"/></a></th>
-			<td style=text-align:center;><c:out value="admin"/></td>
+			<td style=text-align:center;><a href="3"><c:out value="${Lists.getClass_ID()}"/></a></td>
 			<td style=text-align:center;><c:out value="2015"/></td>
 			<td style=text-align:center;><c:out value="3"/></td>
 		</tr>
@@ -151,7 +151,7 @@
 			<div class="swiper-pagination"></div>
 			</div>
 			<div style="margin-top:20%; float:right; margin-right:5%">
-			<input type="button" data-inline="true" value="답변하기" onclick="location.href='../teacher/35-NoticeWrite(teacher).html'" style="float:right;margin-top:20%">
+			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/35-NoticeWrite(teacher).jsp'" style="float:right;margin-top:20%">
 		</div>
 			
 	</div>

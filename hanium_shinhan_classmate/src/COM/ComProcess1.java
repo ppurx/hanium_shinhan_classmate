@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ComProcess1 extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -22,9 +23,11 @@ public class ComProcess1 extends HttpServlet{
 			
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
 			ComDTO1 dto = new ComDTO1();
 			
+			dto.setUSER_ID(id);
 			dto.setContent(content);
 			dto.setTitle(title);
 			

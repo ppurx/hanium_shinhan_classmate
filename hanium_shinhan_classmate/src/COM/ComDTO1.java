@@ -19,11 +19,25 @@ public class ComDTO1 {
 	String content;
 	private String title;
 	private String subject;
+	public String getUSER_ID() {
+		return USER_ID;
+	}
+	public void setUSER_ID(String uSER_ID) {
+		USER_ID = uSER_ID;
+	}
+	private String USER_ID;
+	public String getClass_ID() {
+		return Class_ID;
+	}
+	public void setClass_ID(String class_ID) {
+		Class_ID = class_ID;
+	}
+	private String Class_ID;
 	public String getSubject() {
 		return subject;
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
+    
 }
