@@ -45,4 +45,33 @@ public class ComDTO2 {
 	String writer;
 	String date;
 	String textarea2;
+	
+	String subject3;
+	public String getSubject3() {
+		return subject3;
+	}
+	public void setSubject3(String subject3) {
+		this.subject3 = subject3;
+	}
+	public String getTextarea3() {
+		return textarea3;
+	}
+	public void setTextarea3(String textarea3) {
+		this.textarea3 = textarea3;
+	}
+	public String getWriter2() {
+		return writer2;
+	}
+	public void setWriter2(String writer2) {
+		this.writer2 = writer2;
+	}
+	public String getDate2() {
+		return date2;
+	}
+	public void setDate2(String date2) {
+		this.date2 = date2;
+	}
+	String textarea3;
+	String writer2;
+	String date2;
 }

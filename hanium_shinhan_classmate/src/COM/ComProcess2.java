@@ -59,6 +59,32 @@ public class ComProcess2 extends HttpServlet{
 			dto.setWriter(writer);
 			dto.setDate(date);
 		}
+		
+		else if(command !=null &&command.trim().equals("boardUpdate")){
+			request.setCharacterEncoding("utf-8");
+			
+			String subject3 = request.getParameter("subject3");
+			String writer2 = request.getParameter("writer2");
+			String date2 = request.getParameter("date2");
+			String textarea3 = request.getParameter("textarea3");
+			
+			ComDTO2 dto = new ComDTO2();
+			
+			dto.setSubject3(subject3);
+			dto.setTextarea3(textarea3);
+			dto.setWriter2(writer2);
+			dto.setDate2(date2);
+			
+			ComDAO2 dao = new ComDAO2();
+			
+			boolean bool = dao.updateBoard(dto);
+			
+			if(bool){
+				response.sendRedirect("../../Success.html");
+			}else{
+				response.sendRedirect("../../Fail.html");
+			}
+		}
 	}
 	
 }

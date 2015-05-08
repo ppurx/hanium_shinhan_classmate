@@ -58,12 +58,15 @@ public class ComDAO2 {
 			
 			
 				check = true;
-			}catch(SQLException ex) {
-				System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
-				check = false;
-			}
-			return check;
 		}
+		catch(SQLException ex) {
+				
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+				
+			check = false;
+		}
+			return check;
+	}
 	
 	
 	public ComDTO2 selectTest(){
@@ -120,5 +123,75 @@ public class ComDAO2 {
 		}
 				
 		return selectList;
+	}
+	
+	
+	public boolean deleteBoard(ComDTO2 dto){
+		String query = "delete from BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT) values (?,?,?) where board_id = 30";
+		boolean check = false;
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			
+			pstmt.setString(1, "1");
+			pstmt.setString(1, dto.getSubject2());
+			pstmt.setString(1, dto.getTextarea2());
+			
+			int x = pstmt.executeUpdate();
+			
+			if(x<1) {
+				System.out.println("정상적으로 저장되지 않았습니다.");
+			} else {
+				check = true;
+			}
+			
+			pstmt.close();
+			
+			
+				check = true;
+		}
+		catch(SQLException ex) {
+			
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+				
+			check = false;
+		}
+			return check;
+	}
+	
+	
+	public boolean updateBoard(ComDTO2 dto){
+		String query = "update set BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT) values (?,?,?) where board_id = 30";
+		boolean check = false;
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			
+			pstmt.setString(1, "1");
+			pstmt.setString(1, dto.getSubject3());
+			pstmt.setString(1, dto.getTextarea3());
+			
+			int x = pstmt.executeUpdate();
+			
+			if(x<1) {
+				System.out.println("정상적으로 저장되지 않았습니다.");
+			} else {
+				check = true;
+			}
+			
+			pstmt.close();
+			
+			
+				check = true;
+		}
+		catch(SQLException ex) {
+			
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+				
+			check = false;
+		}
+			return check;
 	}
 }
