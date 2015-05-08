@@ -119,5 +119,29 @@ public class ComDAO1 {
 				
 		return selectList;
 	}
+	public ComDTO1 select(){
+		ComDTO1 dto = new ComDTO1();
+		String sql = "select * from NOTICE";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				
+				dto.setTitle(rs.getString("NOTICE_TITLE"));
+				dto.setContent(rs.getString("NOTICE_CONTENT"));
+							}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return dto;
+	}
+	
 	}
 

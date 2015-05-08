@@ -8,14 +8,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+<meta charset="utf-8">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="jPaginate - jQuery Pagination Plugin" />
+        <meta name="keywords" content="jquery, plugin, pagination, fancy" />
+        
+        <link rel="stylesheet" type="text/css" href="/hanium_shinhan_classmate/view/test/style.css" media="screen"/>
  <link rel="stylesheet" href="../../view/swiper.min.css">
 <style type="text/css">
-
 #myCenterDiv {
     position:absolute; 
     left:0%;   
@@ -31,7 +35,7 @@
     
     .swiper-container {
         width: 100%;
-        height: 55%;
+        height: 45%;
     }
     .swiper-slide {
         text-align: center;
@@ -55,16 +59,16 @@
         
     }
 </style>
-<title>34p</title>
-</head>
-<body>
 
+<title>notice</title>
+</head>
+<body><!-- 툴바 -->
 <%
 			ComDAO1 dao = new ComDAO1();
 			ArrayList<ComDTO1> List = dao.selectTest();
 			request.setAttribute("List",List);
 			
-	%>	
+	%>
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	
@@ -115,22 +119,26 @@
 		
         </form>
 </div>
-	<div data-role="header" data-theme="b" >
-    <h1>공지하기</h1>
-	</div>
+
+<!-- //툴바 -->
+
+<div data-role="header" data-theme="b" >
+    <h1>공지사항</h1>
+</div>
 	
-	
-	<div class="swiper-container" style="margin-top:5%">
+	<div class="swiper-container" style="margin-top:20%">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
+        
+        
+            <div class="swiper-slide">            
             
-	<table style="width:95%; margin-top:50px; "  data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
 			<tr>
-				<th style=text-align:center;>제목</th>
-				<th style=text-align:center;>등록자</th>
-				<th style=text-align:center;>등록일</th>
-				<th style=text-align:center;>날짜</th>
+				<th >제목</th>
+				<th >등록자</th>
+				<th>등록일</th>
+				<th>조회수</th>
 			</tr>
 </thead>
 <c:if test="${List.size() == 0 }">
@@ -142,31 +150,28 @@
 </c:if>
 	<tbody>
 		<c:forEach var="Lists"  items="${List}" >
-		 		
+	
 		<tr>
-		
-			<th style=text-align:center;><a href="3"><c:out value="${Lists.getTitle()}"/></a></th>
+		    <th style=text-align:center;><a href="3"><c:out value="${Lists.getTitle()}"/></a></th>
 			<td style=text-align:center;><a href="3"><c:out value="${Lists.getClass_ID()}"/></a></td>
 			<td style=text-align:center;><c:out value="2015"/></td>
 			<td style=text-align:center;><c:out value="3"/></td>
 		</tr>
-		
-		</c:forEach>
+			</c:forEach>
 		</tbody>
 	</table>
-		
-			</div>
-			<div class="swiper-slide"></div>
-			</div>
-			<div class="swiper-pagination"></div>
-			</div>
-			<div style="margin-top:20%; float:right; margin-right:5%">
-			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/35-NoticeWrite(teacher).jsp'" style="float:right;margin-top:20%">
-		</div>
-			
+	
+	</div>
+	<div class="swiper-slide">    
 	</div>
 	
-			
+	</div>
+	<div class="swiper-pagination"></div>
+	
+	</div>
+	
+        
+	</div>
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->

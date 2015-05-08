@@ -108,7 +108,7 @@ html, body {height:100%; margin:0; padding:0;}
 	</tr>
 	<tr >
 		<td colspan="2">
-		<a  data-ajax="false"style="margin-right:15%" href="../teacher/34-Notice(teacher).html" data-role="button" data-inline="true" >목록</a>
+		<a  data-ajax="false"style="margin-right:15%" href="../teacher/34-Notice(teacher)1.jsp" data-role="button" data-inline="true" >목록</a>
 		<a data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true" id="Enrollment" >등록</a></td>
 		</tr>
 	</table>

@@ -8,14 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
- <link rel="stylesheet" href="../../view/swiper.min.css">
+<meta charset="utf-8">
+ 
 <style type="text/css">
-
+html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
     left:0%;   
@@ -24,48 +24,29 @@
     background-color:#fafbd3;
 }
 
-    html, body {
-        position: relative;
-        height: 100%;
-    }
-    
-    .swiper-container {
-        width: 100%;
-        height: 55%;
-    }
-    .swiper-slide {
-        text-align: center;
-      
-        background: #fafbd3;
 
-        /* Center slide text vertically */
-         display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-        
-    }
+
+
+
 </style>
-<title>34p</title>
+<script type="text/javascript">
+	window.onload = function(){
+		​$("textarea").​​​​​​height(400);
+		
+	};
+</script>
+<title>notice2</title>
 </head>
 <body>
 
-<%
+	<%
 			ComDAO1 dao = new ComDAO1();
-			ArrayList<ComDTO1> List = dao.selectTest();
-			request.setAttribute("List",List);
+			ComDTO1 dto = new ComDTO1();
+			dto = dao.select();
 			
 	%>	
 	<div id="myCenterDiv">
+	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
 	
 	<!-- 로그아웃 확인-->
@@ -115,66 +96,54 @@
 		
         </form>
 </div>
+
+<!-- //툴바 -->
 	<div data-role="header" data-theme="b" >
-    <h1>공지하기</h1>
-	</div>
+    <h1>공지사항</h1>
+</div>
 	
-	
-	<div class="swiper-container" style="margin-top:5%">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-            
-	<table style="width:95%; margin-top:50px; "  data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th style=text-align:center;>제목</th>
-				<th style=text-align:center;>등록자</th>
-				<th style=text-align:center;>등록일</th>
-				<th style=text-align:center;>날짜</th>
-			</tr>
-</thead>
+
+
+<div style="margin-top:20%">
 <c:if test="${List.size() == 0 }">
 <tfoot>
      <tr>
           <td colspan="3">현재 데이터가 없습니다.</td>
      </tr>
 </tfoot>
+
 </c:if>
-	<tbody>
-		<c:forEach var="Lists"  items="${List}" >
-		 		
-		<tr>
-		
-			<th style=text-align:center;><a href="3"><c:out value="${Lists.getTitle()}"/></a></th>
-			<td style=text-align:center;><a href="3"><c:out value="${Lists.getClass_ID()}"/></a></td>
-			<td style=text-align:center;><c:out value="2015"/></td>
-			<td style=text-align:center;><c:out value="3"/></td>
-		</tr>
-		
-		</c:forEach>
-		</tbody>
+	<table style="width:90%; margin-top:3%">
+	<tr>
+		<td><font style="float:middle" size="5" face="Impact"><b>제목 : </b></font></td>
+		<td><font style="float:left"><%=dto.getTitle() %></font></td>
+	</tr>
+	<tr>
+		<td><font size="5" face="Impact"><b>작성자 : </b></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font size="5" face="Impact"><b>작성일 : </b></font></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><font size="5" face="Impact"><b>내용 : </b></font></td>
+		<td><font style="float:left"><%=dto.getContent() %></font></td>
+	</tr>
+	
+	<td></td>
+	</tr>
+	
 	</table>
+	
 		
-			</div>
-			<div class="swiper-slide"></div>
-			</div>
-			<div class="swiper-pagination"></div>
-			</div>
-			<div style="margin-top:20%; float:right; margin-right:5%">
-			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/35-NoticeWrite(teacher).jsp'" style="float:right;margin-top:20%">
-		</div>
-			
+	
+	 <a data-ajax="false"href="/hanium_shinhan_classmate/view/student/22-notice1.jsp" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
 	</div>
 	
-			
-	<script src="../../view/swiper.min.js"></script>
+	
+	
 
-    <!-- Initialize Swiper -->
-    <script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true
-    });
-    </script>
+	</div>
 </body>
 </html>
