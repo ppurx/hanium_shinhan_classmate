@@ -104,7 +104,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 	public ArrayList<ClassDTO> searchClass(String idx){
 		ArrayList<ClassDTO> searchClassList = new ArrayList<ClassDTO>();
 		
-		String sql ="select * from CLASS where class_school_name like '%"+idx+"%'";
+		String sql ="select * from CLASS,USER where class_school_name like '%"+idx+"%' and CLASS.USER_ID=USER.USER_ID";
 		
 		try {
 			
@@ -117,6 +117,9 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 				dto.setCLASS_ID(rs.getInt("CLASS_ID"));
 				dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
 				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
+				dto.setCLASS_FOUND_DATE(rs.getString("CLASS_FOUND_DATE"));
+				dto.setTEACHER_NAME(rs.getString("USER_NAME"));
+				dto.setCLASS_FOUND_DATE(rs.getString("CLASS_FOUND_DATE").substring(0,10));
 				
 				
 				System.out.println("학교명 : "+dto.getCLASS_SCHOOL_NAME()+" 반 이름 : "+dto.getCLASS_NAME());
@@ -168,5 +171,36 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		
 		
 		return check;
+	}
+	
+	public ClassDTO selectClass(String idx){
+			String sql = "select * from CLASS,USER where CLASS_ID='"+idx+"' and CLASS.USER_ID=USER.USER_ID";
+			ClassDTO dto = new ClassDTO();
+			try {
+				
+				Statement stmt = conn.createStatement();
+				
+				ResultSet rs = stmt.executeQuery(sql);			
+				
+				if(rs.next()){
+					
+					dto.setCLASS_ID(rs.getInt("CLASS_ID"));
+					dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
+					dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
+					dto.setTEACHER_NAME(rs.getString("USER_NAME"));
+					dto.setCLASS_CONTENT(rs.getString("CLASS_CONTENT"));
+					dto.setCLASS_FOUND_DATE(rs.getString("CLASS_FOUND_DATE").substring(0,10));
+					
+					
+				}
+				
+				
+				
+			}
+			catch(SQLException e){
+				System.out.println(e);
+			}
+			
+		return dto;
 	}
 }

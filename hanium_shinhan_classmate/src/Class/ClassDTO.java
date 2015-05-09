@@ -2,7 +2,13 @@ package Class;
 
 public class ClassDTO {
 	
-	
+	public String TEACHER_NAME;
+	public String getTEACHER_NAME() {
+		return TEACHER_NAME;
+	}
+	public void setTEACHER_NAME(String tEACHER_NAME) {
+		TEACHER_NAME = tEACHER_NAME;
+	}
 	public String CHAT_ID;
 	public String getCHAT_ID() {
 		return CHAT_ID;

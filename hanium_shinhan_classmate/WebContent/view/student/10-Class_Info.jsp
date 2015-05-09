@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+    <%@page import="Class.ClassDAO"%>
+     <%@page import="Class.ClassDTO"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +16,7 @@ html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
     left:0%;   
-    text-align: center;
+    text-align:center;
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
@@ -31,7 +35,12 @@ html, body {height:100%; margin:0; padding:0;}
 <title>first page</title>
 </head>
 <body>
-
+<%
+	String idx = request.getParameter("idx");
+	ClassDTO dto = new ClassDTO();
+	ClassDAO dao = new ClassDAO();
+	dto = dao.selectClass(idx);
+%>
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
@@ -74,34 +83,30 @@ html, body {height:100%; margin:0; padding:0;}
 </div>
 
 
-	<div style="margin-top:20%">
+	<div style="margin-top:5%">
 	
-		<table style="width:90%"   align="center">
-	
-		<tr>
-			<td align="left" width="30%"><img src="/hanium_shinhan_classmate/res/Class_Name.PNG"/></td><td><font size="6">신한대학교</font></td>
-		</tr>
-		</table>
-		
-		<table style="width:90%"   align="center">
-		<tr >
-			<td align="left" width="25%"><img src="/hanium_shinhan_classmate/res/Class_Teacher.PNG"/></td>
-			<td align="left"><font>정동수</font></td>
-		</tr>
-		</table>
-		
-	<table style="width:90%"   align="center">
-		<tr>
-			<td align="left"><img src="/hanium_shinhan_classmate/res/Class_Subject.PNG"/></td>
-			
-		</tr>
-		<tr>
-			<td colspan="2" align="left">풀이 돋고 이상의 꽃이 피고 희망의 놀이 뜨고 열락의 새가 운다사랑의 풀이 없으면 인간은 사막이다 오아이스도 없는 사막이다 보이는 끝까지 찾아다녀도 목숨이 있는 때까지 방황하여도 보이는 것은 거친 모래뿐일 것이다 이상의 꽃이</td>
-		</tr>
-	
-	<tr>
-		<td colspan="2" align="right"><a href="#" data-role="button" data-inline="true" style="margin-top:15%">가입 신청</a></td>
-	</tr>
+		<table style="width:90%; margin-left:7%" align="left" >
+			<tr>
+				<td align="left" colspan="2"><font size="6" style="font-weight:bolder">학교 이름 : <%=dto.getCLASS_SCHOOL_NAME() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="6" style="font-weight:bolder">반 이름 : <%=dto.getCLASS_NAME() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="4" style="font-weight:bolder">선생님 : <%=dto.getTEACHER_NAME() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="4" style="font-weight:bolder">개설 날짜 : <%=dto.getCLASS_FOUND_DATE() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="4" style="font-weight:bolder">개요</font></td>
+			</tr>			
+			<tr>
+				<td width="5%"></td><td align="left"><font size="3" > <%=dto.getCLASS_CONTENT() %></font></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right"><a href="#" data-role="button" data-inline="true" style="margin-top:15%">가입 신청</a></td>
+			</tr>
 	</table>
 	
 	
