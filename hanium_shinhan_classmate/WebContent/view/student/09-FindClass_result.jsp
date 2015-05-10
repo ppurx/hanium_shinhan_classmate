@@ -74,7 +74,9 @@ $(function(){
 <body>
 <%
 ArrayList<ClassDTO> List= (ArrayList<ClassDTO>)request.getAttribute("ClassList");
+
 request.setAttribute("List",List);
+//다시 배열 유지?
 %>
 <div id="myCenterDiv">
 <!-- 툴바 -->
@@ -139,7 +141,7 @@ request.setAttribute("List",List);
 	</table>
 	</div>
 	</form>	
-		
+		<!-- 여기부터 -->
 		<div class="swiper-container">
         <div class="swiper-wrapper">
     
@@ -213,6 +215,6 @@ request.setAttribute("List",List);
         paginationClickable: true
     });
     </script>
-   
+   <!-- 여기까지 복사 -->
 </body>
 </html>

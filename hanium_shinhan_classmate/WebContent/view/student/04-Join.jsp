@@ -39,7 +39,36 @@ html, body {height:100%; margin:0; padding:0;}
 		})
 		});
 </script>
+<script type="text/javascript">
+		var xmlHttp;
+		function createXMLHttpRequest() {
+		    if (window.ActiveXObject) {
+		        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		    } 
+		    else if (window.XMLHttpRequest) {
+		        xmlHttp = new XMLHttpRequest();
+		    }
+		}
+		    
+		function startRequest() {
+		    createXMLHttpRequest();
+		    xmlHttp.onreadystatechange = handleStateChange;
+		    xmlHttp.open("GET", "check.member?idx="+$('#id').val(), true);
+		    xmlHttp.send(null);
+		}
+		    
+		function handleStateChange() {
+		    if(xmlHttp.readyState == 4) {
+		        if(xmlHttp.status == 200) {
+		        	  var mes = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data;
+		        	 
+		        	alert(mes);
+		        }
+		    }
+		}
+	
 
+</script>
 
 <title>first page</title>
 </head>
@@ -100,7 +129,7 @@ html, body {height:100%; margin:0; padding:0;}
 	<table style="margin-top:5%">
 		<tr>
 			<td align="left">ID</td>
-			<td><input id="id"  data-mini="true" type="text" name="id"/></td><td><input type="button" data-mini="true"value="중복확인"/></td>
+			<td><input id="id"  data-mini="true" type="text" name="id"/></td><td><input type="button" onclick="startRequest();" data-mini="true"value="중복확인"/></td>
 		</tr>
 		<tr>
 			<td align="left">비밀번호</td><td><input id="password" data-mini="true" type="password" name="password"/></td>

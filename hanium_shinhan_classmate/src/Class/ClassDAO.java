@@ -118,7 +118,6 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 				dto.setCLASS_ID(rs.getInt("CLASS_ID"));
 				dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
 				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
-				dto.setCLASS_FOUND_DATE(rs.getString("CLASS_FOUND_DATE"));
 				dto.setTEACHER_NAME(rs.getString("USER_NAME"));
 				dto.setCLASS_FOUND_DATE(rs.getString("CLASS_FOUND_DATE").substring(0,10));
 				

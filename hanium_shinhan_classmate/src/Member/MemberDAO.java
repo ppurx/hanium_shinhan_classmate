@@ -216,6 +216,30 @@ public class MemberDAO {
 		return selectList;
 	}
 	
+	public boolean checkID(String idx){
+		
+		String sql = "select * from USER where USER_ID='"+idx+"'";
+		boolean check=false;
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				//중복시
+				check=false;
+			}
+			else{
+				//미중복시
+				check=true;
+			}			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		return check;
+	}
+	
 	
 	
 	

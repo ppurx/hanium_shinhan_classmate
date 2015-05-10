@@ -1,6 +1,7 @@
 package Member;
 
 import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,28 @@ public class MemberProcess extends HttpServlet {
 			
 			
 		}
+		else if(command !=null &&command.trim().equals("check")){
+			request.setCharacterEncoding("euc-kr");
+			MemberDAO dao = new MemberDAO();
+			boolean check = dao.checkID(request.getParameter("idx"));
+			System.out.println(check);
+			request.setAttribute("check", check);
+			 PrintWriter out = response.getWriter();
+
+
+			 response.setContentType("text/xml");
+		        response.setHeader("Cache-Control", "no-cache");
+		        String message = Boolean.toString(check);
+		        
+		       
+		        out.println("<response>");
+		        out.println("<passed>" + Boolean.toString(check) + "</passed>");
+		        out.println("<message>" + message + "</message>");
+		        out.println("</response>");
+		        out.close();
+
+
+			}
 		
 		// TODO Auto-generated method stub
 		
@@ -248,10 +271,7 @@ else if(command !=null &&command.trim().equals("findPass")){
 		}		
 			}
 
-else if(command !=null &&command.trim().equals("chat")){
-	
 		
-	}
 
 	
 		

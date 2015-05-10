@@ -44,12 +44,16 @@ public class ClassProcess extends HttpServlet{
 		
 		else if(command !=null &&command.trim().equals("searchClass")){
 			request.setCharacterEncoding("EUC-KR");
-			 String idx = request.getParameter("x");	
+			//HttpSession session = request.getSession();
+			//String idx1 = (String) session.getAttribute("CLASS_ID");
+			 String idx = request.getParameter("x");	//검색어 idx로 받아옴
 			 ClassDAO dao = new ClassDAO();
+			 
 			 ArrayList<ClassDTO> ClassList = new ArrayList<ClassDTO>();
 			 ClassList = dao.searchClass(idx);
 			 
 			 request.setAttribute("ClassList", ClassList);
+			//최종 연산된 값들을 url로 이동 전달
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("../student/09-FindClass_result.jsp");
 			dispatcher.forward(request, response);
 	        
