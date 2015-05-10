@@ -32,9 +32,14 @@ jQuery(function(){ // on DOM load
 		$('#btn1').click(function(){			
 			createClass.submit();
 		});
+		$('#logoutOK').click(function(){			
+			logout.submit();
+		});
+		
 		
 	})
 </script>
+
 <title>Make_Class</title>
 </head>
 <body>
@@ -44,7 +49,7 @@ jQuery(function(){ // on DOM load
      top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;">
     
-    <!-- 툴바 -->
+	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
 	
 	<!-- 로그아웃 확인-->
@@ -66,16 +71,19 @@ jQuery(function(){ // on DOM load
 	</div><!-- /header -->
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
-            <ul data-role="listview">
-                <li><a data-ajax="false"  href="../student/12-study.jsp">학습하기</a></li>
-                <li><a data-ajax="false"  href="../student/15-QandA(student).jsp">Q&A</a></li>
-                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp">My Page</a></li>
-                <li><a data-ajax="false"  href="../student/22-notice1.jsp">공지사항</a></li>
-                <li><a data-ajax="false"  href="../student/24-board2.jsp">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).jsp">반 채팅</a></li>
-        </ul>
+              <ul data-role="listview">
+			<li style="margin-top:8%"><a  data-ajax="false" href="../teacher/27-Question.jsp">학습부여</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/32-Q&A(teacher).jsp">Q&A</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/28-twobutton.jsp">반 관리</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/34-Notice(teacher).jsp">공지사항</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/24-board2.jsp">자유게시판</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/31-MyInformation(teacher).jsp">내 정보</a></li>
+			<li style="margin-top:8%"><a  data-ajax="false" href="../teacher/37-Chat(teacher).jsp">반 채팅</a></li>
+			</ul>
 
-</div>
+	</div>
+	
+	<!-- /툴바 -->
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
         <form class="userform" method="post" action="logout.member" name="logout">
             <table align="center" width="95%" style="margin-top:7%">

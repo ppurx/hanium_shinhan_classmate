@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<meta charset="utf-8">
 
- <link rel="stylesheet" href="../../view/swiper.min.css">
- 
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../view/swiper.min.css">
 <style type="text/css">
-html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
     left:0%;   
@@ -34,7 +34,7 @@ html, body {height:100%; margin:0; padding:0;}
         background: #fafbd3;
 
         /* Center slide text vertically */
-        display: -webkit-box;
+         display: -webkit-box;
         display: -ms-flexbox;
         display: -webkit-flex;
         display: flex;
@@ -47,18 +47,19 @@ html, body {height:100%; margin:0; padding:0;}
         -ms-flex-align: center;
         -webkit-align-items: center;
         align-items: center;
+        
     }
-
-
-
 </style>
 
-<title>Find Class</title>
+<title>29page</title>
+
 </head>
+
+
 <body>
 
-<div id="myCenterDiv">
-<div data-role="header"style="background-color:#04B486;">
+	<div id="myCenterDiv">
+	<div data-role="header"style="background-color:#04B486;">
 	<h1>CLASSMATE</h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
@@ -98,106 +99,57 @@ html, body {height:100%; margin:0; padding:0;}
 		
         </form>
 </div>
+	
 <div data-role="header" data-theme="b" >
-    <h1>반 검색</h1>
+    <h1>가입승인</h1>
+</div>
+<div style="margin-top:70px">
+<h1>가입 신청 현황</h1>
 </div>
 
-	<div style="width:85%;margin:20% 7% 0 7%">
-		<input  type="search" name="search-5" id="search-5" value="" placeholder="반 이름">
-	</div>
-	
-	<!-- 게시판 내부 -->
-	<div class="swiper-container">
+<div class="swiper-container">
         <div class="swiper-wrapper">
-            
-            <!-- 페이지 슬라이더 한 디비전 -->
-	<div class="swiper-slide">
-		<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >반 이름</th>
-				<th >선생님</th>
-				<th>가입 인원</th>
-				<th>등록 일자</th>
-			</tr>
-		</thead>
-			<tbody>
-				<tr>
-					<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td align="center">김상현</td>
-					<td align="center">41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				</tbody>
-			</table>
-			</div>
-			
-			<div class="swiper-slide">
-		<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >반 이름</th>
-				<th >선생님</th>
-				<th>가입 인원</th>
-				<th>등록 일자</th>
-			</tr>
-		</thead>
-			<tbody>
-				<tr>
-					<td><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td align="center">김상현</td>
-					<td align="center">41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				<tr>
-					<th><a href="/hanium_shinhan_classmate/view/10-Class_Info.html">신한대학교</a></th>
-					<td>김상현</td>
-					<td>41</td>
-					<td>2014-2-1</td>
-				</tr>
-				</tbody>
-			</table>
-			</div>
-			
-			
-			</div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-    </div>
-    
- </div>
-			
-	<script src="../../view/swiper.min.js"></script>
+            <div class="swiper-slide">
+
+ <TABLE style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a" > 
+ <THEAD> <TR> <TH style=" background-color:lightgrey; "><center>신청자</center></TH>
+ <TH style=" background-color:lightgrey; "><center>연락처</center></TH> 
+ <TH style=" background-color:lightgrey; "><center>신청날짜</center></TH>  
+ <TH style=" background-color:lightgrey; "><center>가입승인여부</center>
+ </TR></THEAD> 
+ <TBODY> 
+ <TR> 
+ <TH></TH> 
+ <TD></TD> 
+ <TD></TD><TD >
+ <center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">승인</BUTTON>
+  <BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">거절</BUTTON></center>
+</TD></TR> <TR> 
+<TH></TH> 
+<TD></TD> <TD></TD> 
+  <TD>
+  <center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">승인</BUTTON>
+  <BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">거절</BUTTON></center>
+</TD></TR> <TR> <TH></TH> 
+ <TD></TD> 
+ <TD></TD><TD>
+ <center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">승인</BUTTON>
+  <BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">거절</BUTTON></center>
+</TD></TR></TBODY></TABLE> 
+
+</div>
+
+</div>
+<div class="swiper-pagination"></div>
+</div>
+
+
+
+</div>
+
+
+<!-- Swiper JS -->
+    <script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -206,5 +158,6 @@ html, body {height:100%; margin:0; padding:0;}
         paginationClickable: true
     });
     </script>
+   
 </body>
 </html>

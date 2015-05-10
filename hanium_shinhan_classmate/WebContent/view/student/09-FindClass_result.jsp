@@ -159,7 +159,7 @@ request.setAttribute("List",List);
 		
 				<tr>
 					<th><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></th> 
-					<td><a href="../student/10-Class_Info.jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></td>
+					<td><a data-ajax="false" href="../student/10-Class_Info.jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></td>
 					<td><c:out value="${Lists.getTEACHER_NAME()}"/></td>
 					<td><c:out value="${Lists.getCLASS_FOUND_DATE()}"/></td>
 				</tr>	

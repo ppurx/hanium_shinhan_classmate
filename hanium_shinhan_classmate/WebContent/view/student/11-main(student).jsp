@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +27,11 @@ html, body {height:100%; margin:0; padding:0;}
 
 <title>Main</title>
 </head>
+
+<%
+	String class_id = request.getParameter("idx");
+	session.setAttribute("CLASS_ID",class_id);
+%>
 <body>
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
@@ -65,6 +72,7 @@ html, body {height:100%; margin:0; padding:0;}
 </div>
 	<div style="margin-top:10%; margin-left:50px; margin-right:30px">
 	<table id=movie-table class=ui-responsive data-role="table" data-mode="toggle">
+	
 		<tr>
 			<td><a data-ajax="false"  href="../student/12-study.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Study.png" width=60px; height=60px;></a></td>
 			<td><a data-ajax="false"  href="../student/12-study.html"><font color="skyblue"><H1>학습하기</H1></font></a></td>

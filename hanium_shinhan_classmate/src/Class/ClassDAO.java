@@ -56,6 +56,7 @@ public ArrayList<ClassDTO> selectClassList(String id){
 		
 		while(rs.next()){
 			ClassDTO dto = new ClassDTO();
+			dto.setCLASS_ID(rs.getInt("CLASS_ID"));
 			dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
 			dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
 			classList.add(dto);
@@ -202,5 +203,38 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			}
 			
 		return dto;
+	}
+	
+	public boolean candidate(ClassDTO dto){
+		String query = "insert into CANDIDATE(CLASS_ID,USER_ID) values(?,?);";
+				
+		boolean check;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			
+			pstmt.setInt(1,dto.getCLASS_ID());			
+			pstmt.setString(2,dto.getUSER_ID());			
+						
+			
+			int x = pstmt.executeUpdate();
+			
+			if(x<1) {
+				System.out.println("정상적으로 저장되지 않았습니다.");
+			} else {
+				check = true;
+			}
+			
+			pstmt.close();			
+			
+				check = true;
+			}catch(SQLException ex) {
+				System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+				check = false;
+			}
+		
+		
+		
+		return check;
 	}
 }

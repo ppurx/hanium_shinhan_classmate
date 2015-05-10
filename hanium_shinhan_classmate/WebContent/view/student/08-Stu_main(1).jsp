@@ -130,15 +130,16 @@ $(function(){
 			<c:if test="${i.index%2 == 0}">		
 			<tr>		
 				<td width="230px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  ">
-				<div style="position:relative;">
-				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font> <br>
+				<div style="position:relative;"><a href="../student/11-main(student).jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>">
+				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font></a> <br>
 				<font size="4"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></div></td>
 			
 			</c:if>
 			<c:if test="${i.index%2 != 0 }">
 				<td width="230px" height="150px"style="background-repeat: no-repeat;background-size:100%; position:relative;background-image: url(/hanium_shinhan_classmate/res/chok3.png);  ">
 				<div style="position:relative;">
-				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font> <br>
+				<a href="../student/11-main(student).jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>">
+				<font size="6"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></font></a> <br>
 				<font size="4"  style="color:white; font-family:Nanum Brush Script;"><c:out value="${Lists.getCLASS_NAME()}"/></font></div></td>
 			</tr>
 			</c:if>

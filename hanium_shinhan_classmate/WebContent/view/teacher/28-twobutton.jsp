@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,18 +73,18 @@ html, body {height:100%; margin:0; padding:0;}
     <h1>반 관리</h1>
 </div>
    <table>
-   <tr><a data-ajax="false" href="../teacher/29-Classmanagement.html"><img style="margin-top:60px; margin-right:11px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/28--1.PNG"/></a>
+   <tr><a data-ajax="false" href="../teacher/29-Classmanagement.jsp"><img style="margin-top:60px; margin-right:11px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/28--1.PNG"/></a>
    </tr>
      <div style="margin:0% 16% 0 16%">
-	 <input  data-ajax="false"type="button" value="가입 승인" style=" font-weight:bold; background-color:darkgray " data-mini="true" onclick="location.href='../teacher/29-Classmanagement.html'">
+	 <input  data-ajax="false"type="button" value="가입 승인" style=" font-weight:bold; background-color:darkgray " data-mini="true" onclick="location.href='../teacher/29-Classmanagement.jsp'">
 	
 	</div>
     </table>
      <table>
-   <tr><a  data-ajax="false"href="../teacher/30-StudentManagement.html"><img style="margin-top:80px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/28--2.PNG"/></a>
+   <tr><a  data-ajax="false"href="../teacher/30-StudentManagement.jsp"><img style="margin-top:80px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/28--2.PNG"/></a>
    </tr>
      <div style="margin:0% 16% 0 16%">
-	 <input  data-ajax="false"type="button" value="학생 역량 관리" style="font-weight:bold; background-color:darkgray " data-mini="true" onclick="location.href='../teacher/30-StudentManagement.html'">
+	 <input  data-ajax="false"type="button" value="학생 역량 관리" style="font-weight:bold; background-color:darkgray " data-mini="true" onclick="location.href='../teacher/30-StudentManagement.jsp'">
 	</div>
     </table>
 	</div>

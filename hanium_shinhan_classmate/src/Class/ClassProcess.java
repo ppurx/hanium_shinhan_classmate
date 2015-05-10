@@ -55,6 +55,19 @@ public class ClassProcess extends HttpServlet{
 	        
 			
 		}
+		else if(command !=null &&command.trim().equals("candidate")){
+			boolean check;
+			request.setCharacterEncoding("EUC-KR");
+			ClassDAO dao = new ClassDAO();
+			ClassDTO dto = new ClassDTO();
+			HttpSession session = request.getSession();
+	        dto.setUSER_ID((String)session.getAttribute("id"));
+	        dto.setCLASS_ID(Integer.parseInt(request.getParameter("CLASS_ID")));
+	        check=dao.candidate(dto);
+	        response.sendRedirect("../student/08-Stu_main(1).jsp");
+			
+			
+		}
 	}
 			
 	
