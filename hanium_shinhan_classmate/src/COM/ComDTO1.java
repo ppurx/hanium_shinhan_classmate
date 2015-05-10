@@ -19,6 +19,13 @@ public class ComDTO1 {
 	String content;
 	private String title;
 	private String subject;
+	public String getREGI_DATE() {
+		return REGI_DATE;
+	}
+	public void setREGI_DATE(String rEGI_DATE) {
+		REGI_DATE = rEGI_DATE;
+	}
+	private String REGI_DATE;
 	public String getUSER_ID() {
 		return USER_ID;
 	}

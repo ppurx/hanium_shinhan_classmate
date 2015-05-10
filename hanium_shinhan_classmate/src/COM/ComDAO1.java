@@ -104,6 +104,7 @@ public class ComDAO1 {
 			ResultSet rs = stmt.executeQuery(sql);			
 			
 			while(rs.next()){
+				System.out.println("asdf");
 				ComDTO1 dto = new ComDTO1();
 				dto.setTitle(rs.getString("NOTICE_TITLE"));
 				dto.setClass_ID(rs.getString("CLASS_ID"));
@@ -141,6 +142,34 @@ public class ComDAO1 {
 		}
 				
 		return dto;
+	}
+	public ArrayList<ComDTO1> selectNotice(String idx){
+		ArrayList<ComDTO1> selectList1 = new ArrayList<ComDTO1>();
+		System.out.println(idx);
+		String sql = "select * from NOTICE,CLASS,USER where NOTICE.CLASS_ID=CLASS.CLASS_ID and CLASS.USER_ID=USER.USER_ID and CLASS.CLASS_ID='"+idx+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ComDTO1 dto = new ComDTO1();
+				dto.setTitle(rs.getString("NOTICE_TITLE"));
+				dto.setClass_ID(rs.getString("CLASS_ID"));
+				dto.setREGI_DATE(rs.getString("NOTICE_REGI_DATE").substring(0,10));
+				System.out.println(dto.getREGI_DATE());
+				System.out.println(rs.getString("NOTICE_TITLE"));
+				selectList1.add(dto);
+				}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList1;
 	}
 	
 	}
