@@ -23,21 +23,31 @@ html, body {height:100%; margin:0; padding:0;}
 
 <script type="text/javascript">
 	$(function(){
+		<%request.setAttribute("check",0); %>
 		$('#Join_Button').click(function(){
 			
 			if($('#name').val()=='')$("#popName").popup("open");
-			if($('#birth').val()=='')$("#popBirth").popup("open");
-			if($('#email').val()=='')$("#popEmail").popup("open");
-			if($('#school').val()=='')$("#popSchool").popup("open");
-			if($('#address').val()=='')$("#popAddress").popup("open");
-			if(($('#tel1').val()=='')||($('#tel2').val()=='')||($('#tel3').val()==''))$("#popPhone").popup("open");
-			if($('#id').val()=='')$("#popId").popup("open");
-			if($('#password').val()=='')$("#popPassword").popup("open");
+			else if($('#birth').val()=='')$("#popBirth").popup("open");
+			else if($('#email').val()=='')$("#popEmail").popup("open");
+			else if($('#school').val()=='')$("#popSchool").popup("open");
+			else if($('#address').val()=='')$("#popAddress").popup("open");
+			else if(($('#tel1').val()=='')||($('#tel2').val()=='')||($('#tel3').val()==''))$("#popPhone").popup("open");
+			
+			else if($('#password').val()=='')$("#popPassword").popup("open");
+			else if(check==0)$("#popIDCheck").popup("open");
 			else join.submit();
 				
+			
 		
 		})
-		});
+		$('#checkID').click(function(){
+			startRequest();
+			alert("후"+check);
+		})
+		$('#cID').click(function(){
+			check=1;
+		})
+	});
 </script>
 <script type="text/javascript">
 		var xmlHttp;
@@ -60,19 +70,35 @@ html, body {height:100%; margin:0; padding:0;}
 		function handleStateChange() {
 		    if(xmlHttp.readyState == 4) {
 		        if(xmlHttp.status == 200) {
-		        	  var mes = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data;
-		        	 
-		        	alert(mes);
+		        	var mes = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data;
+		        	if(mes==1){
+		        		check=1;
+		        	alert(check);}
+		        	else{
+		        		check=0;
+		        	alert(check);}
+		        	
 		        }
 		    }
 		}
 	
-
 </script>
 
 <title>first page</title>
 </head>
 <body>
+<!-- 아이디 중복확인-->
+	<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" >
+	
+	    <div role="main" class="ui-content" style=" text-align: center;">		
+			<h3 style="margin:auto">로그아웃 하시겠습니까?</h3>
+			<p> </p>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="cID">&nbspYES&nbsp</a>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-left:8%" data-rel="back">&nbsp&nbspNO&nbsp&nbsp</a>
+							        
+	    </div>
+	</div>
+	<!-- //아이디 중복확인 -->
 <form name="join" action="StuJoin.member" method="post">
 	<div id="myCenterDiv">
 	
@@ -129,7 +155,8 @@ html, body {height:100%; margin:0; padding:0;}
 	<table style="margin-top:5%">
 		<tr>
 			<td align="left">ID</td>
-			<td><input id="id"  data-mini="true" type="text" name="id"/></td><td><input type="button" onclick="startRequest();" data-mini="true"value="중복확인"/></td>
+			
+			<td><input id="id"  data-mini="true" type="text" name="id"/></td><td><input type="button" id="checkID" data-mini="true"value="중복확인"/></td>
 		</tr>
 		<tr>
 			<td align="left">비밀번호</td><td><input id="password" data-mini="true" type="password" name="password"/></td>
@@ -142,7 +169,7 @@ html, body {height:100%; margin:0; padding:0;}
 	</div>
 	</form>
 	
-	
+	<div data-role="popup" data-transition="pop"id="popIDCheck" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>ID중복확인을 해주십시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popName" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>이름을 입력하시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popBirth" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>생년월일을 입력하시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popEmail" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>Email을 입력하시오.</p></div>

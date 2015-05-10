@@ -36,7 +36,7 @@ public class ComProcess3 extends HttpServlet{
 			boolean bool = dao.insertMEMO(dto);
 			
 			if(bool){
-				response.sendRedirect("../../Success.html");
+				response.sendRedirect("../student/15-QandA(student).jsp");
 			} else
 			{
 				response.sendRedirect("../../Fail.html");

@@ -147,7 +147,7 @@
 	<div class="swiper-pagination"></div>
 	</div>
 	
-	<div style="float:right"><a href="../student/17-question.html" role="button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="flip">쪽지 보내기</a></div>
+	<div style="float:right"><a href="../student/17-Question.jsp" role="button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="flip">쪽지 보내기</a></div>
 	
         
 		

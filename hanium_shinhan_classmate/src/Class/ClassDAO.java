@@ -86,6 +86,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		
 		while(rs.next()){
 			ClassDTO dto = new ClassDTO();
+			dto.setCLASS_ID(Integer.parseInt(rs.getString("CLASS_ID")));
 			dto.setCLASS_SCHOOL_NAME(rs.getString("CLASS_SCHOOL_NAME"));
 			dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
 			classList.add(dto);

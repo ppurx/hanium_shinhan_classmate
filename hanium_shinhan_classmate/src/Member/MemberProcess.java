@@ -41,6 +41,10 @@ public class MemberProcess extends HttpServlet {
 		        response.setHeader("Cache-Control", "no-cache");
 		        String message = Boolean.toString(check);
 		        
+		        if(check)
+		        	message="1";
+		        else
+		        	message="0";
 		       
 		        out.println("<response>");
 		        out.println("<passed>" + Boolean.toString(check) + "</passed>");

@@ -35,7 +35,7 @@ html, body {height:100%; margin:0; padding:0;}
 <body>
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
-	<h1>CLASSMATE</h1>
+	<h1>CLASSMATE<%=session.getAttribute("CLASS_ID") %></h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
 		
