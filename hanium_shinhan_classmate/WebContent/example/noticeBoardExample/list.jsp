@@ -92,7 +92,8 @@
 		
 		
 		%>
-			<tr><td><%=num %></td><td><a href="view.jsp?idx=<%=num%>"><%=subject %></a></td><td><%=writer %></td><td><%=date %></td></tr>
+			<tr><td><%=num %></td><td><a href="view.jsp?idx=<%=num%>">
+			<%=subject %></a></td><td><%=writer %></td><td><%=date %></td></tr>
 	
 		<%--
 		}	

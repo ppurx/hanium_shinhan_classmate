@@ -107,7 +107,7 @@ public class MemberProcess extends HttpServlet {
 		*/
 		
 		if(command !=null &&command.trim().equals("StuJoin")){
-			request.setCharacterEncoding("euc-kr");
+			request.setCharacterEncoding("utf-8");
 			
 			String tel1 = request.getParameter("tel1");
 			String tel2 = request.getParameter("tel2");

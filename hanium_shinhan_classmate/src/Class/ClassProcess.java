@@ -25,7 +25,7 @@ public class ClassProcess extends HttpServlet{
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".class"));
 		// TODO Auto-generated method stub
 		if(command !=null &&command.trim().equals("createClass")){
-			request.setCharacterEncoding("EUC-KR");
+			request.setCharacterEncoding("utf-8");
 			
 			//현재 존재하는 세션을 가져오거나 없다면 새로 생성
 			HttpSession session = request.getSession();
@@ -72,6 +72,8 @@ public class ClassProcess extends HttpServlet{
 			
 			
 		}
+		
+		
 	}
 			
 	
@@ -101,6 +103,23 @@ public class ClassProcess extends HttpServlet{
 	        
 			
 		}
+		
+		else if(command !=null &&command.trim().equals("canOK")){
+			
+			request.setCharacterEncoding("EUC-KR");
+			String idx = request.getParameter("idx");
+			HttpSession session = request.getSession();
+			String idx2 = (String) session.getAttribute("CLASS_ID");
+			
+			ClassDAO dao = new ClassDAO();
+			dao.CanOK(idx,idx2);
+			response.sendRedirect("../teacher//29-Classmanagement.jsp");
+	       
+			
+			
+		}
+		
+		
 		
 		
 		

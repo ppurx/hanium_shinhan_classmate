@@ -149,7 +149,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 			pstmt.setString(1,dto.getCLASS_SCHOOL_NAME());			
 			pstmt.setString(2,dto.getCLASS_NAME());			
-			pstmt.setString(3, "클래스컨텐트를넣어야한다");
+			pstmt.setString(3, "개요 기본값");
 			pstmt.setString(4, dto.getUSER_ID());
 			
 			
@@ -236,5 +236,86 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		
 		
 		return check;
+	}
+	
+	public ArrayList<ClassDTO> selectCan(String idx){
+		ArrayList<ClassDTO> searchClassList = new ArrayList<ClassDTO>();
+		String can_name;
+		String sql ="select * from CANDIDATE where CAN_APPROVAL=0 and CLASS_ID='"+idx+"'";
+		
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				ClassDTO dto = new ClassDTO();
+				dto.setCan_User(rs.getString("USER_ID"));
+				dto.setCLASS_ID(rs.getInt("CLASS_ID"));				
+				dto.setCan_Date(rs.getString("CAN_DATE").substring(0,10));
+				can_name=selectTest(rs.getString("USER_ID"));
+				dto.setCan_name(can_name);
+				searchClassList.add(dto);
+				
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return searchClassList;
+	}
+	
+	public String selectTest(String idx){
+		String user_name="";
+		
+		String sql = "select * from USER where USER_ID='"+idx+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				user_name=rs.getString("USER_NAME");
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return user_name;
+	}
+	
+	public void CanOK(String idx,String idx2){		
+		String sql = "update CANDIDATE set CAN_APPROVAL=1 where CLASS_ID="+idx2+" and USER_ID='"+idx+"'";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			
+			pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+		String sql2 = "insert into LIST values(?,?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql2);	
+			pstmt.setString(1,idx2);
+			pstmt.setString(2, idx);
+			pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+			
+	}
+	
+	public void canS(String idx,String idx2){
+		
+		
 	}
 }

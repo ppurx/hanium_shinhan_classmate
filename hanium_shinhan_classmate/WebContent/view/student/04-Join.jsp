@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,7 +23,8 @@ html, body {height:100%; margin:0; padding:0;}
 
 <script type="text/javascript">
 	$(function(){
-		<%request.setAttribute("check",0); %>
+		check=0;
+		
 		$('#Join_Button').click(function(){
 			
 			if($('#name').val()=='')$("#popName").popup("open");
@@ -34,6 +35,7 @@ html, body {height:100%; margin:0; padding:0;}
 			else if(($('#tel1').val()=='')||($('#tel2').val()=='')||($('#tel3').val()==''))$("#popPhone").popup("open");
 			
 			else if($('#password').val()=='')$("#popPassword").popup("open");
+			else if($('#password').val()=='')$("#popPassword").popup("open");
 			else if(check==0)$("#popIDCheck").popup("open");
 			else join.submit();
 				
@@ -42,10 +44,11 @@ html, body {height:100%; margin:0; padding:0;}
 		})
 		$('#checkID').click(function(){
 			startRequest();
-			alert("후"+check);
+			
 		})
 		$('#cID').click(function(){
 			check=1;
+			$('#popupDialog').popup("close");	
 		})
 	});
 </script>
@@ -71,12 +74,15 @@ html, body {height:100%; margin:0; padding:0;}
 		    if(xmlHttp.readyState == 4) {
 		        if(xmlHttp.status == 200) {
 		        	var mes = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data;
+		        	
+		        	
 		        	if(mes==1){
-		        		check=1;
-		        	alert(check);}
+		        		$('#popupDialog').popup("open");		        		
+		        		}
 		        	else{
-		        		check=0;
-		        	alert(check);}
+		        		$('#popIDCheckFail').popup("open");
+		        		check=0;}
+		        	
 		        	
 		        }
 		    }
@@ -87,18 +93,19 @@ html, body {height:100%; margin:0; padding:0;}
 <title>first page</title>
 </head>
 <body>
+<%request.setAttribute("check",0); %>
 <!-- 아이디 중복확인-->
 	<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" >
 	
 	    <div role="main" class="ui-content" style=" text-align: center;">		
-			<h3 style="margin:auto">로그아웃 하시겠습니까?</h3>
+			<h3 style="margin:auto">이 아이디를 사용하시겠습니까?</h3>
 			<p> </p>
 				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="cID">&nbspYES&nbsp</a>
 				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-left:8%" data-rel="back">&nbsp&nbspNO&nbsp&nbsp</a>
 							        
 	    </div>
 	</div>
-	<!-- //아이디 중복확인 -->
+<!-- //아이디 중복확인 -->
 <form name="join" action="StuJoin.member" method="post">
 	<div id="myCenterDiv">
 	
@@ -168,7 +175,7 @@ html, body {height:100%; margin:0; padding:0;}
 	<input style="margin-right:5%"type="button" data-inline="true" value="가입" id="Join_Button"><a href="../student/01-FirstPage.html" data-role="button" data-inline="true" style="margin-left:5%">취소</a>
 	</div>
 	</form>
-	
+	<div data-role="popup" data-transition="pop"id="popIDCheckFail" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>다른 ID를 입력해주십시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popIDCheck" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>ID중복확인을 해주십시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popName" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>이름을 입력하시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popBirth" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>생년월일을 입력하시오.</p></div>

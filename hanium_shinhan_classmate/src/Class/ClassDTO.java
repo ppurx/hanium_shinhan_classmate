@@ -2,6 +2,28 @@ package Class;
 
 public class ClassDTO {
 	
+	public String Can_name;
+	public String getCan_name() {
+		return Can_name;
+	}
+	public void setCan_name(String can_name) {
+		Can_name = can_name;
+	}
+	public String Can_User;
+	public String getCan_User() {
+		return Can_User;
+	}
+	public void setCan_User(String can_User) {
+		Can_User = can_User;
+	}
+	public String getCan_Date() {
+		return Can_Date;
+	}
+	public void setCan_Date(String can_Date) {
+		Can_Date = can_Date;
+	}
+	public String Can_Date;
+	
 	public String TEACHER_NAME;
 	public String getTEACHER_NAME() {
 		return TEACHER_NAME;
