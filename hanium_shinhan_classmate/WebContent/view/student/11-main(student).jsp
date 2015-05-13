@@ -43,12 +43,12 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
-                <li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
-                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
-                <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
-                <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).html">반 채팅</a></li>
+                <li><a data-ajax="false"  href="../student/12-study.jsp">학습하기</a></li>
+                <li><a data-ajax="false"  href="../student/15-QandA(student).jsp">Q&A</a></li>
+                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp">My Page</a></li>
+                <li><a data-ajax="false"  href="../student/22-notice1.jsp">공지사항</a></li>
+                <li><a data-ajax="false"  href="../student/24-board2.jsp">자유게시판</a></li>
+				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).jsp">반 채팅</a></li>
         </ul>
 
 </div>
@@ -74,26 +74,26 @@ html, body {height:100%; margin:0; padding:0;}
 	<table id=movie-table class=ui-responsive data-role="table" data-mode="toggle">
 	
 		<tr>
-			<td><a data-ajax="false"  href="../student/12-study.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Study.png" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false"  href="../student/12-study.html"><font color="skyblue"><H1>학습하기</H1></font></a></td>
+			<td><a data-ajax="false"  href="../student/12-study.jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Study.png" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false"  href="../student/12-study.jsp"><font color="skyblue"><H1>학습하기</H1></font></a></td>
 		</tr>
-			<td><a data-ajax="false"  href="../student/15-QandA(student).html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Notice.png" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false"  href="../student/15-QandA(student).html"><font color="skyblue"><H1>Q & A</H1></font></a></td>
+			<td><a data-ajax="false"  href="../student/15-QandA(student).jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Notice.png" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false"  href="../student/15-QandA(student).jsp"><font color="skyblue"><H1>Q & A</H1></font></a></td>
 		<tr>
-			<td><a data-ajax="false"  href="../student/19-Stu_MyPage.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_MyPage.png" width=60px; height=60px;></a></td>
-			<td><a  data-ajax="false" href="../student/19-Stu_MyPage.html"><font color="skyblue"><H1>My Page</H1></font></a></td>
-		</tr>
-		<tr>
-			<td><a data-ajax="false"  href="../student/22-notice1.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Teacher.png" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false"  href="../student/22-notice1.html"><font style="float:left" color="skyblue"><H1>공지사항</H1></font></a></td>
+			<td><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_MyPage.png" width=60px; height=60px;></a></td>
+			<td><a  data-ajax="false" href="../student/19-Stu_MyPage.jsp"><font color="skyblue"><H1>My Page</H1></font></a></td>
 		</tr>
 		<tr>
-			<td><a data-ajax="false"  href="../student/24-board2.html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Board.png" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false"  href="../student/24-board2.html"><font color="skyblue"><H1>자유게시판</H1></font></a></td>
+			<td><a data-ajax="false"  href="../student/22-notice1.jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Teacher.png" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false"  href="../student/22-notice1.jsp"><font style="float:left" color="skyblue"><H1>공지사항</H1></font></a></td>
 		</tr>
 		<tr>
-			<td><a data-ajax="false"  href="../student/36-Chat(student).html"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Chat.PNG" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false"  href="../student/36-Chat(student).html"><font color="skyblue"><H1>반 채팅</H1></font></a></td>
+			<td><a data-ajax="false"  href="../student/24-board2.jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Board.png" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false"  href="../student/24-board2.jsp"><font color="skyblue"><H1>자유게시판</H1></font></a></td>
+		</tr>
+		<tr>
+			<td><a data-ajax="false"  href="../student/36-Chat(student).jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Chat.PNG" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false"  href="../student/36-Chat(student).jsp"><font color="skyblue"><H1>반 채팅</H1></font></a></td>
 		</tr>
 	</table>
 	</div>

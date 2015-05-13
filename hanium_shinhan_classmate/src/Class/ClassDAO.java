@@ -105,14 +105,14 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 	
 	public ArrayList<ClassDTO> searchClass(String idx){
 		ArrayList<ClassDTO> searchClassList = new ArrayList<ClassDTO>();
-		
+	
 		String sql ="select * from CLASS,USER where class_school_name like '%"+idx+"%' and CLASS.USER_ID=USER.USER_ID";
 		
 		try {
 			
 			Statement stmt = conn.createStatement();
 			
-			ResultSet rs = stmt.executeQuery(sql);			
+			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
 				ClassDTO dto = new ClassDTO();
