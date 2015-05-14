@@ -194,4 +194,32 @@ public class ComDAO2 {
 		}
 			return check;
 	}
+	public ArrayList<ComDTO2> selectBoard(){
+		ArrayList<ComDTO2> selectList = new ArrayList<ComDTO2>();
+		
+		String sql = "select * from BOARD";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ComDTO2 dto = new ComDTO2();
+				dto.setSubject(rs.getString("BOARD_WRITER"));
+				dto.setWriter(rs.getString("CLASS_ID"));
+				dto.setDate2(rs.getString("BOARD_REGI_DATE"));
+				selectList.add(dto);
+				
+				System.out.println(dto.getSubject());
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList;
+	}
 }

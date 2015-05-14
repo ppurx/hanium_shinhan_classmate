@@ -85,6 +85,9 @@ public class ComProcess2 extends HttpServlet{
 				response.sendRedirect("../../Fail.html");
 			}
 		}
+		
+		
+		
 	}
 	
 }

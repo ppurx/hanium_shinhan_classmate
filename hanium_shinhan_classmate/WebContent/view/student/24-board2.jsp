@@ -64,7 +64,8 @@
 <body>
 <%
 			ComDAO2 dao = new ComDAO2();
-			ArrayList<ComDTO2> List = dao.selectTest2();
+			//ArrayList<ComDTO2> List = dao.selectTest2();
+			ArrayList<ComDTO2> List = dao.selectBoard();
 			request.setAttribute("List",List);
 			
 	%>	
@@ -131,8 +132,8 @@
 	
 		<tr>
 			<td><a href="../student/26-board-detail.jsp"><c:out value="${Lists.getSubject()}"/></a></td>
-			<td align="center"><c:out value="admin"/></td>
-			<td align="center"><c:out value="2015"/></td>
+			<td align="center"><c:out value="${Lists.getWriter() }"/></td>
+			<td align="center"><c:out value="${Lists.getDate2() }"/></td>
 			<td><c:out value="3"/></td>
 		</tr>
 		
@@ -142,14 +143,13 @@
 	</table>	
 	
 	</div>
-	<div class="swiper-slide"></div>
 	
 	</div>
 	<div class="swiper-pagination"></div>
 	</div>
 	
            
-		<a href="../student/25-board-write.html" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
+		<a href="../student/25-board-write.jsp" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
 	</div>
 	<script src="../../view/swiper.min.js"></script>
 
