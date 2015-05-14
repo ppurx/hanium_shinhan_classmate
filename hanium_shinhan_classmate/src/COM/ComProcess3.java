@@ -18,12 +18,15 @@ public class ComProcess3 extends HttpServlet{
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".com"));
 		
 		if(command !=null &&command.trim().equals("quest")){
-			request.setCharacterEncoding("euc-kr");
+			request.setCharacterEncoding("utf-8");
 			
 			String subject = request.getParameter("subject");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			
+			System.out.println(request.getParameter("subject"));
+			System.out.println(request.getParameter("title"));
+			System.out.println(request.getParameter("content"));
 			ComDTO3 dto = new ComDTO3();
 			
 			dto.setContent(content);

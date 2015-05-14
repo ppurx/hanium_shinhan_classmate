@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@page import="COM.ComDAO3"%>
+     <%@page import="COM.ComDTO3"%>
+  <%@ page import="java.util.ArrayList"%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,12 +58,42 @@
         
     }
 </style>
-
+<script type="text/javascript">
+$(function(){
+	
+	
+	
+	$('#logoutOK').click(function(){			
+		logout.submit();
+	});
+	
+		
+	});
+</script>
 <title>Q & A(student)</title>
 </head>
 <body>
+<%
+	 ComDAO3 dao = new ComDAO3();
+	ArrayList<ComDTO3> List = dao.selectTest3();
+	request.setAttribute("List",List);
+
+ %>
 	<div id="myCenterDiv">
 	<div data-role="header"style="background-color:#04B486;">
+	
+	<!-- 로그아웃 확인-->
+	<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" >
+	
+	    <div role="main" class="ui-content" style=" text-align: center;">		
+			<h3 style="margin:auto">로그아웃 하시겠습니까?</h3>
+			<p> </p>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="logoutOK">&nbspYES&nbsp</a>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-left:8%" data-rel="back">&nbsp&nbspNO&nbsp&nbsp</a>
+							        
+	    </div>
+	</div>
+	<!-- //로그아웃 확인 -->
 	<h1>CLASSMATE</h1>
 	<a href="#add-form" data-icon="gear" data-iconpos="notext" style="background-color:#04B486;">Add</a>
 		<a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#04B486;">Menu</a>
@@ -68,12 +102,12 @@
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
             <ul data-role="listview">
-                <li><a data-ajax="false"  href="../student/12-study.html">학습하기</a></li>
-                <li><a data-ajax="false"  href="../student/15-QandA(student).html">Q&A</a></li>
-                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.html">My Page</a></li>
-                <li><a data-ajax="false"  href="../student/22-notice1.html">공지사항</a></li>
-                <li><a data-ajax="false"  href="../student/24-board2.html">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student)).html">반 채팅</a></li>
+                <li><a data-ajax="false"  href="../student/12-study.jsp">학습하기</a></li>
+                <li><a data-ajax="false"  href="../student/15-QandA(student).jsp">Q&A</a></li>
+                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp">My Page</a></li>
+                <li><a data-ajax="false"  href="../student/22-notice1.jsp">공지사항</a></li>
+                <li><a data-ajax="false"  href="../student/24-board2.jsp">자유게시판</a></li>
+				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).jsp">반 채팅</a></li>
         </ul>
 
 </div>
@@ -104,52 +138,73 @@
 	
 	<div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
+    
+    <div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<thead>
+				<tr>
+					<th>보낸이</th>
+					<th>제목</th>
+					<th>보낸날짜</th>
+				</tr>
+		</thead>
+			<tbody>
 	
-	<table style="width:95%; margin:auto; margin-top:70px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+				<tr>
+					<td><c:out value="${Lists.getSendUserID()}"/></td> 
+					<td><c:out value="${Lists.getTitle()}"/></td>
+					<td><c:out value="${Lists.getDatetime()}"/></td>
+				</tr>	
+				
+				<c:if test="${i.index!=00&&i.index%4==0 }">
+					</tbody>
+					</table>
+						</div>
+						<div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<thead>
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>날짜</th>
-			</tr>
-</thead>
-	<tbody>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/16-QandA-detail(student).html">1</a></th>
-			<td>질문있어요</td>
-			<td>2015-01-01</td>
-		</tr>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/16-QandA-detail(student).html">2</a></th>
-			<td>ㅎㅇ</td>
-			<td>2015-01-01</td>
-		</tr>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/16-QandA-detail(student).html">3</a></th>
-			<td>제곧내</td>
-			<td>2015-01-01</td>
-		</tr>
-		<tr>
-			<th><a href="/hanium_shinhan_classmate/view/16-QandA-detail(student).html">4</a></th>
-			<td>냉무</td>
-			<td>2015-01-01</td>
-		</tr>
-		</tbody>
-	</table>
+					<th>보낸이</th>
+					<th>제목</th>
+					<th>보낸날짜</th>
+				</tr>
+				<tr>
+					<td><c:out value="${Lists.getSendUserID()}"/></td> 
+					<td><c:out value="${Lists.getTitle()}"/></td>
+					<td><c:out value="${Lists.getDatetime()}"/></td>
+				</tr>	
+		</thead>
+			<tbody>
+				</c:if>
+				
+				<c:if test="${i.last}">
+				</tbody>
+					</table>
+						</div>
+				</c:if>
+				
+					
+			
+		</c:forEach>
+			
 	
-	</div>
+			
+			
+			
+			
 	
-	<div class="swiper-slide">
+            
+            
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 	
-	</div>
-	</div>
-	<div class="swiper-pagination"></div>
-	</div>
-	
-	<div style="float:right"><a href="../student/17-Question.jsp" role="button" class="ui-shadow ui-btn ui-corner-all ui-btn-inline" data-transition="flip">쪽지 보내기</a></div>
-	
-        
+   <div style="float:right">
+        <a data-ajax="false" href="../student/17-Question.jsp"><input type="button" data-inline="true" data-mini="true" value="쪽지보내기"></a>
+        </div>     
 		
 	</div>
 	<script src="../../view/swiper.min.js"></script>

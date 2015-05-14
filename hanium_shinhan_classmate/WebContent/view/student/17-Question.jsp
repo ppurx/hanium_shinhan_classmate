@@ -47,8 +47,8 @@ html, body {height:100%; margin:0; padding:0;}
         <textarea name="content" id="content"></textarea>
       </div>
       <div style="float:right">
-      <a href="../student/15-QandA(student).jsp"><input type="button" data-inline="true" data-mini="true" value="취소"></a>
-      <input type="submit" data-inline="true" data-mini="true" value="전송">
+      <a data-ajax="false" href="../student/15-QandA(student).jsp"><input type="button" data-inline="true" data-mini="true" value="취소"></a>
+      <input data-ajax="false" type="submit" data-inline="true" data-mini="true" value="전송">
       </div>
   </div>
   </div>
