@@ -65,7 +65,7 @@
 <body><!-- 툴바 -->
 <%
 			ComDAO1 dao = new ComDAO1();
-			ArrayList<ComDTO1> List = dao.selectTest();
+			ArrayList<ComDTO1> List = dao.selectNotice((String)session.getAttribute("CLASS_ID"));
 			request.setAttribute("List",List);
 			
 	%>
@@ -132,46 +132,67 @@
         
             <div class="swiper-slide">            
             
-<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >제목</th>
-				<th >등록자</th>
-				<th>등록일</th>
-				<th>조회수</th>
-			</tr>
-</thead>
-<c:if test="${List.size() == 0 }">
-<tfoot>
-     <tr>
-          <td colspan="3">현재 데이터가 없습니다.</td>
-     </tr>
-</tfoot>
-</c:if>
-	<tbody>
+			<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+					<thead>
+						<tr>
+							<th >제목</th>
+							<th >등록자</th>
+							<th>등록일</th>
+							<th>조회수</th>
+						</tr>
+			</thead>
+			<c:if test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
+			</c:if>
+			<tbody>
+		<c:if test="${List.size() != 0 }">
 		<c:forEach var="Lists"  items="${List}" >
 	
 		<tr>
-		    <th style=text-align:center;><a href="3"><c:out value="${Lists.getTitle()}"/></a></th>
-			<td style=text-align:center;><a href="3"><c:out value="${Lists.getClass_ID()}"/></a></td>
-			<td style=text-align:center;><c:out value="2015"/></td>
+		    <th style=text-align:center;><a data-ajax="false" href="../student/23-notice-write1.jsp?idx=<c:out value="${Lists.getClass_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></th>
+			<td style=text-align:center;><c:out value="${Lists.getClass_ID()}"/></td>
+			<td style=text-align:center;><c:out value="${Lists.getREGI_DATE()}"/></td>
 			<td style=text-align:center;><c:out value="3"/></td>
 		</tr>
-			</c:forEach>
+		<c:if test="${i.index!=0&&i.index%4==0 }">
+			</tbody>
+					</table>
+						</div>
+						<div class="swiper-slide">
+				<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+					<thead>
+					<tr>
+						<th style=text-align:center;>제목</th>
+						<th style=text-align:center;>등록자</th>
+						<th style=text-align:center;>등록일</th>
+						<th style=text-align:center;>조회수</th>
+					</tr>
+			</thead>
+		</c:if>
+		</c:forEach>
+		</c:if>
 		</tbody>
 	</table>
+		
+			</div>
+			
+			
+			</div>
+			
+			<div class="swiper-pagination"></div>
+			</div>
+			
+			<div style="margin-top:20%; float:right; margin-right:5%">
+			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/35-NoticeWrite(teacher).jsp'" style="float:right;margin-top:20%">
+		</div>
+			
+	</div>
 	
-	</div>
-	<div class="swiper-slide">    
-	</div>
-	
-	</div>
-	<div class="swiper-pagination"></div>
-	
-	</div>
-	
-        
-	</div>
+			
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->

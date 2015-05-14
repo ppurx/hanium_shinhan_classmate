@@ -62,8 +62,9 @@
 <%
 			ComDAO1 dao = new ComDAO1();
 			//ArrayList<ComDTO1> List = dao.selectTest();
-ArrayList<ComDTO1> List = dao.selectNotice((String)session.getAttribute("CLASS_ID"));
+			ArrayList<ComDTO1> List = dao.selectNotice((String)session.getAttribute("CLASS_ID"));
 			request.setAttribute("List",List);
+			
 			
 	%>	
 	<div id="myCenterDiv">

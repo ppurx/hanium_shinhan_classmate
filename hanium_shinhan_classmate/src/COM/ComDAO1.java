@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import COM.ComDTO1;
+import Class.ClassDTO;
 import Member.MemberDTO;
 
 public class ComDAO1 {
@@ -69,8 +72,7 @@ public class ComDAO1 {
 		System.out.println(dto.getUSER_ID());
 		String y = dao.selectClass_ID(dto);
 		System.out.println(y);
-		pstmt.setString(1,dto.getUSER_ID());
-	
+		pstmt.setString(1,dto.getClass_ID());
 		pstmt.setString(2,dto.getContent());
 		pstmt.setString(3,dto.getTitle());
 		
@@ -171,6 +173,34 @@ public class ComDAO1 {
 				
 		return selectList1;
 	}
-	
+	public ComDTO1 selectnot(String idx){
+		String sql = "select * from NOTICE,CLASS,USER where NOTICE.CLASS_ID=CLASS.CLASS_ID and CLASS.USER_ID=USER.USER_ID and CLASS.CLASS_ID='"+idx+"'";
+		ComDTO1 dto = new ComDTO1();
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				
+				dto.setTitle(rs.getString("NOTICE_TITLE"));
+				dto.setClass_ID(rs.getString("CLASS_ID"));
+				dto.setREGI_DATE(rs.getString("NOTICE_REGI_DATE").substring(0,10));
+				dto.setContent(rs.getString("NOTICE_CONTENT"));
+				
+				
+				
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+	return dto;
+	}
 	}
 

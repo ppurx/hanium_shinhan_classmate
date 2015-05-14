@@ -94,12 +94,12 @@ html, body {height:100%; margin:0; padding:0;}
 			<td><a data-ajax="false" href="../teacher/31-MyInformation(teacher).jsp" data-ajax="false"><font color="skyblue"><H2>내 정보</H2></font></a></td>
 		</tr>
 		<tr>
-			<td><a data-ajax="false" href="../teacher/34-Notice(teacher).jsp" data-ajax="false"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Teacher.png" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false" href="../teacher/34-Notice(teacher).jsp" data-ajax="false"><font color="skyblue"><H2>공지사항</H2></font></a></td>
+			<td><a data-ajax="false" href="../teacher/34-Notice(teacher)1.jsp" data-ajax="false"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Teacher.png" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false" href="../teacher/34-Notice(teacher)1.jsp" data-ajax="false"><font color="skyblue"><H2>공지사항</H2></font></a></td>
 		</tr>
 		<tr>
-			<td><a data-ajax="false" href="../teacher/24-board2.jsp" data-ajax="false"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Board.png" width=60px; height=60px;></a></td>
-			<td><a data-ajax="false" href="../teacher/24-board2.jsp" data-ajax="false"><font color="skyblue"><H2>자유게시판</H2></font></a></td>
+			<td><a data-ajax="false" href="../student/24-board2.jsp" data-ajax="false"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Board.png" width=60px; height=60px;></a></td>
+			<td><a data-ajax="false" href="../student/24-board2.jsp" data-ajax="false"><font color="skyblue"><H2>자유게시판</H2></font></a></td>
 		</tr>
 		<tr>
 			<td><a data-ajax="false" href="../teacher/37-Chat(teacher).jsp" data-ajax="false"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Chat.PNG" width=60px; height=60px;></a></td>

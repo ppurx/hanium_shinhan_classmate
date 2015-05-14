@@ -40,11 +40,11 @@ html, body {height:100%; margin:0; padding:0;}
 <body>
 
 	<%
-			ComDAO1 dao = new ComDAO1();
-			ComDTO1 dto = new ComDTO1();
-			dto = dao.select();
-			
-	%>	
+	String idx = request.getParameter("idx");
+	ComDTO1 dto = new ComDTO1();
+	ComDAO1 dao = new ComDAO1();
+	dto = dao.selectnot(idx);
+%>	
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -113,32 +113,28 @@ html, body {height:100%; margin:0; padding:0;}
 </tfoot>
 
 </c:if>
-	<table style="width:90%; margin-top:3%">
-	<tr>
-		<td><font style="float:middle" size="5" face="Impact"><b>제목 : </b></font></td>
-		<td><font style="float:left"><%=dto.getTitle() %></font></td>
-	</tr>
-	<tr>
-		<td><font size="5" face="Impact"><b>작성자 : </b></font></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><font size="5" face="Impact"><b>작성일 : </b></font></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><font size="5" face="Impact"><b>내용 : </b></font></td>
-		<td><font style="float:left"><%=dto.getContent() %></font></td>
-	</tr>
-	
-	<td></td>
-	</tr>
-	
+	<table style="width:90%; margin-left:7%" align="left" >
+			<tr>
+				<td align="left" colspan="2"><font size="6" style="font-weight:bolder">제목 : <%=dto.getTitle() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="6" style="font-weight:bolder">작성자 : <%=dto.getClass_ID() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="4" style="font-weight:bolder">작성일 : <%=dto.getREGI_DATE() %></font></td>
+			</tr>
+			<tr>
+				<td align="left"colspan="2"><font size="4" style="font-weight:bolder">내용 : <%=dto.getContent() %></font></td>
+			</tr>
+		    <tr>
+		    <td colspan="2" align="right"><a data-ajax="false"href="/hanium_shinhan_classmate/view/student/22-notice1.jsp" margin-left="30px" data-role="button" data-inline="true" style=" margin-top:30px">목록</a></td>
+		    </tr>		
+		
 	</table>
 	
 		
 	
-	 <a data-ajax="false"href="/hanium_shinhan_classmate/view/student/22-notice1.jsp" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
+	
 	</div>
 	
 	

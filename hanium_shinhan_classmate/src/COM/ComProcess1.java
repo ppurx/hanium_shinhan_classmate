@@ -26,11 +26,13 @@ public class ComProcess1 extends HttpServlet{
 			String content = request.getParameter("content");
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
+			String CLASS_ID = (String)session.getAttribute("CLASS_ID");
 			ComDTO1 dto = new ComDTO1();
 			
 			dto.setUSER_ID(id);
 			dto.setContent(content);
 			dto.setTitle(title);
+			dto.setClass_ID(CLASS_ID);
 			
 			ComDAO1 dao = new ComDAO1();  
 			
