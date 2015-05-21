@@ -1,6 +1,5 @@
 package Member;
 
-import java.io.IOException;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -122,6 +121,7 @@ public class MemberProcess extends HttpServlet {
 			String addr = request.getParameter("addr");
 			String ID = request.getParameter("id");
 			String password = request.getParameter("password");
+			String address = request.getParameter("address");
 			
 			MemberDTO dto = new MemberDTO();
 			
@@ -136,6 +136,7 @@ public class MemberProcess extends HttpServlet {
 			dto.setTel2(tel2);
 			dto.setTel3(tel3);
 			dto.setToken(token);
+			dto.setAddr(address);
 			
 			MemberDAO dao = new MemberDAO();
 			
@@ -276,7 +277,33 @@ else if(command !=null &&command.trim().equals("findPass")){
 			}
 
 		
-
+	else if(command !=null &&command.trim().equals("updateMember")){
+	
+		
+		request.setCharacterEncoding("utf-8");
+		MemberDAO dao = new MemberDAO();
+		String password = request.getParameter("password");
+		String address = request.getParameter("address");
+		String school = request.getParameter("school");
+		int phone = Integer.parseInt(request.getParameter("phone"));
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		MemberDTO dto = new MemberDTO();
+		dto.setId(id);
+		dto.setPassword(password);
+		dto.setAddr(address);
+		dto.setSchool(school);
+		dto.setPhone(phone);
+		
+		dao.updateMember(dto);
+		
+		
+		if(session.getAttribute("job").equals("ÇÐ»ý"))
+			response.sendRedirect("../student/08-Stu_main(1).jsp");
+		else
+			response.sendRedirect("../teacher/05-teacher_main.jsp");
+		}
+		
 	
 		
 		

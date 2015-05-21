@@ -33,7 +33,7 @@ public class MemberDAO {
 	
 	
 	public boolean insertMember(MemberDTO dto){
-		String query = "Insert INTO USER values (?,?,?,?,?,?,?,?,?)";
+		String query = "Insert INTO USER values (?,?,?,?,?,?,?,?,?,?)";
 		String phone =dto.getTel1()+dto.getTel2()+dto.getTel3();
 		boolean check = false;
 		
@@ -52,7 +52,7 @@ public class MemberDAO {
 		pstmt.setString(7, dto.getEmail());
 		pstmt.setInt(8,1);
 		pstmt.setInt(9,dto.getToken());
-		
+		pstmt.setString(10, dto.getAddr());
 		
 		int x = pstmt.executeUpdate();
 		
@@ -74,6 +74,20 @@ public class MemberDAO {
 	}
 
 	public boolean updateMember(MemberDTO dto){
+		String sql = "update USER set USER_PASSWORD=?,USER_ADDR=?,USER_BELONG=?,USER_PHONE=? where USER_ID='"+dto.getId()+"'" ;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, dto.getPassword());
+			pstmt.setString(2,dto.getAddr());
+			pstmt.setString(3,dto.getSchool());
+			pstmt.setInt(4, dto.getPhone());
+			pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+		}
+		
+			
+		
 		return true;
 	}
 	
@@ -238,6 +252,32 @@ public class MemberDAO {
 			System.out.println(e);
 		}
 		return check;
+	}
+	
+	public MemberDTO selectAll(String idx)
+	{
+		MemberDTO dto = new MemberDTO();
+		String sql = "select * from USER where USER_ID='"+idx+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+		
+			if(rs.next()){
+				dto.setId(rs.getString("USER_ID"));
+				dto.setName(rs.getString("USER_NAME"));
+				dto.setBirth(rs.getString("USER_BIRTH"));
+				dto.setAddr(rs.getString("USER_ADDR"));
+				dto.setSchool(rs.getString("USER_BELONG"));
+				dto.setPhone(rs.getInt("USER_PHONE"));
+				dto.setPassword(rs.getString("USER_PASSWORD"));
+			}
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return dto;
 	}
 	
 	

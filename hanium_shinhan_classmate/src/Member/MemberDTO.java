@@ -4,7 +4,14 @@ import java.io.Serializable;
 
 public class MemberDTO implements Serializable {
 	private int token;
+	public int phone;
 	
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
 	public int getToken() {
 		return token;
 	}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@page import="Member.MemberDTO"%>
+<%@page import="Member.MemberDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,12 +30,23 @@ $(function(){
 		logout.submit();
 	});
 	
+	$('#update').click(function(){
+		updateMember.submit();
+	});
+	
 		
 	});
 </script>
 <title>31page</title>
 </head>
 <body>
+<%
+	String idx = (String)session.getAttribute("id");
+	MemberDTO dto = new MemberDTO();
+	MemberDAO dao = new MemberDAO();
+	dto=dao.selectAll(idx);
+
+%>
    <div id="myCenterDiv">
   <!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -91,38 +104,41 @@ $(function(){
   	  <h1>내 정보</h1>
 		</div>
 		
-		<table align="center" width="90%" style="margin-top:5%">
-			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개</font></td>
-				
-			</tr>
-			<tr>
-				<td><font style="margin-left:5%">ID : dddddd</font></td>
-			</tr>
-			<tr>
-				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp&nbsp&nbsp사진 등록&nbsp&nbsp&nbsp</a></td><td> <font style="margin-left:5%">생년월일 : 910806</font></td>
-			</tr>	
-		</table>
-		
-		<table align="center" width="90%" style="margin-top:1%">
-			<tr>
-				<td>password</td><td colspan="3"><input type="password"/></td>
-			</tr>
-			<tr>
-				<td>주소</td><td colspan="3"><textarea></textarea></td>
-			</tr>
+		<form name="updateMember" action="updateMember.member" method="post">
+			<table align="center" width="90%" style="margin-top:5%">
+				<tr>
+					<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : <%=dto.getName() %></font></td>
+					
+				</tr>
+				<tr>
+					<td><font style="margin-left:5%">ID : <%=dto.getId() %></font></td>
+				</tr>
+				<tr>
+					<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp&nbsp&nbsp사진 등록&nbsp&nbsp&nbsp</a></td><td> <font style="margin-left:5%">생년월일 : <%=dto.getBirth() %></font></td>
+				</tr>	
+			</table>
 			
-			<tr>
-				<td>소속</td><td colspan="3"><input type="text"/></td>
-			</tr>
-			<tr>
-				<td>연락처</td><td><input type="text" width="1%"/></td><td><input type="text"/></td><td><input type="text"/></td>
-			</tr>
-		</table>
+			<table align="center" width="90%" style="margin-top:1%">
+				<tr>
+					<td>password</td><td colspan="3"><input type="password" name="password" value="<%=dto.getPassword()%>"/></td>
+				</tr>
+				<tr>
+					<td>주소</td><td colspan="3"><textarea name="address"><%=dto.getAddr() %></textarea></td>
+				</tr>
+				
+				<tr>
+					<td>소속</td><td colspan="3"><input name="school" type="text" value="<%=dto.getSchool()%>"/></td>
+				</tr>
+				<tr>
+					<td>연락처</td><td colspan="3"><input name="phone" type="text" value="<%=dto.getPhone()%>"/></td>
+				</tr>
+			</table>
+			
+			<div align="center" style="margin-top:1%">
+				<a href="#" data-role="button" id="update" data-inline="true" style="margin-right:8%">내 정보 수정</a>
+			</div>
 		
-		<div align="center" style="margin-top:1%">
-			<a href="#" data-role="button" data-inline="true" style="margin-right:8%">내 정보 수정</a>
-		</div>
+		</form>
 </div>
    
 
