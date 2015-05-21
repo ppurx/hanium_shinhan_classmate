@@ -35,6 +35,18 @@ html, body {height:100%; margin:0; padding:0;}
 		
 	};
 </script>
+<script type="text/javascript">
+$(function(){
+	
+	
+	
+	$('#logoutOK').click(function(){			
+		logout.submit();
+	});
+	
+		
+	});
+</script>
 <title>notice2</title>
 </head>
 <body>

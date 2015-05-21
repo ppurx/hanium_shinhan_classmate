@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@page import="COM.ComDAO2"%>
-    <%@page import="COM.ComDTO2"%>
-    <%@ page import="java.util.ArrayList"%>  
-    <!-- jstl taglig 선언 -->
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,34 +8,17 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
 <meta charset="utf-8">
- 
+
 <style type="text/css">
 html, body {height:100%; margin:0; padding:0;}
 #myCenterDiv {
     position:absolute; 
     left:0%;   
-    text-align: center;
+    text-align: left;
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-
-
-
-
-
 </style>
-<script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
-		
-	};
-	
-	$('#delete').click(function(){
-		
-		board.submit();
-		
-	});
-</script>
 <script type="text/javascript">
 $(function(){
 	
@@ -53,18 +31,12 @@ $(function(){
 		
 	});
 </script>
-<title>board detail</title>
+
+<title>31page</title>
 </head>
 <body>
-	<%
-		ComDAO2 dao = new ComDAO2();
-		ComDTO2	dto = new ComDTO2();
-		dto=dao.selectTest();
-	%>		
-    
-    <form name="board" action="boardDelete.com2" method="post">
-	<div id="myCenterDiv">
-	<!-- 툴바 -->
+   <div id="myCenterDiv">
+   <!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
 	
 	<!-- 로그아웃 확인-->
@@ -116,40 +88,45 @@ $(function(){
 </div>
 
 <!-- //툴바 -->
-	<div data-role="header" data-theme="b" >
-    <h1>자유게시판</h1>
+  	 <div data-role="header" data-theme="b" >
+  	  <h1>내 정보</h1>
+		</div>
+		
+		<table align="center" width="90%" style="margin-top:5%">
+			<tr>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개</font></td>
+				
+			</tr>
+			<tr>
+				<td><font style="margin-left:5%">ID : dddddd</font></td>
+			</tr>
+			<tr>
+				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp&nbsp&nbsp사진 등록&nbsp&nbsp&nbsp</a></td><td> <font style="margin-left:5%">생년월일 : 910806</font></td>
+			</tr>	
+		</table>
+		
+		<table align="center" width="90%" style="margin-top:1%">
+			<tr>
+				<td>password</td><td colspan="3"><input type="password"/></td>
+			</tr>
+			<tr>
+				<td>주소</td><td colspan="3"><textarea></textarea></td>
+			</tr>
+			
+			<tr>
+				<td>소속</td><td colspan="3"><input type="text"/></td>
+			</tr>
+			<tr>
+				<td>연락처</td><td><input type="text" width="1%"/></td><td><input type="text"/></td><td><input type="text"/></td>
+			</tr>
+		</table>
+		
+		<div align="center" style="margin-top:1%">
+			<a href="#" data-role="button" data-inline="true"  style="margin-right:8%">내 정보 수정</a>
+		</div>
 </div>
-	
-	 
-	<table style="width:70%; margin-top:3%">
-	
-	<tr>
-		<td><font style="float:middle" size="5" face="Impact"><b>제목 : </b></font></td>
-		<td><font id="subject2" style="float:left"><%=dto.getSubject() %></font></td>
-	</tr>
-	<tr>
-		<td><font size="5" face="Impact"><b>작성자 : </b></font></td>
-		<td><font id="writer" style="float:left">돧두</font></td>
-	</tr>
-	<tr>
-		<td><font size="5" face="Impact"><b>작성일 : </b></font></td>
-		<td><font id="date" style="float:left">2015</font></td>
-	</tr>
-	<tr>
-		<td><font size="5" face="Impact"><b>내용 : </b></font></td>
-		<td><font id="textarea2" style="float:left"><%=dto.getTextarea() %></font></td>
-	</tr>
-	
-	</table>
-	
-	
-	
-	<a data-ajax="false"href="/hanium_shinhan_classmate/view/student/26-board-alter.html" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
-    <a id="delete" data-ajax="false" href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">삭제</a>
-    <a data-ajax="false"href="../student/24-board2.jsp" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
-	
+   
 
-	</div>
-	</form>
+
 </body>
 </html>

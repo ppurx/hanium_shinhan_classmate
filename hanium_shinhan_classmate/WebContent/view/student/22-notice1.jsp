@@ -59,7 +59,18 @@
         
     }
 </style>
-
+<script type="text/javascript">
+$(function(){
+	
+	
+	
+	$('#logoutOK').click(function(){			
+		logout.submit();
+	});
+	
+		
+	});
+</script>
 <title>notice</title>
 </head>
 <body><!-- 툴바 -->
