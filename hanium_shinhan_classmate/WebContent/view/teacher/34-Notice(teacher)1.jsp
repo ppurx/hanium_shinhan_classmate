@@ -14,6 +14,8 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
  <link rel="stylesheet" href="../../view/swiper.min.css">
+
+
 <style type="text/css">
 
 #myCenterDiv {
@@ -55,6 +57,18 @@
         
     }
 </style>
+<script type="text/javascript">
+$(function(){
+	
+	
+	
+	$('#logoutOK').click(function(){			
+		logout.submit();
+	});
+	
+		
+	});
+</script>
 <title>34p</title>
 </head>
 <body>
@@ -68,6 +82,8 @@
 			
 	%>	
 	<div id="myCenterDiv">
+
+<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
 	
 	<!-- 로그아웃 확인-->
@@ -89,16 +105,19 @@
 	</div><!-- /header -->
 	<div data-role="panel" data-display="overlay" data-theme="b" id="nav-panel" data-position="right">
        
-            <ul data-role="listview">
-                <li><a data-ajax="false"  href="../student/12-study.jsp">학습하기</a></li>
-                <li><a data-ajax="false"  href="../student/15-QandA(student).jsp">Q&A</a></li>
-                <li><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp">My Page</a></li>
-                <li><a data-ajax="false"  href="../student/22-notice1.jsp">공지사항</a></li>
-                <li><a data-ajax="false"  href="../student/24-board2.jsp">자유게시판</a></li>
-				<li style="margin-top:8%"><a data-ajax="false"  href="../student/36-Chat(student).jsp">반 채팅</a></li>
-        </ul>
+              <ul data-role="listview">
+			<li style="margin-top:8%"><a  data-ajax="false" href="../teacher/27-Question.jsp">학습부여</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/32-Q&A(teacher).jsp">Q&A</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/28-twobutton.jsp">반 관리</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/34-Notice(teacher)1.jsp">공지사항</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/24-board2.jsp">자유게시판</a></li>
+			<li style="margin-top:8%"><a data-ajax="false"  href="../teacher/31-MyInformation(teacher).jsp">내 정보</a></li>
+			<li style="margin-top:8%"><a  data-ajax="false" href="../teacher/37-Chat(teacher).jsp">반 채팅</a></li>
+			</ul>
 
-</div>
+	</div>
+	
+	<!-- /툴바 -->
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
         <form class="userform" method="post" action="logout.member" name="logout">
             <table align="center" width="95%" style="margin-top:7%">
@@ -109,7 +128,7 @@
 			<tr>
 			</tr>
 			<tr>
-				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="../student/11-main(student).html" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
+				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
 			</tr>	
 			<tr>
 				<td align="center" colspan="2"><a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">Logout</a></td></tr>
@@ -117,6 +136,8 @@
 		
         </form>
 </div>
+
+<!-- //툴바 -->
 	<div data-role="header" data-theme="b" >
     <h1>공지하기</h1>
 	</div>
@@ -189,6 +210,7 @@
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
+
     <script>
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
