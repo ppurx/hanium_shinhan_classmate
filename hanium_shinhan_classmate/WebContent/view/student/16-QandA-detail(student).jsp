@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+     <%@page import="COM.ComDAO3"%>
+    <%@page import="COM.ComDTO3"%>
+    <%@ page import="java.util.ArrayList"%>  
+    <!-- jstl taglig 선언 -->
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,6 +90,12 @@ $(function(){
 <title>Q & A detail</title>
 </head>
 <body>
+<%
+		String idx = request.getParameter("idx");
+		ComDAO3 dao = new ComDAO3();
+		ComDTO3	dto = new ComDTO3();
+		dto=dao.selectTest(idx);
+	%>
 <div id="myCenterDiv" class="content" style="overflow: scroll;" data-role="none">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -141,14 +152,14 @@ $(function(){
 	<div data-role="header" data-theme="b" >
     <h1>Q & A(내용)</h1>
 	</div>
-	
+
 <div style="margin-left:-201px; margin-top:30px;">
 <img width="10%" height="10%"  src="/hanium_shinhan_classmate/res/Student.png"/>
  </div>
  
 	<div class="bubble">
  <p class="label" style="margin-left:5%; margin-right:5%">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px"  name="textarea" id="textarea"placeholder="질문내용"></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center" disabled="true"  height:500px; margin-left:20px; margin-top:5px"  name="textarea" id="textarea" placeholder=<%=dto.getMEMO_Content()%>></textarea>
  </p>
  <div class="tail"></div>
  
@@ -166,6 +177,7 @@ $(function(){
  
  
 </div>
+<input type="hidden" name="MEMO_ID" value="<%=idx %>" />
 </div>
 </body>
 </html>
