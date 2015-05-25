@@ -15,7 +15,7 @@ html, body {height:100%; margin:0; padding:0;}
     position:absolute; 
     left:0%;   
     text-align: center;
-    position: top:0; left:0; width:100%; height:100%;
+    position:fixed; top:0; left:0; width:100%; height:200%;
     background-color:#fafbd3;
 }
 
@@ -33,9 +33,15 @@ $(function(){
 	$('#logoutOK').click(function(){			
 		logout.submit();
 	});
-	
-		$('#que').click(function(){
-			$('#test').append("<tr><td><textarea></textarea></td></tr>").trigger('create');
+		$('#que').click(function(){		
+			$('#test').empty();
+			$('#x').empty();
+			$('#y').empty();
+				for(var i=1;i<=$("#que option:selected").val();i++){
+					$('#test').append("<tr><td><textarea id='"+que+i+"'>"+i+".\n①②③④</textarea></td></tr>").trigger('create');
+					$('#x').append("<th>"+i+"<th>").trigger('create');
+					$('#y').append("<td colspan='2'><select data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>").trigger('create');
+			}
 		});
 	
 	});
@@ -117,86 +123,40 @@ $(function(){
 		<td>
 	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-2.PNG"/></td>
 	</tr>
-    
-	<tr id="test">
-
-		<td id="txt1"><textarea style=" margin-top:5px" name="textarea" id="textarea" >1. 			
-①
-②
-③
-④</textarea></td><td>
-		</td>
+    </table>
+    <table  style="width:95%" align="center">
 	
-	</tr>
-	
-	<tr>
-		<td>
-	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-3.PNG"/></td>
-	</tr>
-	<tr><td colspan="2">
-	 <SELECT> <OPTION selected value=0>문제수</OPTION> 
+	<tr align="right"><td colspan="2">
+	 <SELECT id="que"> <OPTION selected value=0>문제 수</OPTION> 
 	 <OPTION value=1>1문제</OPTION> <OPTION value=2>2문제</OPTION> <OPTION value=3>3문제</OPTION>
 	 <OPTION value=4>4문제</OPTION><OPTION value=5>5문제</OPTION><OPTION value=6>6문제</OPTION><OPTION value=7>7문제</OPTION>
 	 <OPTION value=8>8문제</OPTION><OPTION value=9>9문제</OPTION><OPTION value=10>10문제</OPTION>
 	 </SELECT> 
+	 
 	 </td></tr>
+	 </table>
+    <div style="overflow:auto;overflow-x:hidden; height:140px; width:95%;">
+    <table style="width:95%" align="center" id="test">
+	
+	</table>
+	</div>
+	
+	<div style="overflow:auto;overflow-y:hidden; margin-top:2%">
 	 <table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
-			<tr bgcolor=lightgray>
-				<th>1</th>
-				<th>2</th>
-				<th>3</th>
-				<th>4</th>
-				<th>5</th>
+			<tr bgcolor=lightgray id="x" style="text-align:right">
+				
 			</tr>
 		</thead>
-			<tr>
-				<td>
-				<select data-mini="true" size="1">
-				<option selected value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				</select>
-				</td>
-				<td>
-				<select data-mini="true" size="1">
-				<option selected value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				</select>
-				</td>
-				<td>
-				<select data-mini="true" size="1">
-				<option selected value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				</select>
-				</td>
-				<td>
-				<select data-mini="true" size="1">
-				<option selected value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				</select>
-				</td>
-				<td>
-				<select data-mini="true" size="1">
-				<option selected value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				</select>
-				</td>
+		<tbody>
+			<tr id="y">
 			</tr>
-			
-	</table>
-	<tr><td colspan="4" ><a id="btn1" data-ajax="false" href="#" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a></td></tr>
-	     </table>
-  
+		</tbody>
+		</table>
+	 </div>
+	<a id="btn1" data-ajax="false" href="#" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a>
+	     
+ 
 
      
      </div>
