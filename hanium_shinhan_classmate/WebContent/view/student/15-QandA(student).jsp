@@ -74,8 +74,8 @@ $(function(){
 </head>
 <body>
 <%
-	 ComDAO3 dao = new ComDAO3();
-	ArrayList<ComDTO3> List = dao.selectTest3();
+	ComDAO3 dao = new ComDAO3();
+	ArrayList<ComDTO3> List = dao.selectTest3((String)session.getAttribute("id"));
 	request.setAttribute("List",List);
 
  %>
@@ -112,21 +112,19 @@ $(function(){
 
 </div>
 <div data-role="panel" data-position="left" data-display="overlay" data-theme="a" id="add-form">
-        <form class="userform">         
-
-
-			<table align="center" width="90%" style="margin-top:7%">
+        <form class="userform" method="post" action="logout.member" name="logout">
+            <table align="center" width="95%" style="margin-top:7%">
 			<tr>
-				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 : 황개<br><strong>&nbsp;학습</strong></font></td>
+				<td align="center" rowspan="2"><img width="70%"src="/hanium_shinhan_classmate/res/myinfo.PNG"></td><td> <font style="margin-left:5%">이름 :<%=(String)session.getAttribute("name") %><br><strong>&nbsp;<%=(String)session.getAttribute("job") %></strong></font></td>
 				
 			</tr>
 			<tr>
 			</tr>
 			<tr>
-				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
+				<td align="center"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;사진 등록&nbsp;&nbsp;&nbsp;</a></td><td align="center"><a style="margin-left:2%" href="../student/11-main(student).jsp" data-role="button" data-mini="true" data-inline="true" >&nbsp;&nbsp;&nbsp;Main&nbsp;&nbsp;&nbsp;</a></td>
 			</tr>	
 			<tr>
-				<td align="center" colspan="2"><a style="margin-left:2%" href="#" data-role="button" data-mini="true" data_inline="true">LOGOUT</a></td></tr>
+				<td align="center" colspan="2"><a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">Logout</a></td></tr>
 		</table>
 		
         </form>
@@ -154,7 +152,7 @@ $(function(){
 		
 				<tr>
 					<td><c:out value="${Lists.getSEND_USER_ID()}"/></td> 
-					<td><a data-ajax="false" href="../student/16-QandA-detail(student).jsp?idx=<c:out value="${Lists.getTitle()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
+					<td><a data-ajax="false" href="../student/16-QandA-detail(student).jsp?idx=<c:out value="${Lists.getMEMO_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
 					<td><c:out value="${Lists.getDatetime()}"/></td>
 				</tr>	
 				
@@ -172,7 +170,7 @@ $(function(){
 				</tr>
 				<tr>
 					<td><c:out value="${Lists.getSEND_USER_ID()}"/></td> 
-					<td><a data-ajax="false" href="../student/16-QandA-detail(student).jsp?idx=<c:out value="${Lists.getTitle()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
+					<td><a data-ajax="false" href="../student/16-QandA-detail(student).jsp?idx=<c:out value="${Lists.getMEMO_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
 					<td><c:out value="${Lists.getDatetime()}"/></td>
 				</tr>	
 		</thead>
@@ -198,10 +196,10 @@ $(function(){
             
             
         </div>
-        <!-- Add Pagination -->
+       <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
-	
+	 
    <div style="float:right">
         <a data-ajax="false" href="../student/17-Question.jsp"><input type="button" data-inline="true" data-mini="true" value="쪽지보내기"></a>
         </div>     

@@ -150,7 +150,7 @@ $(function(){
 
 <!-- //툴바 -->
 	<div data-role="header" data-theme="b" >
-    <h1>Q & A(내용)</h1>
+    <h1>Q & A(질문보내기)</h1>
 	</div>
 
 <div style="margin-left:-201px; margin-top:30px;">
@@ -159,7 +159,7 @@ $(function(){
  
 	<div class="bubble">
  <p class="label" style="margin-left:5%; margin-right:5%">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center" disabled="true"  height:500px; margin-left:20px; margin-top:5px"  name="textarea" id="textarea" placeholder=<%=dto.getMEMO_Content()%>></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center" disabled="true"  height:500px; margin-left:20px; margin-top:5px"  name="MEMO_Content" id="textarea" placeholder=<%=dto.getMEMO_Content()%>></textarea>
  </p>
  <div class="tail"></div>
  

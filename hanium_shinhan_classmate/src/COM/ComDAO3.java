@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import COM.ComDTO1;
 import Class.ClassDTO;
 import Member.MemberDAO;
@@ -71,11 +73,12 @@ public class ComDAO3 {
 		return check;
 	}
 	
+	
 	public ComDTO3 selectTest(String idx){
 		ComDTO3 dto = new ComDTO3();
 		
 		
-		String sql = "select MEMO_Content from MEMO where MEMO_TITLE ='"+idx+"' ";
+		String sql = "select * from MEMO where MEMO_ID ='"+idx+"' ";
 		try {
 			Statement stmt = conn.createStatement();
 			
@@ -86,7 +89,6 @@ public class ComDAO3 {
 				dto.setMEMO_Content(rs.getString("MEMO_CONTENT"));
 				
 				
-				System.out.println(dto.getMEMO_Content());
 			}
 			
 		}
@@ -97,10 +99,9 @@ public class ComDAO3 {
 		return dto;
 	}
 	
-	public ArrayList<ComDTO3> selectTest3(){
+	public ArrayList<ComDTO3> selectTest3(String SEND_USER_ID){
 		ArrayList<ComDTO3> selectList = new ArrayList<ComDTO3>();
-		
-		String sql = "select * from MEMO";
+		String sql = "select * from MEMO where SEND_USER_ID='"+SEND_USER_ID+"'";
 		try {
 			Statement stmt = conn.createStatement();
 			
@@ -112,7 +113,8 @@ public class ComDAO3 {
 				dto.setBRING_USER_ID(rs.getString("BRING_USER_ID"));
 				dto.setTitle(rs.getString("MEMO_TITLE"));
 				dto.setSEND_USER_ID(rs.getString("SEND_USER_ID"));
-				dto.setDatetime(rs.getString("MEMO_SEND_DATE"));
+				dto.setDatetime(rs.getString("MEMO_SEND_DATE").substring(0,10));
+				dto.setMEMO_ID(rs.getInt("MEMO_ID"));
 				selectList.add(dto);
 				
 				System.out.println(dto.getSEND_USER_ID());
@@ -160,5 +162,54 @@ public class ComDAO3 {
 		return check;
 	}
 	
-	
+	public String bringUser_ID(String idx){
+		String query ="select * from CLASS where CLASS_ID='"+idx+"'";
+		String BringUserId = null;		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);									
+			ResultSet rs = pstmt.executeQuery(query);	
+			
+			if(rs.next()){
+			BringUserId=rs.getString("USER_ID");		
+			}
+			pstmt.close();			
+			
+			}catch(SQLException ex) {
+				System.out.println("SQL Insert ���� : " + ex.getLocalizedMessage());
+			}
+		System.out.println("브링유저테스트:"+idx+BringUserId);
+		
+		
+		
+		return BringUserId;
+	}
+	public ArrayList<ComDTO3> selectTest2(String id){
+		ArrayList<ComDTO3> selectList = new ArrayList<ComDTO3>();
+		String sql = "select * from MEMO where BRING_USER_ID='"+id+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ComDTO3 dto = new ComDTO3();
+				dto.setMEMO_Content(rs.getString("MEMO_CONTENT"));
+				dto.setBRING_USER_ID(rs.getString("BRING_USER_ID"));
+				dto.setTitle(rs.getString("MEMO_TITLE"));
+				dto.setSEND_USER_ID(rs.getString("SEND_USER_ID"));
+				dto.setDatetime(rs.getString("MEMO_SEND_DATE").substring(0,10));
+				selectList.add(dto);
+				
+				System.out.println(dto.getSEND_USER_ID());
+				System.out.println(dto.getBRING_USER_ID());
+				System.out.println(dto.getTitle());
+			}
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList;
+	}
 }
