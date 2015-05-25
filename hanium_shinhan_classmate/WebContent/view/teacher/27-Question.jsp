@@ -15,7 +15,7 @@ html, body {height:100%; margin:0; padding:0;}
     position:absolute; 
     left:0%;   
     text-align: center;
-    position:fixed; top:0; left:0; width:100%; height:100%;
+    position: top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
 
@@ -34,7 +34,10 @@ $(function(){
 		logout.submit();
 	});
 	
-		
+		$('#que').click(function(){
+			$('#test').append("<tr><td><textarea></textarea></td></tr>").trigger('create');
+		});
+	
 	});
 </script>
 <title>question</title>
@@ -115,9 +118,13 @@ $(function(){
 	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-2.PNG"/></td>
 	</tr>
     
-	<tr>
+	<tr id="test">
 
-		<td ><textarea style=" margin-top:5px" name="textarea" id="textarea" >1. </textarea></td><td>
+		<td id="txt1"><textarea style=" margin-top:5px" name="textarea" id="textarea" >1. 			
+①
+②
+③
+④</textarea></td><td>
 		</td>
 	
 	</tr>
@@ -127,10 +134,10 @@ $(function(){
 	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-3.PNG"/></td>
 	</tr>
 	<tr><td colspan="2">
-	 <SELECT> <OPTION selected value=1>문제수</OPTION> 
-	 <OPTION value=2>1문제</OPTION> <OPTION value=3>2문제</OPTION> <OPTION value=4>3문제</OPTION>
-	 <OPTION value=5>4문제</OPTION><OPTION value=6>5문제</OPTION><OPTION value=7>6문제</OPTION><OPTION value=8>7문제</OPTION>
-	 <OPTION value=9>8문제</OPTION><OPTION value=10>9문제</OPTION><OPTION value=11>10문제</OPTION>
+	 <SELECT> <OPTION selected value=0>문제수</OPTION> 
+	 <OPTION value=1>1문제</OPTION> <OPTION value=2>2문제</OPTION> <OPTION value=3>3문제</OPTION>
+	 <OPTION value=4>4문제</OPTION><OPTION value=5>5문제</OPTION><OPTION value=6>6문제</OPTION><OPTION value=7>7문제</OPTION>
+	 <OPTION value=8>8문제</OPTION><OPTION value=9>9문제</OPTION><OPTION value=10>10문제</OPTION>
 	 </SELECT> 
 	 </td></tr>
 	 <table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
@@ -187,7 +194,7 @@ $(function(){
 			</tr>
 			
 	</table>
-	<tr><td colspan="4" ><a data-ajax="false" href="../student/12-study.html" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a></td></tr>
+	<tr><td colspan="4" ><a id="btn1" data-ajax="false" href="#" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a></td></tr>
 	     </table>
   
 
