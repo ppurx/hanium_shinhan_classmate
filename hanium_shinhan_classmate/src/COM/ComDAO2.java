@@ -33,18 +33,16 @@ public class ComDAO2 {
 	
 	
 	public boolean insertBoard(ComDTO2 dto){
-		String query = "Insert INTO BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT,BOARD_REGI_DATE,BOARD_HIT) values (?,?,?,?,?)";
+		String query = "Insert INTO BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT) values (?,?,?)";
 		boolean check = false;
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(query);	
 			
 			
-			pstmt.setString(1, "1");
+			pstmt.setString(1, dto.getClassID());
 			pstmt.setString(2, dto.getSubject());
 			pstmt.setString(3, dto.getTextarea());
-			pstmt.setString(4, "1");
-			pstmt.setString(5, "1");
 			
 			int x = pstmt.executeUpdate();
 			
@@ -81,8 +79,8 @@ public class ComDAO2 {
 			if(rs.next()){
 				
 				dto.setSubject(rs.getString("BOARD_WRITER"));
-				dto.setSubject(rs.getString("CLASS_ID"));
-				dto.setSubject(rs.getString("BOARD_REGI_DATE").substring(0,10));
+				dto.setClassID(rs.getString("CLASS_ID"));
+				dto.setRegidate(rs.getString("BOARD_REGI_DATE").substring(0,10));
 				dto.setTextarea(rs.getString("BOARD_CONTENT"));
 				
 				System.out.println(dto.getSubject());

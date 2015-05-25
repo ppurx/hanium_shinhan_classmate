@@ -2,6 +2,20 @@ package COM;
 
 public class ComDTO2 {
 
+	String ClassID;
+	String Regidate;
+	public String getRegidate() {
+		return Regidate;
+	}
+	public void setRegidate(String regidate) {
+		Regidate = regidate;
+	}
+	public String getClassID() {
+		return ClassID;
+	}
+	public void setClassID(String classID) {
+		ClassID = classID;
+	}
 	String subject;
 	public String getSubject() {
 		return subject;

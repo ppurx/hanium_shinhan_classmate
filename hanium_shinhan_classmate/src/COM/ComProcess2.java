@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Member.MemberDTO;
 
@@ -26,11 +27,12 @@ public class ComProcess2 extends HttpServlet{
 			String subject = request.getParameter("subject");
 			String textarea = request.getParameter("textarea");
 			
-			
+			HttpSession session = request.getSession();
 			ComDTO2 dto = new ComDTO2();
 			
 			dto.setTextarea(textarea);
 			dto.setSubject(subject);
+			dto.setClassID((String)session.getAttribute("CLASS_ID"));
 			
 			ComDAO2 dao = new ComDAO2();
 			
