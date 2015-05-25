@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+     <%@page import="COM.ComDAO3"%>
+    <%@page import="COM.ComDTO3"%>
+    <%@ page import="java.util.ArrayList"%>  
+    <!-- jstl taglig 선언 -->
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,8 +16,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
 $(function(){
-	
-	
 	
 	$('#logoutOK').click(function(){			
 		logout.submit();
@@ -86,6 +89,12 @@ html, body {height:100%; margin:0; padding:0;}
 <title>p33</title>
 </head>
 <body>
+<%
+		String idx = request.getParameter("idx");
+		ComDAO3 dao = new ComDAO3();
+		ComDTO3	dto = new ComDTO3();
+		dto=dao.selectTest(idx);
+	%>
 <div id="myCenterDiv" class="content" style="overflow: scroll;overflow-x:hidden;" data-role="none">
 
 	<!-- 툴바 -->
@@ -144,16 +153,17 @@ html, body {height:100%; margin:0; padding:0;}
 
 <!-- //툴바 -->
 	<div data-role="header" data-theme="b" >
-    <h1>QnA(질문내용)</h1>
+    <h1>QnA(답변보내기)</h1>
 	</div>
-	
+
+<form id="login" action="quest2.com3" method="post">
 <div style="margin-left:-201px; margin-top:30px;">
 <img width="10%" height="10%"  src="/hanium_shinhan_classmate/res/Student.png"/>
  </div>
  
 	<div class="bubble">
  <p class="label">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px"  name="textarea" id="textarea"placeholder="질문내용"></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px"  name="MEMO_Content" id="textarea"placeholder=<%=dto.getMEMO_Content()%>></textarea>
  </p>
  <div class="tail"></div>
  
@@ -165,17 +175,18 @@ html, body {height:100%; margin:0; padding:0;}
  </div>
  <div class="pupple">
  <p class="label">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea"placeholder="내용을 입력하세요"></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px" name="MEMO_Respond" id="textarea"placeholder="답변을 입력해주세요"></textarea>
  </p>
  <div class="tail"></div>
  
  
 </div>
 <div style="margin-top:12%; text-align: center;">
-			<a data-role="button" data-inline="true" href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html" style="margin-right:8%">등록</a>
-			<a data-role="button" data-inline="true" href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">수정</a>
+			<a data-role="button" data-inline="true" href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">답변보내기</a>
 			
 		</div>
+		<input type="hidden" name="MEMO_ID" value="<%=idx %>" />
+		</form>
 </div>
 </body>
 </html>

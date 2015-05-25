@@ -51,7 +51,14 @@ public class ComDTO3 {
 	private String SendUserID;
 	private String BringUserID;
 	private String Datetime;
+	private String MEMO_Respond;
 	
+	public String getMEMO_Respond() {
+		return MEMO_Respond;
+	}
+	public void setMEMO_Respond(String mEMO_Respond) {
+		MEMO_Respond = mEMO_Respond;
+	}
 	private String SEND_USER_ID;
 	public String getSEND_USER_ID() {
 		return SEND_USER_ID;

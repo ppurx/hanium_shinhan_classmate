@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@page import="COM.ComDAO3"%>
+     <%@page import="COM.ComDTO3"%>
+  <%@ page import="java.util.ArrayList"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -69,6 +73,12 @@ $(function(){
 <title>32p</title>
 </head>
 <body>
+<%
+	ComDAO3 dao = new ComDAO3();
+	ArrayList<ComDTO3> List = dao.selectTest2((String)session.getAttribute("id"));
+	request.setAttribute("List",List);
+
+ %>
 
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
@@ -130,55 +140,66 @@ $(function(){
     <h1>QnA</h1>
 	</div>
 	
-	<div class="swiper-container" style="margin-top:10%">
+	<div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-	<table style="width:95%; margin-top:50px; "  data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
+    
+    <div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<thead>
+				<tr>
+					<th>보낸이</th>
+					<th>제목</th>
+					<th>보낸날짜</th>
+				</tr>
+		</thead>
+			<tbody>
+	
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+				<tr>
+					<td><c:out value="${Lists.getSEND_USER_ID()}"/></td> 
+					<td><a data-ajax="false" href="../teacher/33-Q&A(details).jsp?idx=<c:out value="${Lists.getMEMO_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
+					<td><c:out value="${Lists.getDatetime()}"/></td>
+				</tr>	
+				
+				<c:if test="${i.index!=00&&i.index%4==0 }">
+					</tbody>
+					</table>
+						</div>
+						<div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<thead>
 			<tr>
-				<th style=text-align:center;>번호</th>
-				<th style=text-align:center;>제목</th>
-				<th style=text-align:center;>보낸이</th>
-				<th style=text-align:center;>날짜</th>
-			</tr>
-</thead>
-	<tbody>
-		<tr>
-			<th style=text-align:center;>BPM</th>
-			<td style=text-align:center;><a href="/hanium_shinhan_classmate/view/33-Q&A(details).html">김상현</a></td>
-			<td style=text-align:center;>41</td>
-			<td style=text-align:center;>2014-2-1</td>
-		</tr>
-		<tr>
-			<th style=text-align:center;>쿠익</th>
-			<td style=text-align:center;><a href="/hanium_shinhan_classmate/view/33-Q&A(details).html">김상현</a></td>
-			<td style=text-align:center;>41</td>
-			<td style=text-align:center;>2014-2-1</td>
-		</tr>
-		<tr>
-			<th style=text-align:center;>트롤</th>
-			<td style=text-align:center;><a href="/hanium_shinhan_classmate/view/33-Q&A(details).html">김상현</a></td>
-			<td style=text-align:center;>41</td>
-			<td style=text-align:center;>2014-2-1</td>
-		</tr>
-		<tr>
-			<th style=text-align:center;>콸콸</th>
-			<td style=text-align:center;><a href="/hanium_shinhan_classmate/view/33-Q&A(details).html">김상현</a></td>
-			<td style=text-align:center;>41</td>
-			<td style=text-align:center;>2014-2-1</td>
-		</tr>
-		</tbody>
-	</table>
-	</div>
-	  <div class="swiper-slide"></div>
-	</div>
-	<div class="swiper-pagination"></div>
-	</div>
+					<th>보낸이</th>
+					<th>제목</th>
+					<th>보낸날짜</th>
+				</tr>
+				<tr>
+					<td><c:out value="${Lists.getSEND_USER_ID()}"/></td> 
+					<td><a data-ajax="false" href="../teacher/33-Q&A(details).jsp?idx=<c:out value="${Lists.getMEMO_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
+					<td><c:out value="${Lists.getDatetime()}"/></td>
+				</tr>	
+		</thead>
+			<tbody>
+				</c:if>
+				
+				<c:if test="${i.last}">
+				</tbody>
+					</table>
+						</div>
+				</c:if>
+				
+					
+			
+		</c:forEach>
+			
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 	
 		
-		<div style="margin-top:20%; float:right; margin-right:5%">
-			<input type="button" data-inline="true" value="답변하기" onclick="location.href='/hanium_shinhan_classmate/view/33-Q&A(details).html'">
-		</div>
+		
 		
 	</div>
 	<script src="../../view/swiper.min.js"></script>

@@ -44,7 +44,7 @@ html, body {height:100%; margin:0; padding:0;}
         <label for="title">제목</label>
         <input type="text" name="title" id="title">
         <label for="content">내용</label>
-        <textarea name="content" id="content"></textarea>
+        <textarea name="MEMO_Content" id="content"></textarea>
       </div>
       <div style="float:right">
       <a data-ajax="false" href="../student/15-QandA(student).jsp"><input type="button" data-inline="true" data-mini="true" value="취소"></a>

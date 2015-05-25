@@ -23,27 +23,27 @@ public class ComProcess3 extends HttpServlet{
 		
 		if(command !=null &&command.trim().equals("quest")){
 			request.setCharacterEncoding("utf-8");
+			HttpSession session = request.getSession();
 			
 			String subject = request.getParameter("subject");
 			String title = request.getParameter("title");
 			String MEMO_Content = request.getParameter("MEMO_Content");
-			String SEND_USER_ID = request.getParameter("SEND_USER_ID");
-			String BRING_USER_ID = request.getParameter("BRING_USER_ID");
+			String SEND_USER_ID = (String) session.getAttribute("id");
 			
-			System.out.println(request.getParameter("subject"));
-			System.out.println(request.getParameter("title"));
-			System.out.println(request.getParameter("MEMO_Content"));
-			System.out.println(request.getParameter("SEND_USER_ID"));
-			System.out.println(request.getParameter("BRING_USER_ID"));
+			String idx = (String) session.getAttribute("CLASS_ID");
+			
+			ComDAO3 dao = new ComDAO3();
+			String BRING_USER_ID = dao.bringUser_ID(idx);
+			
 			
 			ComDTO3 dto = new ComDTO3();
 			
 			dto.setMEMO_Content(MEMO_Content);
 			dto.setSubject(subject);
 			dto.setTitle(title);
+			dto.setSEND_USER_ID(SEND_USER_ID);
+			dto.setBRING_USER_ID(BRING_USER_ID);
 			
-			
-			ComDAO3 dao = new ComDAO3();
 			
 			boolean bool = dao.insertMEMO(dto);
 			
@@ -65,7 +65,6 @@ public class ComProcess3 extends HttpServlet{
 	        dto.setCLASS_ID(Integer.parseInt(request.getParameter("CLASS_ID")));
 	        check=dao.candidate(dto);
 	        response.sendRedirect("../student/08-Stu_main(1).jsp");
-			
 			
 		}
 		
