@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import COM.ComDTO1;
+import Class.ClassDTO;
 import Member.MemberDAO;
 import Member.MemberDTO;
 
@@ -39,16 +40,17 @@ public class ComDAO3 {
 	
 	
 	public boolean insertMEMO(ComDTO3 dto){
-		String query = "Insert INTO MEMO(MEMO_TITLE,MOMO_SUBJECT,MEMO_CONTENT,SEND_USER_ID,BRING_USER_ID) values (?,?,?,?,1)";
 		boolean check = false;
+		String query = "INSERT INTO MEMO(MEMO_TITLE,MOMO_SUBJECT,MEMO_CONTENT,SEND_USER_ID,BRING_USER_ID) values (?,?,?,?,?)";
 		
 		try {
 		PreparedStatement pstmt = conn.prepareStatement(query);	
 		
 		pstmt.setString(1,dto.getSubject());
 		pstmt.setString(2,dto.getTitle());
-		pstmt.setString(3,dto.getContent());
-		pstmt.setString(4,dto.getSendUserID());
+		pstmt.setString(3,dto.getMEMO_Content());
+		pstmt.setString(4,dto.getSEND_USER_ID());
+		pstmt.setString(5,dto.getBRING_USER_ID());
 		
 		int x = pstmt.executeUpdate();
 		
@@ -68,14 +70,12 @@ public class ComDAO3 {
 		}
 		return check;
 	}
-	public boolean updateCom(ComDTO3 dto){
-		return true;
-	}
 	
-	public ComDTO3 selectTest(){
+	public ComDTO3 selectTest(String idx){
 		ComDTO3 dto = new ComDTO3();
 		
-		String sql = "select * from MEMO where MEMO_ID = 1";
+		
+		String sql = "select MEMO_Content from MEMO where MEMO_TITLE ='"+idx+"' ";
 		try {
 			Statement stmt = conn.createStatement();
 			
@@ -83,11 +83,10 @@ public class ComDAO3 {
 			
 			if(rs.next()){
 				
-				dto.setSubject(rs.getString("MEMO_SUBJECT"));
-				dto.setContent(rs.getString("MEMO_CONTENT"));
+				dto.setMEMO_Content(rs.getString("MEMO_CONTENT"));
 				
-				System.out.println(dto.getSubject());
-				System.out.println(dto.getContent());
+				
+				System.out.println(dto.getMEMO_Content());
 			}
 			
 		}
@@ -109,11 +108,15 @@ public class ComDAO3 {
 			
 			while(rs.next()){
 				ComDTO3 dto = new ComDTO3();
+				dto.setMEMO_Content(rs.getString("MEMO_CONTENT"));
+				dto.setBRING_USER_ID(rs.getString("BRING_USER_ID"));
 				dto.setTitle(rs.getString("MEMO_TITLE"));
-				dto.setSendUserID(rs.getString("SEND_USER_ID"));
+				dto.setSEND_USER_ID(rs.getString("SEND_USER_ID"));
 				dto.setDatetime(rs.getString("MEMO_SEND_DATE"));
 				selectList.add(dto);
 				
+				System.out.println(dto.getSEND_USER_ID());
+				System.out.println(dto.getBRING_USER_ID());
 				System.out.println(dto.getTitle());
 			}
 			
@@ -123,6 +126,38 @@ public class ComDAO3 {
 		}
 				
 		return selectList;
+	}
+	public boolean candidate(ComDTO3 dto){
+		String query = "insert into CANDIDATE(CLASS_ID,USER_ID) values(?,?);";
+				
+		boolean check;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			
+			pstmt.setInt(1,dto.getCLASS_ID());			
+			pstmt.setString(2,dto.getUSER_ID());			
+						
+			
+			int x = pstmt.executeUpdate();
+			
+			if(x<1) {
+				System.out.println("���������� ������� �ʾҽ��ϴ�.");
+			} else {
+				check = true;
+			}
+			
+			pstmt.close();			
+			
+				check = true;
+			}catch(SQLException ex) {
+				System.out.println("SQL Insert ���� : " + ex.getLocalizedMessage());
+				check = false;
+			}
+		
+		
+		
+		return check;
 	}
 	
 	

@@ -69,10 +69,10 @@ public class ComDAO2 {
 	}
 	
 	
-	public ComDTO2 selectTest(){
+	public ComDTO2 selectTest(String idx){
 		ComDTO2 dto = new ComDTO2();
 		
-		String sql = "select * from BOARD where board_id = 30";
+		String sql = "select * from BOARD,CLASS,USER where BOARD.CLASS_ID=CLASS.CLASS_ID and CLASS.USER_ID=USER.USER_ID and CLASS.CLASS_ID='"+idx+"'";
 		try {
 			Statement stmt = conn.createStatement();
 			
@@ -81,6 +81,8 @@ public class ComDAO2 {
 			if(rs.next()){
 				
 				dto.setSubject(rs.getString("BOARD_WRITER"));
+				dto.setSubject(rs.getString("CLASS_ID"));
+				dto.setSubject(rs.getString("BOARD_REGI_DATE").substring(0,10));
 				dto.setTextarea(rs.getString("BOARD_CONTENT"));
 				
 				System.out.println(dto.getSubject());

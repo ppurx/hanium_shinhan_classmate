@@ -153,8 +153,8 @@ $(function(){
 	<c:forEach var="Lists"  items="${List}" varStatus="i">
 		
 				<tr>
-					<td><c:out value="${Lists.getSendUserID()}"/></td> 
-					<td><c:out value="${Lists.getTitle()}"/></td>
+					<td><c:out value="${Lists.getSEND_USER_ID()}"/></td> 
+					<td><a data-ajax="false" href="../student/16-QandA-detail(student).jsp?idx=<c:out value="${Lists.getTitle()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
 					<td><c:out value="${Lists.getDatetime()}"/></td>
 				</tr>	
 				
@@ -171,8 +171,8 @@ $(function(){
 					<th>보낸날짜</th>
 				</tr>
 				<tr>
-					<td><c:out value="${Lists.getSendUserID()}"/></td> 
-					<td><c:out value="${Lists.getTitle()}"/></td>
+					<td><c:out value="${Lists.getSEND_USER_ID()}"/></td> 
+					<td><a data-ajax="false" href="../student/16-QandA-detail(student).jsp?idx=<c:out value="${Lists.getTitle()}"/>"><c:out value="${Lists.getTitle()}"/></a></td>
 					<td><c:out value="${Lists.getDatetime()}"/></td>
 				</tr>	
 		</thead>
