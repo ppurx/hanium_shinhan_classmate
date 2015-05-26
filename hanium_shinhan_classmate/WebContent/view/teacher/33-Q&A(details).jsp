@@ -156,14 +156,13 @@ html, body {height:100%; margin:0; padding:0;}
     <h1>QnA(답변보내기)</h1>
 	</div>
 
-<form id="login" action="quest2.com3" method="post">
 <div style="margin-left:-201px; margin-top:30px;">
 <img width="10%" height="10%"  src="/hanium_shinhan_classmate/res/Student.png"/>
  </div>
  
 	<div class="bubble">
  <p class="label">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px"  name="MEMO_Content" id="textarea"placeholder=<%=dto.getMEMO_Content()%>></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center" disabled="true"  height:500px; margin-left:20px; margin-top:5px"  name="MEMO_Content" id="textarea" placeholder=<%=dto.getMEMO_Content()%>></textarea>
  </p>
  <div class="tail"></div>
  
@@ -186,7 +185,6 @@ html, body {height:100%; margin:0; padding:0;}
 			
 		</div>
 		<input type="hidden" name="MEMO_ID" value="<%=idx %>" />
-		</form>
 </div>
 </body>
 </html>

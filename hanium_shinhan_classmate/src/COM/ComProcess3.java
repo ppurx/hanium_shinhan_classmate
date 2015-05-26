@@ -55,6 +55,8 @@ public class ComProcess3 extends HttpServlet{
 			}
 			
 		}
+		
+		
 		else if(command !=null &&command.trim().equals("candidate")){
 			boolean check;
 			request.setCharacterEncoding("EUC-KR");
