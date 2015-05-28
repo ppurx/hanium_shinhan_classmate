@@ -117,10 +117,10 @@ html, body {height:100%; margin:0; padding:0;}
 		</tr>
 		<tr>
 		<td></td><td width="65%" align="right"><fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="job" name="job"> 
-			<legend></legend> 
+			
 				<label for="am_h">학생</label> 
 				<input type="radio" name="job" id="am_h" value="0" checked="checked"/> 
-				<label for="pm_h">선생님</label> 
+				<label for="pm_h" style="width:40px">선생님</label> 
 				<input type="radio" name="job" id="pm_h" value=1 />
 			</fieldset></td>
 		</tr>
