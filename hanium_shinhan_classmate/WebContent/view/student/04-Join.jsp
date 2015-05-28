@@ -15,7 +15,7 @@ html, body {height:100%; margin:0; padding:0;}
     position:absolute; 
     left:0%;   
     text-align: center;
-    position:fixed; top:0; left:0; width:100%; height:100%;
+    position: top:0; left:0; width:100%; height:200%;
     background-color:#fafbd3;
 }
 
@@ -116,7 +116,7 @@ html, body {height:100%; margin:0; padding:0;}
 			<td align="left" ><h2>회원 가입</h2></td>
 		</tr>
 		<tr>
-		<td></td><td width="62%" align="right"><fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="job" name="job"> 
+		<td></td><td width="65%" align="right"><fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" id="job" name="job"> 
 			<legend></legend> 
 				<label for="am_h">학생</label> 
 				<input type="radio" name="job" id="am_h" value="0" checked="checked"/> 
@@ -134,21 +134,20 @@ html, body {height:100%; margin:0; padding:0;}
 	
 		
 		<tr>
-			<td align="left">이름</td>
-			<td rowspan="5"><input  data-mini="true" type="text" id="name" name="name"/><input  data-mini="true" id="birth" type="text"name="birth"/><input  data-mini="true" type="text"id="email" name="email"/><input  data-mini="true" type="text"id="school" name="school"/><input  data-mini="true" type="text"id="address" name="address"/></td>
+			<td align="left">이름</td><td><input  data-mini="true" type="text" id="name" name="name"/></td>
 		
 		</tr>
 		<tr>
-			<td align="left">생년월일
+			<td align="left">생년월일</td><td> <input  data-mini="true" id="birth" type="text"name="birth"/></td>
 		</tr>
 		<tr>
-			<td align="left">E-mail
+			<td align="left">E-mail</td><td><input  data-mini="true" type="text"id="email" name="email"/></td>
 		</tr>
 		<tr>
-			<td align="left">학교
+			<td align="left">학교</td><td><input  data-mini="true" type="text"id="school" name="school"/></td>
 		</tr>
 		<tr>
-			<td align="left">주소
+			<td align="left">주소</td><td><input  data-mini="true" type="text"id="address" name="address"/></td>
 		</tr>
 						
 	</table>
