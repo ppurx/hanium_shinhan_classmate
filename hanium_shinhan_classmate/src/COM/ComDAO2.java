@@ -33,7 +33,7 @@ public class ComDAO2 {
 	
 	
 	public boolean insertBoard(ComDTO2 dto){
-		String query = "Insert INTO BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT) values (?,?,?)";
+		String query = "Insert INTO BOARD(CLASS_ID,BOARD_SUBJECT,BOARD_CONTENT) values (?,?,?)";
 		boolean check = false;
 		
 		try {
@@ -70,15 +70,16 @@ public class ComDAO2 {
 	public ComDTO2 selectTest(String idx){
 		ComDTO2 dto = new ComDTO2();
 		
-		String sql = "select * from BOARD,CLASS,USER where BOARD.CLASS_ID=CLASS.CLASS_ID and CLASS.USER_ID=USER.USER_ID and CLASS.CLASS_ID='"+idx+"'";
+		String sql = "select * from BOARD where BOARD_ID='"+idx+"'";
 		try {
 			Statement stmt = conn.createStatement();
 			
 			ResultSet rs = stmt.executeQuery(sql);			
 			
 			if(rs.next()){
-				
-				dto.setSubject(rs.getString("BOARD_WRITER"));
+				dto.setUserID(rs.getString("USER_ID"));
+				dto.setSubject(rs.getString("BOARD_SUBJECT"));
+				dto.setBoardID(rs.getString("BOARD_ID"));
 				dto.setClassID(rs.getString("CLASS_ID"));
 				dto.setRegidate(rs.getString("BOARD_REGI_DATE").substring(0,10));
 				dto.setTextarea(rs.getString("BOARD_CONTENT"));
@@ -135,8 +136,8 @@ public class ComDAO2 {
 			
 			
 			pstmt.setString(1, "1");
-			pstmt.setString(1, dto.getSubject2());
-			pstmt.setString(1, dto.getTextarea2());
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(1, dto.getTextarea());
 			
 			int x = pstmt.executeUpdate();
 			
@@ -170,8 +171,8 @@ public class ComDAO2 {
 			
 			
 			pstmt.setString(1, "1");
-			pstmt.setString(1, dto.getSubject3());
-			pstmt.setString(1, dto.getTextarea3());
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(1, dto.getTextarea());
 			
 			int x = pstmt.executeUpdate();
 			
@@ -205,9 +206,10 @@ public class ComDAO2 {
 			
 			while(rs.next()){
 				ComDTO2 dto = new ComDTO2();
-				dto.setSubject(rs.getString("BOARD_WRITER"));
+				dto.setSubject(rs.getString("BOARD_SUBJECT"));
+				dto.setBoardID(rs.getString("BOARD_ID"));
 				dto.setWriter(rs.getString("CLASS_ID"));
-				dto.setDate2(rs.getString("BOARD_REGI_DATE"));
+				dto.setDate(rs.getString("BOARD_REGI_DATE").substring(0, 10));
 				selectList.add(dto);
 				
 				System.out.println(dto.getSubject());

@@ -113,27 +113,27 @@ $(function(){
 
 	<table style="width:90%">
 	<tr>
-		<td><img style="margin-left:3px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-1.PNG"/></td><td><input id="subject3" type="text" size="20" placeholder="제목을 입력하세요"></td>
+		<td><img style="margin-left:3px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-1.PNG"/></td><td><input id="subject" type="text" size="20" placeholder="제목을 입력하세요"></td>
 	</tr>
 	<tr>
 	</tr>
 	<tr>
 	</tr>
 	<tr>
-		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><font id="writer2" style="float:left"></font></td>
+		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><font id="writer" style="float:left"></font></td>
 	</tr>
 	<tr>
 	</tr>
 	<tr>
 	</tr>
 	<tr>
-		<td><img style="margin-left:5px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-3.PNG"/></td><td><font id="date2" style="float:left"></font></td>
+		<td><img style="margin-left:5px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-3.PNG"/></td><td><font id="date" style="float:left"></font></td>
 	</tr>
 	<tr>
 		<td><img style="margin-top:30px; margin-left:20px" width="50%" height="50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
 	</tr>	
 	<tr>
-	<td  colspan="2" ><textarea style="height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea3" placeholder="내용을 입력하세요"></textarea></td>
+	<td  colspan="2" ><textarea style="height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea" placeholder="내용을 입력하세요"></textarea></td>
 	</tr>
 	
 	</table>

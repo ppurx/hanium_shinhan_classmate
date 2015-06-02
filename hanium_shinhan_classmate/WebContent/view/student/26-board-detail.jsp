@@ -92,25 +92,24 @@ html, body {height:100%; margin:0; padding:0;}
 	<div data-role="header" data-theme="b" >
     <h1>자유게시판</h1>
 </div>
-	
 	 
-	<table style="width:70%; margin-top:3%">
+	<table style="width:100%; margin-top:10%">
 	
 	<tr>
-		<td><font style="float:middle" size="5" face="Impact"><b>제목 : </b></font></td>
-		<td><font id="subject2" style="float:left"><%=dto.getSubject() %></font></td>
+		<td><font style="margin:auto" size="5" face="Impact"><b>제목 : </b></font></td>
+		<td><font style="float:left"><%=dto.getSubject() %></font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>작성자 : </b></font></td>
-		<td><font id="writer" style="float:left"><%=dto.getWriter() %></font></td>
+		<td><font id="writer" style="float:left"><%=dto.getUserID() %></font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>작성일 : </b></font></td>
-		<td><font id="date" style="float:left"><%=dto.getDate2() %></font></td>
+		<td><font id="date" style="float:left"><%=dto.getRegidate() %></font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>내용 : </b></font></td>
-		<td><font id="textarea2" style="float:left"><%=dto.getTextarea() %></font></td>
+		<td><font style="float:left"><%=dto.getTextarea() %></font></td>
 	</tr>
 	
 	</table>

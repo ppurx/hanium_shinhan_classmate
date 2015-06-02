@@ -158,9 +158,9 @@ $(function(){
 	<c:forEach var="Lists"  items="${List}" >
 	
 		<tr>
-			<td><a href="../student/26-board-detail.jsp"><c:out value="${Lists.getSubject()}"/></a></td>
+			<td><a href="../student/26-board-detail.jsp?idx=<c:out value="${Lists.getBoardID()}"/>"><c:out value="${Lists.getSubject()}"/></a></td>
 			<td align="center"><c:out value="${Lists.getWriter() }"/></td>
-			<td align="center"><c:out value="${Lists.getDate2() }"/></td>
+			<td align="center"><c:out value="${Lists.getDate() }"/></td>
 			<td><c:out value="3"/></td>
 		</tr>
 		
