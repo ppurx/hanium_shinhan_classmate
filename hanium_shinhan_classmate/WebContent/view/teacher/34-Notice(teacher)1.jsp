@@ -201,7 +201,7 @@ $(function(){
 			</div>
 			
 			<div style="margin-top:20%; float:right; margin-right:5%">
-			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/35-NoticeWrite(teacher).jsp'" style="float:right;margin-top:20%">
+			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/39-Noticewrite.jsp'" style="float:right;margin-top:20%">
 		</div>
 			
 	</div>

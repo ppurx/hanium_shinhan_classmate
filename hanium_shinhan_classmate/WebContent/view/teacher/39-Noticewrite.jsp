@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+      <%@page import="COM.ComDAO1"%>
+     <%@page import="COM.ComDTO1"%>
+    <%@ page import="java.util.ArrayList"%>  
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,28 +28,29 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
-		
-	};
+	$(function(){
+			$('#Enrollment').click(function(){
+				
+				if($('#title').val()=='')$("#popTitle").popup("open");
+				else if($('#content').val()=='')$("#popContent").popup("open");
+				
+			    else notice.submit();
+				
+					
+			
+			});
+			$('#lo').click(function(){			
+				logout.submit();
+			});
+	})
+	
 </script>
 
-<script type="text/javascript">
-$(function(){
-	
-	
-	
-	$('#logoutOK').click(function(){			
-		logout.submit();
-	});
-	
-		
-	});
-</script>
-<title>board detail</title>
+<title>p35</title>
 </head>
 <body>
-    
+
+
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -57,7 +61,7 @@ $(function(){
 	    <div role="main" class="ui-content" style=" text-align: center;">		
 			<h3 style="margin:auto">로그아웃 하시겠습니까?</h3>
 			<p> </p>
-				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="logoutOK">&nbspYES&nbsp</a>
+				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="lo">&nbspYES&nbsp</a>
 				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-left:8%" data-rel="back">&nbsp&nbspNO&nbsp&nbsp</a>
 							        
 	    </div>
@@ -100,42 +104,38 @@ $(function(){
 		</table>
 		
         </form>
+</div>
 
 <!-- //툴바 -->
-</div>
 	<div data-role="header" data-theme="b" >
-    <h1>자유게시판</h1>
+    <h1>공지쓰기</h1>
 </div>
+	
+<form name=notice action="Tnotice.com1" method="post">
 
-
-
-	<table style="width:90%">
+	<table style="width:90%; margin:auto" >
 	<tr>
-		<td><img style="margin-left:3px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-1.PNG"/></td><td><input type="text" size="20" placeholder="제목을 입력하세요"></td>
+		<td align="left"><img  width="70%"  src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input id="title" name="title" type="text" size="25" placeholder="제목을 입력하세요"></td>
 	</tr>
-    <tr >
-		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><input type="text" size="20" placeholder="작성자를 입력하세요"></td>
-	</tr>
+    
 	<tr>
-		<td><img style="margin-left:5px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-3.PNG"/></td><td><input type="text" size="20" placeholder="작성일을 입력하세요"></td>
-	</tr>
-	<tr>
-		<td><img style="margin-top:30px; margin-left:20px" width="50%" height="50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
+		<td align="left"><img style="height:50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
 	</tr>	
 	<tr>
 	
-	<td  colspan="2" ><textarea style="height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea"placeholder="내용을 입력하세요"></textarea></td>
+	<td  colspan="2" ><textarea style="height:500px; margin-top:5px" name="content" id="content" placeholder="내용을 입력하세요" ></textarea></td>
 	</tr>
-	
+	<tr >
+		<td colspan="2">
+		<a  data-ajax="false"style="margin-right:15%" href="../teacher/34-Notice(teacher)1.jsp" data-role="button" data-inline="true" >목록</a>
+		<a data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true" id="Enrollment" >등록</a></td>
+		</tr>
 	</table>
-	
-	
-	<a href="" data-role="button"  data-ajax="false"data-inline="true" style=" margin-top:30px">수정</a>
-    <a href="../teacher/24-board2.html"  data-ajax="false"data-role="button" data-inline="true" style=" margin-top:30px">삭제</a>
-    <a href="../teacher/24-board2.jsp"  data-ajax="false"data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
-	
+	</form>
 
 	</div>
 	
+		<div data-role="popup" data-transition="pop"id="popTitle" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>제목을 입력하시오.</p></div>
+	<div data-role="popup" data-transition="pop"id="popContent" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>내용을 입력하시오.</p></div>
 </body>
 </html>

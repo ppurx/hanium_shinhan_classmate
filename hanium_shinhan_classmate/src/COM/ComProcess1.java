@@ -42,7 +42,7 @@ public class ComProcess1 extends HttpServlet{
 			boolean bool = dao.insertNOTICE(dto);
 			
 			if(bool){
-				response.sendRedirect("../../Success.html");
+				response.sendRedirect("../teacher/34-Notice(teacher)1.jsp");
 			}
 			else
 			{
