@@ -39,15 +39,26 @@ jQuery(function(){ // on DOM load
 		
 	})
 </script>
+<style type="text/css">
+html, body {height:100%; margin:0; padding:0;}
+#myCenterDiv {
+    position:absolute; 
+    left:0%;   
+    text-align: center;
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background-color:#fafbd3;
+}
+
+
+
+
+
+</style>
 
 <title>Make_Class</title>
 </head>
 <body>
-<div style="position:absolute; 
-    left:0%;   
-    text-align: center;
-     top:0; left:0; width:100%; height:100%;
-    background-color:#fafbd3;">
+<div id="myCenterDiv">
     
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">

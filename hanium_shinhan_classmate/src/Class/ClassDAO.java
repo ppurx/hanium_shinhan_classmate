@@ -313,7 +313,69 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		}
 			
 	}
+	public void insertStudy(int CLASS_ID, String STUDY_SUBJECT,String USER_ID){
+		String sql = "insert into STUDY(CLASS_ID,STUDY_SUBJECT,USER_ID) values(?,?,?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			pstmt.setInt(1,CLASS_ID);
+			pstmt.setString(2, STUDY_SUBJECT);
+			pstmt.setString(3, USER_ID);
+			
+			
+			pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+	}
 	
+	public int selectStudyID(String USER_ID){
+		String sql = "select STUDY_ID from STUDY where USER_ID='"+USER_ID+"' order by STUDY_DATE desc";
+		int STUDY_ID = 0;
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);		
+			
+			if(rs.next()){
+				STUDY_ID=rs.getInt("STUDY_ID");
+				
+			}
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+		
+		return STUDY_ID;
+	}
+	
+	public void insertQuestion(ArrayList<String> questionList,ArrayList<String> answerList,ClassDTO dto){
+		int i;
+		
+		String sql = "insert into QUESTION(STUDY_ID,QUE_CONTENT_TXT,QUE_COUNT,QUE_ANSWER) values(?,?,?,?)";
+		int size = questionList.size();
+		insertStudy(dto.getCLASS_ID(),dto.getStudy_Subject(),dto.getUSER_ID());
+		int STUDY_ID = selectStudyID(dto.getUSER_ID());
+		
+		
+		try {			
+			
+			for(i=0;i<size;i++){
+				
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			pstmt.setInt(1,STUDY_ID);
+			pstmt.setString(2, questionList.get(i));
+			pstmt.setInt(3, i+1);
+			pstmt.setInt(4, Integer.parseInt(answerList.get(i)));
+			
+			pstmt.executeUpdate();
+			}
+			
+		
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+		
+		
+	}
 	public void canS(String idx,String idx2){
 		
 		

@@ -2,6 +2,13 @@ package Class;
 
 public class ClassDTO {
 	
+	public String Study_Subject;
+	public String getStudy_Subject() {
+		return Study_Subject;
+	}
+	public void setStudy_Subject(String study_Subject) {
+		Study_Subject = study_Subject;
+	}
 	public String Can_name;
 	public String getCan_name() {
 		return Can_name;

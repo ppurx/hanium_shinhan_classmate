@@ -1,8 +1,6 @@
 .touchgallery{
 position: relative;
 overflow: hidden;
-width: 350px; /* default gallery width */
-height: 270px; /* default gallery height */
 }
 
 .touchgallery ul{
@@ -10,7 +8,6 @@ list-style: none;
 margin: 0;
 padding: 0;
 left: 0;
-position: absolute;
 -webkit-transform: translateX(0);
 -moz-transform: translateX(0);
 transform: translateX(0);

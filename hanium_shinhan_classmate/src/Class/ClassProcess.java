@@ -73,6 +73,43 @@ public class ClassProcess extends HttpServlet{
 			
 		}
 		
+		else if(command !=null &&command.trim().equals("Question")){
+			request.setCharacterEncoding("utf-8");
+			ClassDAO dao = new ClassDAO();
+			ClassDTO dto = new ClassDTO();
+			HttpSession session = request.getSession();
+			 dto.setUSER_ID((String)session.getAttribute("id"));
+			 dto.setCLASS_ID(Integer.parseInt((String)session.getAttribute("CLASS_ID")));
+			 dto.setStudy_Subject(request.getParameter("subject"));
+			 
+			 ArrayList<String> questionList = new ArrayList<String>();
+			 ArrayList<String> answerList = new ArrayList<String>();
+			int count = Integer.parseInt(request.getParameter("count"));
+			String[] que= { request.getParameter("que1"), request.getParameter("que2"), 
+					request.getParameter("que3"), request.getParameter("que4"), request.getParameter("que5"), 
+					request.getParameter("que6"), request.getParameter("que7"), request.getParameter("que8"), 
+					request.getParameter("que9"), request.getParameter("que10")};
+			
+			String[] answer= { request.getParameter("yy1"), request.getParameter("yy2"), 
+					request.getParameter("yy3"), request.getParameter("yy4"), request.getParameter("yy5"), 
+					request.getParameter("yy6"), request.getParameter("yy7"), request.getParameter("yy8"), 
+					request.getParameter("yy9"), request.getParameter("yy10")};
+			int i;
+			
+			for(i=0;i<=count-1;i++){
+				questionList.add(que[i]);
+				answerList.add(answer[i]);
+			}
+			dao.insertQuestion(questionList,answerList,dto);
+			
+			
+			
+			
+			
+			
+			
+		}
+		
 		
 	}
 			
