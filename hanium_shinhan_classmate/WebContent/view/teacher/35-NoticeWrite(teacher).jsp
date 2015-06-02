@@ -42,7 +42,9 @@ html, body {height:100%; margin:0; padding:0;}
 			$('#lo').click(function(){			
 				logout.submit();
 			});
-			
+			$('#update').click(function(){
+				updateNotice.submit();
+			});
 			});
 	
 </script>
@@ -50,7 +52,15 @@ html, body {height:100%; margin:0; padding:0;}
 <title>p35</title>
 </head>
 <body>
+<%
+	
+	String idx = request.getParameter("idx");
+	ComDTO1 dto = new ComDTO1();
+	ComDAO1 dao = new ComDAO1();
+	
+	dto = dao.selectnotice2(idx);
 
+%>	
 
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
@@ -112,11 +122,11 @@ html, body {height:100%; margin:0; padding:0;}
     <h1>공지쓰기</h1>
 </div>
 	
-<form name="notice" action="Tnotice.com1" method="post">
-
+<form name=updateNotice action="updateNotice.com1" method="post">
+<input type="hidden" name="notice_ID" value="<%=idx %>"/>
 	<table style="width:90%; margin:auto" >
 	<tr>
-		<td align="left"><img  width="70%"  src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input id="title" name="title" type="text" size="25" placeholder="제목을 입력하세요"></td>
+		<td align="left"><img  width="70%"  src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input id="title" name="title" type="text" size="25" value="<%=dto.getTitle() %>"></td>
 	</tr>
     
 	<tr>
@@ -124,18 +134,18 @@ html, body {height:100%; margin:0; padding:0;}
 	</tr>	
 	<tr>
 	
-	<td  colspan="2" ><textarea style="height:500px; margin-top:5px" name="content" id="content"placeholder="내용을 입력하세요"></textarea></td>
+	<td  colspan="2" ><textarea style="height:500px; margin-top:5px" name="content" id="content" ><%=dto.getContent() %></textarea></td>
 	</tr>
 	<tr >
 		<td colspan="2">
 		<a  data-ajax="false"style="margin-right:15%" href="../teacher/34-Notice(teacher)1.jsp" data-role="button" data-inline="true" >목록</a>
-		<a data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true" id="Enrollment" >등록</a></td>
+		<a data-ajax="false" style="margin-left:15%" href="#" data-role="button" data-inline="true" id="update" >등록</a></td>
 		</tr>
 	</table>
-	
+	</form>
 
 	</div>
-	</form>
+	
 		<div data-role="popup" data-transition="pop"id="popTitle" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>제목을 입력하시오.</p></div>
 	<div data-role="popup" data-transition="pop"id="popContent" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>내용을 입력하시오.</p></div>
 </body>

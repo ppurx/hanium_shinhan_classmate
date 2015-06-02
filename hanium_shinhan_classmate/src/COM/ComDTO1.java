@@ -46,5 +46,11 @@ public class ComDTO1 {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-    
+    private int Notice_ID;
+	public int getNotice_ID() {
+		return Notice_ID;
+	}
+	public void setNotice_ID(int notice_ID) {
+		Notice_ID = notice_ID;
+	}
 }

@@ -159,6 +159,7 @@ public class ComDAO1 {
 				dto.setTitle(rs.getString("NOTICE_TITLE"));
 				dto.setClass_ID(rs.getString("CLASS_ID"));
 				dto.setREGI_DATE(rs.getString("NOTICE_REGI_DATE").substring(0,10));
+				dto.setNotice_ID(rs.getInt("NOTICE_ID"));
 				System.out.println(dto.getREGI_DATE());
 				System.out.println(rs.getString("NOTICE_TITLE"));
 				selectList1.add(dto);
@@ -173,6 +174,7 @@ public class ComDAO1 {
 				
 		return selectList1;
 	}
+	
 	public ComDTO1 selectnot(String idx){
 		String sql = "select * from NOTICE,CLASS,USER where NOTICE.CLASS_ID=CLASS.CLASS_ID and CLASS.USER_ID=USER.USER_ID and CLASS.CLASS_ID='"+idx+"'";
 		ComDTO1 dto = new ComDTO1();
@@ -201,6 +203,51 @@ public class ComDAO1 {
 		}
 		
 	return dto;
+	}
+	public ComDTO1 selectnotice2(String idx){
+		String sql = "select * from NOTICE,CLASS where NOTICE.CLASS_ID=CLASS.CLASS_ID and NOTICE_ID='"+idx+"'";
+		ComDTO1 dto = new ComDTO1();
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			if(rs.next()){
+				
+				dto.setTitle(rs.getString("NOTICE_TITLE"));
+				dto.setREGI_DATE(rs.getString("NOTICE_REGI_DATE").substring(0,10));
+				dto.setNotice_ID(rs.getInt("notice_ID"));
+				dto.setUSER_ID(rs.getString("USER_ID"));
+				dto.setContent(rs.getString("NOTICE_CONTENT"));
+				
+				
+				
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+	return dto;
+	}
+	public void updateNOTICE(ComDTO1 dto){
+		String sql = "update NOTICE set NOTICE_TITLE=?,NOTICE_CONTENT=? where NOTICE_ID='"+dto.getNotice_ID()+"'" ;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2,dto.getContent());
+			pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+		}
+		
+			
+		
+		return ;
 	}
 	}
 

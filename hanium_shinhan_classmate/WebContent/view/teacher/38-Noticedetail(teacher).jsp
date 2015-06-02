@@ -50,12 +50,11 @@ $(function(){
 <title>notice2</title>
 </head>
 <body>
-
 <%
 	String idx = request.getParameter("idx");
 	ComDTO1 dto = new ComDTO1();
 	ComDAO1 dao = new ComDAO1();
-	dto = dao.selectnot(idx);
+	dto = dao.selectnotice2(idx);
 %>	
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
@@ -130,10 +129,10 @@ $(function(){
 </c:if>
 	<table style="width:90%; margin-left:7%" align="left" >
 			<tr>
-				<td align="left" colspan="2"><font size="6" style="font-weight:bolder">제목 : <%=dto.getTitle() %></font></td>
+				<td align="left" colspan="2"><font size="6" style="font-weight:bolder">제목 : <%=dto.getTitle()  %></font></td>
 			</tr>
 			<tr>
-				<td align="left"colspan="2"><font size="6" style="font-weight:bolder">작성자 : <%=dto.getClass_ID() %></font></td>
+				<td align="left"colspan="2"><font size="6" style="font-weight:bolder">작성자 : <%=dto.getUSER_ID() %></font></td>
 			</tr>
 			<tr>
 				<td align="left"colspan="2"><font size="4" style="font-weight:bolder">작성일 : <%=dto.getREGI_DATE() %></font></td>
@@ -143,7 +142,7 @@ $(function(){
 			</tr>
 		    <tr>
 		    <td colspan="2" align="right">
-		    <a data-ajax="false"href="../teacher/35-NoticeWrite(teacher).jsp" margin-left="30px" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
+		    <a data-ajax="false"href="../teacher/35-NoticeWrite(teacher).jsp?idx=<%=dto.getNotice_ID() %>" margin-left="30px" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
 		    <a data-ajax="false"href="../teacher/34-Notice(teacher)1.jsp" margin-left="30px" data-role="button" data-inline="true" style=" margin-top:30px">목록</a></td>
 		    </tr>		
 		
@@ -158,5 +157,7 @@ $(function(){
 	
 
 	</div>
+	
+	
 </body>
 </html>
