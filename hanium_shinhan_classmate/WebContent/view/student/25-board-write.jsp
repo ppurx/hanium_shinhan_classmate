@@ -31,7 +31,8 @@ $(function(){
 	$('#write').click(function(){		
 		if($('#subject').val()=='')$("#popTitle").popup("open");
 		
-		else if($('#textarea').val()=='')$("#popContent").popup("open");
+		else if($('#textarea').val()==''){
+		$("#popContent").popup("open");}
 		
 		else board.submit();
 			
