@@ -17,7 +17,7 @@ html, body {height:100%; margin:0; padding:0;}
     position:absolute; 
     left:0%;   
     text-align: center;
-    position:fixed; top:0; left:0; width:100%; height:100%;
+    position: top:0; left:0; width:100%; height:200%;
     background-color:#fafbd3;
 }
 
@@ -27,20 +27,19 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
-	$(function(){
-		$('#write').click(function(){		
+$(function(){
+	$('#write').click(function(){		
+		if($('#subject').val()=='')$("#popTitle").popup("open");
+		
+		else if($('#textarea').val()=='')$("#popContent").popup("open");
+		
+		else board.submit();
 			
-			if($('#subject').val()=='')$("#popTitle").popup("open");
-			
-			else if($('#textarea').val()=='')$("#popContent").popup("open");
-			
-			else board.submit();
-				
-		});
-		$('#logoutOK').click(function(){			
-			logout.submit();
-		});
-	})
+	});
+	$('#logoutOK').click(function(){			
+		logout.submit();
+	});
+});
 	
 </script>
 <title>board write</title>
