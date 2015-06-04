@@ -30,7 +30,11 @@ html, body {height:100%; margin:0; padding:0;}
 </style>
 <script type="text/javascript">
 $(function(){
-	
+	var x=1;
+	for(x=1;x<=10;x++){
+		$("#an"+x).hide();
+		$("#ans"+x).hide();
+	}
 
 	
 	$('#logoutOK').click(function(){			
@@ -51,6 +55,16 @@ $(function(){
 	List = dao.selectQuestionList(STUDY_ID);
 	request.setAttribute("List",List);
 %>
+<script type="text/javascript">
+$(function(){
+	var x=1;
+	for(x=1;x<=<%=List.size() %>;x++){
+		$("#an"+x).show();
+		$("#ans"+x).show();
+	}
+
+	});
+</script>
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -107,11 +121,13 @@ $(function(){
 	<div data-role="header" data-theme="b" >
     <h1>과제</h1>
 	</div>
+	<div style="margin-top:2%; margin-left:5%; margin-bottom:5%;"><font size="5" style="float:left;">과 목 : <%=List.get(0).getSTUDY_SUBJECT() %></font></div>
 	<div style="margin-top:30px; margin-bottom:30px; "align="left">
 	
-	<div style="margin-top:5%; text-align:center; width:100%;height:180px; overflow-x:hidden; overflow:auto">
+	<div style="margin-top:15%; text-align:center; width:100%;height:230px; overflow-x:hidden; overflow:auto">
+	
 	<table style="text-align:left;background-color:white; width:90%;  margin:auto;">
-		<c:forEach var="Lists"  items="${List}" varStatus="i">
+		<c:forEach var="Lists"  items="${List}" varStatus="i">		
 		<tr>	
 			<td style="padding-left:3%;"><pre><c:out value="${Lists.getQUE_CONTENT_TXT()}"/></pre>
 		</tr>
@@ -120,18 +136,25 @@ $(function(){
 	</div>
 	</div>
 	<div style="margin-left:15px; margin-right:15px;">
+	<div style="overflow:auto;">
 	<table style="width:95%;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
 			<tr bgcolor=lightgray>
-				<th><center>1</center></th>
-				<th><center>2</center></th>
-				<th><center>3</center></th>
-				<th><center>4</center></th>
-				<th><center>5</center></th>
+				<th id="an1"><center>1</center></th>
+				<th id="an2"><center>2</center></th>
+				<th id="an3"><center>3</center></th>
+				<th id="an4"><center>4</center></th>
+				<th id="an5"><center>5</center></th>
+				<th id="an6"><center>6</center></th>
+				<th id="an7"><center>7</center></th>
+				<th id="an8"><center>8</center></th>
+				<th id="an9"><center>9</center></th>
+				<th id="an10"><center>10</center></th>
 			</tr>
 		</thead>
 			<tr>
-				<td>
+			
+				<td id="ans1">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -139,7 +162,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans2">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -147,7 +170,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans3">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -155,7 +178,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans4">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -163,7 +186,15 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans5">
+				<select data-mini="true" size="1">
+				<option selected value="1">1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				</select>
+				</td>			
+				<td  id="ans6">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -171,18 +202,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-			</tr>
-		<thead>
-			<tr bgcolor=lightgray>
-				<th><center>6</center></th>
-				<th><center>7</center></th>
-				<th><center>8</center></th>
-				<th><center>9</center></th>
-				<th><center>10</center></th>
-			</tr>
-		</thead>
-			<tr>
-				<td>
+				<td  id="ans7">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -190,7 +210,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans8">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -198,7 +218,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans9">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -206,7 +226,7 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
+				<td  id="ans10">
 				<select data-mini="true" size="1">
 				<option selected value="1">1</option>
 				<option>2</option>
@@ -214,16 +234,10 @@ $(function(){
 				<option>4</option>
 				</select>
 				</td>
-				<td>
-				<select data-mini="true" size="1">
-				<option selected value="1">1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				</select>
-				</td>
+				
 			</tr>
 	</table>
+	</div>
 	</div>
 	<div style="margin-top:30px; margin-left:100px; margin-right:100px">
 	<a href="../student/14-score.html"><input type="button" value="점수확인"></a>

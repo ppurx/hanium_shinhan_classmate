@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+     <%@page import="Study.StudyDAO"%>
+     <%@page import="Study.StudyDTO"%>
+    <%@ page import="java.util.ArrayList"%> 
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,23 +12,51 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+  <meta name="description" content="jPaginate - jQuery Pagination Plugin" />
+        <meta name="keywords" content="jquery, plugin, pagination, fancy" />
+         
 <meta charset="utf-8">
-
-<style type="text/css">
-html, body {height:100%; margin:0; padding:0;}
-#myCenterDiv {
+<link rel="stylesheet" href="../../view/swiper.min.css">
+<style>
+    #myCenterDiv {
     position:absolute; 
     left:0%;   
     text-align: center;
-    position:fixed; top:0; left:0; width:100%; height:200%;
+    position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
 
+    html, body {
+        position: relative;
+        height: 100%;
+    }
+    
+    .swiper-container {
+        width: 100%;
+        height: 50%;
+    }
+    .swiper-slide {
+        text-align: center;
+      
+        background: #fafbd3;
 
-
-
-
-</style>
+        /* Center slide text vertically */
+         display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        
+    }
+    </style>
 
 <script type="text/javascript">
 $(function(){
@@ -60,7 +93,8 @@ $(function(){
 		});
 		
 		$('#btn1').click(function(){
-			question.submit();
+			if($('#que option:selected').val()==0)alert("최소한 한문제를 등록해야함");
+			else question.submit();
 		});
 			
 	});
@@ -68,6 +102,15 @@ $(function(){
 <title>question</title>
 </head>
 <body>
+<%
+	StudyDAO dao = new StudyDAO();
+	ArrayList<StudyDTO> List =new ArrayList<StudyDTO>();
+
+	String CLASS_ID = (String)session.getAttribute("CLASS_ID");
+	List = dao.selectStudyList(CLASS_ID);
+	request.setAttribute("List",List);
+
+%>
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -122,140 +165,112 @@ $(function(){
 		
         </form>
 </div>
-
 <!-- //툴바 -->
 	<div data-role="header" data-theme="b" >
     <h1>학습부여</h1>
 </div>
-<form action="Question.class" method="post" name="question">
-	<input type="hidden" id="count" name="count" value="0"/>
 
-	<div id="context" class="content"  data-role="none">
+<!-- 여기부터 -->
+		<div class="swiper-container" style="margin-top:10%;">
+        <div class="swiper-wrapper">
     
-	<table style="width:95%" align="center">
-	<tr>
-		<td>
-	<img style="float:left" width="15%" src="/hanium_shinhan_classmate/res/27-1.PNG"/></td>
-	</tr>
-	<tr>
-		
-		<td colspan="2"><div style="margin-right:2%;"><input type="text" name="subject" placeholder="제목을 입력하세요"></div></td>
-	</tr>
-    <tr>
-		<td>
-	<img style="float:left" width="25%" src="/hanium_shinhan_classmate/res/27-2.PNG"/></td>
-	</tr>
-    </table>
-    <table  style="width:95%" align="center">
-	
-	<tr align="right"><td colspan="2">
-	 <SELECT id="que"> <OPTION selected value=0>문제 수</OPTION> 
-	 <OPTION value=1 id="que">1문제</OPTION> <OPTION value=2 id="que">2문제</OPTION> <OPTION value=3 id="que">3문제</OPTION>
-	 <OPTION value=4 id="que">4문제</OPTION><OPTION value=5 id="que">5문제</OPTION><OPTION value=6 id="que">6문제</OPTION><OPTION value=7 id="que">7문제</OPTION>
-	 <OPTION value=8 id="que">8문제</OPTION><OPTION value=9 id="que">9문제</OPTION><OPTION value=10 id="que">10문제</OPTION>
-	 </SELECT> 
-	 
-	 </td></tr>
-	 </table>
-    <div style="overflow:auto;overflow-x:hidden; height:140px; width:95%;">
-    <table style="width:95%" align="center" id="test">
-	<tr><td><textarea id=que1 name=que1>1.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que2 name=que2>2.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que3 name=que3>3.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que4 name=que4>4.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que5 name=que5>5.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que6 name=que6>6.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que7 name=que7>7.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que8 name=que8>8.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que9 name=que9>9.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	<tr><td><textarea id=que10 name=que10>10.
-1)
-2)
-3)
-4)</textarea></td></tr>
-	</table>
-	</div>
-	
-	<div style="overflow:auto;overflow-y:hidden; margin-top:2%">
-	 <table  style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr bgcolor=lightgray style="text-align:right">
-				<th id="x1">1</th>				
-				<th id="x2">2</th>
-				<th id="x3">3</th>				
-				<th id="x4">4</th>
-				<th id="x5">5</th>				
-				<th id="x6">6</th>
-				<th id="x7">7</th>				
-				<th id="x8">8</th>
-				<th id="x9">9</th>				
-				<th id="x10">10</th>				
-			</tr>
+    <div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<colgroup>
+				<col width="45px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>과   목</th>
+					<th>날   짜</th>
+					<th>학습여부</th>
+				</tr>
 		</thead>
-		<tbody>
-			<tr>
-			<td id="y1" ><select name="yy1" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y2"><select name="yy2" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y3"><select name="yy3" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y4"><select name="yy4" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y5"><select name="yy5" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y6"><select name="yy6" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y7"><select name="yy7" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y8"><select name="yy8" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y9"><select name="yy9" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
-			<td id="y10"><select name="yy10" data-mini='true' size='1'><option selected value='1'>1</option><option>2</option><option>3</option><option>4</option></select></td>
+			<tbody>
+<c:choose>
+	<c:when test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
+			</tbody>
+				</table></div>
+	</c:when>
+	<c:when test="${List.size()!=0 }">
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+				<tr>
+					 
+					<td><div style='width:80px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><a data-ajax="false" href="../teacher/27-QuestionDetail.jsp?idx=<c:out value="${Lists.getSTUDY_ID()}"/>"><c:out value="${Lists.getSTUDY_SUBJECT()}"/></a></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getSTUDY_DATE()}"/></div></td>
+					<td><div style='text-align:center;width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getSTUDY_CHECK()}"/></div></td>
+				</tr>	
 				
+				<c:choose>
+				<c:when test="${i.index%4==3 }">
+				<c:choose>
+					<c:when test="${i.last}">
+					</tbody>
+						</table>
+							</div>
+					</c:when>
+					
+					<c:when test="${i.index!=i.end }">
+						</tbody>
+						</table>
+							</div>
+							<div class="swiper-slide">
+						<table  style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+							
+							<thead>
+							
+								<tr>
+									<th >과   목</th>
+									<th >날   짜</th>
+									<th>학습여부</th>
+								</tr>
+						</thead>
+							<tbody>
+						</c:when>
+						</c:choose>
+				</c:when>	
+				
+				<c:when test="${i.last }">
+				</tbody>
+						</table>
+							</div>
+				</c:when>
+				
+				</c:choose>
+		</c:forEach>
+		</c:when>
+	</c:choose>
+	          
+            
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
 			
-			
-			
-			</tr>
-		</tbody>
-		</table>
-	 </div>
-	 </form>
-	<a id="btn1" data-ajax="false" href="#" data-role="button" data-inline="true" style=" margin-left:10px">문제 등록</a>
-	     
- 
-	
-     
-     </div>
-	</div>
-	
+	<script src="../../view/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
+   <!-- 여기까지 -->
+	<div style="float:right; margin-right:5%;"><a data-ajax="false" href="../teacher/27-QuestionInsert.jsp"><input type="button" data-inline="true" type="button" value="학습 부여"/></a></div>
+		</div>
+		
+		
+		
+
 </body>
 </html>

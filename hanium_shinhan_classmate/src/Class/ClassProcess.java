@@ -80,7 +80,10 @@ public class ClassProcess extends HttpServlet{
 			HttpSession session = request.getSession();
 			 dto.setUSER_ID((String)session.getAttribute("id"));
 			 dto.setCLASS_ID(Integer.parseInt((String)session.getAttribute("CLASS_ID")));
-			 dto.setStudy_Subject(request.getParameter("subject"));
+			 if(request.getParameter("subject")=="")
+				 dto.setStudy_Subject("제목 없음");
+			 else
+				 dto.setStudy_Subject("subject");
 			 
 			 ArrayList<String> questionList = new ArrayList<String>();
 			 ArrayList<String> answerList = new ArrayList<String>();
@@ -106,7 +109,7 @@ public class ClassProcess extends HttpServlet{
 			
 			
 			
-			 response.sendRedirect("../teacher/07-teacher_main.jsp");
+			 response.sendRedirect("../teacher/27-Question.jsp");
 			
 		}
 		

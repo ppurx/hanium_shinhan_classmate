@@ -41,7 +41,7 @@ public ClassDAO() {
 		}
 	
 	}
-	
+
 
 public ArrayList<ClassDTO> selectClassList(String id){
 	ArrayList<ClassDTO> classList = new ArrayList<ClassDTO>();
@@ -313,6 +313,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		}
 			
 	}
+	
 	public void insertStudy(int CLASS_ID, String STUDY_SUBJECT,String USER_ID){
 		String sql = "insert into STUDY(CLASS_ID,STUDY_SUBJECT,USER_ID) values(?,?,?)";
 		try {

@@ -40,7 +40,7 @@ public class StudyDAO {
 		
 	
 	public ArrayList<StudyDTO> selectStudyList(String CLASS_ID){
-		System.out.println("asdfasdf");
+		
 		ArrayList<StudyDTO> StudyList = new ArrayList<StudyDTO>();
 		
 		String sql ="select * from STUDY where CLASS_ID='"+CLASS_ID+"'";
@@ -72,10 +72,10 @@ public class StudyDAO {
 	}
 	
 	public ArrayList<StudyDTO> selectQuestionList(String STUDY_ID){
-		System.out.println("asdfasdf");
+		
 		ArrayList<StudyDTO> QuestionList = new ArrayList<StudyDTO>();
 		
-		String sql ="select * from QUESTION where STUDY_ID='"+STUDY_ID+"' order by QUE_COUNT";
+		String sql ="select * from QUESTION,STUDY where QUESTION.STUDY_ID=STUDY.STUDY_ID and QUESTION.STUDY_ID='"+STUDY_ID+"' order by QUE_COUNT";
 		
 		try {
 			
@@ -88,6 +88,7 @@ public class StudyDAO {
 				dto.setQUE_COUNT(rs.getInt("QUE_COUNT"));
 				dto.setQUE_CONTENT_TXT(rs.getString("QUE_CONTENT_TXT"));
 				dto.setQUE_ANSWER(rs.getInt("QUE_ANSWER"));
+				dto.setSTUDY_SUBJECT(rs.getString("STUDY_SUBJECT"));
 
 				QuestionList.add(dto);
 			}
