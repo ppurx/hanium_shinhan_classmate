@@ -134,6 +134,67 @@ public ArrayList<StudyDTO> selectStudyList2(String CLASS_ID){
 		return QuestionList;
 	}
 	
+public ArrayList<StudyDTO> selectScoreAvgList(String CLASS_ID){
+		
+		ArrayList<StudyDTO> ScoreAvgList = new ArrayList<StudyDTO>();
+		
+		String sql ="select USER.USER_NAME,SCORE.USER_ID,avg(SCORE.SCORE_SCORE) as avg from SCORE,STUDY,USER where SCORE.STUDY_ID=STUDY.STUDY_ID and SCORE.USER_ID=USER.USER_ID and STUDY.CLASS_ID='"+CLASS_ID+"' group by SCORE.USER_ID order by avg(SCORE.SCORE_SCORE) desc";
+		
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()){
+				StudyDTO dto = new StudyDTO();
+				dto.setUSER_NAME(rs.getString("USER_NAME"));
+				dto.setAVG(rs.getString("avg"));
+
+				ScoreAvgList.add(dto);
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return ScoreAvgList;
+	}
+
+
+public ArrayList<StudyDTO> selectMonthAvg(String CLASS_ID){
+	int i=0;
+	ArrayList<StudyDTO> MonthList = new ArrayList<StudyDTO>();
+	
+	String sql ="select MONTH(SCORE.SCORE_DATE) as MONTH,avg(SCORE.SCORE_SCORE) as AVG from SCORE,STUDY where SCORE.STUDY_ID=STUDY.STUDY_ID and CLASS_ID='"+CLASS_ID+"' group by MONTH(SCORE.SCORE_DATE)";
+	
+	try {
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(sql);	
+		
+		while(rs.next()){
+			StudyDTO dto = new StudyDTO();
+			
+			dto.setMONTH(rs.getString("MONTH"));
+			dto.setAVG(rs.getString("AVG"));
+			MonthList.add(dto);
+		}
+		
+		
+		
+	}
+	catch(SQLException e){
+		System.out.println(e);
+	}
+	
+	return MonthList;
+}
+	
 
 
 

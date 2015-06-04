@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+      <%@page import="Study.StudyDAO"%>
+     <%@page import="Study.StudyDTO"%>
+    <%@ page import="java.util.ArrayList"%> 
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,59 +43,82 @@ html, body {height:100%; margin:0; padding:0;}
 }
 
 </style>
+<%
+	StudyDAO dao = new StudyDAO();
+	String CLASS_ID = (String)session.getAttribute("CLASS_ID");
+	ArrayList<StudyDTO> List = dao.selectScoreAvgList(CLASS_ID);
+	ArrayList<StudyDTO> month = dao.selectMonthAvg(CLASS_ID);
+	request.setAttribute("MONTH",month);
+	request.setAttribute("List",List);
 
-<script>
+%>
+<script  type="text/javascript">
+var MonthList = new Array(); 
+var AvgList = new Array();
+var resultList = new Array();
+<c:forEach var="MONTHs"  items="${MONTH}" varStatus="i">	
+	var x = '${MONTHs.getAVG()}';
+	var y = '${MONTHs.getMONTH()}';
+	AvgList.push(x);
+	MonthList.push(y);
+</c:forEach>
+AvgList[MonthList]
+for(i=0;i<12;i++){
+	resultList[MonthList[i]]=AvgList[i];
+	
+}
+
 var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
     "theme": "none",
      "pathToImages":"http://www.amcharts.com/lib/3/images/",
     "dataProvider": [{
         "country": "1월",
-        "score": 80,
+        "score": resultList[1],
         "color": "#FF0F00"
     }, {
         "country": "2월",
-        "score": 82,
+        "score": resultList[2],
         "color": "#FF6600"
     }, {
         "country": "3월",
-        "score": 79,
+        "score": resultList[3],
         "color": "#FF9E01"
     }, {
         "country": "4월",
-        "score": 22,
+        "score": resultList[4],
         "color": "#FCD202"
     }, {
         "country": "5월",
-        "score": 22,
+        "score": resultList[5],
         "color": "#F8FF01"
     }, {
         "country": "6월",
-        "score": 14,
+        "score": resultList[6],
         "color": "#B0DE09"
     }, {
         "country": "7월",
-        "score": 84,
+        "score": resultList[7],
         "color": "#04D215"
     }, {
         "country": "8월",
-        "score": 11,
+        "score": resultList[8],
         "color": "#0D8ECF"
     }, {
         "country": "9월",
-        "score": 65,
+        "score": resultList[9],
         "color": "#0D52D1"
     }, {
         "country": "10월",
-        "score": 80,
+        "score": resultList[10],
         "color": "#2A0CD0"
     }, {
         "country": "11월",
-        "score": 43,
+        "score": resultList[11],
         "color": "#8A0CCF"
     }, {
         "country": "12월",
-        "score": 41,
+        "score": resultList[12],
         "color": "#CD0D74"
     }],
     
@@ -190,37 +217,20 @@ var chart = AmCharts.makeChart("chartdiv", {
 <table  style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
      <thead>
        <tr>
-         <th colspan="4"style=text-align:center;>순위</th>
-         <th colspan="5"style=text-align:center;>이름</th>
-         <th colspan="4"style=text-align:center;>평균점수</th>
+         <th colspan=""style=text-align:center;>순위</th>
+         <th colspan=""style=text-align:center;>이름</th>
+         <th colspan=""style=text-align:center;>평균점수</th>
        </tr>
      </thead>
      <tbody>
+     <c:forEach var="Lists"  items="${List}" varStatus="i">	
        <tr>
-         <td colspan="4" style=text-align:center;>1</td>
-         <td colspan="5"style=text-align:center;>이재훈</td>
-         <td colspan="4" style=text-align:center;>90</td>
+         <td><c:out value="${i.count }"/></td>   
+         <td><c:out value="${Lists.getUSER_NAME() }"/></td>   
+         <td><c:out value="${Lists.getAVG() }"/></td>
+      
          </tr>
-         <tr>
-         <td colspan="4" style=text-align:center;>2</td>
-         <td colspan="5"style=text-align:center;>트롤</td>
-         <td colspan="4" style=text-align:center;>90</td></tr>
-         <tr>
-         <td colspan="4" style=text-align:center;>3</td>
-         <td colspan="5"style=text-align:center;>황개</td>
-         <td colspan="4" style=text-align:center;>90</td></tr>
-         <tr>
-         <td colspan="4" style=text-align:center;>3</td>
-         <td colspan="5"style=text-align:center;>황개</td>
-         <td colspan="4" style=text-align:center;>90</td></tr>
-         <tr>
-         <td colspan="4" style=text-align:center;>3</td>
-         <td colspan="5"style=text-align:center;>황개</td>
-         <td colspan="4" style=text-align:center;>90</td></tr>
-         <tr>
-         <td colspan="4" style=text-align:center;>3</td>
-         <td colspan="5"style=text-align:center;>황개</td>
-         <td colspan="4" style=text-align:center;>90</td></tr>
+        </c:forEach>
        </tbody>
        </table>
        
@@ -230,7 +240,9 @@ var chart = AmCharts.makeChart("chartdiv", {
 <div style="margin-top:5%; margin-left:20px">
  <h3>월별 학생 평균점수</h3>
 </div>
-
+<div>
+	<input type="hidden" value="70" id="month1"/>
+</div>
 <div id="chartdiv"></div>	
 	</div>
 	</div>
