@@ -141,12 +141,18 @@ request.setAttribute("List",List);
 	</table>
 	</div>
 	</form>	
-		<!-- 여기부터 -->
+<!-- 여기부터 -->
 		<div class="swiper-container">
         <div class="swiper-wrapper">
     
     <div class="swiper-slide">
 		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<colgroup>
+				<col width="45px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+			</colgroup>
 			<thead>
 				<tr>
 					<th>학교이름</th>
@@ -156,50 +162,68 @@ request.setAttribute("List",List);
 				</tr>
 		</thead>
 			<tbody>
-	
+<c:choose>
+	<c:when test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
+			</tbody>
+				</table>
+					</div>
+	</c:when>
+	<c:when test="${List.size() != 0 }">
 	<c:forEach var="Lists"  items="${List}" varStatus="i">
 		
 				<tr>
-					<th><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></th> 
-					<td><a data-ajax="false" href="../student/10-Class_Info.jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></td>
-					<td><c:out value="${Lists.getTEACHER_NAME()}"/></td>
-					<td><c:out value="${Lists.getCLASS_FOUND_DATE()}"/></td>
+					<th><div style='width:65px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap; ' ><c:out value="${Lists.getCLASS_SCHOOL_NAME()}"/></div></th> 
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><a data-ajax="false" href="../student/10-Class_Info.jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></div></td>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getTEACHER_NAME()}"/></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getCLASS_FOUND_DATE()}"/></div></td>
 				</tr>	
 				
-				<c:if test="${i.index!=00&&i.index%4==0 }">
+				<c:choose>
+				<c:when test="${i.index%4==3 }">
+				<c:choose>
+					<c:when test="${i.last}">
 					</tbody>
-					</table>
-						</div>
-						<div class="swiper-slide">
-		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-			<thead>
-				<tr>
-					<th>학교이름</th>
-					<th>반 이름</th>
-					<th>선생님</th>
-					<th>개설일자</th>
-				</tr>
-		</thead>
-			<tbody>
-				</c:if>
-				
-				<c:if test="${i.last}">
-				</tbody>
-					</table>
-						</div>
-				</c:if>
-				
+						</table>
+							</div>
+					</c:when>
 					
-			
+					<c:when test="${i.index!=i.end }">
+						</tbody>
+						</table>
+							</div>
+							<div class="swiper-slide">
+						<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+							
+							<thead>
+							
+								<tr>
+									<th>학교이름</th>
+									<th>반 이름</th>
+									<th>선생님</th>
+									<th>개설일자</th>
+								</tr>
+						</thead>
+							<tbody>
+						</c:when>
+						</c:choose>
+				</c:when>	
+				
+				<c:when test="${i.last }">
+				</tbody>
+						</table>
+							</div>
+				</c:when>
+				
+				</c:choose>
 		</c:forEach>
-			
-	
-			
-			
-			
-			
-	
-            
+		</c:when>
+	</c:choose>
+	          
             
         </div>
         <!-- Add Pagination -->

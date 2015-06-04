@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+     <%@page import="Study.StudyDAO"%>
+     <%@page import="Study.StudyDTO"%>
+    <%@ page import="java.util.ArrayList"%> 
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,6 +75,15 @@ $(function(){
 <title>Study</title>
 </head>
 <body>
+<%
+	StudyDAO dao = new StudyDAO();
+	ArrayList<StudyDTO> List =new ArrayList<StudyDTO>();
+
+	String CLASS_ID = (String)session.getAttribute("CLASS_ID");
+	List = dao.selectStudyList(CLASS_ID);
+	request.setAttribute("List",List);
+
+%>
 	<div id="myCenterDiv">
 		<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -128,57 +143,105 @@ $(function(){
     <h1>학습</h1>
 	</div>
 	
-	<div class="swiper-container">
+
+
+<!-- 여기부터 -->
+		<div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-	
-	<table style="width:95%; margin:auto; margin-top:70px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th>과제번호</th>
-				<th>내용</th>
-				<th>날짜</th>
-				<th>학습여부</th>
-			</tr>
-	</thead>
-		<tbody>
-			<tr>
-				<th><a href="/hanium_shinhan_classmate/view/13-homework.html">1</a></th>
-				<td>수학</td>
-				<td>2015-01-01</td>
-				<td>O</td>
-			</tr>
-			<tr>
-				<th><a href="/hanium_shinhan_classmate/view/13-homework.html">2</a></th>
-				<td>과학</td>
-				<td>2015-01-01</td>
-				<td>X</td>
-			</tr>
-			<tr>
-				<th><a href="/hanium_shinhan_classmate/view/13-homework.html">3</a></th>
-				<td>국어</td>
-				<td>2015-01-01</td>
-				<td>O</td>
-			</tr>
-			<tr>
-				<th><a href="/hanium_shinhan_classmate/view/13-homework.html">4</a></th>
-				<td>영어</td>
-				<td>2015-01-01</td>
-				<td>X</td>
-			</tr>
+    
+    <div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<colgroup>
+				<col width="45px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>과   목</th>
+					<th>날   짜</th>
+					<th>학습여부</th>
+				</tr>
+		</thead>
+			<tbody>
+<c:choose>
+	<c:when test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
 			</tbody>
-	</table>
-	
-            </div>
-            
-            <div class="swiper-slide">
-            
-            </div>
+				</table></div>
+	</c:when>
+	<c:when test="${List.size()!=0 }">
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+				<tr>
+					 
+					<td><div style='width:80px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><a data-ajax="false" href="../student/13-homework.jsp?idx=<c:out value="${Lists.getSTUDY_ID()}"/>"><c:out value="${Lists.getSTUDY_SUBJECT()}"/></a></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getSTUDY_DATE()}"/></div></td>
+					<td><div style='text-align:center;width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getSTUDY_CHECK()}"/></div></td>
+				</tr>	
+				
+				<c:choose>
+				<c:when test="${i.index%4==3 }">
+				<c:choose>
+					<c:when test="${i.last}">
+					</tbody>
+						</table>
+							</div>
+					</c:when>
+					
+					<c:when test="${i.index!=i.end }">
+						</tbody>
+						</table>
+							</div>
+							<div class="swiper-slide">
+						<table  style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+							
+							<thead>
+							
+								<tr>
+									<th >과   목</th>
+									<th >날   짜</th>
+									<th>학습여부</th>
+								</tr>
+						</thead>
+							<tbody>
+						</c:when>
+						</c:choose>
+				</c:when>	
+				
+				<c:when test="${i.last }">
+				</tbody>
+						</table>
+							</div>
+				</c:when>
+				
+				</c:choose>
+		</c:forEach>
+		</c:when>
+	</c:choose>
+	          
             
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
+			
+	<script src="../../view/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+    });
+    </script>
+   <!-- 여기까지 -->
+	
 		</div>
 		
 		

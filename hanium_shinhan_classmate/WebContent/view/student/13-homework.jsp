@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@page import="Study.StudyDAO"%>
+     <%@page import="Study.StudyDTO"%>
+    <%@ page import="java.util.ArrayList"%> 
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +31,7 @@ html, body {height:100%; margin:0; padding:0;}
 <script type="text/javascript">
 $(function(){
 	
-	
+
 	
 	$('#logoutOK').click(function(){			
 		logout.submit();
@@ -40,6 +44,13 @@ $(function(){
 <title>Homework</title>
 </head> 
 <body>
+<%
+	ArrayList<StudyDTO> List =new ArrayList<StudyDTO>();
+	String STUDY_ID = request.getParameter("idx");
+	StudyDAO dao = new StudyDAO();
+	List = dao.selectQuestionList(STUDY_ID);
+	request.setAttribute("List",List);
+%>
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -98,23 +109,15 @@ $(function(){
 	</div>
 	<div style="margin-top:30px; margin-bottom:30px; "align="left">
 	
-	<table style="margin-left:5%;">
-		<tr>
-			<td align="left">1. 동물농장의 멤버가 아닌 것은?</td>
+	<div style="margin-top:5%; text-align:center; width:100%;height:180px; overflow-x:hidden; overflow:auto">
+	<table style="text-align:left;background-color:white; width:90%;  margin:auto;">
+		<c:forEach var="Lists"  items="${List}" varStatus="i">
+		<tr>	
+			<td style="padding-left:3%;"><pre><c:out value="${Lists.getQUE_CONTENT_TXT()}"/></pre>
 		</tr>
-		<tr>
-			<td>① 악어(김상현)</td>
-		</tr>
-		<tr>
-			<td>② 개(황승현)</td>
-		</tr>
-		<tr>
-			<td>③ 돼지(이재훈)</td>
-		</tr>
-		<tr>
-			<td>④ 훈남(정동수)</td>
-		</tr>
+		</c:forEach>
 	</table>
+	</div>
 	</div>
 	<div style="margin-left:15px; margin-right:15px;">
 	<table style="width:95%;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">

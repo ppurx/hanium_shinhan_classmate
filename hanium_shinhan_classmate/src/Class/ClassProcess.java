@@ -106,7 +106,7 @@ public class ClassProcess extends HttpServlet{
 			
 			
 			
-			
+			 response.sendRedirect("../teacher/07-teacher_main.jsp");
 			
 		}
 		
