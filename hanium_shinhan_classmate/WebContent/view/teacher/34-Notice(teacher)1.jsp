@@ -169,7 +169,7 @@ $(function(){
 		<tr>
 		
 			<th style=text-align:center;><a data-ajax="false" href="../teacher/38-Noticedetail(teacher).jsp?idx=<c:out value="${Lists.getNotice_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></th>
-			<td style=text-align:center;><a href="3"><c:out value="${Lists.getClass_ID()}"/></a></td>
+			<td style=text-align:center;><a href="3"><c:out value="${Lists.getUSER_ID()}"/></a></td>
 			<td style=text-align:center;><c:out value="${Lists.getREGI_DATE()}"/></td>
 			<td style=text-align:center;><c:out value="3"/></td>
 		</tr>

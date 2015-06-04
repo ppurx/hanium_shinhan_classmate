@@ -36,52 +36,52 @@ var chart = AmCharts.makeChart("chartdiv", {
     "theme": "none",
      "pathToImages":"http://www.amcharts.com/lib/3/images/",
     "dataProvider": [{
-        "country": "1",
-        "visits": 3025,
+        "country": "1월",
+        "score": 90,
         "color": "#FF0F00"
     }, {
-        "country": "2",
-        "visits": 1882,
+        "country": "2월",
+        "score": 82,
         "color": "#FF6600"
     }, {
-        "country": "3",
-        "visits": 1809,
+        "country": "3월",
+        "score": 79,
         "color": "#FF9E01"
     }, {
-        "country": "4",
-        "visits": 1322,
+        "country": "4월",
+        "score": 22,
         "color": "#FCD202"
     }, {
-        "country": "5",
-        "visits": 1122,
+        "country": "5월",
+        "score": 22,
         "color": "#F8FF01"
     }, {
-        "country": "6",
-        "visits": 1114,
+        "country": "6월",
+        "score": 14,
         "color": "#B0DE09"
     }, {
-        "country": "7",
-        "visits": 984,
+        "country": "7월",
+        "score": 84,
         "color": "#04D215"
     }, {
-        "country": "8",
-        "visits": 711,
+        "country": "8월",
+        "score": 7,
         "color": "#0D8ECF"
     }, {
-        "country": "9",
-        "visits": 665,
+        "country": "9월",
+        "score": 65,
         "color": "#0D52D1"
     }, {
-        "country": "10",
-        "visits": 580,
+        "country": "10월",
+        "score": 80,
         "color": "#2A0CD0"
     }, {
-        "country": "11",
-        "visits": 443,
+        "country": "11월",
+        "score": 43,
         "color": "#8A0CCF"
     }, {
-        "country": "12",
-        "visits": 441,
+        "country": "12월",
+        "score": 41,
         "color": "#CD0D74"
     }],
     
@@ -90,9 +90,9 @@ var chart = AmCharts.makeChart("chartdiv", {
         "balloonText": "<b>[[category]]: [[value]]</b>",
         "colorField": "color",
         "fillAlphas": 0.9,
-        "lineAlpha": 0.2,
+        "lineAlpha": 0.4,
         "type": "column",
-        "valueField": "visits"
+        "valueField": "score"
     }],
     "chartCursor": {
         "categoryBalloonEnabled": false,
@@ -107,7 +107,6 @@ var chart = AmCharts.makeChart("chartdiv", {
     "amExport":{}
      
 });
-
 </script>
 <script type="text/javascript">
 $(function(){

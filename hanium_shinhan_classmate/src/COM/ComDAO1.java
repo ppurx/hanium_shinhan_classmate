@@ -162,6 +162,9 @@ public class ComDAO1 {
 				dto.setNotice_ID(rs.getInt("NOTICE_ID"));
 				System.out.println(dto.getREGI_DATE());
 				System.out.println(rs.getString("NOTICE_TITLE"));
+				dto.setUSER_ID(rs.getString("USER_ID"));	
+				System.out.println(rs.getString("NOTICE_ID"));
+				System.out.println(rs.getString("USER_ID"));
 				selectList1.add(dto);
 				}
 			
@@ -190,6 +193,7 @@ public class ComDAO1 {
 				dto.setClass_ID(rs.getString("CLASS_ID"));
 				dto.setREGI_DATE(rs.getString("NOTICE_REGI_DATE").substring(0,10));
 				dto.setContent(rs.getString("NOTICE_CONTENT"));
+				dto.setUSER_ID(rs.getString("USER_ID"));
 				
 				
 				
