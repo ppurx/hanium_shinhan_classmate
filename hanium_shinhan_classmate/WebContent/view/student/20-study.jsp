@@ -198,5 +198,6 @@ $(function(){
 	 </td><td><h>에서의 내 위치는 상위n%</h></td></tr></table>
 	</div>
 	
+	
 </body>
 </html>

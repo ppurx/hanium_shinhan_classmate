@@ -53,4 +53,18 @@ public class ComDTO1 {
 	public void setNotice_ID(int notice_ID) {
 		Notice_ID = notice_ID;
 	}
+	private String SCORE_DATE;
+	public String getSCORE_DATE() {
+		return SCORE_DATE;
+	}
+	public void setSCORE_DATE(String sCORE_DATE) {
+		SCORE_DATE = sCORE_DATE;
+	}
+	public String getSCORE() {
+		return SCORE;
+	}
+	public void setSCORE(String sCORE) {
+		SCORE = sCORE;
+	}
+	private String SCORE;
 }

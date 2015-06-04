@@ -253,5 +253,37 @@ public class ComDAO1 {
 		
 		return ;
 	}
+	public ArrayList<ComDTO1> selectscore(String idx){
+		ArrayList<ComDTO1> selectList1 = new ArrayList<ComDTO1>();
+		System.out.println(idx);
+		String sql = "select MONTH(SCORE.SCORE_DATE),avg(SCORE.SCORE_SCORE),SCORE.USER_ID from SCORE,STUDY where SCORE.STUDY_ID=STUDY.STUDY_ID and SCORE.USER_ID='"+idx+"' group by MONTH(SCORE.SCORE_DATE) ";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ComDTO1 dto = new ComDTO1();
+				dto.setSCORE_DATE(rs.getString("SCORE_DATE"));
+				dto.setSCORE(rs.getString("SCORE_SCORE"));
+				dto.setREGI_DATE(rs.getString("NOTICE_REGI_DATE").substring(0,10));
+				dto.setNotice_ID(rs.getInt("NOTICE_ID"));
+				System.out.println(dto.getREGI_DATE());
+				System.out.println(rs.getString("NOTICE_TITLE"));
+					
+		
+				selectList1.add(dto);
+				}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList1;
+	}
+
 	}
 
