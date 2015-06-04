@@ -107,7 +107,7 @@ $(function(){
 	ArrayList<StudyDTO> List =new ArrayList<StudyDTO>();
 
 	String CLASS_ID = (String)session.getAttribute("CLASS_ID");
-	List = dao.selectStudyList(CLASS_ID);
+	List = dao.selectStudyList2(CLASS_ID);
 	request.setAttribute("List",List);
 
 %>
@@ -186,7 +186,6 @@ $(function(){
 				<tr>
 					<th>과   목</th>
 					<th>날   짜</th>
-					<th>학습여부</th>
 				</tr>
 		</thead>
 			<tbody>
@@ -207,7 +206,7 @@ $(function(){
 					 
 					<td><div style='width:80px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><a data-ajax="false" href="../teacher/27-QuestionDetail.jsp?idx=<c:out value="${Lists.getSTUDY_ID()}"/>"><c:out value="${Lists.getSTUDY_SUBJECT()}"/></a></div></td>
 					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getSTUDY_DATE()}"/></div></td>
-					<td><div style='text-align:center;width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getSTUDY_CHECK()}"/></div></td>
+					
 				</tr>	
 				
 				<c:choose>
@@ -231,7 +230,6 @@ $(function(){
 								<tr>
 									<th >과   목</th>
 									<th >날   짜</th>
-									<th>학습여부</th>
 								</tr>
 						</thead>
 							<tbody>

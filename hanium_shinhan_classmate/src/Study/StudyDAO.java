@@ -39,7 +39,39 @@ public class StudyDAO {
 		}
 		
 	
-	public ArrayList<StudyDTO> selectStudyList(String CLASS_ID){
+	public ArrayList<StudyDTO> selectStudyList(String CLASS_ID,String USER_ID){
+		
+		ArrayList<StudyDTO> StudyList = new ArrayList<StudyDTO>();
+		
+		String sql ="select * from STUDY,SCORE where STUDY.STUDY_ID=SCORE.STUDY_ID and STUDY.CLASS_ID='"+CLASS_ID+"' and SCORE.USER_ID='"+USER_ID+"'";
+		
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()){
+				StudyDTO dto = new StudyDTO();
+				dto.setSTUDY_ID(rs.getInt("STUDY_ID"));
+				dto.setSTUDY_SUBJECT(rs.getString("STUDY_SUBJECT"));
+				dto.setSTUDY_CHECK(rs.getString("STUDY_CHECK"));
+
+				dto.setSTUDY_DATE(rs.getString("STUDY_DATE").substring(0,10));
+				StudyList.add(dto);
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return StudyList;
+	}
+	
+public ArrayList<StudyDTO> selectStudyList2(String CLASS_ID){
 		
 		ArrayList<StudyDTO> StudyList = new ArrayList<StudyDTO>();
 		
@@ -55,7 +87,6 @@ public class StudyDAO {
 				StudyDTO dto = new StudyDTO();
 				dto.setSTUDY_ID(rs.getInt("STUDY_ID"));
 				dto.setSTUDY_SUBJECT(rs.getString("STUDY_SUBJECT"));
-				dto.setSTUDY_CHECK(rs.getString("STUDY_CHECK"));
 
 				dto.setSTUDY_DATE(rs.getString("STUDY_DATE").substring(0,10));
 				StudyList.add(dto);
@@ -102,6 +133,8 @@ public class StudyDAO {
 		
 		return QuestionList;
 	}
+	
+
 
 
 }

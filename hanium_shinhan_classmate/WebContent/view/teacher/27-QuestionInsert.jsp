@@ -60,7 +60,7 @@ $(function(){
 		});
 		
 		$('#btn1').click(function(){
-			if($('#que option:selected').val()==0)alert("최소한 한문제를 등록해야함");
+			if($('#que option:selected').val()==0) $("#popPassword").popup("open");
 			else question.submit();
 		});
 			
@@ -69,6 +69,7 @@ $(function(){
 <title>question</title>
 </head>
 <body>
+
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -258,6 +259,6 @@ $(function(){
      
      </div>
 	</div>
-	
+	<div data-role="popup" data-transition="pop"id="popPassword" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>최소한 한문제 이상을 등록해야 합니다.</p></div>
 </body>
 </html>

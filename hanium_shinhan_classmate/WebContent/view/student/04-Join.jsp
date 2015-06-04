@@ -35,7 +35,6 @@ html, body {height:100%; margin:0; padding:0;}
 			else if(($('#tel1').val()=='')||($('#tel2').val()=='')||($('#tel3').val()==''))$("#popPhone").popup("open");
 			
 			else if($('#password').val()=='')$("#popPassword").popup("open");
-			else if($('#password').val()=='')$("#popPassword").popup("open");
 			else if(check==0)$("#popIDCheck").popup("open");
 			else join.submit();
 				

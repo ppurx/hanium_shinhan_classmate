@@ -83,7 +83,7 @@ public class ClassProcess extends HttpServlet{
 			 if(request.getParameter("subject")=="")
 				 dto.setStudy_Subject("제목 없음");
 			 else
-				 dto.setStudy_Subject("subject");
+				 dto.setStudy_Subject(request.getParameter("subject"));
 			 
 			 ArrayList<String> questionList = new ArrayList<String>();
 			 ArrayList<String> answerList = new ArrayList<String>();

@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Member.MemberDTO;
+import Study.StudyDTO;
 
 public class ClassDAO {
 
@@ -302,7 +303,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		}catch(SQLException ex) {
 			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
 		}
-		String sql2 = "insert into LIST values(?,?)";
+		String sql2 = "insert into LIST(CLASS_ID,USER_ID) values(?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql2);	
 			pstmt.setString(1,idx2);
@@ -329,6 +330,9 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		}
 	}
 	
+
+	
+
 	public int selectStudyID(String USER_ID){
 		String sql = "select STUDY_ID from STUDY where USER_ID='"+USER_ID+"' order by STUDY_DATE desc";
 		int STUDY_ID = 0;
@@ -354,8 +358,11 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		String sql = "insert into QUESTION(STUDY_ID,QUE_CONTENT_TXT,QUE_COUNT,QUE_ANSWER) values(?,?,?,?)";
 		int size = questionList.size();
 		insertStudy(dto.getCLASS_ID(),dto.getStudy_Subject(),dto.getUSER_ID());
+		
 		int STUDY_ID = selectStudyID(dto.getUSER_ID());
 		
+		////////////////////////
+		insertScore(STUDY_ID,dto.getCLASS_ID());
 		
 		try {			
 			
@@ -376,6 +383,53 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 		}
 		
 		
+	}
+	
+	public void insertScore(int STUDY_ID,int CLASS_ID){
+		int i=0;
+		ArrayList<ClassDTO> USER_LIST = selectList(CLASS_ID);
+		String sql = "insert into SCORE(STUDY_ID,USER_ID) values(?,?)";
+		try {
+			for(i=0;i<USER_LIST.size();i++){
+				PreparedStatement pstmt = conn.prepareStatement(sql);	
+				pstmt.setInt(1,STUDY_ID);
+				pstmt.setString(2, USER_LIST.get(i).getUSER_ID());				
+				pstmt.executeUpdate();
+			
+			}
+			
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+	}
+	
+	
+public ArrayList<ClassDTO> selectList(int CLASS_ID){
+		
+		ArrayList<ClassDTO> USER_LIST = new ArrayList<ClassDTO>();
+		
+		String sql ="select * from LIST where CLASS_ID='"+CLASS_ID+"'";
+		
+		try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()){
+				ClassDTO dto = new ClassDTO();
+				dto.setUSER_ID(rs.getString("USER_ID"));
+				USER_LIST.add(dto);
+			}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+		
+		return USER_LIST;
 	}
 	public void canS(String idx,String idx2){
 		

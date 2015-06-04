@@ -80,7 +80,7 @@ $(function(){
 	ArrayList<StudyDTO> List =new ArrayList<StudyDTO>();
 
 	String CLASS_ID = (String)session.getAttribute("CLASS_ID");
-	List = dao.selectStudyList(CLASS_ID);
+	List = dao.selectStudyList(CLASS_ID,(String)session.getAttribute("id"));
 	request.setAttribute("List",List);
 
 %>
