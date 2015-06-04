@@ -13,6 +13,7 @@ import Class.ClassDTO;
 
 public class ComDAO2 {
 	private static Connection conn;
+	private String CLASS_ID;
 	public ComDAO2() {
 				
 		

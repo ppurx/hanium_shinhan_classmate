@@ -140,44 +140,90 @@ $(function(){
         <div class="swiper-wrapper">
             <div class="swiper-slide">
             
-            
-	 	
-	 
-            
-<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >제목</th>
-				<th >등록자</th>
-				<th>등록일</th>
-				<th>조회수</th>
-			</tr>
-</thead>
-	<tbody>
-	
-	<c:forEach var="Lists"  items="${List}" >
-	
-		<tr>
-			<td><a href="../student/26-board-detail.jsp?idx=<c:out value="${Lists.getBoardID()}"/>"><c:out value="${Lists.getSubject()}"/></a></td>
-			<td align="center"><c:out value="${Lists.getWriter() }"/></td>
-			<td align="center"><c:out value="${Lists.getDate() }"/></td>
-			<td><c:out value="3"/></td>
-		</tr>
+            <table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<colgroup>
+				<col width="45px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>제목</th>
+					<th>등록자</th>
+					<th>등록일</th>
+					<th>조회수</th>
+				</tr>
+		</thead>
+			<tbody>
+<c:choose>
+	<c:when test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
+			</tbody>
+				</table>
+					</div>
+	</c:when>
+	<c:when test="${List.size() != 0 }">
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
 		
+				<tr>
+					<th><div style='width:65px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap; ' ><a href="../student/26-board-detail.jsp?idx=<c:out value="${Lists.getBoardID()}"/>"><c:out value="${Lists.getSubject()}"/></a></div></th> 
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><a data-ajax="false" href="../student/10-Class_Info.jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></div></td>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getTEACHER_NAME()}"/></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getCLASS_FOUND_DATE()}"/></div></td>
+				</tr>	
+				
+				<c:choose>
+				<c:when test="${i.index%4==3 }">
+				<c:choose>
+					<c:when test="${i.last}">
+					</tbody>
+						</table>
+							</div>
+					</c:when>
+					
+					<c:when test="${i.index!=i.end }">
+						</tbody>
+						</table>
+							</div>
+							<div class="swiper-slide">
+						<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+							
+							<thead>
+							
+								<tr>
+									<th>학교이름</th>
+									<th>반 이름</th>
+									<th>선생님</th>
+									<th>개설일자</th>
+								</tr>
+						</thead>
+							<tbody>
+						</c:when>
+						</c:choose>
+				</c:when>	
+				
+				<c:when test="${i.last }">
+				</tbody>
+						</table>
+							</div>
+				</c:when>
+				
+				</c:choose>
 		</c:forEach>
-		
-		</tbody>
-	</table>	
-	
-	</div>
-	
-	</div>
-	<div class="swiper-pagination"></div>
-	</div>
-	
-           
-		<a data-ajax="false" href="../student/25-board-write.jsp" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
-	</div>
+		</c:when>
+	</c:choose>
+	          
+            
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+			
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
@@ -187,5 +233,6 @@ $(function(){
         paginationClickable: true
     });
     </script>
+	 	
 </body>
 </html>
