@@ -76,7 +76,7 @@ $(function(){
 <%
 			ComDAO2 dao = new ComDAO2();
 			//ArrayList<ComDTO2> List = dao.selectTest2();
-			ArrayList<ComDTO2> List = dao.selectBoard();
+			ArrayList<ComDTO2> List = dao.selectBoard((String)session.getAttribute("CLASS_ID"));
 			request.setAttribute("List",List);
 			
 	%>	
@@ -150,8 +150,8 @@ $(function(){
 			<thead>
 				<tr>
 					<th>제목</th>
-					<th>등록자</th>
-					<th>등록일</th>
+					<th>작성자</th>
+					<th>작성일</th>
 					<th>조회수</th>
 				</tr>
 		</thead>
@@ -172,9 +172,9 @@ $(function(){
 		
 				<tr>
 					<th><div style='width:65px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap; ' ><a href="../student/26-board-detail.jsp?idx=<c:out value="${Lists.getBoardID()}"/>"><c:out value="${Lists.getSubject()}"/></a></div></th> 
-					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><a data-ajax="false" href="../student/10-Class_Info.jsp?idx=<c:out value="${Lists.getCLASS_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></div></td>
-					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getTEACHER_NAME()}"/></div></td>
-					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getCLASS_FOUND_DATE()}"/></div></td>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getUSER_ID() }"/></div></td>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getDate() }"/></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="3"/></div></td>
 				</tr>	
 				
 				<c:choose>
@@ -196,10 +196,10 @@ $(function(){
 							<thead>
 							
 								<tr>
-									<th>학교이름</th>
-									<th>반 이름</th>
-									<th>선생님</th>
-									<th>개설일자</th>
+									<th>제목</th>
+									<th>작성자</th>
+									<th>작성일</th>
+									<th>조회수</th>
 								</tr>
 						</thead>
 							<tbody>
@@ -223,7 +223,7 @@ $(function(){
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
     </div>
-			
+			<a data-ajax="false" href="../student/25-board-write.jsp" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->

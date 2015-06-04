@@ -34,16 +34,17 @@ public class ComDAO2 {
 	
 	
 	public boolean insertBoard(ComDTO2 dto){
-		String query = "Insert INTO BOARD(CLASS_ID,BOARD_SUBJECT,BOARD_CONTENT) values (?,?,?)";
+		String query = "Insert INTO BOARD(CLASS_ID,USER_ID,BOARD_SUBJECT,BOARD_CONTENT) values (?,?,?,?)";
 		boolean check = false;
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(query);	
 			
 			
-			pstmt.setString(1, dto.getClassID());
-			pstmt.setString(2, dto.getSubject());
-			pstmt.setString(3, dto.getTextarea());
+			pstmt.setString(1, dto.getCLASS_ID());
+			pstmt.setString(2, dto.getUSER_ID());
+			pstmt.setString(3, dto.getSubject());
+			pstmt.setString(4, dto.getTextarea());
 			
 			int x = pstmt.executeUpdate();
 			
@@ -78,15 +79,16 @@ public class ComDAO2 {
 			ResultSet rs = stmt.executeQuery(sql);			
 			
 			if(rs.next()){
-				dto.setUserID(rs.getString("USER_ID"));
+				dto.setUSER_ID(rs.getString("USER_ID"));
 				dto.setSubject(rs.getString("BOARD_SUBJECT"));
 				dto.setBoardID(rs.getString("BOARD_ID"));
-				dto.setClassID(rs.getString("CLASS_ID"));
+				dto.setWriter(rs.getString("CLASS_ID"));
 				dto.setRegidate(rs.getString("BOARD_REGI_DATE").substring(0,10));
 				dto.setTextarea(rs.getString("BOARD_CONTENT"));
 				
 				System.out.println(dto.getSubject());
 				System.out.println(dto.getTextarea());
+				System.out.println(dto.getWriter());
 			}
 			
 			
@@ -99,107 +101,10 @@ public class ComDAO2 {
 		return dto;
 	}
 	
-	
-	public ArrayList<ComDTO2> selectTest2(){
+	public ArrayList<ComDTO2> selectBoard(String idx){
 		ArrayList<ComDTO2> selectList = new ArrayList<ComDTO2>();
 		
-		String sql = "select * from BOARD";
-		try {
-			Statement stmt = conn.createStatement();
-			
-			ResultSet rs = stmt.executeQuery(sql);			
-			
-			while(rs.next()){
-				ComDTO2 dto = new ComDTO2();
-				dto.setSubject(rs.getString("BOARD_WRITER"));
-				selectList.add(dto);
-				
-				System.out.println(dto.getSubject());
-			}
-			
-			
-			
-		}
-		catch(SQLException e){
-			System.out.println(e);
-		}
-				
-		return selectList;
-	}
-	
-	
-	public boolean deleteBoard(ComDTO2 dto){
-		String query = "delete from BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT) values (?,?,?) where board_id = 30";
-		boolean check = false;
-		
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(query);	
-			
-			
-			pstmt.setString(1, "1");
-			pstmt.setString(1, dto.getSubject());
-			pstmt.setString(1, dto.getTextarea());
-			
-			int x = pstmt.executeUpdate();
-			
-			if(x<1) {
-				System.out.println("정상적으로 저장되지 않았습니다.");
-			} else {
-				check = true;
-			}
-			
-			pstmt.close();
-			
-			
-				check = true;
-		}
-		catch(SQLException ex) {
-			
-			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
-				
-			check = false;
-		}
-			return check;
-	}
-	
-	
-	public boolean updateBoard(ComDTO2 dto){
-		String query = "update set BOARD(CLASS_ID,BOARD_WRITER,BOARD_CONTENT) values (?,?,?) where board_id = 30";
-		boolean check = false;
-		
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(query);	
-			
-			
-			pstmt.setString(1, "1");
-			pstmt.setString(1, dto.getSubject());
-			pstmt.setString(1, dto.getTextarea());
-			
-			int x = pstmt.executeUpdate();
-			
-			if(x<1) {
-				System.out.println("정상적으로 저장되지 않았습니다.");
-			} else {
-				check = true;
-			}
-			
-			pstmt.close();
-			
-			
-				check = true;
-		}
-		catch(SQLException ex) {
-			
-			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
-				
-			check = false;
-		}
-			return check;
-	}
-	public ArrayList<ComDTO2> selectBoard(){
-		ArrayList<ComDTO2> selectList = new ArrayList<ComDTO2>();
-		
-		String sql = "select * from BOARD";
+		String sql = "select * from BOARD,CLASS,USER where BOARD.CLASS_ID=CLASS.CLASS_ID and CLASS.USER_ID=USER.USER_ID and CLASS.CLASS_ID='"+idx+"'";
 		try {
 			Statement stmt = conn.createStatement();
 			
@@ -211,9 +116,11 @@ public class ComDAO2 {
 				dto.setBoardID(rs.getString("BOARD_ID"));
 				dto.setWriter(rs.getString("CLASS_ID"));
 				dto.setDate(rs.getString("BOARD_REGI_DATE").substring(0, 10));
+				dto.setUSER_ID(rs.getString("USER_ID"));
 				selectList.add(dto);
 				
 				System.out.println(dto.getSubject());
+				System.out.println(dto.getUSER_ID());
 			}
 			
 			

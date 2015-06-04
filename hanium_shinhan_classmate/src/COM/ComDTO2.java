@@ -2,12 +2,12 @@ package COM;
 
 public class ComDTO2 {
 
-	String UserID;
-	public String getUserID() {
-		return UserID;
+	String CLASS_ID;
+	public String getCLASS_ID() {
+		return CLASS_ID;
 	}
-	public void setUserID(String userID) {
-		UserID = userID;
+	public void setCLASS_ID(String cLASS_ID) {
+		CLASS_ID = cLASS_ID;
 	}
 	String BoardID;
 	public String getBoardID() {
@@ -16,19 +16,12 @@ public class ComDTO2 {
 	public void setBoardID(String boardID) {
 		BoardID = boardID;
 	}
-	String ClassID;
 	String Regidate;
 	public String getRegidate() {
 		return Regidate;
 	}
 	public void setRegidate(String regidate) {
 		Regidate = regidate;
-	}
-	public String getClassID() {
-		return ClassID;
-	}
-	public void setClassID(String classID) {
-		ClassID = classID;
 	}
 	String subject;
 	public String getSubject() {
@@ -59,5 +52,12 @@ public class ComDTO2 {
 	}
 	String writer;
 	String date;
+	private String USER_ID;
+	public String getUSER_ID() {
+		return USER_ID;
+	}
+	public void setUSER_ID(String uSER_ID) {
+		USER_ID = uSER_ID;
+	}
 	
 }

@@ -101,7 +101,7 @@ html, body {height:100%; margin:0; padding:0;}
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>작성자 : </b></font></td>
-		<td><font id="writer" style="float:left"><%=dto.getUserID() %></font></td>
+		<td><font id="writer" style="float:left"><%=dto.getUSER_ID() %></font></td>
 	</tr>
 	<tr>
 		<td><font size="5" face="Impact"><b>작성일 : </b></font></td>

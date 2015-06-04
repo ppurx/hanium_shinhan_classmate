@@ -35,8 +35,8 @@ public class ComProcess2 extends HttpServlet{
 			
 			dto.setTextarea(textarea);
 			dto.setSubject(subject);
-			dto.setUserID(id);
-			dto.setClassID(CLASS_ID);
+			dto.setUSER_ID(id);
+			dto.setCLASS_ID(CLASS_ID);
 			
 			
 			ComDAO2 dao = new ComDAO2();

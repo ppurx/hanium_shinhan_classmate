@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@page import="COM.ComDAO2"%>
+    <%@page import="COM.ComDTO2"%>
+    <%@ page import="java.util.ArrayList"%>  
+    <!-- jstl taglig 선언 -->
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +56,12 @@ $(function(){
 <title>board detail</title>
 </head>
 <body>
+	<%
+		String idx = request.getParameter("idx");
+		ComDAO2 dao = new ComDAO2();
+		ComDTO2	dto = new ComDTO2();
+		dto=dao.selectTest(idx);
+	%>	
 <form name="board" action="boardUpdate.com2" method="post">
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
@@ -120,14 +131,14 @@ $(function(){
 	<tr>
 	</tr>
 	<tr>
-		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><font id="writer" style="float:left"></font></td>
+		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><font id="writer" style="float:left"><%=dto.getWriter() %></font></td>
 	</tr>
 	<tr>
 	</tr>
 	<tr>
 	</tr>
 	<tr>
-		<td><img style="margin-left:5px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-3.PNG"/></td><td><font id="date" style="float:left"></font></td>
+		<td><img style="margin-left:5px" width="70%" height="50%" src="/hanium_shinhan_classmate/res/26-3.PNG"/></td><td><font id="date" style="float:left"><%=dto.getRegidate() %></font></td>
 	</tr>
 	<tr>
 		<td><img style="margin-top:30px; margin-left:20px" width="50%" height="50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>

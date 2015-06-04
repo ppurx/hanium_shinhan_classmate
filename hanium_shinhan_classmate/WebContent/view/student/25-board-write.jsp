@@ -103,7 +103,7 @@ $(function(){
     <h1>글등록</h1>
 </div>
 	
-	<form name=board action="boardWrite.com2" method="post">
+	<form name="board" action="boardWrite.com2" method="post">
 
 	<table style="width:90%; margin:auto" >
 	<tr>
