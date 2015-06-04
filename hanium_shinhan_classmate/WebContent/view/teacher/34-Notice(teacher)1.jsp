@@ -143,79 +143,108 @@ $(function(){
 	</div>
 	
 	
-	<div class="swiper-container" style="margin-top:5%">
+	<!-- 여기부터 -->
+		<div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-            
-	<table style="width:95%; margin-top:50px; "  data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th style=text-align:center;>제목</th>
-				<th style=text-align:center;>등록자</th>
-				<th style=text-align:center;>등록일</th>
-				<th style=text-align:center;>조회수</th>
-			</tr>
-</thead>
-<c:if test="${List.size() == 0 }">
-<tfoot>
-     <tr>
-          <td colspan="3">현재 데이터가 없습니다.</td>
-     </tr>
-</tfoot>
-</c:if>
-	<tbody>
-		<c:forEach var="Lists"  items="${List}" varStatus="i" >
-		 		
-		<tr>
-		
-			<th style=text-align:center;><a data-ajax="false" href="../teacher/38-Noticedetail(teacher).jsp?idx=<c:out value="${Lists.getNotice_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></th>
-			<td style=text-align:center;><a href="3"><c:out value="${Lists.getUSER_ID()}"/></a></td>
-			<td style=text-align:center;><c:out value="${Lists.getREGI_DATE()}"/></td>
-			<td style=text-align:center;><c:out value="3"/></td>
-		</tr>
-		<c:if test="${i.index!=0&&i.index%4==0 }">
-			</tbody>
-					</table>
-						</div>
-						<div class="swiper-slide">
-		<table style="width:95%; margin:auto; margin-top:50px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+    
+    <div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:100px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<colgroup>
+				<col width="45px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+			</colgroup>
 			<thead>
-			<tr>
-				<th style=text-align:center;>제목</th>
-				<th style=text-align:center;>등록자</th>
-				<th style=text-align:center;>등록일</th>
-				<th style=text-align:center;>조회수</th>
-			</tr>
-</thead></c:if>
+				<tr>
+					<th>제목</th>
+					<th>등록자</th>
+					<th>등록일</th>
+					<th>조회수</th>
+				</tr>
+		</thead>
+			<tbody>
+<c:choose>
+	<c:when test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
+			</tbody>
+				</table>
+					</div>
+	</c:when>
+	<c:when test="${List.size() != 0 }">
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
 		
+				<tr>
+					<th><div style='width:65px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap; ' ><a data-ajax="false" href="../teacher/38-Noticedetail(teacher).jsp?idx=<c:out value="${Lists.getNotice_ID()}"/>"><c:out value="${Lists.getTitle()}"/></a></div></th> 
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getUSER_ID()}"/></a></div></td>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getREGI_DATE()}"/></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="3"/></div></td>
+				</tr>	
+				
+				<c:choose>
+				<c:when test="${i.index%4==3 }">
+				<c:choose>
+					<c:when test="${i.last}">
+					</tbody>
+						</table>
+							</div>
+					</c:when>
+					
+					<c:when test="${i.index!=i.end }">
+						</tbody>
+						</table>
+							</div>
+							<div class="swiper-slide">
+						<table style="width:95%; margin:auto; margin-top:100px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+							
+							<thead>
+							
+								<tr>
+									<th>제목</th>
+									<th>등록자</th>
+									<th>등록일</th>
+									<th>조회수</th>
+								</tr>
+						</thead>
+							<tbody>
+						</c:when>
+						</c:choose>
+				</c:when>	
+				
+				<c:when test="${i.last }">
+				</tbody>
+						</table>
+							</div>
+				</c:when>
+				
+				</c:choose>
 		</c:forEach>
-		</tbody>
-	</table>
-		
-			</div>
-			
-			
-			</div>
-			
-			<div class="swiper-pagination"></div>
-			</div>
-			
+		</c:when>
+	</c:choose>
+	          
+            
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    	
 			<div style="margin-top:20%; float:right; margin-right:5%">
 			<input type="button" data-inline="true" value="공지하기" onclick="location.href='../teacher/39-Noticewrite.jsp'" style="float:right;margin-top:20%">
 		</div>
 			
-	</div>
-	
-			
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
-
     <script>
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         paginationClickable: true
     });
     </script>
+   <!-- 여기까지 -->
 </body>
 </html>
