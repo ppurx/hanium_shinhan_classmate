@@ -131,7 +131,7 @@ $(function(){
 	<tr>
 	</tr>
 	<tr>
-		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><font id="writer" style="float:left"><%=dto.getWriter() %></font></td>
+		<td><img  width="72%" height="60%" src="/hanium_shinhan_classmate/res/26-2.PNG"/></td><td><font id="writer" style="float:left"><%=dto.getUSER_ID() %></font></td>
 	</tr>
 	<tr>
 	</tr>
@@ -150,8 +150,8 @@ $(function(){
 	</table>
 	
 	
-	<a id="update" data-ajax="false"href="" data-role="button" data-inline="true" style=" margin-top:30px">수정</a>
-    <a data-ajax="false"href="../student/24-board2.html" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
+	<a id="update" data-ajax="false" href="../student/24-board2.jsp" data-role="button" data-inline="true" style=" margin-top:30px">목록</a>
+    <a data-ajax="false" href="../student/26-board-detail.jsp" data-role="button" data-inline="true" style=" margin-top:30px">수정완료</a>
 	
 
 	</div>

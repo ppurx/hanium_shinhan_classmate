@@ -175,7 +175,7 @@ $(function(){
 	</div>
 	
            
-		<a data-ajax="false" href="/hanium_shinhan_classmate/view/25-board-write.html" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
+		<a data-ajax="false" href="../student/25-board-write.jsp" data-role="button" data-inline="true" style="margin-left:70%; margin-top:20%">글쓰기</a>
 	</div>
 	<script src="../../view/swiper.min.js"></script>
 
