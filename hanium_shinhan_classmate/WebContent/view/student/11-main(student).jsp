@@ -97,8 +97,8 @@ html, body {height:100%; margin:0; padding:0;}
 			<td><a data-ajax="false"  href="../student/15-QandA(student).jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Notice.png" width=60px; height=60px;></a></td>
 			<td><a data-ajax="false"  href="../student/15-QandA(student).jsp"><font color="skyblue"><H1>Q & A</H1></font></a></td>
 		<tr>
-			<td><a data-ajax="false"  href="../student/19-Stu_MyPage.jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_MyPage.png" width=60px; height=60px;></a></td>
-			<td><a  data-ajax="false" href="../student/19-Stu_MyPage.jsp"><font color="skyblue"><H1>My Page</H1></font></a></td>
+			<td><a data-ajax="false"  href="../student/18-mypage(student).jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_MyPage.png" width=60px; height=60px;></a></td>
+			<td><a  data-ajax="false" href="../student/18-mypage(student).jsp"><font color="skyblue"><H1>My Page</H1></font></a></td>
 		</tr>
 		<tr>
 			<td><a data-ajax="false"  href="../student/22-notice1.jsp"><img src="/hanium_shinhan_classmate/res/Icon/Icon_Teacher.png" width=60px; height=60px;></a></td>

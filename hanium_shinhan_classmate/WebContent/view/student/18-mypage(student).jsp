@@ -98,25 +98,27 @@ $(function(){
     <h1>My Page</h1>
 	</div>
 	<table>
-   <tr><img style="margin-top:5%;" width="26%" height="14%" src="/hanium_shinhan_classmate/res/mf.PNG"/>
+   <tr><a data-ajax="false" href="../student/19-Stu_MyPage.jsp"><img style="margin-top:5%;" width="26%" height="14%" src="/hanium_shinhan_classmate/res/mf.PNG"/></a>
    </tr>
      <div style="margin:-5% 25% 0% 25%">
-	 <a data-ajax="false"href="../student/19-Stu_MyPage.html"><input type="button" value="내 정보" style=" font-weight:bold; background-color:darkgray" data-mini="true"></a>
+	 <a data-ajax="false"href="../student/19-Stu_MyPage.jsp"><input type="button" value="내 정보" style=" font-weight:bold; background-color:darkgray" data-mini="true"></a>
 	</div>
     </table>
      <table>
-   <tr><img style="margin-top:20px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/achievement.PNG"/>
+   <tr>
+   <a data-ajax="false" href="../student/20-study.jsp">
+   <img style="margin-top:20px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/achievement.PNG"/></a>
    </tr>
      <div style="margin:-5% 25% 0% 25%">
-	 <input data-ajax="false" type="button" value="학업성취도" style="font-weight:bold; background-color:darkgray" data-mini="true" onclick="window.location.href='../student/20-study.html';">
+	 <input data-ajax="false" type="button" value="학업성취도" style="font-weight:bold; background-color:darkgray" data-mini="true" onclick="window.location.href='../student/20-study.jsp';">
 	
 	</div>
     </table>
     <table>
-   <tr><img style="margin-top:20px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/join.PNG"/>
+   <tr><a data-ajax="false" href="../student/21-joinsituation.jsp"><img style="margin-top:20px" width="26%" height="14%" src="/hanium_shinhan_classmate/res/join.PNG"/></a>
    </tr>
      <div style="margin:-5% 25% 0% 25%">
-	 <a data-ajax="false"href="../student/21-joinsituation.html"><input type="button" value="가입 현황" style="font-weight:bold; background-color:darkgray " data-mini="true"></a>
+	 <a data-ajax="false"href="../student/21-joinsituation.jsp"><input type="button" value="가입 현황" style="font-weight:bold; background-color:darkgray " data-mini="true"></a>
 	</div>
     </table>
 	</div>
