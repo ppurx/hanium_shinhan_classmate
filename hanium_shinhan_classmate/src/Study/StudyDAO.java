@@ -194,7 +194,62 @@ public ArrayList<StudyDTO> selectMonthAvg(String CLASS_ID){
 	
 	return MonthList;
 }
+
+public String[] selectStudentAVG(String CLASS_ID, String USER_ID){
+	String[] AvgScoreList = {"0","0","0","0","0","0","0","0","0","0","0","0","0"};
+	int i;
+	String sql = "select MONTH(SCORE.SCORE_DATE) as MONTH,avg(SCORE.SCORE_SCORE) as AVG,SCORE.USER_ID from SCORE,STUDY where SCORE.STUDY_ID=STUDY.STUDY_ID and SCORE.USER_ID='"+USER_ID+"' and STUDY.CLASS_ID='"+CLASS_ID+"' group by MONTH(SCORE.SCORE_DATE)";
+try {
+		
+		Statement stmt = conn.createStatement();
+		
+		ResultSet rs = stmt.executeQuery(sql);	
+		
+		while(rs.next()){			
+			AvgScoreList[Integer.parseInt((rs.getString("MONTH")))]=rs.getString("AVG");
+			
+		}
+		
+		
+		
+	}
+	catch(SQLException e){
+		System.out.println(e);
+	}
+
+	return AvgScoreList;
+}
 	
+public double selectPercent(String CLASS_ID,String USER_ID,int MONTH){
+	ArrayList<String> studentList= new ArrayList<String>();
+	int i=0;
+	int x=0;
+	double percent=0;
+	String sql = "select MONTH(SCORE.SCORE_DATE) as MONTH,avg(SCORE.SCORE_SCORE) as AVG,SCORE.USER_ID from SCORE,STUDY where SCORE.STUDY_ID=STUDY.STUDY_ID and STUDY.CLASS_ID='"+CLASS_ID+"' and MONTH(SCORE.SCORE_DATE) in('"+MONTH+"') group by SCORE.USER_ID,MONTH order by AVG DESC";
+	try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()){					
+				studentList.add(rs.getString("USER_ID"));
+										
+			}
+			
+			while(true){
+				if(studentList.get(i).equals(USER_ID))break;
+				else i++;
+			}
+			i++;
+			percent=(double)i/(double)studentList.size()*100;
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+	return percent;
+}
 
 
 
