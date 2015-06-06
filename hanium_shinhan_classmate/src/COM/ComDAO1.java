@@ -165,6 +165,7 @@ public class ComDAO1 {
 				dto.setUSER_ID(rs.getString("USER_ID"));	
 				System.out.println(rs.getString("NOTICE_ID"));
 				System.out.println(rs.getString("USER_ID"));
+				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
 				selectList1.add(dto);
 				}
 			
@@ -284,6 +285,37 @@ public class ComDAO1 {
 				
 		return selectList1;
 	}
-
+	public ArrayList<ComDTO1> selectClassname(String id){
+		ArrayList<ComDTO1> selectList2 = new ArrayList<ComDTO1>();
+		System.out.println(id);
+		String sql = "select * from CLASS,LIST where CLASS.CLASS_ID = LIST.CLASS_ID and LIST.USER_ID='"+id+"'";
+		try {
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);			
+			
+			while(rs.next()){
+				ComDTO1 dto = new ComDTO1();
+				dto.setClass_ID(rs.getString("CLASS_ID"));
+				dto.setCLASS_NAME(rs.getString("CLASS_NAME"));
+				dto.setREGI_DATE(rs.getString("CLASS_FOUND_DATE").substring(0,10));
+				dto.setUSER_ID(rs.getString("USER_ID"));
+				
+				System.out.println(dto.getREGI_DATE());
+				System.out.println(rs.getString("CLASS_NAME"));
+				System.out.println(rs.getString("USER_ID"));	
+		
+				selectList2.add(dto);
+				}
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+				
+		return selectList2;
+	}
 	}
 

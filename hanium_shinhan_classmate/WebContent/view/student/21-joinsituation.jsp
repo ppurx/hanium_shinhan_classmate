@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+     <%@page import="COM.ComDAO1"%>
+     <%@page import="COM.ComDTO1"%>
+    <%@ page import="java.util.ArrayList"%> 
 <!DOCTYPE html>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,6 +69,14 @@ $(function(){
 <title>join situation</title>
 </head>
 <body>
+<%
+			ComDAO1 dao = new ComDAO1();
+			//ArrayList<ComDTO1> List = dao.selectTest();
+			ArrayList<ComDTO1> List = dao.selectClassname((String)session.getAttribute("id"));
+			request.setAttribute("List",List);
+			
+			
+	%>	
 	<div id="myCenterDiv">
 		<!-- 툴바 -->
 	<div data-role="header"style="background-color:#04B486;">
@@ -123,61 +135,97 @@ $(function(){
 </div>
 	
  
- <div class="swiper-container" style="margin-top:20%">
+ <!-- 여기부터 -->
+		<div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-<table style="width:95%; margin:auto;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
-		<thead>
-			<tr>
-				<th >반이름</th>
-				<th >개설자</th>
-				<th>개설날짜</th>
-				<th>탈퇴하기</th>
-			</tr>
-</thead>
-	<tbody>
-		<tr>
-			<td><a href="3">신한대학교</a></th>
-			<td align="center">황승현</td>
-			<td align="center">2014-03-11</td>
-			<td><center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">탈퇴</BUTTON></center></td>
-		</tr>
-		<tr>
-			<td><a href="3">신한대학교</a></th>
-			<td align="center">황승현</td>
-			<td align="center">2014-03-11</td>
-			<td><center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">탈퇴</BUTTON></center></td>
-		</tr>
-		<tr>
-			<td><a href="3">신한대학교</a></th>
-			<td align="center">황승현</td>
-			<td align="center">2014-03-11</td>
-			<td><center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">탈퇴</BUTTON></center></td>
-		</tr>
-		<tr>
-		<td><a href="3">신한대학교</a></th>
-			<td align="center">황승현</td>
-			<td align="center">2014-03-11</td>
-			<td><center><BUTTON type=submit  data-role="none" style="  font-weight:bold;   background-color:skyblue ;">탈퇴</BUTTON></center></td>
-		</tr>
-		</tbody>
-	</table>
-	
-	
-	
-	</div>
-	
-	
-	<div class="swiper-slide"></div>
-	
-	</div>
-	
-	<div class="swiper-pagination"></div>
-	</div>
-	
-	
-	</div>
-
+    
+    <div class="swiper-slide">
+		<table style="width:95%; margin:auto; margin-top:100px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+			<colgroup>
+				<col width="45px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+				<col width="40px"/>
+			</colgroup>
+			<thead>
+				<tr>
+					<th>반이름</th>
+					<th>개설일</th>
+					<th>개설일</th>
+					<th>탈퇴하기</th>
+				</tr>
+		</thead>
+			<tbody>
+<c:choose>
+	<c:when test="${List.size() == 0 }">
+			<tfoot>
+			     <tr>
+			          <td colspan="3">현재 데이터가 없습니다.</td>
+			     </tr>
+			</tfoot>
+			</tbody>
+				</table>
+					</div>
+	</c:when>
+	<c:when test="${List.size() != 0 }">
+	<c:forEach var="Lists"  items="${List}" varStatus="i">
+		
+				<tr>
+					<th><div style='width:65px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap; ' ><a data-ajax="false" href="../teacher/38-Noticedetail(teacher).jsp?idx=<c:out value="${Lists.getNotice_ID()}"/>"><c:out value="${Lists.getCLASS_NAME()}"/></a></div></th>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getUSER_ID()}"/></a></div></td>
+					<td><div style='width:60px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="${Lists.getREGI_DATE()}"/></div></td>
+					<td><div style='width:90px;text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden; word-wrap:break-word; white-space:nowrap;' ><c:out value="탈퇴"/></div></td>
+				</tr>	
+				
+				<c:choose>
+				<c:when test="${i.index%4==3 }">
+				<c:choose>
+					<c:when test="${i.last}">
+					</tbody>
+						</table>
+							</div>
+					</c:when>
+					
+					<c:when test="${i.index!=i.end }">
+						</tbody>
+						</table>
+							</div>
+							<div class="swiper-slide">
+						<table style="width:95%; margin:auto; margin-top:100px" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
+							
+							<thead>
+							
+								<tr>
+									<th>반이름</th>
+									<th>개설자</th>
+									<th>개설일</th>
+									<th>탈퇴하기</th>
+								</tr>
+						</thead>
+							<tbody>
+						</c:when>
+						</c:choose>
+				</c:when>	
+				
+				<c:when test="${i.last }">
+				</tbody>
+						</table>
+							</div>
+				</c:when>
+				
+				</c:choose>
+		</c:forEach>
+		</c:when>
+	</c:choose>
+	          
+            
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    	
+			
+			
 	<script src="../../view/swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
@@ -187,5 +235,6 @@ $(function(){
         paginationClickable: true
     });
     </script>
+   <!-- 여기까지 -->
 </body>
 </html>
