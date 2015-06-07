@@ -52,16 +52,19 @@ $(function(){
 	});
 	$('#btn').click(function(){
 		if($('#CHAT_CONTENT').val()!=''){
-		start();			
+			insert();
+			select();
 		}
-		start2();
+		else{
+			select();
+		}
 	});
 		
 	});
 </script>
 
 <script type="text/javascript">
-function start(){
+function insert(){
 	var str = $('#CHAT_CONTENT').val();
 		str=encodeURIComponent(encodeURIComponent(str));
 	$.ajax({
@@ -89,7 +92,7 @@ function createXMLHttpRequest() {
     }
 }
     
-function start2() {
+function select() {
     createXMLHttpRequest();
     xmlHttp.onreadystatechange = handleStateChange;
     xmlHttp.open("GET", "chatSelect.class?idx="+MAX, true);
@@ -110,8 +113,8 @@ function handleStateChange() {
             	var chat = decodeURIComponent(chatList[i].childNodes[0].nodeValue);  
         		$('#chatting').append("<div id='bringMessage' >"+name+" : "+chat+"</div>");        		
         	}
-        	$("#chatting").animate({ scrollTop: $('#chatting')[0].scrollHeight}, 1000);
-        	setTimeout(start2, 100);
+        	$("#chatting").scrollTop($("#chatting")[0].scrollHeight);
+        	setTimeout(select, 100);
         	
         }
     }
@@ -119,23 +122,6 @@ function handleStateChange() {
 
 </SCRIPT>
 
-<script type="text/javascript">
-function start3(){
-	var str = $('#CHAT_CONTENT').val();
-		str=encodeURIComponent(encodeURIComponent(str));
-	$.ajax({
-		url: "chatSelect.class",
-		method: 'post',		
-		contentType: "application/x-www-form-urlencoded; charset=utf-8",
-		success:function(data) {
-		   
-		},
-		error:function() {
-		   
-		}
-	}); 
-}
-</script>
 <title>first page</title>
 </head>
 <body>
