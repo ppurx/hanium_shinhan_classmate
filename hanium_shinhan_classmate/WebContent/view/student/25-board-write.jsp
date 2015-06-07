@@ -110,7 +110,7 @@ $(function(){
 		<td align="left"><img  width="70%"  src="/hanium_shinhan_classmate/res/25-1.PNG"/></td><td><input type="text" name="subject" id="subject" size="25" placeholder="제목을 입력하세요"></td>
 	</tr>
 	<tr>
-		<td align="left"><img style="height:50%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
+		<td align="left"><img width="55%" height="100%" src="/hanium_shinhan_classmate/res/25-2.PNG"/></td>
 	</tr>	
 	<tr>
 	

@@ -1,6 +1,7 @@
 package COM;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Member.MemberDTO;
+import Member.MemberDAO;
 
 public class ComProcess2 extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -51,8 +53,48 @@ public class ComProcess2 extends HttpServlet{
 			}
 			
 		}
-		
-		
+		else if(command !=null &&command.trim().equals("boardUpdate")){
+			
+			request.setCharacterEncoding("utf-8");
+			
+			String subject = request.getParameter("subject");
+			String textarea = request.getParameter("textarea");
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			int boardID = Integer.parseInt(request.getParameter("BoardID"));
+			
+			ComDTO2 dto = new ComDTO2();
+			
+			dto.setSubject(subject);
+			dto.setTextarea(textarea);
+			dto.setUSER_ID(id);
+			dto.setBoardID(boardID);
+			
+			ComDAO2 dao = new ComDAO2();
+			
+			dao.updateBoard(dto);
+			
+			response.sendRedirect("../student/24-board2.jsp");
+		}
+		else if(command !=null &&command.trim().equals("boardDelete")){
+			
+			request.setCharacterEncoding("utf-8");
+			
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			int boardID = Integer.parseInt(request.getParameter("BoardID"));
+			
+			ComDTO2 dto = new ComDTO2();
+			
+			dto.setUSER_ID(id);
+			dto.setBoardID(boardID);
+			
+			ComDAO2 dao = new ComDAO2();
+			
+			dao.deleteBoard(dto);
+			
+			response.sendRedirect("../student/24-board2.jsp");
+		}
 		
 	}
 	

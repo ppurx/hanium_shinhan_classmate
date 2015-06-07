@@ -8,12 +8,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import COM.ComDTO1;
+import COM.ComDTO2;
 import Class.ClassDTO;
 
 public class ComDAO2 {
 	private static Connection conn;
 	private String CLASS_ID;
+	private int BoardID;
 	public ComDAO2() {
 				
 		
@@ -69,6 +70,33 @@ public class ComDAO2 {
 	}
 	
 	
+	public void updateBoard(ComDTO2 dto){
+		String sql = "update BOARD set BOARD_SUBJECT=?,BOARD_CONTENT=? where BOARD_ID='"+dto.getBoardID()+"'" ;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getSubject());
+			pstmt.setString(2, dto.getTextarea());
+			pstmt.executeUpdate();
+		}
+		catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+		}
+		
+		return ;
+	}
+	
+	public void deleteBoard(ComDTO2 dto){
+		String sql = "delete from BOARD where BOARD_ID='"+dto.getBoardID()+"'";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.executeUpdate();
+		}
+		catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());
+		}
+	}
+	
+	
 	public ComDTO2 selectTest(String idx){
 		ComDTO2 dto = new ComDTO2();
 		
@@ -81,7 +109,7 @@ public class ComDAO2 {
 			if(rs.next()){
 				dto.setUSER_ID(rs.getString("USER_ID"));
 				dto.setSubject(rs.getString("BOARD_SUBJECT"));
-				dto.setBoardID(rs.getString("BOARD_ID"));
+				dto.setBoardID(rs.getInt("BOARD_ID"));
 				dto.setWriter(rs.getString("CLASS_ID"));
 				dto.setRegidate(rs.getString("BOARD_REGI_DATE").substring(0,10));
 				dto.setTextarea(rs.getString("BOARD_CONTENT"));
@@ -113,7 +141,7 @@ public class ComDAO2 {
 			while(rs.next()){
 				ComDTO2 dto = new ComDTO2();
 				dto.setSubject(rs.getString("BOARD_SUBJECT"));
-				dto.setBoardID(rs.getString("BOARD_ID"));
+				dto.setBoardID(rs.getInt("BOARD_ID"));
 				dto.setWriter(rs.getString("CLASS_ID"));
 				dto.setDate(rs.getString("BOARD_REGI_DATE").substring(0, 10));
 				dto.setUSER_ID(rs.getString("USER_ID"));

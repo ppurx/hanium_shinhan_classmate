@@ -2,19 +2,19 @@ package COM;
 
 public class ComDTO2 {
 
+	private int BoardID;
+	public int getBoardID() {
+		return BoardID;
+	}
+	public void setBoardID(int boardID) {
+		BoardID = boardID;
+	}
 	String CLASS_ID;
 	public String getCLASS_ID() {
 		return CLASS_ID;
 	}
 	public void setCLASS_ID(String cLASS_ID) {
 		CLASS_ID = cLASS_ID;
-	}
-	String BoardID;
-	public String getBoardID() {
-		return BoardID;
-	}
-	public void setBoardID(String boardID) {
-		BoardID = boardID;
 	}
 	String Regidate;
 	public String getRegidate() {
