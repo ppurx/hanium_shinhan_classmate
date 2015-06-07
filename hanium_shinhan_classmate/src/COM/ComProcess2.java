@@ -80,12 +80,16 @@ public class ComProcess2 extends HttpServlet{
 			
 			request.setCharacterEncoding("utf-8");
 			
+			String subject = request.getParameter("subject");
+			String textarea = request.getParameter("textarea");
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
 			int boardID = Integer.parseInt(request.getParameter("BoardID"));
 			
 			ComDTO2 dto = new ComDTO2();
 			
+			dto.setSubject(subject);
+			dto.setTextarea(textarea);
 			dto.setUSER_ID(id);
 			dto.setBoardID(boardID);
 			

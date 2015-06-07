@@ -94,6 +94,8 @@ public class ComDAO2 {
 		catch(SQLException ex) {
 			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());
 		}
+		
+		return ;
 	}
 	
 	
