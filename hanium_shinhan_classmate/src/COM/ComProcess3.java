@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import Class.ClassDAO;
 import Class.ClassDTO;
+import Member.MemberDAO;
+import Member.MemberDTO;
 
 public class ComProcess3 extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -69,6 +71,34 @@ public class ComProcess3 extends HttpServlet{
 	        response.sendRedirect("../student/08-Stu_main(1).jsp");
 			
 		}
+		else if(command !=null &&command.trim().equals("UpdateMEMO")){
+			
+			request.setCharacterEncoding("utf-8");
+			
+			ComDAO3 dao = new ComDAO3();
+			String MEMO_Responde = request.getParameter("MEMO_Responde");
+			
+			System.out.println(MEMO_Responde);
+			int MEMO_ID = Integer.parseInt(request.getParameter("MEMO_ID"));
+			ComDTO3 dto = new ComDTO3();
+			dto.setMEMO_Responde(MEMO_Responde);
+			dto.setMEMO_ID(MEMO_ID);
+			
+			dao.UpdateMEMO(dto);
+			
+			boolean bool = dao.UpdateMEMO(dto);
+			
+			if(bool)
+				response.sendRedirect("../teacher/32-Q&A(teacher).jsp");
+			else
+				response.sendRedirect("../../Fail.html");
+			}
+		
+		
+		
+		
+		
+		
 		
 		
 	}

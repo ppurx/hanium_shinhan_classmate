@@ -1,12 +1,12 @@
 package COM;
 
 public class ComDTO3 {
-	private String MEMO_RESPONDE;
-	public String getMEMO_RESPONDE() {
-		return MEMO_RESPONDE;
+	private String MEMO_Responde;
+	public String getMEMO_Responde() {
+		return MEMO_Responde;
 	}
-	public void setMEMO_RESPONDE(String mEMO_RESPONDE) {
-		MEMO_RESPONDE = mEMO_RESPONDE;
+	public void setMEMO_Responde(String mEMO_Responde) {
+		MEMO_Responde = mEMO_Responde;
 	}
 	private int CLASS_ID;
 	public int getCLASS_ID() {
@@ -29,12 +29,7 @@ public class ComDTO3 {
 	public void setMEMO_ID(int mEMO_ID) {
 		MEMO_ID = mEMO_ID;
 	}
-	public String getResponse() {
-		return response;
-	}
-	public void setResponse(String response) {
-		this.response = response;
-	}
+	
 	public String getSendUserID() {
 		return SendUserID;
 	}
@@ -47,7 +42,7 @@ public class ComDTO3 {
 	public void setBringUserID(String bringUserID) {
 		BringUserID = bringUserID;
 	}
-	private String response;
+	
 	private String SendUserID;
 	private String BringUserID;
 	private String Datetime;

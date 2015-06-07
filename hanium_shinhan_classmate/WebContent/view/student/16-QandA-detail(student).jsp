@@ -171,7 +171,7 @@ $(function(){
  </div>
  <div class="pupple">
  <p class="label" style="margin-left:5%; margin-right:5%">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px" name="textarea" id="textarea"placeholder="답변내용"></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px" name="MEMO_Responde" id="textarea" placeholder=<%=dto.getMEMO_Responde()%>></textarea>
  </p>
  <div class="tail"></div>
  

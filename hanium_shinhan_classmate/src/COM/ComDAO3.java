@@ -77,7 +77,6 @@ public class ComDAO3 {
 	public ComDTO3 selectTest(String idx){
 		ComDTO3 dto = new ComDTO3();
 		
-		
 		String sql = "select * from MEMO where MEMO_ID ='"+idx+"' ";
 		try {
 			Statement stmt = conn.createStatement();
@@ -85,10 +84,9 @@ public class ComDAO3 {
 			ResultSet rs = stmt.executeQuery(sql);			
 			
 			if(rs.next()){
-				
 				dto.setMEMO_Content(rs.getString("MEMO_CONTENT"));
-				
-				
+				dto.setMEMO_Responde(rs.getString("MEMO_RESPOND"));
+				dto.setMEMO_ID(rs.getInt("MEMO_ID"));
 			}
 			
 		}
@@ -212,6 +210,18 @@ public class ComDAO3 {
 		
 		
 		return BringUserId;
+	}
+	public boolean UpdateMEMO(ComDTO3 dto){
+		String sql = "update MEMO set MEMO_RESPOND='"+dto.getMEMO_Responde()+"' where MEMO_ID='"+dto.getMEMO_ID()+"'";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);	
+			pstmt.executeUpdate();
+		}catch(SQLException ex) {
+			System.out.println("SQL Insert 오류 : " + ex.getLocalizedMessage());			
+		}
+			
+		
+		return true;
 	}
 
 }

@@ -20,7 +20,9 @@ $(function(){
 	$('#logoutOK').click(function(){			
 		logout.submit();
 	});
-	
+	$('#btn1').click(function(){
+		UpdateMEMO.submit();
+	});
 		
 	});
 </script>
@@ -78,12 +80,6 @@ html, body {height:100%; margin:0; padding:0;}
 	top:-18px;
 	width:0; height:0;
 }
-<script type="text/javascript">
-	window.onload = function(){
-		​$("textarea").​​​​​​height(400);
-		
-	};
-</script>
 
 </style>
 <title>p33</title>
@@ -168,23 +164,22 @@ html, body {height:100%; margin:0; padding:0;}
  
  
 </div>
-
+<form name="UpdateMEMO" action="UpdateMEMO.com3" method="post">
 <div style="margin-left:197px; margin-top:100px;">
 <img width="35%" height="35%"  src="/hanium_shinhan_classmate/res/Teacher.png"/>
  </div>
  <div class="pupple">
  <p class="label">
- <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px" name="MEMO_Respond" id="textarea"placeholder="답변을 입력해주세요"></textarea>
+ <textarea style="color:#FFFFFF; background-color:transparent; color:whitegrey; text-align:center"  height:500px; margin-left:20px; margin-top:5px" name="MEMO_Responde" id="textarea" placeholder="답변을 입력해주세요"></textarea>
  </p>
  <div class="tail"></div>
- 
- 
 </div>
 <div style="margin-top:12%; text-align: center;">
-			<a data-role="button" data-inline="true" href="/hanium_shinhan_classmate/view/32-Q&A(teacher).html">답변보내기</a>
+			<a data-role="button" data-inline="true" id="btn1" >답변보내기</a>
 			
 		</div>
 		<input type="hidden" name="MEMO_ID" value="<%=idx %>" />
+		</form>
 </div>
 </body>
 </html>
