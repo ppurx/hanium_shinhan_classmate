@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <% response.setContentType("text/html; charset=utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
-<meta charset="utf-8">
+<meta charset="euc-kr">
 
 <style type="text/css">
 html, body {height:100%; margin:0; padding:0;}
@@ -49,9 +50,91 @@ $(function(){
 	$('#logoutOK').click(function(){			
 		logout.submit();
 	});
-	
+	$('#btn').click(function(){
+		if($('#CHAT_CONTENT').val()!=''){
+		start();			
+		}
+		start2();
+	});
 		
 	});
+</script>
+
+<script type="text/javascript">
+function start(){
+	var str = $('#CHAT_CONTENT').val();
+		str=encodeURIComponent(encodeURIComponent(str));
+	$.ajax({
+		url: "chat.class?idx="+str+"",
+		method: 'post',		
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		success:function(data) {
+		   
+		},
+		error:function() {
+		   
+		}
+	}); 
+}
+</script>
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript"> 
+var xmlHttp;
+var MAX;
+function createXMLHttpRequest() {
+    if (window.ActiveXObject) {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } 
+    else if (window.XMLHttpRequest) {
+        xmlHttp = new XMLHttpRequest();
+    }
+}
+    
+function start2() {
+    createXMLHttpRequest();
+    xmlHttp.onreadystatechange = handleStateChange;
+    xmlHttp.open("GET", "chatSelect.class?idx="+MAX, true);
+    xmlHttp.send(null);
+}
+    
+function handleStateChange() {
+    if(xmlHttp.readyState == 4) {
+        if(xmlHttp.status == 200) {
+
+        	var temp = xmlHttp.responseXML;
+        	var nameList = temp.getElementsByTagName("USERNAME");   	
+        	
+        	var chatList = temp.getElementsByTagName("CONTENT");
+        	
+        	for(var i=0;i<nameList.length;i++){
+        		var name = decodeURIComponent(nameList[i].childNodes[0].nodeValue);   
+            	var chat = decodeURIComponent(chatList[i].childNodes[0].nodeValue);  
+        		$('#chatting').append("<div id='bringMessage' >"+name+" : "+chat+"</div>");        		
+        	}
+        	$("#chatting").animate({ scrollTop: $('#chatting')[0].scrollHeight}, 1000);
+        	setTimeout(start2, 100);
+        	
+        }
+    }
+}
+
+</SCRIPT>
+
+<script type="text/javascript">
+function start3(){
+	var str = $('#CHAT_CONTENT').val();
+		str=encodeURIComponent(encodeURIComponent(str));
+	$.ajax({
+		url: "chatSelect.class",
+		method: 'post',		
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		success:function(data) {
+		   
+		},
+		error:function() {
+		   
+		}
+	}); 
+}
 </script>
 <title>first page</title>
 </head>
@@ -114,23 +197,19 @@ $(function(){
 </div>
 
 <!-- 채팅창 -->
-	<div style="height:67%;width:90%;   margin:auto; margin-top:5%;overflow: scroll;overflow-x:hidden; ">
-		<div id="bringMessage" >김상현 : 돼지꾸익</div>
-		<div id="bringMessage">김상현 : 돼지꾸익</div>
-		<div id="bringMessage">김상현 : 돼지꾸익</div><div id="bringMessage" style="text-align:left">김상현 : 돼지꾸익</div><div id="bringMessage" style="text-align:left">김상현 : 돼지꾸익</div><div id="bringMessage" style="text-align:left">김상현 : 돼지꾸익</div><div id="bringMessage" style="text-align:left">김상현 : 돼지꾸익</div><div id="bringMessage" style="text-align:left">김상현 : 돼지꾸익</div>
-		<div id="sendMessage">asdofihawoeig</div>
-		<div id="sendMessage">asdofihawoeig</div>
-		<div id="sendMessage">asdofihawoeig</div>
+	<div class="demo" id="chatting" style="height:67%;width:90%;   margin:auto; margin-top:5%;overflow: scroll;overflow-x:hidden; ">
+		
+		
 	
 	</div>
 	<!-- 채팅 입력 -->
 	
         <div style="width:90%; margin:auto" data-position="fixed">
 		<div style="float:left; width:83%;">
-			<input type="text" data-mini="true" data-inline="true" width="80%"/>
+			<input type="text" data-mini="true" data-inline="true" width="80%" id="CHAT_CONTENT" name="CHAT_CONTENT"/>
 		</div>
 		<div style="float:left; width:13%; margin-left:2%">
-		<input data-inline="true" type="button" data-mini="true" width="10%" value="전송"data-mini="true" />
+		<input data-inline="true" type="button" data-mini="true" width="10%" id="btn" value="전송"data-mini="true" />
 		</div>
 		</div>	
     

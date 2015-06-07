@@ -404,11 +404,62 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 	}
 	
 	
-public ArrayList<ClassDTO> selectList(int CLASS_ID){
+	public ArrayList<ClassDTO> selectList(int CLASS_ID){
+			
+			ArrayList<ClassDTO> USER_LIST = new ArrayList<ClassDTO>();
+			
+			String sql ="select * from LIST where CLASS_ID='"+CLASS_ID+"'";
+			
+			try {
+				
+				Statement stmt = conn.createStatement();
+				
+				ResultSet rs = stmt.executeQuery(sql);	
+				
+				while(rs.next()){
+					ClassDTO dto = new ClassDTO();
+					dto.setUSER_ID(rs.getString("USER_ID"));
+					USER_LIST.add(dto);
+				}
+				
+				
+				
+			}
+			catch(SQLException e){
+				System.out.println(e);
+			}
+			
+			return USER_LIST;
+		}
+		public void canS(String idx,String idx2){
+			
+			
+		}
 		
-		ArrayList<ClassDTO> USER_LIST = new ArrayList<ClassDTO>();
+	public void chatInsert(String USER_ID,String CLASS_ID,String CHAT_CONTENT){
+	String query = "insert into CHAT(CLASS_ID,USER_ID,CHAT_CONTENT) values(?,?,?)";
+			
+			try {
+				PreparedStatement pstmt = conn.prepareStatement(query);	
+				
+				pstmt.setString(1, CLASS_ID);
+				pstmt.setString(2, USER_ID);
+				pstmt.setString(3, CHAT_CONTENT);
+				
+				pstmt.executeUpdate();		
+				
+				pstmt.close();
+			
+				}catch(SQLException ex) {
+					System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());				
+				}
+			
+		}
+	
+	public ArrayList<ClassDTO> selectChat(String CLASS_ID,String MAX){
+		ArrayList<ClassDTO> ChatList = new ArrayList<ClassDTO>();
 		
-		String sql ="select * from LIST where CLASS_ID='"+CLASS_ID+"'";
+		String sql ="select CHAT.CHAT_ID,CHAT.CLASS_ID,CHAT.USER_ID,CHAT.CHAT_CONTENT,USER.USER_NAME,CHAT.CHAT_DATE from CHAT,USER where CHAT.USER_ID=USER.USER_ID and CHAT.CLASS_ID='"+CLASS_ID+"' and CHAT_ID>'"+MAX+"' order by CHAT.CHAT_DATE";
 		
 		try {
 			
@@ -418,8 +469,12 @@ public ArrayList<ClassDTO> selectList(int CLASS_ID){
 			
 			while(rs.next()){
 				ClassDTO dto = new ClassDTO();
-				dto.setUSER_ID(rs.getString("USER_ID"));
-				USER_LIST.add(dto);
+				dto.setCHAT_ID(rs.getString("CHAT_ID"));
+				dto.setCHAT_USER_ID(rs.getString("USER_ID"));
+				dto.setCHAT_CONTENT(rs.getString("CHAT_CONTENT"));
+				dto.setCHAT_NAME(rs.getString("USER_NAME"));
+				System.out.println(dto.getCHAT_CONTENT());
+				ChatList.add(dto);
 			}
 			
 			
@@ -429,10 +484,7 @@ public ArrayList<ClassDTO> selectList(int CLASS_ID){
 			System.out.println(e);
 		}
 		
-		return USER_LIST;
-	}
-	public void canS(String idx,String idx2){
-		
+		return ChatList;
 		
 	}
 }

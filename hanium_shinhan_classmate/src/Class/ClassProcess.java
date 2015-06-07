@@ -1,7 +1,10 @@
 package Class;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpSession;
 public class ClassProcess extends HttpServlet{
 	private int counter = 1;
 
+	@SuppressWarnings("deprecation")
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -113,9 +117,38 @@ public class ClassProcess extends HttpServlet{
 			
 		}
 		
-		
-	}
+else if(command !=null &&command.trim().equals("chat")){
+			HttpSession session = request.getSession();
+			String CLASS_ID = (String) session.getAttribute("CLASS_ID");
+			String ID = (String)session.getAttribute("id");
 			
+			
+			String CHAT_CONTENT = java.net.URLDecoder.decode(request.getParameter("idx"), "UTF-8");
+			
+			
+			
+			ClassDAO dao = new ClassDAO();
+			
+			dao.chatInsert(ID,CLASS_ID,CHAT_CONTENT);
+			
+			PrintWriter out = response.getWriter();
+
+/*
+			 response.setContentType("text/xml");
+		        response.setHeader("Cache-Control", "no-cache");
+		       
+		        out.println("<response>");		        
+		        out.println("<message>" + "</message>");		      
+		        out.println("</response>");		        
+		        out.close();
+			
+			*/
+		}
+	
+
+
+}
+	
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -159,9 +192,56 @@ public class ClassProcess extends HttpServlet{
 			
 		}
 		
+		else if(command !=null &&command.trim().equals("chatSelect")){
+			HttpSession session = request.getSession();
+			String CLASS_ID = (String) session.getAttribute("CLASS_ID");
+			String ID = (String)session.getAttribute("id");
+			
+				ClassDAO dao = new ClassDAO();
+				
+				String MAX = (String)session.getAttribute("MAX");
+				if(MAX==null) MAX="1";
+					
+				ArrayList<ClassDTO> ChatList = dao.selectChat(CLASS_ID,MAX);
+				
+				int x=0;
+				
+				int i=0;
+				 PrintWriter out = response.getWriter();
+				 
+				 response.setContentType("text/xml");
+			        response.setHeader("Cache-Control", "no-cache");
+			       
+			        
+			   
+			        out.println("<response>");
+			        for(i=0;i<ChatList.size();i++){
+			        	
+				        out.println("<CHATID>" + URLEncoder.encode(ChatList.get(i).getCHAT_ID(),"UTF-8") + "</CHATID>");
+				        out.println("<USERID>" + URLEncoder.encode(ChatList.get(i).getCHAT_USER_ID(),"UTF-8") + "</USERID>");	
+				        out.println("<USERNAME>" + URLEncoder.encode(ChatList.get(i).getCHAT_NAME(),"UTF-8") + "</USERNAME>");	
+				        out.println("<CONTENT>" + URLEncoder.encode(ChatList.get(i).getCHAT_CONTENT(),"UTF-8") + "</CONTENT>");	
+				        x++;
+				        
+			        }
+			        if(ChatList.size()!=0){
+			        	session.setAttribute("MAX",ChatList.get(x-1).getCHAT_ID());
+			        }
+			        out.println("</response>");	
+			        out.close();
+			     
+			
+			
+			
+			
+			
+		}
+				    
 		
 		
 		
 		
     }		
+	
+
 }

@@ -1,7 +1,20 @@
 package Class;
 
 public class ClassDTO {
-	
+	public String CHAT_USER_ID;
+	public String getCHAT_USER_ID() {
+		return CHAT_USER_ID;
+	}
+	public void setCHAT_USER_ID(String cHAT_USER_ID) {
+		CHAT_USER_ID = cHAT_USER_ID;
+	}
+	public String CHAT_NAME;
+	public String getCHAT_NAME() {
+		return CHAT_NAME;
+	}
+	public void setCHAT_NAME(String cHAT_NAME) {
+		CHAT_NAME = cHAT_NAME;
+	}
 	public String Study_Subject;
 	public String getStudy_Subject() {
 		return Study_Subject;
