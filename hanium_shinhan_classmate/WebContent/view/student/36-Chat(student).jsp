@@ -43,6 +43,7 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
+var cnt=0;
 $(function(){
 	select();
 	
@@ -56,6 +57,20 @@ $(function(){
 			$("#CHAT_CONTENT").val('');
 		}
 		
+	});
+	
+	$('#chatting').click(function(){
+		if(cnt==1){
+			$('#chatting').css({'height':(($(window).height())-200)+'px'});
+			cnt=0;
+		}
+	});
+	
+	$('#CHAT_CONTENT').click(function(){
+		if(cnt==0){
+			$('#chatting').css({'height':(($(window).height())-400)+'px'});
+			cnt=1;
+		}
 	});
 		
 });
@@ -180,15 +195,15 @@ function handleStateChange() {
 </div>
 
 <!-- 채팅창 -->
-	<div class="demo" id="chatting" style="height:67%;width:90%;   margin:auto; margin-top:5%;overflow: scroll;overflow-x:hidden; ">
+	<div class="demo" id="chatting" style="height:420px;;width:90%;   margin:auto; margin-top:5%;overflow: scroll;overflow-x:hidden; ">
 		
 		
 	
 	</div>
 	<!-- 채팅 입력 -->
 	
-        <div style="width:90%; margin:auto" data-position="fixed">
-		<div style="float:left; width:83%;">
+        <div style="width:90%; margin:auto; " data-position="fixed" >
+		<div style="float:left; width:83%;  data-positon:fixed">
 			<input type="text" data-mini="true" data-inline="true" width="80%" id="CHAT_CONTENT" name="CHAT_CONTENT"/>
 		</div>
 		<div style="float:left; width:13%; margin-left:2%">

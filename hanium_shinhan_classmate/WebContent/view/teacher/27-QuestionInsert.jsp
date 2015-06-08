@@ -38,8 +38,8 @@ $(function(){
 	$('#logoutOK').click(function(){			
 		logout.submit();
 	});
-		$('#que').click(function(){		
-			for(var x=1;x<10;x++){
+		$('#que').change(function(){		
+			for(var x=1;x<=10;x++){
 				$("#que"+x).hide();
 				$("#x"+x).hide();
 				$("#y"+x).hide();
