@@ -3,7 +3,9 @@ package Member;
 import java.sql.*;
 import java.util.ArrayList;
 
+import javax.naming.InitialContext;
 import javax.servlet.ServletResponse;
+import javax.sql.DataSource;
 public class MemberDAO {
 	 private static MemberDAO instance = new MemberDAO();
 	    public static MemberDAO getInstance(){
@@ -16,18 +18,14 @@ public class MemberDAO {
 	public MemberDAO() {
 				
 		
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-		}catch(ClassNotFoundException ex) {
-			System.out.println("드라이버를 찾을 수 없습니다.");
-		}
-
-	
-		try {	
-			conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
-		}catch(SQLException ex) {
-			System.out.println("SQL오류 : " + ex.getLocalizedMessage());
-		}
+		try{
+			   InitialContext ctx=new InitialContext();//컨텍스트 얻기
+			   DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/maria");  
+			   conn=ds.getConnection();
+			   System.out.println("ds 연결성공");
+			  }catch(Exception ex){
+			   System.out.println("ds 연결시예외:"+ex);  
+			  }
 	
 	}
 	

@@ -24,7 +24,6 @@ public class ClassProcess extends HttpServlet{
 			throws ServletException, IOException {
 		
 		String uri = request.getRequestURI();
-		System.out.println("uri : " + uri);
 		
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".class"));
 		// TODO Auto-generated method stub
@@ -153,7 +152,6 @@ else if(command !=null &&command.trim().equals("chat")){
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		System.out.println("uri : " + uri);
 		
 		String command = uri.substring(uri.lastIndexOf("/") + 1, uri.lastIndexOf(".class"));
 		
@@ -203,7 +201,6 @@ else if(command !=null &&command.trim().equals("chat")){
 				if(MAX==null) MAX="1";
 					
 				ArrayList<ClassDTO> ChatList = dao.selectChat(CLASS_ID,MAX);
-				
 				int x=0;
 				
 				int i=0;
@@ -222,6 +219,8 @@ else if(command !=null &&command.trim().equals("chat")){
 				        out.println("<USERNAME>" + URLEncoder.encode(ChatList.get(i).getCHAT_NAME(),"UTF-8") + "</USERNAME>");	
 				        out.println("<CONTENT>" + URLEncoder.encode(ChatList.get(i).getCHAT_CONTENT(),"UTF-8") + "</CONTENT>");	
 				        x++;
+				        System.out.println(MAX);
+				        System.out.println(ChatList.get(i).getCHAT_CONTENT());
 				        
 			        }
 			        if(ChatList.size()!=0){

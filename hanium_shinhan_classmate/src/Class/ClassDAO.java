@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +20,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+import org.apache.catalina.Context;
 
 import Member.MemberDTO;
 import Study.StudyDTO;
@@ -25,23 +30,18 @@ import Study.StudyDTO;
 public class ClassDAO {
 
 	private static Connection conn;
-public ClassDAO() {
-				
-		
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-		}catch(ClassNotFoundException ex) {
-			System.out.println("드라이버를 찾을 수 없습니다.");
-		}
+public ClassDAO() {	
+	
+	 try{
+		   InitialContext ctx=new InitialContext();//컨텍스트 얻기
+		   DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/maria");  
+		   conn=ds.getConnection();
+		  }catch(Exception ex){
+		   System.out.println("ds 연결시예외:"+ex);  
+		  }
+}
 
-	
-		try {	
-			conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
-		}catch(SQLException ex) {
-			System.out.println("SQL오류 : " + ex.getLocalizedMessage());
-		}
-	
-	}
+
 
 
 public ArrayList<ClassDTO> selectClassList(String id){
@@ -50,7 +50,6 @@ public ArrayList<ClassDTO> selectClassList(String id){
 	String sql ="select * from CLASS,LIST where CLASS.CLASS_ID=LIST.CLASS_ID and LIST.USER_ID='"+id+"'";
 	
 	try {
-		
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery(sql);			
@@ -473,7 +472,6 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 				dto.setCHAT_USER_ID(rs.getString("USER_ID"));
 				dto.setCHAT_CONTENT(rs.getString("CHAT_CONTENT"));
 				dto.setCHAT_NAME(rs.getString("USER_NAME"));
-				System.out.println(dto.getCHAT_CONTENT());
 				ChatList.add(dto);
 			}
 			

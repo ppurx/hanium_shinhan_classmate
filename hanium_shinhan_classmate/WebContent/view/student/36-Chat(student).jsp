@@ -44,7 +44,7 @@ html, body {height:100%; margin:0; padding:0;}
 </style>
 <script type="text/javascript">
 $(function(){
-	
+	select();
 	
 	
 	$('#logoutOK').click(function(){			
@@ -53,17 +53,13 @@ $(function(){
 	$('#btn').click(function(){
 		if($('#CHAT_CONTENT').val()!=''){
 			insert();
-			select();
+			$("#CHAT_CONTENT").val('');
 		}
-		else{
-			select();
-		}
-	});
 		
 	});
-</script>
-
-<script type="text/javascript">
+		
+});
+	
 function insert(){
 	var str = $('#CHAT_CONTENT').val();
 		str=encodeURIComponent(encodeURIComponent(str));
@@ -79,8 +75,7 @@ function insert(){
 		}
 	}); 
 }
-</script>
-<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript"> 
+
 var xmlHttp;
 var MAX;
 function createXMLHttpRequest() {
@@ -110,11 +105,13 @@ function handleStateChange() {
         	
         	for(var i=0;i<nameList.length;i++){
         		var name = decodeURIComponent(nameList[i].childNodes[0].nodeValue);   
-            	var chat = decodeURIComponent(chatList[i].childNodes[0].nodeValue);  
+            	var chat1 = decodeURIComponent(chatList[i].childNodes[0].nodeValue); 
+            	var chat = chat1.split("+").join(" ");
         		$('#chatting').append("<div id='bringMessage' >"+name+" : "+chat+"</div>");        		
         	}
-        	$("#chatting").scrollTop($("#chatting")[0].scrollHeight);
-        	setTimeout(select, 100);
+        	var objDiv = document.getElementById("chatting");
+        	objDiv.scrollTop = objDiv.scrollHeight;
+        	setTimeout(select, 1000);
         	
         }
     }
