@@ -43,6 +43,13 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
+$(document).bind('pageinit', function() {
+    $("#CHAT_CONTENT").on("change keyup", function() {
+    	$('#chatting').css({'height':150+'px'});	
+    });
+  });
+  
+  
 var cnt=0;
 $(function(){
 	select();
@@ -52,7 +59,6 @@ $(function(){
 		logout.submit();
 	});
 	$('#btn').click(function(){
-		
 		if($('#CHAT_CONTENT').val()!=''){
 			insert();
 			$("#CHAT_CONTENT").val('');
@@ -60,21 +66,17 @@ $(function(){
 		}
 		
 	});
-	$('#CHAT_CONTENT').focus(function(){
-		$('#chatting').css({'height':(($(window).height())-400)+'px'});
-		
+	$('#CHAT_CONTENT').focus(function(){	
 		});
-	$('#CHAT_CONTENT').blur(function(){
-		if($('#btn').click()){
-			$('#CHAT_CONTENT').focus();
-		}
-		
-		});
-	$('#chatting').click(function(){
-		$('#CHAT_CONTENT').blur();
-			$('#chatting').css({'height':(($(window).height())-200)+'px'});
-	});
 	
+	$('#CHAT_CONTENT').blur(function(){
+		$('#CHAT_CONTENT').focus();		
+	});		
+	
+	$('#chatting').click(function(){
+		$('#chatting').css({'height':400+'px'});		
+	});
+
 		
 });
 	
@@ -120,7 +122,7 @@ function handleStateChange() {
         	var nameList = temp.getElementsByTagName("USERNAME");   	
         	
         	var chatList = temp.getElementsByTagName("CONTENT");
-        	
+        	if(nameList.length!=0){
         	for(var i=0;i<nameList.length;i++){
         		var name = decodeURIComponent(nameList[i].childNodes[0].nodeValue);   
             	var chat1 = decodeURIComponent(chatList[i].childNodes[0].nodeValue); 
@@ -129,6 +131,8 @@ function handleStateChange() {
         	}
         	var objDiv = document.getElementById("chatting");
         	objDiv.scrollTop = objDiv.scrollHeight;
+        	}
+        	
         	setTimeout(select, 1000);
         	
         }
@@ -205,7 +209,7 @@ function handleStateChange() {
 	</div>
 	<!-- 채팅 입력 -->
 	
-        <div id="UI" style="width:90%; margin:auto; " data-position="fixed" >
+        <div id="UI" style="width:90%;  margin:auto; " data-position="fixed" >
 		<div style="float:left; width:83%;  data-positon:fixed">
 			<input type="text" data-mini="true" data-inline="true" width="80%" id="CHAT_CONTENT" name="CHAT_CONTENT"/>
 		</div>
