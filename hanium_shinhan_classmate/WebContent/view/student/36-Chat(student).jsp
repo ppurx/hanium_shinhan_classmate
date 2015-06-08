@@ -52,26 +52,29 @@ $(function(){
 		logout.submit();
 	});
 	$('#btn').click(function(){
+		
 		if($('#CHAT_CONTENT').val()!=''){
 			insert();
 			$("#CHAT_CONTENT").val('');
+			
 		}
 		
 	});
-	
+	$('#CHAT_CONTENT').focus(function(){
+		$('#chatting').css({'height':(($(window).height())-400)+'px'});
+		
+		});
+	$('#CHAT_CONTENT').blur(function(){
+		if($('#btn').click()){
+			$('#CHAT_CONTENT').focus();
+		}
+		
+		});
 	$('#chatting').click(function(){
-		if(cnt==1){
+		$('#CHAT_CONTENT').blur();
 			$('#chatting').css({'height':(($(window).height())-200)+'px'});
-			cnt=0;
-		}
 	});
 	
-	$('#CHAT_CONTENT').click(function(){
-		if(cnt==0){
-			$('#chatting').css({'height':(($(window).height())-400)+'px'});
-			cnt=1;
-		}
-	});
 		
 });
 	
@@ -202,7 +205,7 @@ function handleStateChange() {
 	</div>
 	<!-- 채팅 입력 -->
 	
-        <div style="width:90%; margin:auto; " data-position="fixed" >
+        <div id="UI" style="width:90%; margin:auto; " data-position="fixed" >
 		<div style="float:left; width:83%;  data-positon:fixed">
 			<input type="text" data-mini="true" data-inline="true" width="80%" id="CHAT_CONTENT" name="CHAT_CONTENT"/>
 		</div>
