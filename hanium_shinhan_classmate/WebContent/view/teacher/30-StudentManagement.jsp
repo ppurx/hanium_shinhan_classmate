@@ -207,7 +207,7 @@ var chart = AmCharts.makeChart("chartdiv", {
 
 <!-- //툴바 -->
 	<div data-role="header" data-theme="b" >
-    <h1>가입승인</h1>
+    <h1>학생 역량 관리</h1>
 </div>
 <div style="margin-top:5%; margin-left:20px">
  <h3>우리반 등수</h3>
