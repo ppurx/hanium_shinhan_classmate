@@ -1,5 +1,7 @@
 package COM;
-
+/*==================================
+ì£¼ì„ì…ë ¥ë¶€ë¶„
+===================================*/
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,14 +29,14 @@ public class ComDAO1 {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		}catch(ClassNotFoundException ex) {
-			System.out.println("µå¶óÀÌ¹ö¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+			System.out.println("ë“œë¼ì´ë²„ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 		}
 
 	
 		try {	
 			conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
 		}catch(SQLException ex) {
-			System.out.println("SQL¿À·ù : " + ex.getLocalizedMessage());
+			System.out.println("SQLì˜¤ë¥˜ : " + ex.getLocalizedMessage());
 		}
 	
 	}
@@ -80,7 +82,7 @@ public class ComDAO1 {
 		int x = pstmt.executeUpdate();
 		
 		if(x<1) {
-			System.out.println("Á¤»óÀûÀ¸·Î ÀúÀåµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+			System.out.println("ì •ìƒì ìœ¼ë¡œ ì €ì¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 		} else {
 			check = true;
 		}
@@ -90,7 +92,7 @@ public class ComDAO1 {
 		
 			check = true;
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());
+			System.out.println("SQL Insert ì˜¤ë¥˜ : " + ex.getLocalizedMessage());
 			check = false;
 		}
 		return check;
@@ -247,7 +249,7 @@ public class ComDAO1 {
 			pstmt.setString(2,dto.getContent());
 			pstmt.executeUpdate();
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ì˜¤ë¥˜ : " + ex.getLocalizedMessage());			
 		}
 		
 			
