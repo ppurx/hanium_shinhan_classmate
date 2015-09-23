@@ -19,12 +19,12 @@ public class MemberDAO {
 				
 		
 		try{
-			   InitialContext ctx=new InitialContext();//ÄÁÅØ½ºÆ® ¾ò±â
+			   InitialContext ctx=new InitialContext();//ï¿½ï¿½ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½
 			   DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/maria");  
 			   conn=ds.getConnection();
-			   System.out.println("ds ¿¬°á¼º°ø");
+			   System.out.println("ds ï¿½ï¿½ï¿½á¼ºï¿½ï¿½");
 			  }catch(Exception ex){
-			   System.out.println("ds ¿¬°á½Ã¿¹¿Ü:"+ex);  
+			   System.out.println("ds ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½:"+ex);  
 			  }
 	
 	}
@@ -55,7 +55,7 @@ public class MemberDAO {
 		int x = pstmt.executeUpdate();
 		
 		if(x<1) {
-			System.out.println("Á¤»óÀûÀ¸·Î ÀúÀåµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
 		} else {
 			check = true;
 		}
@@ -65,7 +65,7 @@ public class MemberDAO {
 		
 			check = true;
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
 			check = false;
 		}
 		return check;
@@ -81,7 +81,7 @@ public class MemberDAO {
 			pstmt.setInt(4, dto.getPhone());
 			pstmt.executeUpdate();
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 		
 			
@@ -108,11 +108,11 @@ public class MemberDAO {
 					
 						if(rs.getInt("USER_TOKEN")==1)
 						{
-							re_dto.setJob("¼±»ý´Ô");
+							re_dto.setJob("ì„ ìƒë‹˜");
 						}
 						else
 						{
-							re_dto.setJob("ÇÐ»ý");
+							re_dto.setJob("í•™ìƒ");
 						}
 						
 						re_dto.setId(id);
@@ -238,11 +238,11 @@ public class MemberDAO {
 			ResultSet rs = stmt.executeQuery(sql);			
 			
 			if(rs.next()){
-				//Áßº¹½Ã
+				//ï¿½ßºï¿½ï¿½ï¿½
 				check=false;
 			}
 			else{
-				//¹ÌÁßº¹½Ã
+				//ï¿½ï¿½ï¿½ßºï¿½ï¿½ï¿½
 				check=true;
 			}			
 		}

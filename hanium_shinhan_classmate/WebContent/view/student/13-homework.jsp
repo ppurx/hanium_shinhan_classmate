@@ -28,7 +28,9 @@ html, body {height:100%; margin:0; padding:0;}
 
 
 </style>
+
 <script type="text/javascript">
+
 $(function(){
 	var x=1;
 	for(x=1;x<=10;x++){
@@ -37,8 +39,13 @@ $(function(){
 	}
 
 	
-	$('#logoutOK').click(function(){			
+	$('#logoutOK').click(function(){
 		logout.submit();
+	});
+	
+	$('#check').click(function(){
+		startRequest();
+		//homework.submit();
 	});
 	
 		
@@ -61,9 +68,49 @@ $(function(){
 	for(x=1;x<=<%=List.size() %>;x++){
 		$("#an"+x).show();
 		$("#ans"+x).show();
+		$('#count').val(x);
 	}
+	$('#study_id').val(<%=STUDY_ID%>);
 
 	});
+</script>
+<script type="text/javascript">
+		var xmlHttp;
+		function createXMLHttpRequest() {
+		    if (window.ActiveXObject) {
+		        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+		    } 
+		    else if (window.XMLHttpRequest) {
+		        xmlHttp = new XMLHttpRequest();
+		    }
+		}
+		    
+		function startRequest() {
+		    createXMLHttpRequest();
+		    xmlHttp.onreadystatechange = handleStateChange;
+		    xmlHttp.open("GET", "homeworkCheck.study?idx=" +$('#study_id').val(), true);
+		    xmlHttp.send(null);
+		}
+		    
+		function handleStateChange() {
+		    if(xmlHttp.readyState == 4) {
+		        if(xmlHttp.status == 200) {
+		        	var mes = xmlHttp.responseXML.getElementsByTagName("message")[0].firstChild.data;
+		        	
+		        	
+		        	if(mes==1){
+		        		homework.submit();		
+		        		}
+		        	else{
+		        		$("#popX").popup("open")
+		        		
+		        		}
+		        	
+		        	
+		        }
+		    }
+		}
+	
 </script>
 	<div id="myCenterDiv">
 	<!-- 툴바 -->
@@ -72,7 +119,7 @@ $(function(){
 	<!-- 로그아웃 확인-->
 	<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" >
 	
-	    <div role="main" class="ui-content" style=" text-align: center;">		
+	    <div role="main" class="ui-content" style=" text-align: center">		
 			<h3 style="margin:auto">로그아웃 하시겠습니까?</h3>
 			<p> </p>
 				<a data-ajax="false" href="#" data-role="button" data-inline="true" style="margin-right:8%" id="logoutOK">&nbspYES&nbsp</a>
@@ -135,8 +182,12 @@ $(function(){
 	</table>
 	</div>
 	</div>
+	
 	<div style="margin-left:15px; margin-right:15px;">
+	<form action="study.study" method="post" name="homework"/>
 	<div style="overflow:auto;">
+	<input type="hidden" id="count" name="count" value="0"/>
+	<input type="hidden" id="study_id" name="study_id" value="0"/>
 	<table style="width:95%;" data-role="table" id="table-custom-2" data-mode="toggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Columns to display..." data-column-popup-theme="a">
 		<thead>
 			<tr bgcolor=lightgray>
@@ -154,8 +205,8 @@ $(function(){
 		</thead>
 			<tr>
 			
-				<td id="ans1">
-				<select data-mini="true" size="1">
+				<td id="ans1" >
+				<select data-mini="true" size="1" name="ans1">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -163,7 +214,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans2">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans2">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -171,7 +222,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans3">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans3">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -179,7 +230,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans4">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans4">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -187,7 +238,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans5">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans5">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -195,7 +246,7 @@ $(function(){
 				</select>
 				</td>			
 				<td  id="ans6">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans6">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -203,7 +254,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans7">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans7">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -211,7 +262,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans8">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans8">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -219,7 +270,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans9">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans9">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -227,7 +278,7 @@ $(function(){
 				</select>
 				</td>
 				<td  id="ans10">
-				<select data-mini="true" size="1">
+				<select data-mini="true" size="1" name="ans10">
 				<option selected value="1">1</option>
 				<option>2</option>
 				<option>3</option>
@@ -237,12 +288,18 @@ $(function(){
 				
 			</tr>
 	</table>
+	
 	</div>
+	</form>
 	</div>
+	
 	<div style="margin-top:30px; margin-left:100px; margin-right:100px">
-	<a href="../student/14-score.html"><input type="button" value="점수확인"></a>
+	<a><input id="check" type="button" value="점수확인"></a>
+	<div data-role="popup" data-transition="pop"id="popX" data-overlay-theme="a" data-theme="a"class="ui-content"class="ui-corner-all" ><p>이미 학습한 내용입니다.</p></div>
+	
 	</div>
 	</div>
+	
 </body>
 </html>
 

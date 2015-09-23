@@ -97,14 +97,13 @@ $(function(){
 	</div>
 	<div style="margin-top:7%">
 	<font size=3>너의 점수는?</font> <br>
-	<font size=5><h1>35 점</h1></font>
-	<font size=3>선생님이 가슴이 아프다...</font> <br><br>
+	<font size=5><h1><%=request.getAttribute("score") %> 점</h1></font>
 	<div>
 		<img src="/hanium_shinhan_classmate/res/30.jpg" height=200>
 	</div>
 	
 	<div style="margin-left:20%; margin-right:20%; margin-top:5%">
-		<a data-ajax="false"  href="../student/12-study.html"><input type="button" value="돌아가기"/></a>
+		<a data-ajax="false"  href="../student/12-study.jsp"><input type="button" value="돌아가기"/></a>
 	</div>
 	</div>
 	</div>

@@ -38,13 +38,21 @@ html, body {height:100%; margin:0; padding:0;}
 
 </style>
 <script type="text/javascript">
+$(document).bind('keydown', function(event) {
+    if (event.keyCode == 27) {
+               alert("I just clicked the back-button!");
+    }
+else {
+       alert("I just hit the button with code " + event.keyCode);
+    }
+});
 $(function(){	
 	
-	$('#ClassGroup').click(function(){	
+	$('#ClassGroup').change(function(){	
 		if($("#ClassGroup option:selected").val()!=0) startRequest();			
 	});
 	
-	$('#percent').click(function(){
+	$('#percent').change(function(){
 		$('#result').empty();
 		if($("#percent option:selected").val()!=0) startRequest2();	
 	});

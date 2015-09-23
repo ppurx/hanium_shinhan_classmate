@@ -173,7 +173,7 @@ public class MemberProcess extends HttpServlet {
 			
 			
 			HttpSession session = request.getSession();
-			// setAttribute(String attr_name, Object attr_name) ¸Ş¼Òµå
+			// setAttribute(String attr_name, Object attr_name) ï¿½Ş¼Òµï¿½
 			session.setAttribute("id", re_dto.getId());
 			session.setAttribute("pw", re_dto.getPassword());
 			session.setAttribute("name", re_dto.getName());
@@ -184,9 +184,9 @@ public class MemberProcess extends HttpServlet {
 			if(re_dto.getName()==null)response.sendRedirect("../student/02-Login_fail.html");
 			else 
 			{
-				if(re_dto.getJob()=="ÇĞ»ı")
+				if(re_dto.getJob()=="í•™ìƒ")
 					response.sendRedirect("../student/08-Stu_main(1).jsp");
-				else if(re_dto.getJob()=="¼±»ı´Ô")
+				else if(re_dto.getJob()=="ì„ ìƒë‹˜")
 					response.sendRedirect("../teacher/05-teacher_main.jsp");
 			}
 			
@@ -298,7 +298,7 @@ else if(command !=null &&command.trim().equals("findPass")){
 		dao.updateMember(dto);
 		
 		
-		if(session.getAttribute("job").equals("ÇĞ»ı"))
+		if(session.getAttribute("job").equals("í•™ìƒ"))
 			response.sendRedirect("../student/08-Stu_main(1).jsp");
 		else
 			response.sendRedirect("../teacher/05-teacher_main.jsp");
