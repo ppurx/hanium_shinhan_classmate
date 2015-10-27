@@ -1,4 +1,14 @@
 eclipse.preferences.version=1
 encoding//WebContent/example/C_tag=EUC-KR
 encoding//WebContent/example/buttonPopup_Sample.html=UTF-8
+encoding//src/COM=UTF-8
 encoding//src/COM/ComDAO1.java=EUC-KR
+encoding//src/Class=UTF-8
+encoding//src/Class/ClassDAO.java=UTF-8
+encoding//src/Class/ClassProcess.java=UTF-8
+encoding//src/Encoder=UTF-8
+encoding//src/Member/MemberDAO.java=UTF-8
+encoding//src/Member/MemberDTO.java=UTF-8
+encoding//src/Member/MemberProcess.java=UTF-8
+encoding//src/Study=UTF-8
+encoding/<project>=UTF-8

@@ -50,14 +50,7 @@ html, body {height:100%; margin:0; padding:0;}
 			$('#popupDialog').popup("close");	
 		})
 	});
-	$(document).bind('keydown', function(event) {
-	    if (event.keyCode == 27) {
-	               alert("I just clicked the back-button!");
-	    }
-	else {
-	       alert("I just hit the button with code " + event.keyCode);
-	    }
-	});
+	
 </script>
 <script type="text/javascript">
 		var xmlHttp;

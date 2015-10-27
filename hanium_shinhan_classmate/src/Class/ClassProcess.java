@@ -30,7 +30,7 @@ public class ClassProcess extends HttpServlet{
 		if(command !=null &&command.trim().equals("createClass")){
 			request.setCharacterEncoding("utf-8");
 			
-			//ÇöÀç Á¸ÀçÇÏ´Â ¼¼¼ÇÀ» °¡Á®¿À°Å³ª ¾ø´Ù¸é »õ·Î »ı¼º
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å³ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
 			ClassDTO dto = new ClassDTO();
@@ -49,14 +49,14 @@ public class ClassProcess extends HttpServlet{
 			request.setCharacterEncoding("EUC-KR");
 			//HttpSession session = request.getSession();
 			//String idx1 = (String) session.getAttribute("CLASS_ID");
-			 String idx = request.getParameter("x");	//°Ë»ö¾î idx·Î ¹Ş¾Æ¿È
+			 String idx = request.getParameter("x");	//ï¿½Ë»ï¿½ï¿½ï¿½ idxï¿½ï¿½ ï¿½Ş¾Æ¿ï¿½
 			 ClassDAO dao = new ClassDAO();
 			 
 			 ArrayList<ClassDTO> ClassList = new ArrayList<ClassDTO>();
 			 ClassList = dao.searchClass(idx);
 			 
 			 request.setAttribute("ClassList", ClassList);
-			//ÃÖÁ¾ ¿¬»êµÈ °ªµéÀ» url·Î ÀÌµ¿ Àü´Ş
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ urlï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 			 RequestDispatcher dispatcher = request.getRequestDispatcher("../student/09-FindClass_result.jsp");
 			dispatcher.forward(request, response);
 	        
@@ -84,7 +84,7 @@ public class ClassProcess extends HttpServlet{
 			 dto.setUSER_ID((String)session.getAttribute("id"));
 			 dto.setCLASS_ID(Integer.parseInt((String)session.getAttribute("CLASS_ID")));
 			 if(request.getParameter("subject")=="")
-				 dto.setStudy_Subject("Á¦¸ñ ¾øÀ½");
+				 dto.setStudy_Subject("ì œëª©ì—†ìŒ");
 			 else
 				 dto.setStudy_Subject(request.getParameter("subject"));
 			 
@@ -115,6 +115,7 @@ public class ClassProcess extends HttpServlet{
 			 response.sendRedirect("../teacher/27-Question.jsp");
 			
 		}
+	
 		
 else if(command !=null &&command.trim().equals("chat")){
 			HttpSession session = request.getSession();
@@ -171,8 +172,6 @@ else if(command !=null &&command.trim().equals("chat")){
 	        String message = "";    	       
 	        message=idx;
 	        System.out.println(message);
-	        
-			
 		}
 		
 		else if(command !=null &&command.trim().equals("canOK")){
@@ -184,7 +183,7 @@ else if(command !=null &&command.trim().equals("chat")){
 			
 			ClassDAO dao = new ClassDAO();
 			dao.CanOK(idx,idx2);
-			response.sendRedirect("../teacher//29-Classmanagement.jsp");
+			response.sendRedirect("../teacher/29-Classmanagement.jsp");
 	       
 			
 			
@@ -234,6 +233,11 @@ else if(command !=null &&command.trim().equals("chat")){
 			
 			
 			
+		}
+		else if(command !=null &&command.trim().equals("chatFirst")){
+			HttpSession session = request.getSession();
+			session.setAttribute("MAX","1");
+			response.sendRedirect("../student/36-Chat(student).jsp");
 		}
 				    
 		

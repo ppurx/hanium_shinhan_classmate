@@ -22,9 +22,9 @@ public class MemberDAO {
 			   InitialContext ctx=new InitialContext();//���ؽ�Ʈ ���
 			   DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/maria");  
 			   conn=ds.getConnection();
-			   System.out.println("ds ���Ἲ��");
+			   System.out.println("ds 성공");
 			  }catch(Exception ex){
-			   System.out.println("ds ����ÿ���:"+ex);  
+			   System.out.println("ds 실패:"+ex);  
 			  }
 	
 	}

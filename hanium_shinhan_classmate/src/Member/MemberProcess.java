@@ -299,9 +299,9 @@ else if(command !=null &&command.trim().equals("findPass")){
 		
 		
 		if(session.getAttribute("job").equals("학생"))
-			response.sendRedirect("../student/08-Stu_main(1).jsp");
+			response.sendRedirect("../student/11-main(student).jsp");
 		else
-			response.sendRedirect("../teacher/05-teacher_main.jsp");
+			response.sendRedirect("../teacher/07-teacher_main.jsp");
 		}
 		
 	
