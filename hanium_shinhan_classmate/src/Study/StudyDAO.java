@@ -26,14 +26,14 @@ public class StudyDAO {
 			try {
 				Class.forName("org.mariadb.jdbc.Driver");
 			}catch(ClassNotFoundException ex) {
-				System.out.println("µå¶óÀÌ¹ö¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 			}
 	
 		
 			try {	
 				conn = DriverManager.getConnection("jdbc:mariadb://14.63.223.174:3306/shinhan","root","shinhan12");
 			}catch(SQLException ex) {
-				System.out.println("SQL¿À·ù : " + ex.getLocalizedMessage());
+				System.out.println("SQLï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
 			}
 		
 		}
@@ -251,6 +251,63 @@ public double selectPercent(String CLASS_ID,String USER_ID,int MONTH){
 	return percent;
 }
 
+public boolean homeworkCheck(String study_id,String user_id){
+	boolean check=false;
+	String sql = "select STUDY_CHECK from SCORE where STUDY_ID='"+study_id+"' and USER_ID='"+user_id+"'";
+	try {
+			
+			Statement stmt = conn.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()){					
+				if(rs.getString("STUDY_CHECK").equals("O"))check=false;
+				else check=true;
+			}
+			
+			
+			
+			
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+	return check;
+}
 
+public int countCorrectAnswer(int[] ans,String study_id){
+	int cnt=0;
+	int j=0;
+	String sql = "select * from QUESTION where STUDY_ID='"+study_id+"'  order by QUE_COUNT";
+	try {
+			
+			Statement stmt = conn.createStatement();			
+			ResultSet rs = stmt.executeQuery(sql);	
+			
+			while(rs.next()){
+				if(ans[j]==Integer.parseInt(rs.getString("QUE_ANSWER"))){
+					cnt++;
+					j++;
+				}else{
+					j++;
+				}
+			}
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+	return cnt;
+}
+
+public void insertScore(int score,String study_id,String user_id){
+	String sql = "update SCORE set SCORE_SCORE="+score+",STUDY_CHECK='O' where USER_ID='"+user_id+"' and STUDY_ID='"+study_id+"'";
+	try{
+		Statement stmt = conn.createStatement();			
+		stmt.executeUpdate(sql);	
+	}catch(Exception e){
+		e.toString();
+	}
+
+}
 
 }

@@ -27,7 +27,6 @@
     position:fixed; top:0; left:0; width:100%; height:100%;
     background-color:#fafbd3;
 }
-
     html, body {
         position: relative;
         height: 100%;
@@ -41,7 +40,6 @@
         text-align: center;
       
         background: #fafbd3;
-
         /* Center slide text vertically */
          display: -webkit-box;
         display: -ms-flexbox;
@@ -174,6 +172,7 @@ $(function(){
            
         </div>
         <!-- Add Pagination -->
+        
       <div class="swiper-pagination" ></div>
         
     </div>

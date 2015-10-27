@@ -33,11 +33,11 @@ public class ClassDAO {
 public ClassDAO() {	
 	
 	 try{
-		   InitialContext ctx=new InitialContext();//ÄÁÅØ½ºÆ® ¾ò±â
+		   InitialContext ctx=new InitialContext();//ï¿½ï¿½ï¿½Ø½ï¿½Æ® ï¿½ï¿½ï¿½
 		   DataSource ds=(DataSource)ctx.lookup("java:comp/env/jdbc/maria");  
 		   conn=ds.getConnection();
 		  }catch(Exception ex){
-		   System.out.println("ds ¿¬°á½Ã¿¹¿Ü:"+ex);  
+		   System.out.println("ds ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½:"+ex);  
 		  }
 }
 
@@ -123,7 +123,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 				dto.setCLASS_FOUND_DATE(rs.getString("CLASS_FOUND_DATE").substring(0,10));
 				
 				
-				System.out.println("ÇÐ±³¸í : "+dto.getCLASS_SCHOOL_NAME()+" ¹Ý ÀÌ¸§ : "+dto.getCLASS_NAME());
+				System.out.println("ï¿½Ð±ï¿½ï¿½ï¿½ : "+dto.getCLASS_SCHOOL_NAME()+" ï¿½ï¿½ ï¿½Ì¸ï¿½ : "+dto.getCLASS_NAME());
 				searchClassList.add(dto);
 				
 			}
@@ -149,14 +149,14 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 			pstmt.setString(1,dto.getCLASS_SCHOOL_NAME());			
 			pstmt.setString(2,dto.getCLASS_NAME());			
-			pstmt.setString(3, "°³¿ä ±âº»°ª");
+			pstmt.setString(3, dto.getCLASS_CONTENT());
 			pstmt.setString(4, dto.getUSER_ID());
 			
 			
 			int x = pstmt.executeUpdate();
 			
 			if(x<1) {
-				System.out.println("Á¤»óÀûÀ¸·Î ÀúÀåµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
 			} else {
 				check = true;
 			}
@@ -165,7 +165,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 				check = true;
 			}catch(SQLException ex) {
-				System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());
+				System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
 				check = false;
 			}
 		
@@ -220,7 +220,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			int x = pstmt.executeUpdate();
 			
 			if(x<1) {
-				System.out.println("Á¤»óÀûÀ¸·Î ÀúÀåµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.");
 			} else {
 				check = true;
 			}
@@ -229,7 +229,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 				check = true;
 			}catch(SQLException ex) {
-				System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());
+				System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());
 				check = false;
 			}
 		
@@ -300,7 +300,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 			pstmt.executeUpdate();
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 		String sql2 = "insert into LIST(CLASS_ID,USER_ID) values(?,?)";
 		try {
@@ -309,7 +309,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			pstmt.setString(2, idx);
 			pstmt.executeUpdate();
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 			
 	}
@@ -325,7 +325,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 			pstmt.executeUpdate();
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 	}
 	
@@ -345,7 +345,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 				
 			}
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 		
 		return STUDY_ID;
@@ -378,7 +378,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			
 		
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 		
 		
@@ -398,7 +398,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 			}
 			
 		}catch(SQLException ex) {
-			System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());			
+			System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());			
 		}
 	}
 	
@@ -450,7 +450,7 @@ public ArrayList<ClassDTO> selectClassList_Teacher(String id){
 				pstmt.close();
 			
 				}catch(SQLException ex) {
-					System.out.println("SQL Insert ¿À·ù : " + ex.getLocalizedMessage());				
+					System.out.println("SQL Insert ï¿½ï¿½ï¿½ï¿½ : " + ex.getLocalizedMessage());				
 				}
 			
 		}

@@ -26,7 +26,10 @@ html, body {height:100%; margin:0; padding:0;}
 
 <title>Main</title>
 </head>
-
+<%
+	String class_id = request.getParameter("idx");
+	session.setAttribute("CLASS_ID",class_id);
+%>
 <body>
 	<div id="myCenterDiv">
 	

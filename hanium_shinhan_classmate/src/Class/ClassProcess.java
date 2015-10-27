@@ -36,6 +36,7 @@ public class ClassProcess extends HttpServlet{
 			ClassDTO dto = new ClassDTO();
 			dto.setCLASS_SCHOOL_NAME(request.getParameter("schoolName"));
 			dto.setCLASS_NAME(request.getParameter("ClassName"));
+			dto.setCLASS_CONTENT(request.getParameter("CLASS_CONTENT"));
 			dto.setUSER_ID(id);
 			
 			ClassDAO dao = new ClassDAO();
@@ -185,8 +186,6 @@ else if(command !=null &&command.trim().equals("chat")){
 			dao.CanOK(idx,idx2);
 			response.sendRedirect("../teacher/29-Classmanagement.jsp");
 	       
-			
-			
 		}
 		
 		else if(command !=null &&command.trim().equals("chatSelect")){

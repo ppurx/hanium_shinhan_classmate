@@ -84,11 +84,13 @@ html, body {height:100%; margin:0; padding:0;}
 
 <!-- //툴바 -->
 <form id="createClass" action="createClass.class" method="post">
-    <div style="margin-left:10%; margin-right:10%; margin-top:25%">
+    <div style="margin-left:10%; margin-right:10%; margin-top:10%">
     
     		<input type="text" placeholder="학교이름" name="schoolName">
     		<input type="text" placeholder="반 이름" name="ClassName">
-		
+    	<div style="overflow-y:auto;overflow-x:hidden;height:70px;">
+			<textArea placeholder="반 설명" name="CLASS_CONTENT"></textArea>
+		</div>
 	</div>
 	
 <div id="touchgallery1" class="touchgallery" style="margin:auto">
@@ -106,7 +108,6 @@ html, body {height:100%; margin:0; padding:0;}
 	<div style="margin-top:5%">
 	<table align="center" >
 		<tr>
-			<td width="30%" align="center"><a href="#" data-role="button" data-inline="true">중복확인</a></td>
 			<td width="30%" align="center"><a id="btn1"href="#" data-role="button" data-inline="true">&nbsp&nbsp개&nbsp&nbsp설&nbsp&nbsp</a></td>
 		</tr>
 		

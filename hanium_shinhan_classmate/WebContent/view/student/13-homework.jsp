@@ -88,7 +88,7 @@ $(function(){
 		function startRequest() {
 		    createXMLHttpRequest();
 		    xmlHttp.onreadystatechange = handleStateChange;
-		    xmlHttp.open("GET", "homeworkCheck.study?idx=" +$('#study_id').val(), true);
+		    xmlHttp.open("GET", "homeworkCheck.study?idx=" +<%=STUDY_ID%>, true);
 		    xmlHttp.send(null);
 		}
 		    
